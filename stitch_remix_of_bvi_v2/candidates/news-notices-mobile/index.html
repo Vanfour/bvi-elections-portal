@@ -148,7 +148,7 @@
         }</style>
 <script id="bvi-nav-wiring">
 (function(){
-  var L={voters:'../../voters/compact-mobile/index.html',candidates:'../upcoming-elections-mobile/index.html',pollWorkers:'../../poll-workers/layout-2/index.html',electionResults:'../election-results-mobile/index.html',newsPolicies:'./index.html',keyActions:'../key-actions-mobile/index.html',faqs:'../faqs-mobile/index.html',newsNotices:'./index.html',mobileVersion:null,desktopVersion:'../news-notices/index.html'};
+  var L={voters:'../../voters/compact-mobile/index.html',candidates:'../upcoming-elections-mobile/index.html',pollWorkers:'../../poll-workers/layout-2/index.html',electionResults:'../election-results-mobile/index.html',newsPolicies:'./index.html',keyActions:'../key-actions-mobile/index.html',faqs:'../faqs-mobile/index.html',newsNotices:'./index.html',importantDates:'../upcoming-elections-mobile/index.html',mobileVersion:null,desktopVersion:'../news-notices/index.html'};
   function wire(){
     document.querySelectorAll('a[href="#"]').forEach(function(a){
       var t=a.textContent.replace(/\s+/g,' ').trim().toUpperCase();
@@ -160,6 +160,7 @@
       else if(/KEY\s+ACTIONS/.test(t)&&L.keyActions) a.href=L.keyActions;
       else if(/^FAQS?$/.test(t)&&L.faqs) a.href=L.faqs;
       else if(/NEWS/.test(t)&&/NOTICES/.test(t)&&L.newsNotices) a.href=L.newsNotices;
+      else if(/IMPORTANT.*DATES/.test(t)&&L.importantDates) a.href=L.importantDates;
     });
     if(!window.location.search){
       if(L.mobileVersion&&window.innerWidth<768) window.location.replace(L.mobileVersion+'?v=m');

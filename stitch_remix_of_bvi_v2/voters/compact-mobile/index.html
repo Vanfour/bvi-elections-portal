@@ -119,7 +119,7 @@
     </style>
 <script id="bvi-nav-wiring">
 (function(){
-  var L={voters:'./index.html',candidates:'../../candidates/upcoming-elections-mobile/index.html',pollWorkers:'../../poll-workers/layout-2/index.html',electionResults:'../election-results-mobile/index.html',newsPolicies:'../../candidates/news-notices-mobile/index.html',keyActions:null,faqs:null,newsNotices:null,mobileVersion:null,desktopVersion:'../upcoming-events-v1/index.html'};
+  var L={voters:'./index.html',candidates:'../../candidates/upcoming-elections-mobile/index.html',pollWorkers:'../../poll-workers/layout-2/index.html',electionResults:'../election-results-mobile/index.html',newsPolicies:'../../candidates/news-notices-mobile/index.html',keyActions:null,faqs:null,newsNotices:null,importantDates:'../upcoming-events-v1/index.html',mobileVersion:null,desktopVersion:'../upcoming-events-v1/index.html'};
   function wire(){
     document.querySelectorAll('a[href="#"]').forEach(function(a){
       var t=a.textContent.replace(/\s+/g,' ').trim().toUpperCase();
@@ -131,6 +131,7 @@
       else if(/KEY\s+ACTIONS/.test(t)&&L.keyActions) a.href=L.keyActions;
       else if(/^FAQS?$/.test(t)&&L.faqs) a.href=L.faqs;
       else if(/NEWS/.test(t)&&/NOTICES/.test(t)&&L.newsNotices) a.href=L.newsNotices;
+      else if(/IMPORTANT.*DATES/.test(t)&&L.importantDates) a.href=L.importantDates;
     });
     if(!window.location.search){
       if(L.mobileVersion&&window.innerWidth<768) window.location.replace(L.mobileVersion+'?v=m');
