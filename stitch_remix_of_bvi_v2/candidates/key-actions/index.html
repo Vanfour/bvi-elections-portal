@@ -134,7 +134,7 @@
       else if(/NEWS/.test(t)&&/POLIC/.test(t)&&t.length<25) a.href=L.newsPolicies;
       else if(/IMPORTANT.*DATES/.test(t)&&L.importantDates) a.href=L.importantDates;
       else if(/KEY\s+ACTIONS/.test(t)&&L.keyActions) a.href=L.keyActions;
-      else if(/^FAQS?$/.test(t)&&L.faqs) a.href=L.faqs;
+      else if(/\bFAQS?\b/.test(t)&&L.faqs) a.href=L.faqs;
       else if(/NEWS/.test(t)&&/NOTICES/.test(t)&&L.newsNotices) a.href=L.newsNotices;
     });
     if(!window.location.search){
