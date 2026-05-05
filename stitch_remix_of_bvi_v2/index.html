@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>BVI Elections Portal</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#00205B",
+          "secondary": "#E03C31",
+          "tertiary": "#007A33",
+          "background": "#F8F9FA",
+          "surface-container-lowest": "#ffffff",
+          "surface-container-low": "#f3f4f5",
+          "on-surface": "#191c1d",
+          "on-primary": "#ffffff",
+        },
+        fontFamily: { headline: ["Public Sans"], body: ["Inter"] }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,32,91,0.12); }
+  .card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+</style>
+</head>
+<body class="font-body bg-[#F8F9FA] text-[#191c1d] min-h-screen">
+
+<!-- Top Utility Bar -->
+<div class="w-full bg-[#F8F9FA] border-b border-slate-200 py-2 px-4 md:px-8">
+  <div class="max-w-7xl mx-auto flex justify-between items-center text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+    <div class="flex items-center gap-4">
+      <span class="hover:text-[#00205B] transition-colors flex items-center gap-1 cursor-default opacity-50">
+        <span class="text-[14px]">←</span> BACK TO GOV.VG
+      </span>
+      <span class="text-slate-300 font-normal">|</span>
+      <span class="text-slate-400 cursor-default">CONTACT US</span>
+    </div>
+    <div class="hidden md:block">OFFICIAL PORTAL OF THE BRITISH VIRGIN ISLANDS ELECTIONS</div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w-full bg-white border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 py-5 flex items-center gap-4">
+    <img alt="BVI Crest" class="h-14 w-auto object-contain" src="assets/bvi-crest.png">
+    <div>
+      <div class="text-3xl font-black text-[#00205B] tracking-tight leading-none font-headline">elections.gov.vg</div>
+      <div class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mt-1 leading-none">DEPARTMENT OF ELECTIONS</div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="w-full bg-[#00205B] text-white py-16 px-4 md:px-8">
+  <div class="max-w-7xl mx-auto">
+    <p class="text-[11px] font-bold uppercase tracking-widest text-[#b2c5ff] mb-3">British Virgin Islands</p>
+    <h1 class="text-5xl md:text-7xl font-black font-headline leading-[1.05] mb-4">Department<br>of Elections</h1>
+    <p class="text-lg text-[#dae2ff] max-w-xl">Your official source for electoral information, voter registration, candidate resources, and election results.</p>
+  </div>
+</section>
+
+<!-- Role Cards -->
+<section class="max-w-7xl mx-auto px-4 md:px-8 py-16">
+  <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-2">I am here as a…</p>
+  <h2 class="text-3xl font-black text-[#00205B] font-headline mb-10">Select your role to get started</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    <!-- Voter Card -->
+    <a href="voters/upcoming-events-v1/index.html" class="card block bg-white rounded-xl p-8 no-underline">
+      <div class="w-12 h-12 rounded-full bg-[#dae2ff] flex items-center justify-center mb-5">
+        <span class="material-symbols-outlined text-[#00205B] text-2xl">how_to_vote</span>
+      </div>
+      <h3 class="text-2xl font-black text-[#00205B] font-headline mb-2">For Voters</h3>
+      <p class="text-slate-500 text-sm leading-relaxed mb-6">Register to vote, find your polling station, check your registration status, and view election results.</p>
+      <div class="flex flex-col gap-2 text-[13px]">
+        <span class="flex items-center gap-2 text-slate-600"><span class="material-symbols-outlined text-[16px] text-[#007A33]">check_circle</span> Register to Vote</span>
+        <span class="flex items-center gap-2 text-slate-600"><span class="material-symbols-outlined text-[16px] text-[#007A33]">check_circle</span> Find My Polling Place</span>
+        <span class="flex items-center gap-2 text-slate-600"><span class="material-symbols-outlined text-[16px] text-[#007A33]">check_circle</span> Check Registration Status</span>
+        <span class="flex items-center gap-2 text-slate-600"><span class="material-symbols-outlined text-[16px] text-[#007A33]">check_circle</span> View Election Results</span>
+      </div>
+      <div class="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between">
+        <span class="text-[#00205B] font-bold text-sm">Go to Voter Hub</span>
+        <span class="material-symbols-outlined text-[#00205B]">arrow_forward</span>
+      </div>
+    </a>
+
+    <!-- Candidate Card -->
+    <a href="candidates/upcoming-elections/index.html" class="card block bg-white rounded-xl p-8 no-underline">
+      <div class="w-12 h-12 rounded-full bg-[#ffdad5] flex items-center justify-center mb-5">
+        <span class="material-symbols-outlined text-[#E03C31] text-2xl">person_raised_hand</span>
+      </div>
+      <h3 class="text-2xl font-black text-[#00205B] font-headline mb-2">For Candidates</h3>
+      <p class="text-slate-500 text-sm leading-relaxed mb-6">Everything you need to run for office — eligibility, nomination, campaign finance, key dates, and official forms.</p>
+      <div class="flex flex-col gap-2 text-[13px]">
+        <span class="flex items-center gap-2 text-slate-600"><span class="material-symbols-outlined text-[16px] text-[#007A33]">check_circle</span> Prepare to Run</span>
+        <span class="flex items-center gap-2 text-slate-600"><span class="material-symbols-outlined text-[16px] text-[#007A33]">check_circle</span> Key Dates & Deadlines</span>
+        <span class="flex items-center gap-2 text-slate-600"><span class="material-symbols-outlined text-[16px] text-[#007A33]">check_circle</span> FAQs & Guidelines</span>
+        <span class="flex items-center gap-2 text-slate-600"><span class="material-symbols-outlined text-[16px] text-[#007A33]">check_circle</span> News & Notices</span>
+      </div>
+      <div class="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between">
+        <span class="text-[#00205B] font-bold text-sm">Go to Candidate Hub</span>
+        <span class="material-symbols-outlined text-[#00205B]">arrow_forward</span>
+      </div>
+    </a>
+
+    <!-- Poll Worker Card -->
+    <a href="poll-workers/layout-1/index.html" class="card block bg-white rounded-xl p-8 no-underline">
+      <div class="w-12 h-12 rounded-full bg-[#93f9a2] flex items-center justify-center mb-5">
+        <span class="material-symbols-outlined text-[#005320] text-2xl">badge</span>
+      </div>
+      <h3 class="text-2xl font-black text-[#00205B] font-headline mb-2">For Poll Workers</h3>
+      <p class="text-slate-500 text-sm leading-relaxed mb-6">Access your poll worker portal, view important dates, and learn how to become a certified poll worker.</p>
+      <div class="flex flex-col gap-2 text-[13px]">
+        <span class="flex items-center gap-2 text-slate-600"><span class="material-symbols-outlined text-[16px] text-[#007A33]">check_circle</span> Login to Portal</span>
+        <span class="flex items-center gap-2 text-slate-600"><span class="material-symbols-outlined text-[16px] text-[#007A33]">check_circle</span> Become a Poll Worker</span>
+        <span class="flex items-center gap-2 text-slate-600"><span class="material-symbols-outlined text-[16px] text-[#007A33]">check_circle</span> Important Dates</span>
+        <span class="flex items-center gap-2 text-slate-600"><span class="material-symbols-outlined text-[16px] text-[#007A33]">check_circle</span> News & Notices</span>
+      </div>
+      <div class="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between">
+        <span class="text-[#00205B] font-bold text-sm">Go to Poll Worker Hub</span>
+        <span class="material-symbols-outlined text-[#00205B]">arrow_forward</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- Quick Links Bar -->
+<section class="bg-white border-t border-b border-slate-100 py-8 px-4 md:px-8">
+  <div class="max-w-7xl mx-auto">
+    <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-5">Quick Access</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <a href="voters/upcoming-events-v1/index.html" class="flex items-center gap-3 p-4 rounded-lg bg-[#F8F9FA] hover:bg-[#dae2ff] transition-colors group">
+        <span class="material-symbols-outlined text-[#00205B] text-xl">calendar_today</span>
+        <span class="font-bold text-[#00205B] text-sm">Upcoming Elections</span>
+      </a>
+      <a href="voters/election-results/index.html" class="flex items-center gap-3 p-4 rounded-lg bg-[#F8F9FA] hover:bg-[#dae2ff] transition-colors group">
+        <span class="material-symbols-outlined text-[#00205B] text-xl">bar_chart</span>
+        <span class="font-bold text-[#00205B] text-sm">Election Results</span>
+      </a>
+      <a href="candidates/news-notices/index.html" class="flex items-center gap-3 p-4 rounded-lg bg-[#F8F9FA] hover:bg-[#dae2ff] transition-colors group">
+        <span class="material-symbols-outlined text-[#00205B] text-xl">newspaper</span>
+        <span class="font-bold text-[#00205B] text-sm">News & Notices</span>
+      </a>
+      <a href="candidates/faqs/index.html" class="flex items-center gap-3 p-4 rounded-lg bg-[#F8F9FA] hover:bg-[#dae2ff] transition-colors group">
+        <span class="material-symbols-outlined text-[#00205B] text-xl">help</span>
+        <span class="font-bold text-[#00205B] text-sm">FAQs</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Screen Index (for development) -->
+<section class="max-w-7xl mx-auto px-4 md:px-8 py-12">
+  <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-2">All Screens</p>
+  <h2 class="text-2xl font-black text-[#00205B] font-headline mb-8">Design Prototype Index</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+    <!-- Voters -->
+    <div>
+      <h3 class="text-xs font-bold uppercase tracking-widest text-[#E03C31] mb-4 pb-2 border-b border-slate-200">For Voters</h3>
+      <ul class="space-y-2">
+        <li><a href="voters/upcoming-events-v1/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">desktop_windows</span> Upcoming Events (v1)</a></li>
+        <li><a href="voters/upcoming-events-v2/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">desktop_windows</span> Upcoming Events (v2)</a></li>
+        <li><a href="voters/compact-mobile/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">smartphone</span> Compact Mobile</a></li>
+        <li><a href="voters/voting-day/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">desktop_windows</span> Voting Day</a></li>
+        <li><a href="voters/voting-day-mobile/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">smartphone</span> Voting Day (Mobile)</a></li>
+        <li><a href="voters/election-results/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">desktop_windows</span> Election Results</a></li>
+        <li><a href="voters/election-results-mobile/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">smartphone</span> Election Results (Mobile)</a></li>
+        <li><a href="voters/no-election/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">desktop_windows</span> No Election Scheduled</a></li>
+        <li><a href="voters/no-election-timeline-1/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">smartphone</span> No Election – Timeline 1</a></li>
+        <li><a href="voters/no-election-timeline-2/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">smartphone</span> No Election – Timeline 2</a></li>
+      </ul>
+    </div>
+
+    <!-- Candidates -->
+    <div>
+      <h3 class="text-xs font-bold uppercase tracking-widest text-[#E03C31] mb-4 pb-2 border-b border-slate-200">For Candidates</h3>
+      <ul class="space-y-2">
+        <li><a href="candidates/upcoming-elections/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">desktop_windows</span> Upcoming Elections</a></li>
+        <li><a href="candidates/upcoming-elections-mobile/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">smartphone</span> Upcoming Elections (Mobile)</a></li>
+        <li><a href="candidates/voting-day/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">desktop_windows</span> Voting Day</a></li>
+        <li><a href="candidates/voting-day-mobile/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">smartphone</span> Voting Day (Mobile)</a></li>
+        <li><a href="candidates/election-results/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">desktop_windows</span> Election Results</a></li>
+        <li><a href="candidates/election-results-mobile/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">smartphone</span> Election Results (Mobile)</a></li>
+        <li><a href="candidates/key-actions/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">desktop_windows</span> Key Actions</a></li>
+        <li><a href="candidates/key-actions-mobile/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">smartphone</span> Key Actions (Mobile)</a></li>
+        <li><a href="candidates/faqs/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">desktop_windows</span> FAQs</a></li>
+        <li><a href="candidates/faqs-mobile/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">smartphone</span> FAQs (Mobile)</a></li>
+        <li><a href="candidates/news-notices/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">desktop_windows</span> News & Notices</a></li>
+        <li><a href="candidates/news-notices-mobile/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">smartphone</span> News & Notices (Mobile)</a></li>
+        <li><a href="candidates/no-election/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">desktop_windows</span> No Election Scheduled</a></li>
+        <li><a href="candidates/no-election-mobile/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">smartphone</span> No Election (Mobile)</a></li>
+      </ul>
+    </div>
+
+    <!-- Poll Workers -->
+    <div>
+      <h3 class="text-xs font-bold uppercase tracking-widest text-[#E03C31] mb-4 pb-2 border-b border-slate-200">For Poll Workers</h3>
+      <ul class="space-y-2">
+        <li><a href="poll-workers/layout-1/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">desktop_windows</span> Layout 1 (Desktop)</a></li>
+        <li><a href="poll-workers/layout-2/index.html" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">smartphone</span> Layout 2 (Mobile)</a></li>
+      </ul>
+
+      <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 mt-8 mb-4 pb-2 border-b border-slate-200">Design System</h3>
+      <ul class="space-y-2">
+        <li><a href="design-system/docs/DESIGN.md" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">palette</span> Sovereign Ledger Design Doc</a></li>
+        <li><a href="MISSING_PAGES.md" class="text-[#00205B] hover:underline text-sm font-medium flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">fact_check</span> Missing Pages Analysis</a></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#00205B] text-white py-10 px-4 md:px-8 mt-8">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+    <div>
+      <div class="text-xl font-black font-headline">elections.gov.vg</div>
+      <div class="text-[11px] font-bold uppercase tracking-widest text-[#b2c5ff] mt-1">Department of Elections, British Virgin Islands</div>
+    </div>
+    <div class="text-[12px] text-[#b2c5ff]">© 2024 BVI Department of Elections. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

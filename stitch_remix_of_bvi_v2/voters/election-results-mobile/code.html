@@ -1,0 +1,431 @@
+﻿<!DOCTYPE html>
+
+<html lang="en"><head>
+<title>For Voters – Election Results State</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#d9dadb",
+                        "tertiary-fixed-dim": "#77dc88",
+                        "surface-container": "#edeeef",
+                        "on-primary-container": "#738aca",
+                        "background": "#f8f9fa",
+                        "secondary-fixed": "#ffdad5",
+                        "outline": "#757681",
+                        "on-tertiary-container": "#399e52",
+                        "inverse-surface": "#2e3132",
+                        "on-tertiary-fixed-variant": "#005320",
+                        "surface-container-highest": "#e1e3e4",
+                        "secondary": "#E03C31",
+                        "primary-container": "#00205b",
+                        "on-tertiary-fixed": "#002109",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#191c1d",
+                        "primary-fixed": "#dae2ff",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#ffb4aa",
+                        "inverse-primary": "#b2c5ff",
+                        "tertiary-fixed": "#93f9a2",
+                        "tertiary-container": "#002b0d",
+                        "on-secondary-container": "#fffbff",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c5c6d1",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "tertiary": "#001304",
+                        "primary": "#00205B",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface-container-low": "#f3f4f5",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#410001",
+                        "on-primary-fixed-variant": "#2d447f",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "secondary-container": "#d9372d",
+                        "on-secondary-fixed-variant": "#930006",
+                        "on-surface-variant": "#444650",
+                        "on-primary-fixed": "#001849",
+                        "surface-tint": "#455c99",
+                        "surface-bright": "#f8f9fa",
+                        "surface": "#f8f9fa",
+                        "on-background": "#191c1d",
+                        "surface-container-high": "#e7e8e9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Public Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .nav-underline-active {
+            position: relative;
+        }
+        .nav-underline-active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #E03C31;
+        }
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary .expand-icon {
+            transform: rotate(180deg);
+        }
+        /* Mobile specific styles */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-body text-on-surface bg-white">
+<!-- Top Utility Bar (Simplified for Mobile) -->
+<div class="w-full bg-[#f8f9fa] border-b border-slate-200 py-2 px-4">
+<div class="flex justify-between items-center text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+<div class="flex items-center gap-3">
+<a class="hover:text-[#00205B] transition-colors flex items-center gap-1" href="#">
+<span class="text-[12px]">←</span> BACK
+                </a>
+<span class="text-slate-300 font-normal">|</span>
+<a class="hover:text-[#00205B] transition-colors" href="#">CONTACT</a>
+</div>
+<div class="text-[9px]">
+                OFFICIAL BVI ELECTIONS PORTAL
+            </div>
+</div>
+</div>
+<!-- Main Navigation Header -->
+<header class="w-full bg-white border-b border-slate-100 sticky top-0 z-50">
+<div class="px-4 py-4">
+<div class="flex items-center justify-between">
+<!-- Logo -->
+<div class="flex items-center gap-3 shrink-0">
+<img alt="British Virgin Islands Coat of Arms" class="h-10 w-auto object-contain" src="../../assets/bvi-crest.png"/>
+<div class="flex flex-col">
+<span class="text-xl font-black text-[#00205B] tracking-tight leading-none">elections.gov.vg</span>
+<span class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mt-0.5 leading-none">DEPARTMENT OF ELECTIONS</span>
+</div>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="p-1 text-[#00205B]">
+<span class="material-symbols-outlined text-3xl font-bold">menu</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Voter Information Hub Header Section -->
+<section class="w-full bg-white">
+<div class="px-6 py-10">
+<h1 class="text-5xl font-black text-[#00205B] font-headline leading-tight">For Voters</h1>
+</div>
+</section>
+<!-- 1. Main Event Card (Election Results) -->
+<section class="w-full bg-white pb-8">
+<div class="px-4">
+<div class="bg-[#001849] rounded-2xl overflow-hidden shadow-xl">
+<div class="p-8 flex flex-col gap-6">
+<div>
+<h2 class="text-3xl font-black text-white font-headline mb-3 leading-tight">
+                            Results are in!
+                        </h2>
+<p class="text-slate-300 text-sm leading-relaxed max-w-xs">
+                            The General Election results are now available. Thank you for participating in the electoral process.
+                        </p>
+</div>
+<div class="w-full h-px bg-white/10"></div>
+<div class="flex flex-col gap-6">
+<div class="flex gap-4 items-center">
+<span class="material-symbols-outlined text-white text-3xl font-bold">calendar_today</span>
+<div class="flex flex-col">
+<span class="text-lg font-black text-white leading-tight">Monday, Nov 25, 2024</span>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<button class="w-full bg-[#E03C31] text-white py-4 rounded-xl font-black text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-md">
+                                View Election Results
+                            </button>
+<button class="w-full border border-white text-white py-4 rounded-xl font-black text-xs uppercase tracking-wider hover:bg-white/5 active:scale-95 transition-all">
+                                Election Summary
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. Key Actions (Stacked vertically) -->
+<section class="w-full bg-white pb-8">
+<div class="px-4">
+<div class="bg-[#f8f9fa] rounded-2xl p-6 border border-slate-100 flex flex-col gap-3">
+<a class="flex items-center gap-4 bg-white border border-slate-200 text-[#00205B] p-5 rounded-xl active:bg-slate-50 transition-all shadow-sm" href="#">
+<span class="material-symbols-outlined text-2xl font-bold text-secondary">info</span>
+<span class="font-black text-xs uppercase tracking-wider">View Election Details</span>
+</a>
+<a class="flex items-center gap-4 bg-white border border-slate-200 text-[#00205B] p-5 rounded-xl active:bg-slate-50 transition-all shadow-sm" href="#">
+<span class="material-symbols-outlined text-2xl font-bold text-secondary">person_search</span>
+<span class="font-black text-xs uppercase tracking-wider">Check My Status</span>
+</a>
+<a class="flex items-center gap-4 bg-white border border-slate-200 text-[#00205B] p-5 rounded-xl active:bg-slate-50 transition-all shadow-sm" href="#">
+<span class="material-symbols-outlined text-2xl font-bold text-secondary">location_on</span>
+<span class="font-black text-xs uppercase tracking-wider">Find My Polling Place</span>
+</a>
+<a class="flex items-center gap-4 bg-white border border-slate-200 text-[#00205B] p-5 rounded-xl active:bg-slate-50 transition-all shadow-sm" href="#">
+<span class="material-symbols-outlined text-2xl font-bold text-secondary">description</span>
+<span class="font-black text-xs uppercase tracking-wider">Apply for Advance Poll</span>
+</a>
+</div>
+</div>
+</section>
+<!-- 3. FAQ Section (Stacked vertically) -->
+<section class="w-full bg-white pb-12">
+<div class="px-4">
+<h3 class="text-2xl font-black text-[#00205B] font-headline mb-6 ml-1">Top Questions</h3>
+<div class="space-y-3">
+<details class="group bg-white border border-slate-100 rounded-xl">
+<summary class="flex justify-between items-center p-5 cursor-pointer outline-none">
+<span class="font-bold text-[#00205B] text-base leading-tight pr-4">Am I eligible to vote in the Virgin Islands?</span>
+<span class="material-symbols-outlined expand-icon text-slate-400 transition-transform font-bold">expand_more</span>
+</summary>
+<div class="px-5 pb-5 text-slate-600 leading-relaxed text-sm">
+                        To be eligible, you must be a Belonger aged 18 or older and be domiciled in the Virgin Islands, or satisfy specific residency requirements as defined by the Elections Act.
+                    </div>
+</details>
+<details class="group bg-white border border-slate-100 rounded-xl">
+<summary class="flex justify-between items-center p-5 cursor-pointer outline-none">
+<span class="font-bold text-[#00205B] text-base leading-tight pr-4">How do I register to vote for the first time?</span>
+<span class="material-symbols-outlined expand-icon text-slate-400 transition-transform font-bold">expand_more</span>
+</summary>
+<div class="px-5 pb-5 text-slate-600 leading-relaxed text-sm">
+                        You can register by visiting the Office of the Supervisor of Elections with your original Belonger card or passport.
+                    </div>
+</details>
+<details class="group bg-white border border-slate-100 rounded-xl">
+<summary class="flex justify-between items-center p-5 cursor-pointer outline-none">
+<span class="font-bold text-[#00205B] text-base leading-tight pr-4">What documents are needed for registration?</span>
+<span class="material-symbols-outlined expand-icon text-slate-400 transition-transform font-bold">expand_more</span>
+</summary>
+<div class="px-5 pb-5 text-slate-600 leading-relaxed text-sm">
+                        You will need your original Virgin Islands Passport or Belonger's Card. Additional proof of address may be required.
+                    </div>
+</details>
+<details class="group bg-white border border-slate-100 rounded-xl">
+<summary class="flex justify-between items-center p-5 cursor-pointer outline-none">
+<span class="font-bold text-[#00205B] text-base leading-tight pr-4">How can I check my registration status?</span>
+<span class="material-symbols-outlined expand-icon text-slate-400 transition-transform font-bold">expand_more</span>
+</summary>
+<div class="px-5 pb-5 text-slate-600 leading-relaxed text-sm">
+                        You can check your status online using our 'Check My Status' tool above, or by calling the Office of the Supervisor of Elections.
+                    </div>
+</details>
+</div>
+</div>
+</section>
+<!-- 4. Important Dates (Optimized for Mobile) -->
+<section class="w-full bg-white pb-12">
+<div class="px-4">
+<div class="p-6 bg-[#F5F7FA] border border-[#E5E7EB] rounded-2xl">
+<div class="mb-8">
+<h3 class="text-2xl font-black text-[#00205B] font-headline mb-1">Important Dates</h3>
+<p class="text-slate-500 font-medium text-xs">Stay informed with the electoral calendar.</p>
+</div>
+<div class="relative space-y-10">
+<!-- Timeline Vertical Line -->
+<div class="absolute left-2 top-2 bottom-2 w-0.5 bg-slate-200"></div>
+<!-- Timeline Item 1 -->
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-4 h-4 rounded-full border-2 border-white bg-[#E03C31] shadow-sm z-10"></div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<span class="text-[9px] font-black text-[#E03C31] uppercase tracking-wider">Crucial Deadline</span>
+<span class="text-xs font-black text-[#00205B] whitespace-nowrap">OCT 15</span>
+</div>
+<h4 class="text-base font-black text-[#00205B]">Voter Registration Deadline</h4>
+<p class="text-[13px] text-slate-500 mt-1 leading-relaxed">The final day for citizens to register or update their residential details.</p>
+<div class="flex items-center gap-4 mt-3">
+<button class="text-[10px] font-black text-[#00205B] uppercase tracking-widest border-b-2 border-slate-200">Add to Calendar</button>
+</div>
+</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-4 h-4 rounded-full border-2 border-white bg-slate-300 shadow-sm z-10"></div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<span class="opacity-0">Placeholder</span>
+<span class="text-xs font-black text-[#00205B] whitespace-nowrap">NOV 02</span>
+</div>
+<h4 class="text-base font-black text-[#00205B]">Nomination Day</h4>
+<p class="text-[13px] text-slate-500 mt-1 leading-relaxed">Prospective candidates must submit their nomination papers.</p>
+</div>
+</div>
+<!-- Timeline Item 3 (Final State/Current) -->
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-4 h-4 rounded-full border-2 border-white bg-[#00205B] shadow-sm z-10"></div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<span class="opacity-0">Placeholder</span>
+<span class="text-xs font-black text-[#00205B] whitespace-nowrap">NOV 27</span>
+</div>
+<h4 class="text-base font-black text-[#00205B]">Result Certification</h4>
+<p class="text-[13px] text-[#00205B] font-bold mt-1 leading-relaxed">Official publication of final vote tallies and representatives.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. News & Notices Section (Mobile Carousel Layout) -->
+<section class="w-full bg-[#f8f9fa] py-12 border-t border-slate-100">
+<div class="px-6">
+<div class="flex items-end justify-between mb-8">
+<div>
+<span class="text-secondary font-bold text-[9px] tracking-[0.2em] uppercase mb-1 block">LATEST UPDATES</span>
+<h2 class="text-3xl font-black text-[#00205B] font-headline leading-tight">News &amp; Notices</h2>
+</div>
+</div>
+<!-- Mobile Horizontal Scroll Container (Carousel) -->
+<div class="flex overflow-x-auto gap-4 no-scrollbar -mx-6 px-6 pb-6">
+<!-- News Card 1 -->
+<div class="min-w-[280px] bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm flex flex-col">
+<div class="p-6">
+<div class="mb-4 flex items-center justify-between">
+<span class="bg-blue-50 text-[#00205B] text-[9px] font-black px-2 py-0.5 rounded-full uppercase">Education</span>
+<span class="text-slate-400 text-[9px] font-bold">OCT 12</span>
+</div>
+<h4 class="text-lg font-black text-[#00205B] mb-2 leading-tight">New voter guidelines released</h4>
+<p class="text-slate-500 text-[13px] leading-relaxed">Updated procedures for the upcoming election cycle.</p>
+<div class="mt-4 flex items-center gap-1 text-secondary font-black text-[10px] uppercase tracking-wider">
+                            Read More <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- News Card 2 -->
+<div class="min-w-[280px] bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm flex flex-col">
+<div class="p-6">
+<div class="mb-4 flex items-center justify-between">
+<span class="bg-red-50 text-secondary text-[9px] font-black px-2 py-0.5 rounded-full uppercase">Candidates</span>
+<span class="text-slate-400 text-[9px] font-bold">OCT 10</span>
+</div>
+<h4 class="text-lg font-black text-[#00205B] mb-2 leading-tight">Update for candidates</h4>
+<p class="text-slate-500 text-[13px] leading-relaxed">Changes in nomination submission process.</p>
+<div class="mt-4 flex items-center gap-1 text-secondary font-black text-[10px] uppercase tracking-wider">
+                            Read More <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Carousel Dots -->
+<div class="flex justify-center gap-2 mt-4">
+<div class="w-2 h-2 rounded-full bg-[#00205B]"></div>
+<div class="w-2 h-2 rounded-full bg-slate-300"></div>
+<div class="w-2 h-2 rounded-full bg-slate-300"></div>
+</div>
+<button class="w-full mt-10 bg-white border border-slate-200 py-4 rounded-xl text-[#00205B] font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2">
+                VIEW ALL NEWS
+                <span class="material-symbols-outlined text-sm font-black">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full bg-[#00205B] text-white pt-16 pb-8">
+<div class="px-6">
+<div class="flex flex-col gap-10"><!-- Branding -->
+<div class="flex flex-col items-start text-left">
+<img alt="Department of Elections Crest" class="h-16 w-auto mb-6" src="../../assets/bvi-crest.png"/>
+<div class="flex flex-col mb-4">
+<span class="text-2xl font-black tracking-tight leading-none uppercase">elections.gov.vg</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1 leading-none">DEPARTMENT OF ELECTIONS</span>
+</div>
+<p class="text-slate-300 text-sm leading-relaxed max-w-xs">
+        Ensuring free, fair, and transparent democratic processes for all citizens of the Virgin Islands.
+    </p>
+<div class="flex gap-4 mt-6">
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" href="#"><svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg></a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" href="#"><svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg></a>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="grid grid-cols-1 gap-10 border-t border-white/10 pt-10">
+<div class="flex flex-col gap-4">
+<h5 class="text-xs font-black uppercase tracking-widest text-white">RESOURCES</h5>
+<ul class="space-y-3">
+<li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="#">Voter Registration</a></li>
+<li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="#">Find Polling Station</a></li>
+<li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="#">Advance Polling</a></li>
+<li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="#">Election Results</a></li>
+</ul>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-xs font-black uppercase tracking-widest text-white">GOVERNANCE</h5>
+<ul class="space-y-3">
+<li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="#">Elections Act</a></li>
+<li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="#">Boundary Commissions</a></li>
+<li><a class="text-sm text-slate-400 hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+</div>
+<!-- Contact Section -->
+<div class="flex flex-col items-start border-t border-white/10 pt-10">
+<h5 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">CONTACT US</h5>
+<div class="flex flex-col gap-6">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary text-xl">location_on</span>
+<p class="text-sm text-slate-300">Office of the Supervisor of Elections,<br/>Road Town, Tortola</p>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary text-xl">call</span>
+<p class="text-sm text-slate-300">+1 (284) 468-4380</p>
+</div>
+<div class="pl-10">
+<p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">OPERATING HOURS</p>
+<p class="text-xs text-slate-300 font-medium tracking-tight">Mon - Fri: 8:30 AM – 4:30 PM</p>
+</div>
+</div>
+</div>
+<!-- Bottom Copyright -->
+<div class="pt-10 border-t border-white/10 flex flex-col items-start gap-6">
+<p class="text-slate-400 text-[10px] font-medium">
+        © 2024 Department of Elections of the Virgin Islands.
+    </p>
+<div class="flex gap-6 text-[10px] font-black uppercase tracking-widest text-slate-500">
+<a class="hover:text-white transition-colors" href="#">Terms</a>
+<a class="hover:text-white transition-colors" href="#">Sitemap</a>
+</div>
+</div></div>
+</div>
+</footer>
+</body></html>
