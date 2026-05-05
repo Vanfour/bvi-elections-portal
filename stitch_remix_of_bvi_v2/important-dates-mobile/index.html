@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<title>Important Dates - Voting Day</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#d9dadb",
+                    "tertiary-fixed-dim": "#77dc88",
+                    "surface-container": "#edeeef",
+                    "on-primary-container": "#738aca",
+                    "background": "#f8f9fa",
+                    "secondary-fixed": "#ffdad5",
+                    "outline": "#757681",
+                    "on-tertiary-container": "#399e52",
+                    "inverse-surface": "#2e3132",
+                    "on-tertiary-fixed-variant": "#005320",
+                    "surface-container-highest": "#e1e3e4",
+                    "secondary": "#E03C31",
+                    "primary-container": "#00205b",
+                    "on-tertiary-fixed": "#002109",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-surface": "#191c1d",
+                    "primary-fixed": "#dae2ff",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#ffb4aa",
+                    "inverse-primary": "#b2c5ff",
+                    "tertiary-fixed": "#93f9a2",
+                    "tertiary-container": "#002b0d",
+                    "on-secondary-container": "#fffbff",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#c5c6d1",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "tertiary": "#001304",
+                    "primary": "#00205B",
+                    "inverse-on-surface": "#f0f1f2",
+                    "surface-container-low": "#f3f4f5",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#410001",
+                    "on-primary-fixed-variant": "#2d447f",
+                    "surface-variant": "#e1e3e4",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed-dim": "#b2c5ff",
+                    "secondary-container": "#d9372d",
+                    "on-secondary-fixed-variant": "#930006",
+                    "on-surface-variant": "#444650",
+                    "on-primary-fixed": "#001849",
+                    "surface-tint": "#455c99",
+                    "surface-bright": "#f8f9fa",
+                    "surface": "#f8f9fa",
+                    "on-background": "#191c1d",
+                    "surface-container-high": "#e7e8e9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {},
+            "fontFamily": {
+                    "headline": ["Public Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .nav-underline-active {
+            position: relative;
+        }
+        @media (min-width: 1024px) {
+            .nav-underline-active::after {
+                content: '';
+                position: absolute;
+                bottom: -12px;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                background-color: #E03C31;
+            }
+        }
+        .tab-active {
+            border-bottom: 2px solid #E03C31;
+            color: #00205B;
+            font-weight: 700;
+        }
+        .tab-inactive {
+            color: #64748b;
+            border-bottom: 2px solid transparent;
+        }
+        .tab-inactive:hover {
+            background-color: #f1f5f9;
+            color: #00205B;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+<script id="bvi-nav-wiring">
+(function(){
+  var L={voters:'../voters/compact-mobile/index.html',candidates:'../candidates/upcoming-elections-mobile/index.html',pollWorkers:'../poll-workers/layout-2/index.html',electionResults:'../election-results-mobile/index.html',newsPolicies:'../news-policies-mobile/index.html',importantDates:'./index.html',mobileVersion:null,desktopVersion:'../important-dates/index.html'};
+  function wire(){
+    document.querySelectorAll('a[href="#"]').forEach(function(a){
+      var t=a.textContent.replace(/\s+/g,' ').trim().toUpperCase();
+      if(/^FOR\s+VOTERS$/.test(t)) a.href=L.voters;
+      else if(/^FOR\s+CANDIDATES$/.test(t)) a.href=L.candidates;
+      else if(/^FOR\s+POLL\s+WORKERS$/.test(t)) a.href=L.pollWorkers;
+      else if(/ELECTION[\s\S]{0,2}RESULTS/.test(t)&&t.length<25) a.href=L.electionResults;
+      else if(/NEWS/.test(t)&&/POLIC/.test(t)&&t.length<25) a.href=L.newsPolicies;
+      else if(/IMPORTANT.*DATES/.test(t)&&L.importantDates) a.href=L.importantDates;
+    });
+    if(!window.location.search){
+      if(L.mobileVersion&&window.innerWidth<768) window.location.replace(L.mobileVersion+'?v=m');
+      else if(L.desktopVersion&&window.innerWidth>=768) window.location.replace(L.desktopVersion+'?v=d');
+    }
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',wire);
+  else wire();
+})();
+</script>
+</head>
+<body class="font-body text-on-surface bg-white">
+<!-- Top Utility Bar -->
+<div class="w-full bg-[#f8f9fa] border-b border-slate-200 py-2 px-4 md:px-8">
+<div class="max-w-7xl mx-auto flex justify-between items-center text-[10px] md:text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+<div class="flex items-center gap-3 md:gap-4">
+<a class="hover:text-[#00205B] transition-colors flex items-center gap-1" href="#">
+<span class="text-[12px] md:text-[14px]">←</span> BACK
+                </a>
+<span class="text-slate-300 font-normal">|</span>
+<a class="hover:text-[#00205B] transition-colors" href="#">CONTACT</a>
+</div>
+<div class="text-right">
+                OFFICIAL PORTAL
+            </div>
+</div>
+</div>
+<!-- Main Navigation Header -->
+<header class="w-full bg-white border-b border-slate-100 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 md:px-8 py-4">
+<div class="flex items-center justify-between">
+<!-- Logo -->
+<div class="flex items-center gap-3 shrink-0">
+<img alt="Official crest of the British Virgin Islands" class="h-10 md:h-14 w-auto object-contain" src="../assets/bvi-crest.png"/>
+<div class="flex flex-col">
+<span class="text-xl md:text-3xl font-black text-[#00205B] tracking-tight leading-none">elections.gov.vg</span>
+<span class="text-[9px] md:text-[11px] font-bold uppercase tracking-widest text-slate-400 mt-1 leading-none">DEPARTMENT OF ELECTIONS</span>
+</div>
+</div>
+<!-- Mobile Menu Icon -->
+<button class="lg:hidden text-[#00205B]" onclick="toggleMobileMenu()">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+<!-- Navigation Menu (Desktop) -->
+<nav class="hidden lg:flex items-center h-full ml-8">
+<div class="flex items-center h-full">
+<a class="px-4 font-black text-[12px] leading-tight uppercase tracking-wide flex flex-col text-[#00205B]" href="#">
+<span>FOR</span>
+<span>VOTERS</span>
+</a>
+<div class="h-10 w-[1px] bg-slate-200"></div>
+<a class="px-4 font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col text-[#00205B]" href="#">
+<span>FOR</span>
+<span>CANDIDATES</span>
+</a>
+<div class="h-10 w-[1px] bg-slate-200"></div>
+<a class="px-4 text-[#00205B] font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col tab-inactive" href="#">
+<span>FOR</span>
+<span>POLL WORKERS</span>
+</a>
+<div class="h-10 w-[1px] bg-slate-200"></div>
+<a class="px-4 text-[#E03C31] font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col nav-underline-active" href="#">
+<span>IMPORTANT</span>
+<span>DATES</span>
+</a>
+<div class="h-10 w-[1px] bg-slate-200"></div>
+<a class="px-4 text-[#00205B] font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col" href="#">
+<span>ELECTION</span>
+<span>RESULTS</span>
+</a>
+<div class="h-10 w-[1px] bg-slate-200"></div>
+<a class="px-4 text-[#00205B] font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col" href="#">
+<span>NEWS &amp;</span>
+<span>POLICIES</span>
+</a>
+</div>
+<!-- Search Icon -->
+<button class="ml-4 mr-4 text-[#00205B] hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-2xl font-bold" data-icon="search">search</span>
+</button>
+</nav>
+</div>
+</div>
+</header>
+<!-- Mobile Nav Overlay -->
+<div class="lg:hidden fixed inset-0 z-40 bg-black/50 hidden" id="mobile-overlay" onclick="toggleMobileMenu()"></div>
+<div class="lg:hidden fixed top-0 right-0 h-full w-72 bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-300" id="mobile-nav">
+<div class="flex items-center justify-between px-6 py-5 border-b border-slate-100">
+<span class="font-black text-[#00205B] text-xs uppercase tracking-widest">Menu</span>
+<button onclick="toggleMobileMenu()" class="text-[#00205B]"><span class="material-symbols-outlined">close</span></button>
+</div>
+<nav class="flex flex-col">
+<a href="#" class="px-6 py-4 font-black text-[#00205B] text-sm uppercase tracking-wide border-b border-slate-100 hover:bg-slate-50">For Voters</a>
+<a href="#" class="px-6 py-4 font-black text-[#00205B] text-sm uppercase tracking-wide border-b border-slate-100 hover:bg-slate-50">For Candidates</a>
+<a href="#" class="px-6 py-4 font-black text-[#00205B] text-sm uppercase tracking-wide border-b border-slate-100 hover:bg-slate-50">For Poll Workers</a>
+<a href="#" class="px-6 py-4 font-black text-[#E03C31] text-sm uppercase tracking-wide border-b border-slate-100 bg-slate-50">Important Dates</a>
+<a href="#" class="px-6 py-4 font-black text-[#00205B] text-sm uppercase tracking-wide border-b border-slate-100 hover:bg-slate-50">Election Results</a>
+<a href="#" class="px-6 py-4 font-black text-[#00205B] text-sm uppercase tracking-wide hover:bg-slate-50">News &amp; Policies</a>
+</nav>
+</div>
+<script>
+function toggleMobileMenu() {
+  var nav = document.getElementById('mobile-nav');
+  var overlay = document.getElementById('mobile-overlay');
+  var isOpen = !nav.classList.contains('translate-x-full');
+  if (isOpen) { nav.classList.add('translate-x-full'); overlay.classList.add('hidden'); document.body.style.overflow = ''; }
+  else { nav.classList.remove('translate-x-full'); overlay.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+}
+</script>
+<!-- Hero Header -->
+<section class="w-full bg-white">
+<div class="max-w-7xl mx-auto px-4 md:px-8 py-8 md:py-12">
+<h1 class="text-4xl md:text-7xl font-black text-[#00205B] font-headline leading-tight">Important Dates</h1>
+</div>
+</section>
+<!-- Main Event Countdown / CTA -->
+<section class="w-full bg-white pb-8">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+<div class="p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 bg-gradient-to-br from-[#001849] to-[#00205B]">
+<div class="flex-1">
+<h2 class="text-2xl md:text-3xl font-black text-white font-headline mb-2">Get official updates</h2>
+<p class="text-[13px] md:text-sm text-slate-300 font-medium leading-relaxed">Receive real-time alerts regarding registration deadlines and polling station changes directly to your device.</p>
+</div>
+<div class="w-full md:w-auto">
+<button class="w-full md:w-auto bg-[#E03C31] text-white px-6 md:px-8 py-3.5 rounded-lg font-black text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-md flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">notifications</span> SUBSCRIBE FOR UPDATES
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Tabs & Content Container -->
+<section class="w-full bg-white pb-16 md:pb-24">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<!-- Tab Navigation Bar -->
+<div class="w-full border-slate-200">
+<div class="border border-slate-200 rounded-t-lg overflow-hidden bg-slate-50">
+<nav class="flex w-full overflow-x-auto no-scrollbar items-center">
+<a class="flex items-center gap-2.5 px-6 md:px-8 py-4 text-[10px] md:text-xs uppercase tracking-widest transition-all shrink-0 tab-active" href="#">
+<span class="material-symbols-outlined text-[18px] md:text-[20px]">bolt</span> ALL NEWS
+                        </a>
+<div class="h-6 w-[1px] bg-slate-200 shrink-0"></div>
+<a class="flex items-center gap-2.5 px-6 md:px-8 py-4 text-[10px] md:text-xs uppercase tracking-widest transition-all shrink-0 tab-inactive" href="#">
+<span class="material-symbols-outlined text-[18px] md:text-[20px]">calendar_today</span> ANNOUNCEMENTS
+                        </a>
+<div class="h-6 w-[1px] bg-slate-200 shrink-0"></div>
+<a class="flex items-center gap-2.5 px-6 md:px-8 py-4 text-[10px] md:text-xs uppercase tracking-widest transition-all shrink-0 tab-inactive" href="#">
+<span class="material-symbols-outlined text-[18px] md:text-[20px]">quiz</span> PRESS RELEASES
+                        </a>
+<div class="h-6 w-[1px] bg-slate-200 shrink-0"></div>
+<a class="flex items-center gap-2.5 px-6 md:px-8 py-4 text-[10px] md:text-xs uppercase tracking-widest transition-all shrink-0 tab-inactive" href="#">
+<span class="material-symbols-outlined text-[18px] md:text-[20px]">newspaper</span> POLICIES
+                        </a>
+</nav>
+</div>
+</div>
+<!-- Content Card -->
+<div class="w-full bg-white border-slate-200 overflow-hidden border-x border-b border-t-0">
+<div class="p-6 md:p-12 lg:pt-16">
+<div class="mb-8 md:mb-12">
+<h3 class="text-2xl md:text-3xl font-black text-[#00205B] font-headline mb-2">Key Dates</h3>
+<p class="text-slate-500 font-medium text-sm md:text-base">Stay informed with the electoral calendar to ensure you don't miss any critical deadlines.</p>
+</div>
+<!-- Scrollable Cards Container -->
+<div class="max-h-[500px] overflow-y-auto pr-2 custom-scrollbar space-y-4 md:space-y-6">
+<!-- Card 1: Nomination Day (COMPLETED) -->
+<div class="group relative bg-slate-50 border border-slate-200 rounded-xl p-5 md:p-6 shadow-sm hover:shadow-md transition-all opacity-75">
+<div class="flex flex-col md:flex-row items-start gap-4 md:gap-6">
+<div class="w-12 h-12 md:w-14 md:h-14 shrink-0 rounded-full bg-slate-200 flex items-center justify-center text-slate-500">
+<span class="material-symbols-outlined text-[24px] md:text-[28px]">description</span>
+</div>
+<div class="flex-1">
+<div class="flex flex-wrap items-center gap-3 mb-2">
+<h4 class="text-lg md:text-xl font-black text-[#00205B]">Nomination Day</h4>
+<span class="px-2.5 py-1 bg-slate-200 text-slate-600 text-[9px] md:text-[10px] font-black uppercase tracking-wider rounded-full">COMPLETED</span>
+</div>
+<p class="text-slate-500 text-sm leading-relaxed max-w-2xl">Prospective candidates must submit their nomination papers and deposits at designated returning offices across the Territory.</p>
+<p class="text-[9px] md:text-[10px] font-bold text-slate-400 mt-2 uppercase tracking-wider italic">Deadline passed</p>
+</div>
+<div class="shrink-0 pt-1">
+<span class="font-black text-slate-500 text-lg md:text-xl">OCT 15</span>
+</div>
+</div>
+</div>
+<!-- Card 2: Campaign Period (UPCOMING) -->
+<div class="group relative bg-white border border-slate-200 rounded-xl p-5 md:p-6 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">
+<div class="flex flex-col md:flex-row items-start gap-4 md:gap-6">
+<div class="w-12 h-12 md:w-14 md:h-14 shrink-0 rounded-full bg-blue-50 flex items-center justify-center text-[#00205B]">
+<span class="material-symbols-outlined text-[24px] md:text-[28px]">calendar_month</span>
+</div>
+<div class="flex-1">
+<div class="flex flex-wrap items-center gap-3 mb-2">
+<h4 class="text-lg md:text-xl font-black text-[#00205B]">Campaign Period</h4>
+<span class="px-2.5 py-1 bg-blue-100 text-[#00205B] text-[9px] md:text-[10px] font-black uppercase tracking-wider rounded-full">UPCOMING</span>
+</div>
+<p class="text-slate-600 text-sm leading-relaxed max-w-2xl">Official window for candidate promotion and public engagement following the certification of nominees.</p>
+<div class="mt-4">
+<button class="flex items-center gap-1.5 text-[10px] md:text-[11px] font-black text-[#00205B] uppercase tracking-widest hover:text-[#E03C31] transition-colors">
+<span class="material-symbols-outlined text-[16px]">add_circle</span> Add to Calendar
+                                        </button>
+</div>
+</div>
+<div class="shrink-0 pt-1">
+<span class="font-black text-[#00205B] text-lg md:text-xl">OCT 16 - NOV 05</span>
+</div>
+</div>
+</div>
+<!-- Card 3: Election Day (TODAY / ONGOING) -->
+<div class="group relative bg-slate-100 border-2 border-[#00205B]/10 rounded-xl p-5 md:p-6 shadow-md hover:shadow-lg transition-all">
+<div class="flex flex-col md:flex-row items-start gap-4 md:gap-6">
+<div class="w-12 h-12 md:w-14 md:h-14 shrink-0 rounded-full bg-[#E03C31]/10 flex items-center justify-center text-[#E03C31]">
+<span class="material-symbols-outlined text-[24px] md:text-[28px]">how_to_vote</span>
+</div>
+<div class="flex-1">
+<div class="flex flex-wrap items-center gap-3 mb-2">
+<h4 class="text-lg md:text-xl font-black text-[#00205B]">Election Day</h4>
+<span class="px-2.5 py-1 bg-[#E03C31] text-white text-[9px] md:text-[10px] font-black uppercase tracking-wider rounded-full">TODAY / ONGOING</span>
+</div>
+<p class="text-[#00205B] text-sm font-bold leading-relaxed max-w-2xl">Territory-wide general election polls open from 6:00 AM to 6:00 PM.</p>
+<div class="mt-4 flex gap-4">
+<a class="inline-flex items-center gap-2 px-4 py-2 bg-[#00205B] text-white text-[10px] font-black uppercase tracking-widest rounded hover:bg-opacity-90 transition-all" href="#">
+                                            LIVE RESULTS <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="shrink-0 pt-1">
+<span class="font-black text-[#00205B] text-xl md:text-2xl">NOV 25</span>
+</div>
+</div>
+</div>
+<!-- Card 4: Result Certification (UPCOMING) -->
+<div class="group relative bg-white border border-slate-200 rounded-xl p-5 md:p-6 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">
+<div class="flex flex-col md:flex-row items-start gap-4 md:gap-6">
+<div class="w-12 h-12 md:w-14 md:h-14 shrink-0 rounded-full bg-blue-50 flex items-center justify-center text-[#00205B]">
+<span class="material-symbols-outlined text-[24px] md:text-[28px]">verified_user</span>
+</div>
+<div class="flex-1">
+<div class="flex flex-wrap items-center gap-3 mb-2">
+<h4 class="text-lg md:text-xl font-black text-[#00205B]">Result Certification</h4>
+<span class="px-2.5 py-1 bg-blue-100 text-[#00205B] text-[9px] md:text-[10px] font-black uppercase tracking-wider rounded-full">UPCOMING</span>
+</div>
+<p class="text-slate-600 text-sm leading-relaxed max-w-2xl">Official publication of final vote tallies and the gazetting of elected representatives by the Supervisor of Elections.</p>
+<div class="mt-4">
+<button class="flex items-center gap-1.5 text-[10px] md:text-[11px] font-black text-[#00205B] uppercase tracking-widest hover:text-[#E03C31] transition-colors">
+<span class="material-symbols-outlined text-[16px]">add_circle</span> Add to Calendar
+                                        </button>
+</div>
+</div>
+<div class="shrink-0 pt-1">
+<span class="font-black text-[#00205B] text-lg md:text-xl">NOV 27</span>
+</div>
+</div>
+</div>
+</div> <!-- End Scroll Container -->
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full bg-[#00205B] text-white pt-12 md:pt-20 pb-10">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-12 mb-12 md:mb-16">
+<!-- Branding Column -->
+<div class="lg:col-span-4">
+<div class="flex items-center gap-4 mb-6">
+<img alt="Department of Elections Crest" class="h-12 md:h-16 w-auto" src="../assets/bvi-crest.png"/>
+<div class="flex flex-col">
+<span class="text-xl md:text-2xl font-black tracking-tight leading-none">elections.gov.vg</span>
+<span class="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1 leading-none">DEPARTMENT OF ELECTIONS</span>
+</div>
+</div>
+<p class="text-slate-300 text-sm leading-relaxed mb-8 max-w-sm">
+                        Committed to ensuring free, fair, and transparent democratic processes for all citizens of the Virgin Islands.
+                    </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-secondary transition-colors" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+</a>
+<a class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-secondary transition-colors" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg>
+</a>
+</div>
+</div>
+<!-- Links (Vertical Stack on Mobile) -->
+<div class="grid grid-cols-2 md:grid-cols-2 lg:col-span-4 gap-8">
+<div>
+<h5 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">RESOURCES</h5>
+<ul class="space-y-4">
+<li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Voter Registration</a></li>
+<li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Find Polling Station</a></li>
+<li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Advance Polling</a></li>
+<li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Election Results</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">GOVERNANCE</h5>
+<ul class="space-y-4">
+<li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Elections Act</a></li>
+<li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Code of Conduct</a></li>
+<li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Accessibility</a></li>
+</ul>
+</div>
+</div>
+<!-- Contact Column -->
+<div class="lg:col-span-4">
+<h5 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">CONTACT US</h5>
+<div class="space-y-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-xl">location_on</span>
+<p class="text-sm text-slate-300">
+                                Office of the Supervisor of Elections<br/>
+                                Road Town, Tortola, BVI
+                            </p>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-xl">call</span>
+<p class="text-sm text-slate-300">+1 (284) 468-4380</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-xl">mail</span>
+<p class="text-sm text-slate-300">elections@gov.vg</p>
+</div>
+<div class="pt-4 border-t border-white border-opacity-10">
+<p class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">OPERATING HOURS</p>
+<p class="text-sm text-slate-300">Mon - Fri: 8:30 AM – 4:30 PM</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Copyright -->
+<div class="border-t border-white border-opacity-10 pt-10 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+<p class="text-slate-400 text-xs font-medium">
+                    © 2024 Department of Elections of the Virgin Islands. All rights reserved.
+                </p>
+<div class="flex gap-6 md:gap-8 text-[11px] font-black uppercase tracking-widest text-slate-500">
+<a class="hover:text-white transition-colors" href="#">Terms of Use</a>
+<a class="hover:text-white transition-colors" href="#">Sitemap</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
