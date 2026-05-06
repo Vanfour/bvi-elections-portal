@@ -113,7 +113,14 @@
         details[open] summary .expand-icon {
             transform: rotate(180deg);
         }
-    </style>
+    
+  .state-dropdown{position:relative;display:inline-block;}
+  .state-dropdown-menu{display:none;position:absolute;left:0;top:calc(100% + 6px);background:white;border:1px solid #e2e8f0;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.12);min-width:210px;z-index:50;overflow:hidden;}
+  .state-dropdown.open .state-dropdown-menu{display:block;}
+  .state-dropdown-item{display:flex;align-items:center;gap:8px;padding:10px 16px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;border-left:3px solid transparent;transition:all .15s;color:#475569;width:100%;text-align:left;background:none;border-top:none;border-right:none;border-bottom:none;}
+  .state-dropdown-item:hover{background:#f8fafc;color:#00205B;}
+  .state-dropdown-item.active{border-left-color:#E03C31;color:#00205B;background:#f8fafc;}
+</style>
 <script id="bvi-nav-wiring">
 (function(){
   var L={voters:'../../voters/no-election/index.html',candidates:'./index.html',pollWorkers:'../../poll-workers/layout-1/index.html',electionResults:'../../election-results/index.html',newsPolicies:'../../news-policies/index.html',keyActions:'../key-actions/index.html',faqs:'../faqs/index.html',newsNotices:'../news-notices/index.html',mobileVersion:'../no-election-mobile/index.html',desktopVersion:null,importantDates:'../../important-dates/index.html'};
@@ -230,6 +237,25 @@
 </div>
 </div>
 </section>
+<!-- Preview State Dropdown -->
+<div class="w-full bg-white border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-8 py-4 flex items-center justify-start">
+    <div class="state-dropdown" id="stateDropdown">
+      <button onclick="toggleStateDropdown()" class="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg text-[11px] font-black uppercase tracking-wider transition-all border border-slate-200">
+        <span class="material-symbols-outlined text-[16px]">tune</span>
+        <span>No Election</span>
+        <span class="material-symbols-outlined text-[16px]" id="dropdownChevron">expand_more</span>
+      </button>
+      <div class="state-dropdown-menu" id="stateDropdownMenu">
+        <div class="px-4 py-2 text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">Preview State</div>
+        <button onclick="window.location.href='../no-election/'" class="state-dropdown-item active">No Election</button>
+        <button onclick="window.location.href='../upcoming-elections/'" class="state-dropdown-item">Upcoming Election</button>
+        <button onclick="window.location.href='../voting-day/'" class="state-dropdown-item">Voting Day</button>
+        <button onclick="window.location.href='../election-results/'" class="state-dropdown-item">After Election</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- Main Event Countdown (Updated to "No election scheduled") -->
 <section class="w-full bg-white pb-12">
 <div class="max-w-7xl mx-auto px-8">
@@ -392,4 +418,16 @@
 </footer>
 
 
+
+<script>
+  function toggleStateDropdown() {
+    var dd = document.getElementById('stateDropdown');
+    dd.classList.toggle('open');
+    document.getElementById('dropdownChevron').textContent = dd.classList.contains('open') ? 'expand_less' : 'expand_more';
+  }
+  document.addEventListener('click', function(e) {
+    var dd = document.getElementById('stateDropdown');
+    if (dd && !dd.contains(e.target)) { dd.classList.remove('open'); document.getElementById('dropdownChevron').textContent = 'expand_more'; }
+  });
+</script>
 </body></html>
