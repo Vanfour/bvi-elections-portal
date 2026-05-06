@@ -100,6 +100,7 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+        .filter-btn-active { background-color: #00205B !important; color: white !important; box-shadow: 0 4px 6px -1px rgba(0,0,0,.15); }
         /* Custom scrollbar for the vertical news grid on mobile */
         .custom-scrollbar::-webkit-scrollbar {
             width: 4px;
@@ -291,19 +292,19 @@ function toggleMobileMenu() {
 <div class="flex flex-col gap-6 border-b border-slate-200 pb-8 mb-8 md:mb-12">
 <!-- Category Filters - Horizontal Scrollable -->
 <div class="flex items-center gap-2 overflow-x-auto no-scrollbar -mx-4 px-4 md:mx-0 md:px-0">
-<button class="px-6 py-2.5 bg-[#00205B] text-white text-[10px] md:text-[11px] font-black uppercase tracking-widest rounded-full transition-all shrink-0 hover:shadow-md">
+<button onclick="filterNews('all')" data-filter="all" class="filter-btn filter-btn-active px-6 py-2.5 bg-slate-50 text-slate-500 hover:bg-slate-100 text-[10px] md:text-[11px] font-black uppercase tracking-widest rounded-full transition-all shrink-0">
                         ALL
                     </button>
-<button class="px-6 py-2.5 bg-slate-50 text-slate-500 hover:bg-slate-100 text-[10px] md:text-[11px] font-black uppercase tracking-widest rounded-full transition-all shrink-0">
+<button onclick="filterNews('press-release')" data-filter="press-release" class="filter-btn px-6 py-2.5 bg-slate-50 text-slate-500 hover:bg-slate-100 text-[10px] md:text-[11px] font-black uppercase tracking-widest rounded-full transition-all shrink-0">
                         PRESS RELEASES
                     </button>
-<button class="px-6 py-2.5 bg-slate-50 text-slate-500 hover:bg-slate-100 text-[10px] md:text-[11px] font-black uppercase tracking-widest rounded-full transition-all shrink-0">
+<button onclick="filterNews('official-notice')" data-filter="official-notice" class="filter-btn px-6 py-2.5 bg-slate-50 text-slate-500 hover:bg-slate-100 text-[10px] md:text-[11px] font-black uppercase tracking-widest rounded-full transition-all shrink-0">
                         OFFICIAL NOTICES
                     </button>
-<button class="px-6 py-2.5 bg-slate-50 text-slate-500 hover:bg-slate-100 text-[10px] md:text-[11px] font-black uppercase tracking-widest rounded-full transition-all shrink-0">
+<button onclick="filterNews('policy-document')" data-filter="policy-document" class="filter-btn px-6 py-2.5 bg-slate-50 text-slate-500 hover:bg-slate-100 text-[10px] md:text-[11px] font-black uppercase tracking-widest rounded-full transition-all shrink-0">
                         POLICY DOCUMENTS
                     </button>
-<button class="px-6 py-2.5 bg-slate-50 text-slate-500 hover:bg-slate-100 text-[10px] md:text-[11px] font-black uppercase tracking-widest rounded-full transition-all shrink-0">
+<button onclick="filterNews('election-report')" data-filter="election-report" class="filter-btn px-6 py-2.5 bg-slate-50 text-slate-500 hover:bg-slate-100 text-[10px] md:text-[11px] font-black uppercase tracking-widest rounded-full transition-all shrink-0">
                         ELECTION REPORTS
                     </button>
 </div>
@@ -320,7 +321,7 @@ function toggleMobileMenu() {
 <div class="max-h-[600px] md:max-h-none overflow-y-auto custom-scrollbar md:overflow-visible px-1">
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 pb-4">
 <!-- Card 1 -->
-<div class="bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col p-6">
+<div data-cat="policy-document" class="bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col p-6">
 <div class="flex items-center justify-between mb-4">
 <span class="text-[9px] font-black uppercase tracking-widest text-[#00205B] bg-primary-fixed px-2.5 py-1 rounded">POLICY DOCUMENT</span>
 <span class="text-slate-400 text-[10px] font-bold">Oct 15, 2024</span>
@@ -333,7 +334,7 @@ function toggleMobileMenu() {
 </a>
 </div>
 <!-- Card 2 -->
-<div class="bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col p-6">
+<div data-cat="official-notice" class="bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col p-6">
 <div class="flex items-center justify-between mb-4">
 <span class="text-[9px] font-black uppercase tracking-widest text-[#00205B] bg-primary-fixed px-2.5 py-1 rounded">OFFICIAL NOTICE</span>
 <span class="text-slate-400 text-[10px] font-bold">Oct 10, 2024</span>
@@ -346,7 +347,7 @@ function toggleMobileMenu() {
 </a>
 </div>
 <!-- Card 3 -->
-<div class="bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col p-6">
+<div data-cat="election-report" class="bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col p-6">
 <div class="flex items-center justify-between mb-4">
 <span class="text-[9px] font-black uppercase tracking-widest text-[#00205B] bg-primary-fixed px-2.5 py-1 rounded">ELECTION REPORT</span>
 <span class="text-slate-400 text-[10px] font-bold">Sep 28, 2024</span>
@@ -359,7 +360,7 @@ function toggleMobileMenu() {
 </a>
 </div>
 <!-- Card 4 -->
-<div class="bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col p-6">
+<div data-cat="press-release" class="bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col p-6">
 <div class="flex items-center justify-between mb-4">
 <span class="text-[9px] font-black uppercase tracking-widest text-[#00205B] bg-primary-fixed px-2.5 py-1 rounded">PRESS RELEASE</span>
 <span class="text-slate-400 text-[10px] font-bold">Sep 15, 2024</span>
@@ -372,7 +373,7 @@ function toggleMobileMenu() {
 </a>
 </div>
 <!-- Card 5 -->
-<div class="bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col p-6">
+<div data-cat="policy-document" class="bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col p-6">
 <div class="flex items-center justify-between mb-4">
 <span class="text-[9px] font-black uppercase tracking-widest text-[#00205B] bg-primary-fixed px-2.5 py-1 rounded">POLICY DOCUMENT</span>
 <span class="text-slate-400 text-[10px] font-bold">Aug 22, 2024</span>
@@ -385,7 +386,7 @@ function toggleMobileMenu() {
 </a>
 </div>
 <!-- Card 6 -->
-<div class="bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col p-6">
+<div data-cat="official-notice" class="bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col p-6">
 <div class="flex items-center justify-between mb-4">
 <span class="text-[9px] font-black uppercase tracking-widest text-[#00205B] bg-primary-fixed px-2.5 py-1 rounded">OFFICIAL NOTICE</span>
 <span class="text-slate-400 text-[10px] font-bold">Aug 05, 2024</span>
@@ -493,4 +494,14 @@ function toggleMobileMenu() {
 </div>
 </div>
 </footer>
+<script>
+function filterNews(cat) {
+  document.querySelectorAll('.filter-btn').forEach(function(btn) {
+    btn.classList.toggle('filter-btn-active', btn.dataset.filter === cat);
+  });
+  document.querySelectorAll('[data-cat]').forEach(function(card) {
+    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+  });
+}
+</script>
 </body></html>
