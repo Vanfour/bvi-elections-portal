@@ -147,22 +147,7 @@ function toggleMobileMenu() {
   <h1 class="text-4xl font-black text-[#00205B] font-headline leading-tight">Election Results</h1>
   <p class="text-slate-500 text-xs mt-1 font-medium">BVI General Election · Nov 25, 2024</p>
 
-  <!-- State Toggle Pills -->
-  <div class="mt-4">
-    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Preview State</p>
-    <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
-      <button class="state-pill" id="pill-before" onclick="setState('before')">
-        <span class="flex items-center gap-1">⏳ Before</span>
-      </button>
-      <button class="state-pill" id="pill-during" onclick="setState('during')">
-        <span class="flex items-center gap-1">🔴 During</span>
-      </button>
-      <button class="state-pill active" id="pill-after" onclick="setState('after')">
-        <span class="flex items-center gap-1">✅ After</span>
-      </button>
-    </div>
-  </div>
-  <!-- Historic CTA Button — inside hero -->
+  <!-- Historic CTA Button -->
   <div class="mt-4">
     <button onclick="toggleHistoric()" class="w-full bg-[#00205B] hover:bg-[#001438] active:scale-[0.99] transition-all rounded-2xl px-5 py-4 flex items-center justify-between gap-4 shadow-lg">
       <div class="flex items-center gap-3">
@@ -170,7 +155,7 @@ function toggleMobileMenu() {
           <span class="material-symbols-outlined text-white text-lg">history</span>
         </div>
         <div class="text-left">
-          <p class="text-white font-black text-sm font-headline uppercase tracking-wide leading-tight">Historic Election Results</p>
+          <p class="text-white font-black text-sm font-headline uppercase tracking-wide leading-tight whitespace-nowrap">Historic Election Results</p>
           <p class="text-slate-300 text-xs mt-0.5">Explore previous elections</p>
         </div>
       </div>
@@ -232,6 +217,22 @@ function toggleMobileMenu() {
     </div>
   </div>
 </section>
+
+<!-- Preview State Pills — above current election content -->
+<div class="w-full bg-white border-b border-slate-100 px-4 py-3">
+  <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Preview State</p>
+  <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+    <button class="state-pill" id="pill-before" onclick="setState('before')">
+      <span class="flex items-center gap-1">⏳ Before</span>
+    </button>
+    <button class="state-pill" id="pill-during" onclick="setState('during')">
+      <span class="flex items-center gap-1">🔴 During</span>
+    </button>
+    <button class="state-pill active" id="pill-after" onclick="setState('after')">
+      <span class="flex items-center gap-1">✅ After</span>
+    </button>
+  </div>
+</div>
 
 <!-- ═══════════════════════════════════════════════ -->
 <!-- STATE: BEFORE ELECTION                          -->

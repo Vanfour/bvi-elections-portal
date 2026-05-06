@@ -127,42 +127,20 @@
 <section class="w-full bg-white border-b border-slate-100">
   <div class="max-w-7xl mx-auto px-8 py-10">
     <div class="flex items-center justify-between gap-8">
-      <!-- Left: Title + subtitle + preview state dropdown -->
-      <div class="flex flex-col gap-4">
-        <div>
-          <h1 class="text-5xl md:text-6xl font-black text-[#00205B] font-headline leading-[1.1]">Election Results</h1>
-          <p class="text-slate-500 text-sm mt-2 font-medium">British Virgin Islands General Election · November 25, 2024</p>
-        </div>
-        <!-- Preview State Dropdown — below subtitle -->
-        <div class="state-dropdown" id="stateDropdown">
-          <button onclick="toggleDropdown()" class="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg text-[11px] font-black uppercase tracking-wider transition-all border border-slate-200">
-            <span class="material-symbols-outlined text-[16px]">tune</span>
-            <span id="stateLabel">Preview State</span>
-            <span class="material-symbols-outlined text-[16px]" id="dropdownChevron">expand_more</span>
-          </button>
-          <div class="state-dropdown-menu" id="stateDropdownMenu">
-            <div class="px-4 py-2 text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">Prototype View</div>
-            <button onclick="setState('before')" class="state-dropdown-item" id="opt-before">
-              <span class="material-symbols-outlined text-[16px] text-amber-500">schedule</span> Before Election
-            </button>
-            <button onclick="setState('during')" class="state-dropdown-item" id="opt-during">
-              <span class="material-symbols-outlined text-[16px] text-red-500">radio_button_checked</span> During Election
-            </button>
-            <button onclick="setState('after')" class="state-dropdown-item active" id="opt-after">
-              <span class="material-symbols-outlined text-[16px] text-green-600">check_circle</span> After Election
-            </button>
-          </div>
-        </div>
+      <!-- Left: Title + subtitle -->
+      <div>
+        <h1 class="text-5xl md:text-6xl font-black text-[#00205B] font-headline leading-[1.1]">Election Results</h1>
+        <p class="text-slate-500 text-sm mt-2 font-medium">British Virgin Islands General Election · November 25, 2024</p>
       </div>
       <!-- Right: Historic Election Results CTA button -->
-      <div class="shrink-0 w-80">
+      <div class="shrink-0 w-96">
         <button onclick="toggleHistoric()" class="w-full bg-[#00205B] hover:bg-[#001438] active:scale-[0.99] transition-all rounded-2xl px-6 py-5 flex items-center justify-between gap-4 shadow-lg" id="historicToggleBtn">
           <div class="flex items-center gap-4">
             <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
               <span class="material-symbols-outlined text-white text-xl">history</span>
             </div>
             <div class="text-left">
-              <p class="text-white font-black text-sm font-headline uppercase tracking-wide leading-tight">Historic Election Results</p>
+              <p class="text-white font-black text-sm font-headline uppercase tracking-wide leading-tight whitespace-nowrap">Historic Election Results</p>
               <p class="text-slate-300 text-xs mt-0.5">Explore previous elections</p>
             </div>
           </div>
@@ -234,6 +212,31 @@
 <!-- ══════════════════════════════════════════════════════════════ -->
 <!-- CURRENT ELECTION — State Toggle Content                        -->
 <!-- ══════════════════════════════════════════════════════════════ -->
+
+<!-- Preview State Toggle — above current election content, left aligned -->
+<div class="w-full bg-white border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-8 py-4 flex items-center justify-start">
+    <div class="state-dropdown" id="stateDropdown">
+      <button onclick="toggleDropdown()" class="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg text-[11px] font-black uppercase tracking-wider transition-all border border-slate-200">
+        <span class="material-symbols-outlined text-[16px]">tune</span>
+        <span id="stateLabel">Preview State</span>
+        <span class="material-symbols-outlined text-[16px]" id="dropdownChevron">expand_more</span>
+      </button>
+      <div class="state-dropdown-menu" id="stateDropdownMenu">
+        <div class="px-4 py-2 text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">Prototype View</div>
+        <button onclick="setState('before')" class="state-dropdown-item" id="opt-before">
+          <span class="material-symbols-outlined text-[16px] text-amber-500">schedule</span> Before Election
+        </button>
+        <button onclick="setState('during')" class="state-dropdown-item" id="opt-during">
+          <span class="material-symbols-outlined text-[16px] text-red-500">radio_button_checked</span> During Election
+        </button>
+        <button onclick="setState('after')" class="state-dropdown-item active" id="opt-after">
+          <span class="material-symbols-outlined text-[16px] text-green-600">check_circle</span> After Election
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- STATE: BEFORE ELECTION -->
 <div id="state-before" class="hidden">
