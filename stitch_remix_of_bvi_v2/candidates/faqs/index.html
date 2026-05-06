@@ -129,6 +129,18 @@
       else if(/KEY\s+ACTIONS/.test(t)&&L.keyActions) a.href=L.keyActions;
       else if(/\bFAQS?\b/.test(t)&&L.faqs) a.href=L.faqs;
       else if(/NEWS/.test(t)&&/NOTICES/.test(t)&&L.newsNotices) a.href=L.newsNotices;
+      else if(/VIEW.*ELECTION.*DETAIL/.test(t)&&L.importantDates&&!a.classList.contains('tab-active')&&!a.classList.contains('tab-inactive')) a.href=L.importantDates;
+      else if(/PEOPLE\s+VIEW.*CANDIDATES/.test(t)&&L.candidates) a.href=L.candidates;
+    });
+    // Wire action buttons
+    document.querySelectorAll('button:not([onclick])').forEach(function(btn){
+      var t=btn.textContent.replace(/\s+/g,' ').trim().toUpperCase();
+      if(/VIEW ALL NEWS/.test(t)&&L.newsPolicies) btn.onclick=function(){window.location.href=L.newsPolicies;};
+      else if(/VIEW.*ELECTION.*RESULT/.test(t)&&L.electionResults) btn.onclick=function(){window.location.href=L.electionResults;};
+      else if(/VIEW.*ELECTION.*DETAIL/.test(t)&&L.importantDates) btn.onclick=function(){window.location.href=L.importantDates;};
+      else if(/VIEW.*ELECTION.*UPDATE/.test(t)&&L.electionResults) btn.onclick=function(){window.location.href=L.electionResults;};
+      else if(/^STAY INFORMED$/.test(t)&&L.importantDates) btn.onclick=function(){window.location.href=L.importantDates;};
+      else if(/VIEW CANDIDATE GUIDELINES/.test(t)&&L.candidates) btn.onclick=function(){window.location.href=L.candidates;};
     });
     if(!window.location.search){
       if(L.mobileVersion&&window.innerWidth<768) window.location.replace(L.mobileVersion+'?v=m');
@@ -305,11 +317,11 @@
 </div>
 <!-- Filter Tabs -->
 <div class="flex flex-wrap gap-2 mb-8">
-<button class="px-5 py-2.5 bg-[#00205B] text-white rounded-full text-[10px] font-black uppercase tracking-widest transition-all">All</button>
-<button class="px-5 py-2.5 bg-slate-100 text-[#00205B] hover:bg-slate-200 rounded-full text-[10px] font-black uppercase tracking-widest transition-all">Registration</button>
-<button class="px-5 py-2.5 bg-slate-100 text-[#00205B] hover:bg-slate-200 rounded-full text-[10px] font-black uppercase tracking-widest transition-all">Nomination</button>
-<button class="px-5 py-2.5 bg-slate-100 text-[#00205B] hover:bg-slate-200 rounded-full text-[10px] font-black uppercase tracking-widest transition-all">Eligibility</button>
-<button class="px-5 py-2.5 bg-slate-100 text-[#00205B] hover:bg-slate-200 rounded-full text-[10px] font-black uppercase tracking-widest transition-all">Campaign</button>
+<button onclick="filterFAQ('all')" data-faq-filter="all" class="faq-filter-btn faq-filter-active px-5 py-2.5 bg-slate-100 text-[#00205B] rounded-full text-[10px] font-black uppercase tracking-widest transition-all">All</button>
+<button onclick="filterFAQ('registration')" data-faq-filter="registration" class="faq-filter-btn px-5 py-2.5 bg-slate-100 text-[#00205B] hover:bg-slate-200 rounded-full text-[10px] font-black uppercase tracking-widest transition-all">Registration</button>
+<button onclick="filterFAQ('nomination')" data-faq-filter="nomination" class="faq-filter-btn px-5 py-2.5 bg-slate-100 text-[#00205B] hover:bg-slate-200 rounded-full text-[10px] font-black uppercase tracking-widest transition-all">Nomination</button>
+<button onclick="filterFAQ('eligibility')" data-faq-filter="eligibility" class="faq-filter-btn px-5 py-2.5 bg-slate-100 text-[#00205B] hover:bg-slate-200 rounded-full text-[10px] font-black uppercase tracking-widest transition-all">Eligibility</button>
+<button onclick="filterFAQ('campaign')" data-faq-filter="campaign" class="faq-filter-btn px-5 py-2.5 bg-slate-100 text-[#00205B] hover:bg-slate-200 rounded-full text-[10px] font-black uppercase tracking-widest transition-all">Campaign</button>
 </div>
 <!-- Search Bar -->
 <div class="relative mb-12">
@@ -319,7 +331,7 @@
 <!-- Accordion Groups -->
 <div class="space-y-10">
 <!-- Registration Section -->
-<div>
+<div data-faq="registration">
 <h4 class="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] mb-6 gap-3">Registration</h4>
 <div class="space-y-4">
 <details class="group bg-white border border-slate-100 rounded-xl overflow-hidden hover:border-slate-300 transition-colors">
@@ -352,7 +364,7 @@
 </div>
 </div>
 <!-- Nomination Section -->
-<div>
+<div data-faq="nomination">
 <h4 class="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] mb-6 gap-3">Registration</h4>
 <div class="space-y-4">
 <details class="group bg-white border border-slate-100 rounded-xl overflow-hidden hover:border-slate-300 transition-colors">
@@ -385,7 +397,7 @@
 </div>
 </div>
 <!-- Eligibility Section -->
-<div>
+<div data-faq="eligibility">
 <h4 class="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] mb-6 gap-3">Registration</h4>
 <div class="space-y-4">
 <details class="group bg-white border border-slate-100 rounded-xl overflow-hidden hover:border-slate-300 transition-colors">
@@ -409,7 +421,7 @@
 </div>
 </div>
 <!-- Campaign Section -->
-<div>
+<div data-faq="campaign">
 <h4 class="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] mb-6 gap-3">Registration</h4>
 <div class="space-y-4">
 <details class="group bg-white border border-slate-100 rounded-xl overflow-hidden hover:border-slate-300 transition-colors">
@@ -534,6 +546,17 @@
 </div>
 </div>
 </footer>
-
-
+<style>
+  .faq-filter-active { background-color: #00205B !important; color: white !important; }
+</style>
+<script>
+function filterFAQ(cat) {
+  document.querySelectorAll('.faq-filter-btn').forEach(function(btn) {
+    btn.classList.toggle('faq-filter-active', btn.dataset.faqFilter === cat);
+  });
+  document.querySelectorAll('[data-faq]').forEach(function(section) {
+    section.style.display = (cat === 'all' || section.dataset.faq === cat) ? '' : 'none';
+  });
+}
+</script>
 </body></html>

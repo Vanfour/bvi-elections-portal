@@ -46,6 +46,18 @@ tailwind.config = {
       else if(/ELECTION[\s\S]{0,2}RESULTS/.test(t)&&t.length<25) a.href=L.electionResults;
       else if(/NEWS/.test(t)&&/POLIC/.test(t)&&t.length<25) a.href=L.newsPolicies;
       else if(/IMPORTANT.*DATES/.test(t)&&L.importantDates) a.href=L.importantDates;
+      else if(/VIEW.*ELECTION.*DETAIL/.test(t)&&L.importantDates&&!a.classList.contains('tab-active')&&!a.classList.contains('tab-inactive')) a.href=L.importantDates;
+      else if(/PEOPLE\s+VIEW.*CANDIDATES/.test(t)&&L.candidates) a.href=L.candidates;
+    });
+    // Wire action buttons
+    document.querySelectorAll('button:not([onclick])').forEach(function(btn){
+      var t=btn.textContent.replace(/\s+/g,' ').trim().toUpperCase();
+      if(/VIEW ALL NEWS/.test(t)&&L.newsPolicies) btn.onclick=function(){window.location.href=L.newsPolicies;};
+      else if(/VIEW.*ELECTION.*RESULT/.test(t)&&L.electionResults) btn.onclick=function(){window.location.href=L.electionResults;};
+      else if(/VIEW.*ELECTION.*DETAIL/.test(t)&&L.importantDates) btn.onclick=function(){window.location.href=L.importantDates;};
+      else if(/VIEW.*ELECTION.*UPDATE/.test(t)&&L.electionResults) btn.onclick=function(){window.location.href=L.electionResults;};
+      else if(/^STAY INFORMED$/.test(t)&&L.importantDates) btn.onclick=function(){window.location.href=L.importantDates;};
+      else if(/VIEW CANDIDATE GUIDELINES/.test(t)&&L.candidates) btn.onclick=function(){window.location.href=L.candidates;};
     });
     if(!window.location.search){
       if(L.mobileVersion&&window.innerWidth<768) window.location.replace(L.mobileVersion+'?v=m');
