@@ -162,27 +162,26 @@ function toggleMobileMenu() {
       </button>
     </div>
   </div>
+  <!-- Historic CTA Button — inside hero -->
+  <div class="mt-4">
+    <button onclick="toggleHistoric()" class="w-full bg-[#00205B] hover:bg-[#001438] active:scale-[0.99] transition-all rounded-2xl px-5 py-4 flex items-center justify-between gap-4 shadow-lg">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-white text-lg">history</span>
+        </div>
+        <div class="text-left">
+          <p class="text-white font-black text-sm font-headline uppercase tracking-wide leading-tight">Historic Election Results</p>
+          <p class="text-slate-300 text-xs mt-0.5">Explore previous elections</p>
+        </div>
+      </div>
+      <span class="material-symbols-outlined text-white text-2xl shrink-0" id="historicChevron">chevron_right</span>
+    </button>
+  </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════ -->
-<!-- HISTORIC ELECTION RESULTS — Top                 -->
-<!-- ═══════════════════════════════════════════════ -->
-<section class="w-full bg-[#f8f9fa] px-4 py-8">
-  <!-- Clickable CTA Button -->
-  <button onclick="toggleHistoric()" class="w-full bg-[#00205B] hover:bg-[#001438] active:scale-[0.99] transition-all rounded-2xl px-5 py-5 flex items-center justify-between gap-4 shadow-lg">
-    <div class="flex items-center gap-4">
-      <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
-        <span class="material-symbols-outlined text-white text-xl">history</span>
-      </div>
-      <div class="text-left">
-        <p class="text-white font-black text-base font-headline uppercase tracking-wide leading-tight">Historic Election Results</p>
-        <p class="text-slate-300 text-xs mt-0.5">Explore results from previous elections</p>
-      </div>
-    </div>
-    <span class="material-symbols-outlined text-white text-2xl shrink-0" id="historicChevron">chevron_right</span>
-  </button>
-  <!-- Collapsible cards -->
-  <div id="historicCards" class="hidden mt-5 space-y-4">
+<!-- Historic collapsible cards -->
+<div class="w-full bg-[#f8f9fa] px-4 pb-6" id="historicSection" style="display:none;">
+  <div id="historicCards" class="space-y-4">
     <!-- 2019 -->
     <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
       <div class="bg-[#00205B] px-5 py-4 flex items-center justify-between">
@@ -648,7 +647,7 @@ function toggleMobileMenu() {
     </div>
 
   </div><!-- end historicCards -->
-</section>
+</div><!-- end historicSection -->
 
 <!-- Footer -->
 <footer class="w-full bg-[#00205B] text-white pt-10 pb-8">
@@ -715,11 +714,11 @@ function toggleMobileMenu() {
 
 <script>
   function toggleHistoric() {
-    var cards = document.getElementById('historicCards');
+    var section = document.getElementById('historicSection');
     var chevron = document.getElementById('historicChevron');
-    var isOpen = !cards.classList.contains('hidden');
-    if (isOpen) { cards.classList.add('hidden'); chevron.textContent = 'chevron_right'; }
-    else { cards.classList.remove('hidden'); chevron.textContent = 'expand_more'; }
+    var isOpen = section.style.display !== 'none';
+    if (isOpen) { section.style.display = 'none'; chevron.textContent = 'chevron_right'; }
+    else { section.style.display = 'block'; chevron.textContent = 'expand_more'; }
   }
   var currentState = 'after';
 

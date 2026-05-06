@@ -126,55 +126,57 @@
 <!-- Page Hero -->
 <section class="w-full bg-white border-b border-slate-100">
   <div class="max-w-7xl mx-auto px-8 py-10">
-    <div class="flex items-end justify-between gap-4">
-      <div>
-        <h1 class="text-5xl md:text-6xl font-black text-[#00205B] font-headline leading-[1.1]">Election Results</h1>
-        <p class="text-slate-500 text-sm mt-2 font-medium">British Virgin Islands General Election · November 25, 2024</p>
-      </div>
-      <!-- Grey State Preview Toggle -->
-      <div class="state-dropdown shrink-0" id="stateDropdown">
-        <button onclick="toggleDropdown()" class="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg text-[11px] font-black uppercase tracking-wider transition-all border border-slate-200">
-          <span class="material-symbols-outlined text-[16px]">tune</span>
-          <span id="stateLabel">Preview State</span>
-          <span class="material-symbols-outlined text-[16px]" id="dropdownChevron">expand_more</span>
-        </button>
-        <div class="state-dropdown-menu" id="stateDropdownMenu">
-          <div class="px-4 py-2 text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">Prototype View</div>
-          <button onclick="setState('before')" class="state-dropdown-item" id="opt-before">
-            <span class="material-symbols-outlined text-[16px] text-amber-500">schedule</span> Before Election
-          </button>
-          <button onclick="setState('during')" class="state-dropdown-item" id="opt-during">
-            <span class="material-symbols-outlined text-[16px] text-red-500">radio_button_checked</span> During Election
-          </button>
-          <button onclick="setState('after')" class="state-dropdown-item active" id="opt-after">
-            <span class="material-symbols-outlined text-[16px] text-green-600">check_circle</span> After Election
-          </button>
+    <div class="flex items-center justify-between gap-8">
+      <!-- Left: Title + subtitle + preview state dropdown -->
+      <div class="flex flex-col gap-4">
+        <div>
+          <h1 class="text-5xl md:text-6xl font-black text-[#00205B] font-headline leading-[1.1]">Election Results</h1>
+          <p class="text-slate-500 text-sm mt-2 font-medium">British Virgin Islands General Election · November 25, 2024</p>
         </div>
+        <!-- Preview State Dropdown — below subtitle -->
+        <div class="state-dropdown" id="stateDropdown">
+          <button onclick="toggleDropdown()" class="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg text-[11px] font-black uppercase tracking-wider transition-all border border-slate-200">
+            <span class="material-symbols-outlined text-[16px]">tune</span>
+            <span id="stateLabel">Preview State</span>
+            <span class="material-symbols-outlined text-[16px]" id="dropdownChevron">expand_more</span>
+          </button>
+          <div class="state-dropdown-menu" id="stateDropdownMenu">
+            <div class="px-4 py-2 text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">Prototype View</div>
+            <button onclick="setState('before')" class="state-dropdown-item" id="opt-before">
+              <span class="material-symbols-outlined text-[16px] text-amber-500">schedule</span> Before Election
+            </button>
+            <button onclick="setState('during')" class="state-dropdown-item" id="opt-during">
+              <span class="material-symbols-outlined text-[16px] text-red-500">radio_button_checked</span> During Election
+            </button>
+            <button onclick="setState('after')" class="state-dropdown-item active" id="opt-after">
+              <span class="material-symbols-outlined text-[16px] text-green-600">check_circle</span> After Election
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Right: Historic Election Results CTA button -->
+      <div class="shrink-0 w-80">
+        <button onclick="toggleHistoric()" class="w-full bg-[#00205B] hover:bg-[#001438] active:scale-[0.99] transition-all rounded-2xl px-6 py-5 flex items-center justify-between gap-4 shadow-lg" id="historicToggleBtn">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-white text-xl">history</span>
+            </div>
+            <div class="text-left">
+              <p class="text-white font-black text-sm font-headline uppercase tracking-wide leading-tight">Historic Election Results</p>
+              <p class="text-slate-300 text-xs mt-0.5">Explore previous elections</p>
+            </div>
+          </div>
+          <span class="material-symbols-outlined text-white text-2xl shrink-0" id="historicChevron">chevron_right</span>
+        </button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════════ -->
-<!-- HISTORIC ELECTION RESULTS — Prominent button/section at top   -->
-<!-- ══════════════════════════════════════════════════════════════ -->
-<section class="w-full bg-[#f8f9fa] py-12">
-  <div class="max-w-7xl mx-auto px-8">
-    <!-- Clickable CTA Button -->
-    <button onclick="toggleHistoric()" class="w-full bg-[#00205B] hover:bg-[#001438] active:scale-[0.99] transition-all rounded-2xl px-8 py-6 flex items-center justify-between gap-6 shadow-lg group" id="historicToggleBtn">
-      <div class="flex items-center gap-5">
-        <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
-          <span class="material-symbols-outlined text-white text-2xl">history</span>
-        </div>
-        <div class="text-left">
-          <p class="text-white font-black text-xl font-headline uppercase tracking-wide leading-tight">Historic Election Results</p>
-          <p class="text-slate-300 text-sm mt-0.5">Explore results from previous elections</p>
-        </div>
-      </div>
-      <span class="material-symbols-outlined text-white text-3xl shrink-0 transition-transform duration-300" id="historicChevron">chevron_right</span>
-    </button>
-    <!-- Collapsible Cards -->
-    <div id="historicCards" class="hidden mt-10">
+<!-- Historic Cards — collapsible, shown below hero when button clicked -->
+<div class="w-full bg-[#f8f9fa]" id="historicSection" style="display:none;">
+  <div class="max-w-7xl mx-auto px-8 py-10">
+    <div id="historicCards">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <!-- 2019 -->
       <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all">
@@ -224,10 +226,10 @@
           </button>
         </div>
       </div>
-    </div>
-    </div><!-- end historicCards -->
-  </div>
-</section>
+    </div><!-- end grid -->
+  </div><!-- end historicCards -->
+  </div><!-- end max-w -->
+</div><!-- end historicSection -->
 
 <!-- ══════════════════════════════════════════════════════════════ -->
 <!-- CURRENT ELECTION — State Toggle Content                        -->
@@ -439,14 +441,14 @@
 <script>
   // Historic toggle
   function toggleHistoric() {
-    var cards = document.getElementById('historicCards');
+    var section = document.getElementById('historicSection');
     var chevron = document.getElementById('historicChevron');
-    var isOpen = !cards.classList.contains('hidden');
+    var isOpen = section.style.display !== 'none';
     if (isOpen) {
-      cards.classList.add('hidden');
+      section.style.display = 'none';
       chevron.textContent = 'chevron_right';
     } else {
-      cards.classList.remove('hidden');
+      section.style.display = 'block';
       chevron.textContent = 'expand_more';
     }
   }
