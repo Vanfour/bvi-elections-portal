@@ -151,9 +151,9 @@
   function wire(){
     document.querySelectorAll('a[href="#"]').forEach(function(a){
       var t=a.textContent.replace(/\s+/g,' ').trim().toUpperCase();
-      if(/^FOR\s+VOTERS$/.test(t)) a.href=L.voters;
-      else if(/^FOR\s+CANDIDATES$/.test(t)) a.href=L.candidates;
-      else if(/^FOR\s+POLL\s+WORKERS$/.test(t)) a.href=L.pollWorkers;
+      if(/^FOR[\s]*VOTERS$/.test(t)) a.href=L.voters;
+      else if(/^FOR[\s]*CANDIDATES$/.test(t)) a.href=L.candidates;
+      else if(/^FOR[\s]*POLL[\s]*WORKERS$/.test(t)) a.href=L.pollWorkers;
       else if(/ELECTION[\s\S]{0,2}RESULTS/.test(t)&&t.length<25) a.href=L.electionResults;
       else if(/NEWS/.test(t)&&/POLIC/.test(t)&&t.length<25) a.href=L.newsPolicies;
       else if(/KEY\s+ACTIONS/.test(t)&&L.keyActions) a.href=L.keyActions;
