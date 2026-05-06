@@ -1,131 +1,44 @@
 <!DOCTYPE html>
-
 <html lang="en"><head>
-<title>Important Dates - Voting Day</title>
+<title>Important Dates - BVI Department of Elections</title>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "surface-dim": "#d9dadb",
-                    "tertiary-fixed-dim": "#77dc88",
-                    "surface-container": "#edeeef",
-                    "on-primary-container": "#738aca",
-                    "background": "#f8f9fa",
-                    "secondary-fixed": "#ffdad5",
-                    "outline": "#757681",
-                    "on-tertiary-container": "#399e52",
-                    "inverse-surface": "#2e3132",
-                    "on-tertiary-fixed-variant": "#005320",
-                    "surface-container-highest": "#e1e3e4",
-                    "secondary": "#E03C31",
-                    "primary-container": "#00205b",
-                    "on-tertiary-fixed": "#002109",
-                    "surface-container-lowest": "#ffffff",
-                    "on-error-container": "#93000a",
-                    "on-surface": "#191c1d",
-                    "primary-fixed": "#dae2ff",
-                    "error": "#ba1a1a",
-                    "secondary-fixed-dim": "#ffb4aa",
-                    "inverse-primary": "#b2c5ff",
-                    "tertiary-fixed": "#93f9a2",
-                    "tertiary-container": "#002b0d",
-                    "on-secondary-container": "#fffbff",
-                    "error-container": "#ffdad6",
-                    "outline-variant": "#c5c6d1",
-                    "on-primary": "#ffffff",
-                    "on-error": "#ffffff",
-                    "tertiary": "#001304",
-                    "primary": "#00205B",
-                    "inverse-on-surface": "#f0f1f2",
-                    "surface-container-low": "#f3f4f5",
-                    "on-secondary": "#ffffff",
-                    "on-secondary-fixed": "#410001",
-                    "on-primary-fixed-variant": "#2d447f",
-                    "surface-variant": "#e1e3e4",
-                    "on-tertiary": "#ffffff",
-                    "primary-fixed-dim": "#b2c5ff",
-                    "secondary-container": "#d9372d",
-                    "on-secondary-fixed-variant": "#930006",
-                    "on-surface-variant": "#444650",
-                    "on-primary-fixed": "#001849",
-                    "surface-tint": "#455c99",
-                    "surface-bright": "#f8f9fa",
-                    "surface": "#f8f9fa",
-                    "on-background": "#191c1d",
-                    "surface-container-high": "#e7e8e9"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "full": "9999px"
-            },
-            "spacing": {},
-            "fontFamily": {
-                    "headline": ["Public Sans"],
-                    "body": ["Inter"],
-                    "label": ["Inter"]
-            }
-          },
-        },
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "secondary": "#E03C31",
+        "primary": "#00205B",
+        "surface": "#f8f9fa",
+        "on-surface": "#191c1d",
+      },
+      fontFamily: {
+        "headline": ["Public Sans"],
+        "body": ["Inter"],
       }
-    </script>
+    }
+  }
+}
+</script>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .nav-underline-active {
-            position: relative;
-        }
-        .nav-underline-active::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background-color: #E03C31;
-        }
-        .tab-active {
-            border-bottom: 2px solid #E03C31;
-            color: #00205B;
-            font-weight: 700;
-        }
-        .tab-inactive {
-            color: #64748b;
-            border-bottom: 2px solid transparent;
-        }
-        .tab-inactive:hover {
-            background-color: #f1f5f9;
-            color: #00205B;
-        }
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
-        details[open] summary .expand-icon {
-            transform: rotate(180deg);
-        }
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .nav-underline-active { position: relative; }
+  .nav-underline-active::after { content: ''; position: absolute; bottom: -12px; left: 0; width: 100%; height: 3px; background-color: #E03C31; }
+  .filter-btn { transition: all 0.15s ease; }
+  .filter-btn.active { background-color: #00205B; color: #ffffff; }
+  .filter-btn:not(.active) { background-color: #ffffff; color: #475569; border: 1px solid #e2e8f0; }
+  .filter-btn:not(.active):hover { background-color: #f8fafc; color: #00205B; border-color: #00205B; }
+  .event-item { transition: all 0.2s ease; }
+  .timeline-dot { flex-shrink: 0; }
+</style>
 <script id="bvi-nav-wiring">
 (function(){
-  var L={voters:'../voters/upcoming-events-v1/index.html',candidates:'../candidates/upcoming-elections/index.html',pollWorkers:'../poll-workers/layout-2/index.html',electionResults:'../election-results/index.html',newsPolicies:'../news-policies/index.html',importantDates:'./index.html',mobileVersion:'../important-dates-mobile/index.html',desktopVersion:null};
+  var L={voters:'../voters/upcoming-events-v1/index.html',candidates:'../candidates/upcoming-elections/index.html',pollWorkers:'../poll-workers/layout-1/index.html',electionResults:'../election-results/index.html',newsPolicies:'../news-policies/index.html',importantDates:'./index.html',mobileVersion:'../important-dates-mobile/index.html',desktopVersion:null};
   function wire(){
     document.querySelectorAll('a[href="#"]').forEach(function(a){
       var t=a.textContent.replace(/\s+/g,' ').trim().toUpperCase();
@@ -134,7 +47,7 @@
       else if(/^FOR\s+POLL\s+WORKERS$/.test(t)) a.href=L.pollWorkers;
       else if(/ELECTION[\s\S]{0,2}RESULTS/.test(t)&&t.length<25) a.href=L.electionResults;
       else if(/NEWS/.test(t)&&/POLIC/.test(t)&&t.length<25) a.href=L.newsPolicies;
-      else if(/IMPORTANT.*DATES/.test(t)&&L.importantDates) a.href=L.importantDates;
+      else if(/IMPORTANT.*DATES/.test(t)&&L.importantDates&&!a.classList.contains('tab-active')&&!a.classList.contains('tab-inactive')) a.href=L.importantDates;
     });
     if(!window.location.search){
       if(L.mobileVersion&&window.innerWidth<768) window.location.replace(L.mobileVersion+'?v=m');
@@ -146,334 +59,558 @@
 })();
 </script>
 </head>
-<body class="font-body text-on-surface bg-white">
+<body class="font-body text-on-surface bg-[#f8f9fa]">
+
 <!-- Top Utility Bar -->
-<div class="w-full bg-[#f8f9fa] border-b border-slate-200 py-2 px-8">
-<div class="max-w-7xl mx-auto flex justify-between items-center text-[11px] font-bold text-slate-500 uppercase tracking-wider">
-<div class="flex items-center gap-4">
-<a class="hover:text-[#00205B] transition-colors flex items-center gap-1" href="#">
-<span class="text-[14px]">←</span> BACK TO GOV.VG
-                </a>
-<span class="text-slate-300 font-normal">|</span>
-<a class="hover:text-[#00205B] transition-colors" href="#">CONTACT US</a>
+<div class="w-full bg-white border-b border-slate-200 py-2 px-8">
+  <div class="max-w-7xl mx-auto flex justify-between items-center text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+    <div class="flex items-center gap-4">
+      <a class="hover:text-[#00205B] transition-colors flex items-center gap-1" href="#"><span class="text-[14px]">←</span> BACK TO GOV.VG</a>
+      <span class="text-slate-300 font-normal">|</span>
+      <a class="hover:text-[#00205B] transition-colors" href="#">CONTACT US</a>
+    </div>
+    <div class="hidden md:block">OFFICIAL PORTAL OF THE BRITISH VIRGIN ISLANDS ELECTIONS</div>
+  </div>
 </div>
-<div class="hidden md:block">
-                OFFICIAL PORTAL OF THE BRITISH VIRGIN ISLANDS ELECTIONS
-            </div>
-</div>
-</div>
+
 <!-- Main Navigation Header -->
-<header class="w-full bg-white border-b border-slate-100">
-<div class="max-w-7xl mx-auto px-8 py-5">
-<div class="flex items-center justify-between">
-<!-- Logo -->
-<div class="flex items-center gap-4 shrink-0">
-<img alt="Official crest of the British Virgin Islands" class="h-14 w-auto object-contain" src="../assets/bvi-crest.png"/>
-<div class="flex flex-col">
-<span class="text-3xl font-black text-[#00205B] tracking-tight leading-none">elections.gov.vg</span>
-<span class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mt-1 leading-none">DEPARTMENT OF ELECTIONS</span>
-</div>
-</div>
-<!-- Navigation Menu -->
-<nav class="hidden lg:flex items-center h-full ml-8">
-<div class="flex items-center h-full">
-<a class="px-5 font-black text-[12px] leading-tight uppercase tracking-wide flex flex-col text-[#00205B]" href="#">
-<span class="">FOR</span>
-<span class="">VOTERS</span>
-</a>
-<div class="h-10 w-[1px] bg-slate-200"></div>
-<a class="px-5 font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col text-[#00205B]" href="#">
-<span class="">FOR</span>
-<span class="">CANDIDATES</span>
-</a>
-<div class="h-10 w-[1px] bg-slate-200"></div>
-<a class="px-5 text-[#00205B] font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col tab-inactive" href="#">
-<span class="">FOR</span>
-<span class="">POLL WORKERS</span>
-</a>
-<div class="h-10 w-[1px] bg-slate-200"></div>
-<a class="px-5 text-[#E03C31] font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col nav-underline-active" href="#">
-<span class="">IMPORTANT</span>
-<span class="">DATES</span>
-</a>
-<div class="h-10 w-[1px] bg-slate-200"></div>
-<a class="px-5 text-[#00205B] font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col" href="#">
-<span class="">ELECTION</span>
-<span class="">RESULTS</span>
-</a>
-<div class="h-10 w-[1px] bg-slate-200"></div>
-<a class="px-5 text-[#00205B] font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col" href="#">
-<span class="">NEWS &amp;</span>
-<span class="">POLICIES</span>
-</a>
-</div>
-<!-- Search Icon -->
-<button class="ml-6 mr-8 text-[#00205B] hover:text-secondary transition-colors">
-<span class="material-symbols-outlined text-2xl font-bold" data-icon="search">search</span>
-</button>
-</nav>
-</div>
-</div>
+<header class="w-full bg-white border-b border-slate-100 sticky top-0 z-40">
+  <div class="max-w-7xl mx-auto px-8 py-5">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-4 shrink-0">
+        <img alt="Official crest of the British Virgin Islands" class="h-14 w-auto object-contain" src="../assets/bvi-crest.png"/>
+        <div class="flex flex-col">
+          <span class="text-3xl font-black text-[#00205B] tracking-tight leading-none">elections.gov.vg</span>
+          <span class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mt-1 leading-none">DEPARTMENT OF ELECTIONS</span>
+        </div>
+      </div>
+      <nav class="hidden lg:flex items-center h-full ml-8">
+        <div class="flex items-center h-full">
+          <a class="px-5 font-black text-[12px] leading-tight uppercase tracking-wide flex flex-col text-[#00205B] hover:text-secondary transition-colors" href="#">
+            <span>FOR</span><span>VOTERS</span>
+          </a>
+          <div class="h-10 w-[1px] bg-slate-200"></div>
+          <a class="px-5 font-black text-[12px] leading-tight uppercase tracking-wide flex flex-col text-[#00205B] hover:text-secondary transition-colors" href="#">
+            <span>FOR</span><span>CANDIDATES</span>
+          </a>
+          <div class="h-10 w-[1px] bg-slate-200"></div>
+          <a class="px-5 font-black text-[12px] leading-tight uppercase tracking-wide flex flex-col text-[#00205B] hover:text-secondary transition-colors" href="#">
+            <span>FOR</span><span>POLL WORKERS</span>
+          </a>
+          <div class="h-10 w-[1px] bg-slate-200"></div>
+          <a class="px-5 font-black text-[12px] leading-tight uppercase tracking-wide flex flex-col text-[#E03C31] nav-underline-active" href="#">
+            <span>IMPORTANT</span><span>DATES</span>
+          </a>
+          <div class="h-10 w-[1px] bg-slate-200"></div>
+          <a class="px-5 font-black text-[12px] leading-tight uppercase tracking-wide flex flex-col text-[#00205B] hover:text-secondary transition-colors" href="#">
+            <span>ELECTION</span><span>RESULTS</span>
+          </a>
+          <div class="h-10 w-[1px] bg-slate-200"></div>
+          <a class="px-5 font-black text-[12px] leading-tight uppercase tracking-wide flex flex-col text-[#00205B] hover:text-secondary transition-colors" href="#">
+            <span>NEWS &amp;</span><span>POLICIES</span>
+          </a>
+        </div>
+        <button class="ml-6 mr-8 text-[#00205B] hover:text-secondary transition-colors">
+          <span class="material-symbols-outlined text-2xl">search</span>
+        </button>
+      </nav>
+    </div>
+  </div>
 </header>
-<!-- Hero Header -->
-<section class="w-full bg-white">
-<div class="max-w-7xl mx-auto px-8 py-12">
-<div class="flex items-start gap-4">
-<div class="flex flex-col">
-<h1 class="text-5xl md:text-7xl font-black text-[#00205B] font-headline leading-[1.1]">Important Dates</h1>
-</div>
-</div>
-</div>
+
+<!-- Page Hero -->
+<section class="w-full bg-white border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-8 py-12">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div>
+        <p class="text-[11px] font-black uppercase tracking-widest text-[#E03C31] mb-3">General Election 2024</p>
+        <h1 class="text-5xl md:text-6xl font-black text-[#00205B] font-headline leading-[1.05]">Important Dates</h1>
+        <p class="text-slate-500 text-base mt-4 max-w-xl">Key deadlines and milestones for the BVI General Election — November 25, 2024. Filter by audience to see what applies to you.</p>
+      </div>
+      <div class="flex items-center gap-3 shrink-0">
+        <button class="flex items-center gap-2 bg-[#00205B] text-white px-5 py-3 rounded-lg font-black text-xs uppercase tracking-wider hover:brightness-110 transition-all">
+          <span class="material-symbols-outlined text-[18px]">notifications</span> Get Alerts
+        </button>
+        <button class="flex items-center gap-2 bg-white border border-slate-200 text-[#00205B] px-5 py-3 rounded-lg font-black text-xs uppercase tracking-wider hover:bg-slate-50 transition-all">
+          <span class="material-symbols-outlined text-[18px]">download</span> Download (.ics)
+        </button>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- Main Event Countdown -->
-<section class="w-full bg-white pb-12">
-<div class="max-w-7xl mx-auto px-8">
-<div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
-<div class="relative p-8 pl-12 lg:pl-16 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16 bg-gradient-to-br from-[#001849] to-[#00205B]">
-<!-- Left Content: Countdown Timer -->
-<div class="flex-1 w-full">
-<h2 class="text-3xl font-black text-white font-headline mb-2">Get official updates</h2>
-<div class="flex flex-wrap gap-4">
-<div class="w-full"><span class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.15em] text-sm normal-case text-slate-300 font-medium mb-8 block">Receive real-time alerts regarding registration deadlines and polling station changes directly to your device.</span></div>
-</div>
-</div>
-<!-- Right Content -->
-<div class="w-full lg:w-auto flex flex-col justify-center items-end self-stretch">
-<div class="flex flex-wrap gap-3">
-<button class="bg-[#E03C31] text-white px-8 py-3.5 rounded-lg font-black text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-md">
-<span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">notifications</span> SUBSCRIBE FOR UPDATES</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</div>
+
+<!-- Main Content -->
+<section class="w-full py-10">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+
+      <!-- Left Sidebar: Filters -->
+      <aside class="lg:w-64 shrink-0">
+        <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm sticky top-28">
+          <!-- Audience Filter -->
+          <div class="px-5 py-4 border-b border-slate-100">
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Filter by Audience</p>
+            <div class="flex flex-col gap-2">
+              <button onclick="filterEvents('all')" data-filter="all" class="filter-btn active text-left px-4 py-2.5 rounded-lg font-black text-xs uppercase tracking-wide flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px]">people</span> All Audiences
+              </button>
+              <button onclick="filterEvents('voters')" data-filter="voters" class="filter-btn text-left px-4 py-2.5 rounded-lg font-black text-xs uppercase tracking-wide flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-600 shrink-0"></span> For Voters
+              </button>
+              <button onclick="filterEvents('candidates')" data-filter="candidates" class="filter-btn text-left px-4 py-2.5 rounded-lg font-black text-xs uppercase tracking-wide flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#E03C31] shrink-0"></span> For Candidates
+              </button>
+              <button onclick="filterEvents('poll-workers')" data-filter="poll-workers" class="filter-btn text-left px-4 py-2.5 rounded-lg font-black text-xs uppercase tracking-wide flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#007A33] shrink-0"></span> For Poll Workers
+              </button>
+            </div>
+          </div>
+          <!-- Election Filter -->
+          <div class="px-5 py-4 border-b border-slate-100">
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Election</p>
+            <div class="flex flex-col gap-2">
+              <button class="filter-btn active text-left px-4 py-2.5 rounded-lg font-black text-xs uppercase tracking-wide">
+                General Election 2024
+              </button>
+            </div>
+          </div>
+          <!-- Status Legend -->
+          <div class="px-5 py-4">
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Status</p>
+            <div class="flex flex-col gap-2.5">
+              <div class="flex items-center gap-2.5">
+                <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-wide">Completed</span>
+                <span class="text-xs text-slate-400">Past deadline</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <span class="px-2 py-0.5 rounded-full bg-blue-50 text-[#00205B] text-[10px] font-black uppercase tracking-wide">Upcoming</span>
+                <span class="text-xs text-slate-400">Future date</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <span class="px-2 py-0.5 rounded-full bg-[#E03C31] text-white text-[10px] font-black uppercase tracking-wide">Today</span>
+                <span class="text-xs text-slate-400">Active now</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right: Events List -->
+      <div class="flex-1 min-w-0">
+
+        <!-- Count bar -->
+        <div class="flex items-center justify-between mb-5">
+          <p class="text-sm font-bold text-slate-500"><span id="event-count">13</span> dates · General Election 2024</p>
+          <div class="flex items-center gap-2 text-xs text-slate-400">
+            <span class="material-symbols-outlined text-[16px]">sort</span> Sorted by date
+          </div>
+        </div>
+
+        <!-- Events -->
+        <div class="flex flex-col gap-3" id="events-list">
+
+          <!-- Event 1: Completed -->
+          <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all" data-audience="all voters candidates poll-workers">
+            <div class="flex items-stretch">
+              <div class="w-24 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-5 px-3">
+                <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">SEP</span>
+                <span class="text-3xl font-black text-[#00205B] leading-none">20</span>
+                <span class="text-[11px] font-bold text-slate-400">2024</span>
+              </div>
+              <div class="flex-1 px-6 py-5 flex flex-col md:flex-row md:items-center gap-4">
+                <div class="flex-1">
+                  <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                    <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-wide">Completed</span>
+                    <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wide">General Election 2024</span>
+                  </div>
+                  <h3 class="text-base font-black text-[#00205B]">Writ of Election Issued</h3>
+                  <p class="text-slate-500 text-sm mt-1">The Governor issues the Writ of Election, officially starting the election process and setting the schedule.</p>
+                  <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 text-[10px] font-black uppercase tracking-wide"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Voters</span>
+                    <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-red-50 text-[#E03C31] text-[10px] font-black uppercase tracking-wide"><span class="w-1.5 h-1.5 rounded-full bg-[#E03C31]"></span>Candidates</span>
+                    <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-green-50 text-[#007A33] text-[10px] font-black uppercase tracking-wide"><span class="w-1.5 h-1.5 rounded-full bg-[#007A33]"></span>Poll Workers</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 2 -->
+          <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all" data-audience="voters">
+            <div class="flex items-stretch">
+              <div class="w-24 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-5 px-3">
+                <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">OCT</span>
+                <span class="text-3xl font-black text-[#00205B] leading-none">01</span>
+                <span class="text-[11px] font-bold text-slate-400">2024</span>
+              </div>
+              <div class="flex-1 px-6 py-5 flex flex-col md:flex-row md:items-center gap-4">
+                <div class="flex-1">
+                  <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                    <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-wide">Completed</span>
+                    <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wide">General Election 2024</span>
+                  </div>
+                  <h3 class="text-base font-black text-[#00205B]">Voter Registration Deadline</h3>
+                  <p class="text-slate-500 text-sm mt-1">Last day for eligible citizens to register to vote. New registrations and transfers of registration close at 4:00 PM.</p>
+                  <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 text-[10px] font-black uppercase tracking-wide"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Voters</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 3 -->
+          <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all" data-audience="candidates">
+            <div class="flex items-stretch">
+              <div class="w-24 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-5 px-3">
+                <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">OCT</span>
+                <span class="text-3xl font-black text-[#00205B] leading-none">15</span>
+                <span class="text-[11px] font-bold text-slate-400">2024</span>
+              </div>
+              <div class="flex-1 px-6 py-5 flex flex-col md:flex-row md:items-center gap-4">
+                <div class="flex-1">
+                  <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                    <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-wide">Completed</span>
+                    <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wide">General Election 2024</span>
+                  </div>
+                  <h3 class="text-base font-black text-[#00205B]">Nomination Day</h3>
+                  <p class="text-slate-500 text-sm mt-1">Prospective candidates must submit nomination papers to the Supervisor of Elections by 4:00 PM. Deposits required.</p>
+                  <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-red-50 text-[#E03C31] text-[10px] font-black uppercase tracking-wide"><span class="w-1.5 h-1.5 rounded-full bg-[#E03C31]"></span>Candidates</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 4 -->
+          <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all" data-audience="candidates">
+            <div class="flex items-stretch">
+              <div class="w-24 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-5 px-3">
+                <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">OCT</span>
+                <span class="text-3xl font-black text-[#00205B] leading-none">17</span>
+                <span class="text-[11px] font-bold text-slate-400">2024</span>
+              </div>
+              <div class="flex-1 px-6 py-5 flex flex-col md:flex-row md:items-center gap-4">
+                <div class="flex-1">
+                  <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                    <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-wide">Completed</span>
+                    <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wide">General Election 2024</span>
+                  </div>
+                  <h3 class="text-base font-black text-[#00205B]">Official List of Candidates Published</h3>
+                  <p class="text-slate-500 text-sm mt-1">The Department of Elections publishes the official list of approved candidates for each constituency.</p>
+                  <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-red-50 text-[#E03C31] text-[10px] font-black uppercase tracking-wide"><span class="w-1.5 h-1.5 rounded-full bg-[#E03C31]"></span>Candidates</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 5 -->
+          <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all" data-audience="candidates">
+            <div class="flex items-stretch">
+              <div class="w-24 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-5 px-3">
+                <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">OCT</span>
+                <span class="text-3xl font-black text-[#00205B] leading-none">18</span>
+                <span class="text-[11px] font-bold text-slate-400">2024</span>
+              </div>
+              <div class="flex-1 px-6 py-5 flex flex-col md:flex-row md:items-center gap-4">
+                <div class="flex-1">
+                  <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                    <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-wide">Completed</span>
+                    <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wide">General Election 2024</span>
+                  </div>
+                  <h3 class="text-base font-black text-[#00205B]">Campaign Period Opens</h3>
+                  <p class="text-slate-500 text-sm mt-1">Candidates may begin official campaigning activities. Campaign finance reporting requirements are now in effect.</p>
+                  <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-red-50 text-[#E03C31] text-[10px] font-black uppercase tracking-wide"><span class="w-1.5 h-1.5 rounded-full bg-[#E03C31]"></span>Candidates</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 6 -->
+          <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all" data-audience="poll-workers">
+            <div class="flex items-stretch">
+              <div class="w-24 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-5 px-3">
+                <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">OCT</span>
+                <span class="text-3xl font-black text-[#00205B] leading-none">25</span>
+                <span class="text-[11px] font-bold text-slate-400">2024</span>
+              </div>
+              <div class="flex-1 px-6 py-5 flex flex-col md:flex-row md:items-center gap-4">
+                <div class="flex-1">
+                  <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                    <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-wide">Completed</span>
+                    <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wide">General Election 2024</span>
+                  </div>
+                  <h3 class="text-base font-black text-[#00205B]">Poll Worker Applications Close</h3>
+                  <p class="text-slate-500 text-sm mt-1">Deadline to submit applications to serve as a poll worker on Election Day. All positions must be confirmed by this date.</p>
+                  <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-green-50 text-[#007A33] text-[10px] font-black uppercase tracking-wide"><span class="w-1.5 h-1.5 rounded-full bg-[#007A33]"></span>Poll Workers</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 7 -->
+          <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all" data-audience="voters">
+            <div class="flex items-stretch">
+              <div class="w-24 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-5 px-3">
+                <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">OCT</span>
+                <span class="text-3xl font-black text-[#00205B] leading-none">28</span>
+                <span class="text-[11px] font-bold text-slate-400">2024</span>
+              </div>
+              <div class="flex-1 px-6 py-5 flex flex-col md:flex-row md:items-center gap-4">
+                <div class="flex-1">
+                  <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                    <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-wide">Completed</span>
+                    <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wide">General Election 2024</span>
+                  </div>
+                  <h3 class="text-base font-black text-[#00205B]">Voter ID Card Distribution Begins</h3>
+                  <p class="text-slate-500 text-sm mt-1">Registered voters may collect their voter ID cards from designated collection centres across all districts. Distribution runs Oct 28 – Nov 8.</p>
+                  <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 text-[10px] font-black uppercase tracking-wide"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Voters</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 8 -->
+          <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all" data-audience="poll-workers">
+            <div class="flex items-stretch">
+              <div class="w-24 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-5 px-3">
+                <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">NOV</span>
+                <span class="text-3xl font-black text-[#00205B] leading-none">12</span>
+                <span class="text-[11px] font-bold text-slate-400">2024</span>
+              </div>
+              <div class="flex-1 px-6 py-5 flex flex-col md:flex-row md:items-center gap-4">
+                <div class="flex-1">
+                  <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                    <span class="px-2 py-0.5 rounded-full bg-blue-50 text-[#00205B] text-[10px] font-black uppercase tracking-wide">Upcoming</span>
+                    <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wide">General Election 2024</span>
+                  </div>
+                  <h3 class="text-base font-black text-[#00205B]">Poll Worker Training Sessions</h3>
+                  <p class="text-slate-500 text-sm mt-1">Mandatory training for all appointed poll workers. Sessions held at the Multipurpose Sports Complex, Road Town. Runs Nov 12–14, multiple times daily.</p>
+                  <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-green-50 text-[#007A33] text-[10px] font-black uppercase tracking-wide"><span class="w-1.5 h-1.5 rounded-full bg-[#007A33]"></span>Poll Workers</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 9 -->
+          <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all" data-audience="voters poll-workers">
+            <div class="flex items-stretch">
+              <div class="w-24 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-5 px-3">
+                <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">NOV</span>
+                <span class="text-3xl font-black text-[#00205B] leading-none">18</span>
+                <span class="text-[11px] font-bold text-slate-400">2024</span>
+              </div>
+              <div class="flex-1 px-6 py-5 flex flex-col md:flex-row md:items-center gap-4">
+                <div class="flex-1">
+                  <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                    <span class="px-2 py-0.5 rounded-full bg-blue-50 text-[#00205B] text-[10px] font-black uppercase tracking-wide">Upcoming</span>
+                    <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wide">General Election 2024</span>
+                  </div>
+                  <h3 class="text-base font-black text-[#00205B]">Voter Education Week Begins</h3>
+                  <p class="text-slate-500 text-sm mt-1">Community outreach programme covering voting procedures, polling station locations, and accessible voting options. Open to the public. Runs Nov 18–22.</p>
+                  <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 text-[10px] font-black uppercase tracking-wide"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Voters</span>
+                    <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-green-50 text-[#007A33] text-[10px] font-black uppercase tracking-wide"><span class="w-1.5 h-1.5 rounded-full bg-[#007A33]"></span>Poll Workers</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 10 -->
+          <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all" data-audience="voters">
+            <div class="flex items-stretch">
+              <div class="w-24 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-5 px-3">
+                <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">NOV</span>
+                <span class="text-3xl font-black text-[#00205B] leading-none">21</span>
+                <span class="text-[11px] font-bold text-slate-400">2024</span>
+              </div>
+              <div class="flex-1 px-6 py-5 flex flex-col md:flex-row md:items-center gap-4">
+                <div class="flex-1">
+                  <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                    <span class="px-2 py-0.5 rounded-full bg-blue-50 text-[#00205B] text-[10px] font-black uppercase tracking-wide">Upcoming</span>
+                    <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wide">General Election 2024</span>
+                  </div>
+                  <h3 class="text-base font-black text-[#00205B]">Advance Poll Opens</h3>
+                  <p class="text-slate-500 text-sm mt-1">Registered voters unable to vote on Election Day may cast their ballot in advance. Available Nov 21–22, 8:00 AM – 6:00 PM at designated advance polling stations.</p>
+                  <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 text-[10px] font-black uppercase tracking-wide"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Voters</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 11 -->
+          <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all" data-audience="candidates">
+            <div class="flex items-stretch">
+              <div class="w-24 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-5 px-3">
+                <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">NOV</span>
+                <span class="text-3xl font-black text-[#00205B] leading-none">23</span>
+                <span class="text-[11px] font-bold text-slate-400">2024</span>
+              </div>
+              <div class="flex-1 px-6 py-5 flex flex-col md:flex-row md:items-center gap-4">
+                <div class="flex-1">
+                  <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                    <span class="px-2 py-0.5 rounded-full bg-blue-50 text-[#00205B] text-[10px] font-black uppercase tracking-wide">Upcoming</span>
+                    <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wide">General Election 2024</span>
+                  </div>
+                  <h3 class="text-base font-black text-[#00205B]">Campaigning Ends (Blackout Period)</h3>
+                  <p class="text-slate-500 text-sm mt-1">All campaigning must cease at midnight. Removal of campaign materials from public spaces required before polls open on Election Day.</p>
+                  <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-red-50 text-[#E03C31] text-[10px] font-black uppercase tracking-wide"><span class="w-1.5 h-1.5 rounded-full bg-[#E03C31]"></span>Candidates</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 12: Election Day — highlighted -->
+          <div class="event-item border-2 border-[#E03C31] rounded-xl overflow-hidden shadow-md" data-audience="all voters candidates poll-workers">
+            <div class="flex items-stretch">
+              <div class="w-24 shrink-0 bg-[#E03C31] flex flex-col items-center justify-center py-5 px-3">
+                <span class="text-[10px] font-black uppercase tracking-widest text-red-200">NOV</span>
+                <span class="text-3xl font-black text-white leading-none">25</span>
+                <span class="text-[11px] font-bold text-red-200">2024</span>
+              </div>
+              <div class="flex-1 px-6 py-5 bg-white flex flex-col md:flex-row md:items-center gap-4">
+                <div class="flex-1">
+                  <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                    <span class="px-2 py-0.5 rounded-full bg-[#E03C31] text-white text-[10px] font-black uppercase tracking-wide">Election Day</span>
+                    <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wide">General Election 2024</span>
+                  </div>
+                  <h3 class="text-lg font-black text-[#00205B]">General Election Day — Monday, November 25, 2024</h3>
+                  <p class="text-slate-500 text-sm mt-1">Polling stations open 7:00 AM – 6:00 PM across all constituencies. Bring your Voter ID card. Assistance available for voters with disabilities.</p>
+                  <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 text-[10px] font-black uppercase tracking-wide"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Voters</span>
+                    <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-red-50 text-[#E03C31] text-[10px] font-black uppercase tracking-wide"><span class="w-1.5 h-1.5 rounded-full bg-[#E03C31]"></span>Candidates</span>
+                    <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-green-50 text-[#007A33] text-[10px] font-black uppercase tracking-wide"><span class="w-1.5 h-1.5 rounded-full bg-[#007A33]"></span>Poll Workers</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 13 -->
+          <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all" data-audience="all voters candidates poll-workers">
+            <div class="flex items-stretch">
+              <div class="w-24 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-5 px-3">
+                <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">DEC</span>
+                <span class="text-3xl font-black text-[#00205B] leading-none">05</span>
+                <span class="text-[11px] font-bold text-slate-400">2024</span>
+              </div>
+              <div class="flex-1 px-6 py-5 flex flex-col md:flex-row md:items-center gap-4">
+                <div class="flex-1">
+                  <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                    <span class="px-2 py-0.5 rounded-full bg-blue-50 text-[#00205B] text-[10px] font-black uppercase tracking-wide">Upcoming</span>
+                    <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wide">General Election 2024</span>
+                  </div>
+                  <h3 class="text-base font-black text-[#00205B]">Official Results Certification</h3>
+                  <p class="text-slate-500 text-sm mt-1">The Supervisor of Elections formally certifies and publishes the official election results for all constituencies.</p>
+                  <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 text-[10px] font-black uppercase tracking-wide"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Voters</span>
+                    <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-red-50 text-[#E03C31] text-[10px] font-black uppercase tracking-wide"><span class="w-1.5 h-1.5 rounded-full bg-[#E03C31]"></span>Candidates</span>
+                    <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-green-50 text-[#007A33] text-[10px] font-black uppercase tracking-wide"><span class="w-1.5 h-1.5 rounded-full bg-[#007A33]"></span>Poll Workers</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Empty state (hidden by default) -->
+          <div id="empty-state" class="hidden text-center py-16">
+            <span class="material-symbols-outlined text-5xl text-slate-300">event_busy</span>
+            <p class="text-slate-400 font-bold mt-3">No dates match this filter.</p>
+          </div>
+
+        </div><!-- /events-list -->
+      </div><!-- /right column -->
+    </div><!-- /flex -->
+  </div>
 </section>
-<!-- Interactive Tabs & Content Container -->
-<section class="w-full bg-white pb-24">
-<div class="max-w-7xl mx-auto px-8">
-<!-- Tab Navigation Bar -->
-<div class="w-full border-slate-200">
-<div class="border border-slate-200 rounded-t-lg overflow-hidden bg-slate-50">
-<nav class="flex w-full overflow-x-auto no-scrollbar items-center">
-<a class="flex items-center gap-2.5 px-8 py-4 text-xs uppercase tracking-widest transition-all shrink-0 tab-active" href="#"><span class="material-symbols-outlined text-[20px]">bolt</span> ALL NEWS</a>
-<div class="h-6 w-[1px] bg-slate-200 shrink-0"></div>
-<a class="flex items-center gap-2.5 px-8 py-4 text-xs uppercase tracking-widest transition-all shrink-0 tab-inactive" href="#"><span class="material-symbols-outlined text-[20px]">calendar_today</span> ANNOUNCEMENTS</a>
-<div class="h-6 w-[1px] bg-slate-200 shrink-0"></div>
-<a class="flex items-center gap-2.5 px-8 py-4 text-xs uppercase tracking-widest transition-all shrink-0 tab-inactive" href="#"><span class="material-symbols-outlined text-[20px]">quiz</span> PRESS RELEASES</a>
-<div class="h-6 w-[1px] bg-slate-200 shrink-0"></div>
-<a class="flex items-center gap-2.5 px-8 py-4 text-xs uppercase tracking-widest transition-all shrink-0 tab-inactive" href="#"><span class="material-symbols-outlined text-[20px]">newspaper</span> POLICIES</a>
-<div class="h-6 w-[1px] bg-slate-200 shrink-0"></div>
-<a class="flex items-center gap-2.5 px-8 py-4 text-xs uppercase tracking-widest transition-all shrink-0 tab-inactive" href="#"><span class="material-symbols-outlined text-[20px]">campaign</span> PUBLIC NOTICES</a>
-</nav>
-</div>
-</div>
-<!-- Content Card -->
-<div class="w-full bg-white border-slate-200 overflow-hidden border-x border-b border-t-0">
-<div class="p-8 lg:p-12">
-<!-- Card Layout Section -->
-<div class="space-y-6">
-<!-- Card 1: Nomination Day (COMPLETED) -->
-<div class="group relative bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">
-<div class="flex flex-col md:flex-row items-start gap-6">
-<div class="w-14 h-14 shrink-0 rounded-full bg-blue-50 flex items-center justify-center text-[#00205B]">
-<span class="material-symbols-outlined text-[28px]">campaign</span>
-</div>
-<div class="flex-1">
-<div class="flex flex-wrap items-center gap-3 mb-2">
-<h4 class="text-xl font-black text-[#00205B]">Election Day set for November 25, 2024</h4>
-<span class="px-2.5 py-1 bg-blue-100 text-[#00205B] text-[10px] font-black uppercase tracking-wider rounded-full">ANNOUNCEMENT</span>
-</div>
-<p class="text-slate-600 text-sm leading-relaxed max-w-2xl">The Department of Elections announces that the next Territorial-wide General Election will be held on Monday, November 25, 2024.</p>
-</div>
-<div class="text-left md:text-right shrink-0 pt-1">
-<span class="font-black text-[#00205B] text-xl block uppercase">OCT 15, 2024</span>
-</div>
-</div>
-</div>
-<!-- Card 2: Campaign Period (UPCOMING) -->
-<div class="group relative bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">
-<div class="flex flex-col md:flex-row items-start gap-6">
-<div class="w-14 h-14 shrink-0 rounded-full bg-blue-50 flex items-center justify-center text-[#00205B]">
-<span class="material-symbols-outlined text-[28px]">quiz</span>
-</div>
-<div class="flex-1">
-<div class="flex flex-wrap items-center gap-3 mb-2">
-<h4 class="text-xl font-black text-[#00205B]">New voter guidelines released</h4>
-<span class="px-2.5 py-1 bg-blue-100 text-[#00205B] text-[10px] font-black uppercase tracking-wider rounded-full">PRESS RELEASE</span>
-</div>
-<p class="text-slate-600 text-sm leading-relaxed max-w-2xl">Updated procedures and guidelines for the upcoming election cycle are now available for all voters.</p>
-</div>
-<div class="text-left md:text-right shrink-0 pt-1">
-<span class="font-black text-[#00205B] text-xl block uppercase">OCT 12, 2024</span>
-</div>
-</div>
-</div>
-<!-- Card 3: Election Day (TODAY / ONGOING) -->
-<div class="group relative bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">
-<div class="flex flex-col md:flex-row items-start gap-6">
-<div class="w-14 h-14 shrink-0 rounded-full bg-blue-50 flex items-center justify-center text-[#00205B]">
-<span class="material-symbols-outlined text-[28px]">campaign</span>
-</div>
-<div class="flex-1">
-<div class="flex flex-wrap items-center gap-3 mb-2">
-<h4 class="text-xl font-black text-[#00205B]">Changes in election schedule</h4>
-<span class="px-2.5 py-1 bg-blue-100 text-[#00205B] text-[10px] font-black uppercase tracking-wider rounded-full">PUBLIC NOTICE</span>
-</div>
-<p class="text-slate-600 text-sm leading-relaxed max-w-2xl">Please be advised of changes to the electoral calendar and key dates for the upcoming election.</p>
-</div>
-<div class="text-left md:text-right shrink-0 pt-1">
-<span class="font-black text-[#00205B] text-xl block uppercase">OCT 08, 2024</span>
-</div>
-</div>
-</div>
-<!-- Card 4: Result Certification (UPCOMING) -->
-<div class="group relative bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">
-<div class="flex flex-col md:flex-row items-start gap-6">
-<div class="w-14 h-14 shrink-0 rounded-full bg-blue-50 flex items-center justify-center text-[#00205B]">
-<span class="material-symbols-outlined text-[28px]">campaign</span>
-</div>
-<div class="flex-1">
-<div class="flex flex-wrap items-center gap-3 mb-2">
-<h4 class="text-xl font-black text-[#00205B]">Training sessions for poll workers</h4>
-<span class="px-2.5 py-1 bg-blue-100 text-[#00205B] text-[10px] font-black uppercase tracking-wider rounded-full">ANNOUNCEMENT</span>
-</div>
-<p class="text-slate-600 text-sm leading-relaxed max-w-2xl">Registration is now open for training sessions for all poll workers. Secure your spot today.</p>
-</div>
-<div class="text-left md:text-right shrink-0 pt-1">
-<span class="font-black text-[#00205B] text-xl block uppercase">SEP 28, 2024</span>
-</div>
-</div>
-</div><div class="group relative bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">
-<div class="flex flex-col md:flex-row items-start gap-6">
-<div class="w-14 h-14 shrink-0 rounded-full bg-blue-50 flex items-center justify-center text-[#00205B]">
-<span class="material-symbols-outlined text-[28px]">newspaper</span>
-</div>
-<div class="flex-1">
-<div class="flex flex-wrap items-center gap-3 mb-2">
-<h4 class="text-xl font-black text-[#00205B]">Updated Code of Conduct</h4>
-<span class="px-2.5 py-1 bg-blue-100 text-[#00205B] text-[10px] font-black uppercase tracking-wider rounded-full">POLICIES &amp; PROCEDURES</span>
-</div>
-<p class="text-slate-600 text-sm leading-relaxed max-w-2xl">The revised Code of Conduct for candidates and campaign teams is now in effect.</p>
-</div>
-<div class="text-left md:text-right shrink-0 pt-1">
-<span class="font-black text-[#00205B] text-xl block uppercase">SEP 20, 2024</span>
-</div>
-</div>
-</div><div class="group relative bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">
-<div class="flex flex-col md:flex-row items-start gap-6">
-<div class="w-14 h-14 shrink-0 rounded-full bg-blue-50 flex items-center justify-center text-[#00205B]">
-<span class="material-symbols-outlined text-[28px]">quiz</span>
-</div>
-<div class="flex-1">
-<div class="flex flex-wrap items-center gap-3 mb-2">
-<h4 class="text-xl font-black text-[#00205B]">Preliminary voter registration statistics</h4>
-<span class="px-2.5 py-1 bg-blue-100 text-[#00205B] text-[10px] font-black uppercase tracking-wider rounded-full">PRESS RELEASE</span>
-</div>
-<p class="text-slate-600 text-sm leading-relaxed max-w-2xl">The Department of Elections releases preliminary statistics for the voter registration period.</p>
-</div>
-<div class="text-left md:text-right shrink-0 pt-1">
-<span class="font-black text-[#00205B] text-xl block uppercase">SEP 15, 2024</span>
-</div>
-</div>
-</div>
-</div><div class="mt-12 flex justify-center items-center gap-2">
-<button class="w-10 h-10 flex items-center justify-center rounded border border-slate-200 text-slate-500 hover:bg-slate-50 transition-colors"><span class="material-symbols-outlined text-[18px]">chevron_left</span></button>
-<button class="w-10 h-10 flex items-center justify-center rounded bg-[#00205B] text-white font-bold text-sm">1</button>
-<button class="w-10 h-10 flex items-center justify-center rounded border border-slate-200 text-[#00205B] font-bold text-sm hover:bg-slate-50 transition-colors">2</button>
-<button class="w-10 h-10 flex items-center justify-center rounded border border-slate-200 text-[#00205B] font-bold text-sm hover:bg-slate-50 transition-colors">3</button>
-<button class="w-10 h-10 flex items-center justify-center rounded border border-slate-200 text-slate-500 hover:bg-slate-50 transition-colors"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button>
-</div>
-</div>
-</div>
-</div>
-</section>
+
 <!-- Footer -->
-<footer class="w-full bg-[#00205B] text-white pt-20 pb-10">
-<div class="max-w-7xl mx-auto px-8">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
-<!-- Branding Column -->
-<div class="lg:col-span-4">
-<div class="flex items-center gap-4 mb-6">
-<img alt="Department of Elections Crest" class="h-16 w-auto" src="../assets/bvi-crest.png"/>
-<div class="flex flex-col">
-<span class="text-2xl font-black tracking-tight leading-none">elections.gov.vg</span>
-<span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1 leading-none">DEPARTMENT OF ELECTIONS</span>
-</div>
-</div>
-<p class="text-slate-300 text-sm leading-relaxed mb-8 max-w-sm">
-                        Committed to ensuring free, fair, and transparent democratic processes for all citizens of the Virgin Islands.
-                    </p>
-<div class="flex gap-4">
-<a class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-secondary transition-colors" href="#">
-<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
-</a>
-<a class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-secondary transition-colors" href="#">
-<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg>
-</a>
-<a class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-secondary transition-colors" href="#">
-<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 0 3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
-</a>
-</div>
-</div>
-<!-- Link Columns -->
-<div class="lg:col-span-2">
-<h5 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">RESOURCES</h5>
-<ul class="space-y-4">
-<li class=""><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Voter Registration</a></li>
-<li class=""><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Find Polling Station</a></li>
-<li class=""><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Advance Polling</a></li>
-<li class=""><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Election Results</a></li>
-<li class=""><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Forms &amp; Guides</a></li>
-</ul>
-</div>
-<div class="lg:col-span-2">
-<h5 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">GOVERNANCE</h5>
-<ul class="space-y-4">
-<li class=""><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Elections Act</a></li>
-<li class=""><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Boundary Commissions</a></li>
-<li class=""><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Code of Conduct</a></li>
-<li class=""><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Privacy Policy</a></li>
-<li class=""><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Accessibility</a></li>
-</ul>
-</div>
-<!-- Contact Column -->
-<div class="lg:col-span-4">
-<h5 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">CONTACT US</h5>
-<div class="space-y-4">
-<div class="flex items-start gap-3">
-<span class="material-symbols-outlined text-secondary text-xl">location_on</span>
-<p class="text-sm text-slate-300">
-                                Office of the Supervisor of Elections<br/>
-                                Road Town, Tortola<br/>
-                                British Virgin Islands
-                            </p>
-</div>
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary text-xl">call</span>
-<p class="text-sm text-slate-300">+1 (284) 468-4380</p>
-</div>
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary text-xl">mail</span>
-<p class="text-sm text-slate-300">elections@gov.vg</p>
-</div>
-<div class="pt-4">
-<p class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">OPERATING HOURS</p>
-<p class="text-sm text-slate-300">Mon - Fri: 8:30 AM – 4:30 PM</p>
-</div>
-</div>
-</div>
-</div>
-<!-- Bottom Copyright -->
-<div class="border-t border-white border-opacity-10 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
-<p class="text-slate-400 text-xs font-medium">
-                    © 2024 Department of Elections of the Virgin Islands. All rights reserved.
-                </p>
-<div class="flex gap-8 text-[11px] font-black uppercase tracking-widest text-slate-500">
-<a class="hover:text-white transition-colors" href="#">Terms of Use</a>
-<a class="hover:text-white transition-colors" href="#">Sitemap</a>
-</div>
-</div>
-</div>
+<footer class="w-full bg-[#00205B] text-white pt-16 pb-10">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+      <div class="lg:col-span-4">
+        <div class="flex items-center gap-4 mb-6">
+          <img alt="Department of Elections Crest" class="h-16 w-auto" src="../assets/bvi-crest.png"/>
+          <div class="flex flex-col">
+            <span class="text-2xl font-black tracking-tight leading-none">elections.gov.vg</span>
+            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1 leading-none">DEPARTMENT OF ELECTIONS</span>
+          </div>
+        </div>
+        <p class="text-slate-300 text-sm leading-relaxed mb-8 max-w-sm">Committed to ensuring free, fair, and transparent democratic processes for all citizens of the Virgin Islands.</p>
+      </div>
+      <div class="lg:col-span-2">
+        <h5 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">RESOURCES</h5>
+        <ul class="space-y-4">
+          <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Voter Registration</a></li>
+          <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Find Polling Station</a></li>
+          <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Election Results</a></li>
+          <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Forms &amp; Guides</a></li>
+        </ul>
+      </div>
+      <div class="lg:col-span-2">
+        <h5 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">INFORMATION</h5>
+        <ul class="space-y-4">
+          <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">About Elections</a></li>
+          <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">News &amp; Policies</a></li>
+          <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Important Dates</a></li>
+          <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-slate-400 text-xs">© 2024 Department of Elections, British Virgin Islands. All rights reserved.</p>
+      <p class="text-slate-400 text-xs">An official government website</p>
+    </div>
+  </div>
 </footer>
-</body></html>
+
+<script>
+function filterEvents(audience) {
+  // Update buttons
+  document.querySelectorAll('.filter-btn[data-filter]').forEach(function(btn) {
+    btn.classList.remove('active');
+  });
+  var activeBtn = document.querySelector('.filter-btn[data-filter="' + audience + '"]');
+  if (activeBtn) activeBtn.classList.add('active');
+
+  // Filter events
+  var items = document.querySelectorAll('.event-item');
+  var visible = 0;
+  items.forEach(function(item) {
+    var audiences = item.getAttribute('data-audience') || '';
+    if (audience === 'all' || audiences.indexOf(audience) !== -1) {
+      item.style.display = '';
+      visible++;
+    } else {
+      item.style.display = 'none';
+    }
+  });
+
+  // Update count
+  var countEl = document.getElementById('event-count');
+  if (countEl) countEl.textContent = visible;
+
+  // Show/hide empty state
+  var emptyState = document.getElementById('empty-state');
+  if (emptyState) emptyState.classList.toggle('hidden', visible > 0);
+}
+</script>
+
+</body>
+</html>
