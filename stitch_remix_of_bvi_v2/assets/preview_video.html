@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><title>Video Preview</title></head>
+<body style="margin:0;background:#000">
+<video id="v" src="Recording 2026-05-07 133038.mp4" controls autoplay style="width:100%;max-height:100vh"></video>
+<script>
+const v = document.getElementById('v');
+v.addEventListener('loadedmetadata', () => {
+  document.title = 'Duration: ' + v.duration.toFixed(2) + 's';
+});
+</script>
+</body>
+</html>
