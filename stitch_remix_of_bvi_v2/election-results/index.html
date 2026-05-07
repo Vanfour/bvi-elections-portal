@@ -199,6 +199,7 @@
       else if(/IMPORTANT.*DATES/.test(t)&&L.importantDates&&!a.classList.contains('tab-active')&&!a.classList.contains('tab-inactive')) a.href=L.importantDates;
       else if(/VIEW.*ELECTION.*DETAIL/.test(t)&&L.importantDates&&!a.classList.contains('tab-active')&&!a.classList.contains('tab-inactive')) a.href=L.importantDates;
       else if(/PEOPLE\s+VIEW.*CANDIDATES/.test(t)&&L.candidates) a.href=L.candidates;
+      else if(/REGISTER/.test(t)&&a.classList.contains('sh-register')&&L.voters) a.href=L.voters;
     });
     // Wire action buttons
     document.querySelectorAll('button:not([onclick])').forEach(function(btn){
