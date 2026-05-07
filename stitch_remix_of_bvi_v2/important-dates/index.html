@@ -25,13 +25,14 @@ tailwind.config = {
   }
 }
 </script>
-<script>document.documentElement.style.visibility='hidden';requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.style.visibility='';document.documentElement.classList.add('page-loaded');});});</script>
+<script>document.documentElement.style.background='#f8f9fa';requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.add('page-loaded');});});</script>
 <style>
-  html { overflow-y: scroll; }
+  html { overflow-y: scroll; background: #f8f9fa; }
+  body { opacity: 0; }
   @keyframes navFadeIn { from { opacity: 0; } to { opacity: 1; } }
-  html.page-loaded body { animation: navFadeIn 0.12s ease-out; }
+  html.page-loaded body { opacity: 1; animation: navFadeIn 0.15s ease-out; }
   @keyframes navFadeOut { from { opacity: 1; } to { opacity: 0; } }
-  body.page-exit { animation: navFadeOut 0.1s ease-in forwards; }
+  html.page-loaded body.page-exit { animation: navFadeOut 0.1s ease-in both; }
   header.w-full { min-height: 88px; box-sizing: border-box; }
 
   .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
