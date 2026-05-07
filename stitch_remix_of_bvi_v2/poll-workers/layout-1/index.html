@@ -80,27 +80,44 @@
 <style>
   html { overflow-y: scroll; background: #f8f9fa; }
   header.w-full { min-height: 88px; box-sizing: border-box; }
-  /* ── Critical nav layout (mirrors Tailwind classes applied before CDN runs) ── */
-  header.w-full > div > div { display: flex; align-items: center; }
-  header.w-full nav { display: none; }
+
+  /* ── Pre-applied nav layout (identical to Tailwind output — stable from first paint) */
+  header.w-full > div > div   { display: flex; align-items: center; }
+  header.w-full nav           { display: none; }
   @media (min-width: 1024px) {
-    header.w-full nav { display: flex; align-items: center; height: 100%; margin-left: 2rem; }
-    header.w-full nav > div { display: flex; align-items: center; height: 100%; }
+    header.w-full nav         { display: flex; align-items: center; height: 100%; margin-left: 2rem; }
+    header.w-full nav > div   { display: flex; align-items: center; height: 100%; }
     header.w-full nav > div > a { display: flex; flex-direction: column; }
   }
 
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .nav-underline-active {
-            border-bottom-color: #E03C31;
-        }
-        header.w-full nav > div > a {
-            align-self: stretch;
-            justify-content: center;
-            border-bottom: 3px solid transparent;
-        }
-    </style>
+  /* ── Nav underline: border-b placeholder keeps every link the same height ── */
+  .nav-underline-active { border-bottom-color: #E03C31; }
+  header.w-full nav > div > a {
+    align-self: stretch;
+    justify-content: center;
+    border-bottom: 3px solid transparent;
+  }
+
+  /* ── Icon font ──────────────────────────────────────────────────────────── */
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+
+  @media (min-width: 1024px) {
+    
+    
+    
+  }
+
+  
+  
+
+  @media (min-width: 1024px) {
+    
+    
+    
+  }
+</style>
 <script id="bvi-nav-wiring">
 (function(){
   var L={voters:'../../voters/upcoming-events-v1/index.html',candidates:'../../candidates/upcoming-elections/index.html',pollWorkers:'./index.html',electionResults:'../../election-results/index.html',newsPolicies:'../../news-policies/index.html',keyActions:null,faqs:null,newsNotices:null,mobileVersion:'../layout-2/index.html',desktopVersion:null,importantDates:'../../important-dates/index.html'};
@@ -141,76 +158,55 @@
 <body class="font-body text-on-surface bg-white">
 <!-- Top Utility Bar -->
 <div class="w-full bg-[#f8f9fa] border-b border-slate-200 py-2 px-8">
-<div class="max-w-7xl mx-auto flex justify-between items-center text-[11px] font-bold text-slate-500 uppercase tracking-wider">
-<div class="flex items-center gap-4">
-<a class="hover:text-[#00205B] transition-colors flex items-center gap-1" href="#">
-<span class="text-[14px]">←</span> BACK TO GOV.VG
-                </a>
-<span class="text-slate-300 font-normal">|</span>
-<a class="hover:text-[#00205B] transition-colors" href="#">CONTACT US</a>
-</div>
-<div class="hidden md:block">
-                OFFICIAL PORTAL OF THE BRITISH VIRGIN ISLANDS ELECTIONS
-            </div>
-</div>
+  <div class="max-w-7xl mx-auto flex justify-between items-center text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+    <div class="flex items-center gap-4">
+      <a class="hover:text-[#00205B] transition-colors flex items-center gap-1" href="#">
+        <span class="text-[14px]">←</span> BACK TO GOV.VG
+      </a>
+      <span class="text-slate-300 font-normal">|</span>
+      <a class="hover:text-[#00205B] transition-colors" href="#">CONTACT US</a>
+    </div>
+    <div class="hidden md:block">OFFICIAL PORTAL OF THE BRITISH VIRGIN ISLANDS ELECTIONS</div>
+  </div>
 </div>
 <!-- Main Navigation Header -->
 <header class="w-full bg-white border-b border-slate-100">
-<div class="max-w-7xl mx-auto px-8 py-5">
-<div class="flex items-center">
-<!-- Logo -->
-<a href="../../index.html" class="flex items-center gap-4 shrink-0 mr-auto hover:opacity-90 transition-opacity">
-<img alt="British Virgin Islands Coat of Arms" class="h-14 w-auto object-contain" src="../../assets/bvi-crest.png" width="391" height="427"/>
-<div class="flex flex-col">
-<span class="text-3xl font-black text-[#00205B] tracking-tight leading-none">elections.gov.vg</span>
-<span class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mt-1 leading-none">DEPARTMENT OF ELECTIONS</span>
-</div>
-</a>
-<!-- Navigation Menu -->
-<nav class="hidden lg:flex items-center h-full ml-8">
-<div class="flex items-center h-full">
-<a class="px-5 font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col text-[#00205B]" href="#">
-<span>FOR</span>
-<span>VOTERS</span>
-</a>
+  <div class="max-w-7xl mx-auto px-8 py-5">
+    <div class="flex items-center">
+      <a href="../../index.html" class="flex items-center gap-4 shrink-0 mr-auto hover:opacity-90 transition-opacity">
+        <img alt="British Virgin Islands Coat of Arms"
+             class="h-14 w-auto object-contain"
+             width="391" height="427"
+             src="../../assets/bvi-crest.png"/>
+        <div class="flex flex-col">
+          <span class="text-3xl font-black text-[#00205B] tracking-tight leading-none">elections.gov.vg</span>
+          <span class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mt-1 leading-none">DEPARTMENT OF ELECTIONS</span>
+        </div>
+      </a>
+      <nav class="hidden lg:flex items-center h-full ml-8">
+        <div class="flex items-center h-full">
+          <a class="px-5 font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col text-[#00205B]" href="#"><span>FOR</span><span>VOTERS</span></a>
 <div class="h-10 w-[1px] bg-slate-200"></div>
-<a class="px-5 text-[#00205B] font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col" href="#">
-<span>FOR</span>
-<span>CANDIDATES</span>
-</a>
+<a class="px-5 font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col text-[#00205B]" href="#"><span>FOR</span><span>CANDIDATES</span></a>
 <div class="h-10 w-[1px] bg-slate-200"></div>
-<a class="px-5 font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col nav-underline-active text-[#E03C31]" href="#">
-<span>FOR</span>
-<span>POLL WORKERS</span>
-</a>
+<a class="px-5 font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col nav-underline-active text-[#E03C31]" href="#"><span>FOR</span><span>POLL WORKERS</span></a>
 <div class="h-10 w-[1px] bg-slate-200"></div>
-<a class="px-5 text-[#00205B] font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col" href="#">
-<span>IMPORTANT</span>
-<span>DATES</span>
-</a>
+<a class="px-5 font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col text-[#00205B]" href="#"><span>IMPORTANT</span><span>DATES</span></a>
 <div class="h-10 w-[1px] bg-slate-200"></div>
-<a class="px-5 text-[#00205B] font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col" href="#">
-<span>ELECTION</span>
-<span>RESULTS</span>
-</a>
+<a class="px-5 font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col text-[#00205B]" href="#"><span>ELECTION</span><span>RESULTS</span></a>
 <div class="h-10 w-[1px] bg-slate-200"></div>
-<a class="px-5 text-[#00205B] font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col" href="#">
-<span>NEWS &amp;</span>
-<span>POLICIES</span>
-</a>
-</div>
-<!-- Search Icon -->
-<button class="ml-auto mr-2 text-[#00205B] hover:text-secondary transition-colors">
-<span class="material-symbols-outlined text-2xl font-bold" data-icon="search">search</span>
-</button>
-</nav>
-<!-- Register CTA -->
-<a href="#" class="ml-4 flex items-center gap-1.5 px-5 py-2 bg-[#E03C31] hover:bg-red-700 text-white rounded-full text-[11px] font-black uppercase tracking-wider transition-all whitespace-nowrap shrink-0">
-  <span class="material-symbols-outlined text-[15px]">how_to_reg</span>
-  Register
-</a>
-</div>
-</div>
+<a class="px-5 font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col text-[#00205B]" href="#"><span>NEWS &amp;</span><span>POLICIES</span></a>
+        </div>
+        <button class="ml-auto mr-2 text-[#00205B] hover:text-secondary transition-colors">
+          <span class="material-symbols-outlined text-2xl" style="font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24">search</span>
+        </button>
+      </nav>
+      <a href="#" class="ml-4 flex items-center gap-1.5 px-5 py-2 bg-[#E03C31] hover:bg-red-700 text-white rounded-full text-[11px] font-black uppercase tracking-wider transition-all whitespace-nowrap shrink-0">
+        <span class="material-symbols-outlined text-[15px]" style="font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24">how_to_reg</span>
+        Register
+      </a>
+    </div>
+  </div>
 </header>
 <!-- Voter Information Hub Header Section -->
 <section class="w-full bg-white">
