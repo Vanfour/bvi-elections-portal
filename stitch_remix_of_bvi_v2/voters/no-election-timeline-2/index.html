@@ -79,29 +79,117 @@
     </script>
 <style>
   html { overflow-y: scroll; background: #f8f9fa; }
-  header.w-full { min-height: 88px; box-sizing: border-box; }
 
-  /* ── Pre-applied nav layout (identical to Tailwind output — stable from first paint) */
-  header.w-full > div > div   { display: flex; align-items: center; }
-  header.w-full nav           { display: none; }
-  @media (min-width: 1024px) {
-    header.w-full nav         { display: flex; align-items: center; height: 100%; margin-left: 2rem; }
-    header.w-full nav > div   { display: flex; align-items: center; height: 100%; }
-    header.w-full nav > div > a { display: flex; flex-direction: column; }
+  /* ── Utility bar ─────────────────────────────────────────────────────────── */
+  #site-util-bar {
+    width: 100%; background: #f8f9fa;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0.5rem 2rem; box-sizing: border-box;
+  }
+  .su-inner {
+    max-width: 80rem; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11px; font-weight: 700; color: #94a3b8;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .su-left { display: flex; align-items: center; gap: 1rem; }
+  .su-back, .su-contact {
+    color: inherit; text-decoration: none;
+    display: flex; align-items: center; gap: 0.25rem;
+    transition: color 0.15s;
+  }
+  .su-back:hover, .su-contact:hover { color: #00205B; }
+  .su-back-arrow { font-size: 14px; }
+  .su-divider { color: #cbd5e1; font-weight: 400; }
+  .su-portal-name { display: none; }
+  @media (min-width: 768px) { .su-portal-name { display: block; } }
+
+  /* ── Main header ─────────────────────────────────────────────────────────── */
+  #site-header {
+    width: 100%; background: #fff;
+    border-bottom: 1px solid #f1f5f9;
+    box-sizing: border-box;
+  }
+  .sh-inner {
+    max-width: 80rem; margin: 0 auto;
+    padding: 1.25rem 2rem; box-sizing: border-box;
+  }
+  .sh-row { display: flex; align-items: center; }
+
+  /* Logo */
+  .sh-logo {
+    display: flex; align-items: center; gap: 1rem;
+    flex-shrink: 0; margin-right: auto;
+    text-decoration: none; transition: opacity 0.15s;
+  }
+  .sh-logo--home { pointer-events: none; }
+  .sh-logo:not(.sh-logo--home):hover { opacity: 0.9; }
+  .sh-logo-img { height: 3.5rem; width: auto; object-fit: contain; display: block; }
+  .sh-logo-text { display: flex; flex-direction: column; }
+  .sh-logo-title {
+    font-size: 1.875rem; font-weight: 900; color: #00205B;
+    letter-spacing: -0.025em; line-height: 1;
+  }
+  .sh-logo-sub {
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.1em; color: #94a3b8; margin-top: 0.25rem; line-height: 1;
   }
 
-  /* ── Nav underline: border-b placeholder keeps every link the same height ── */
-  .nav-underline-active { border-bottom-color: #E03C31; }
-  header.w-full nav > div > a {
-    align-self: stretch;
-    justify-content: center;
+  /* Nav */
+  .sh-nav { display: none; align-items: center; height: 100%; margin-left: 2rem; }
+  @media (min-width: 1024px) { .sh-nav { display: flex; } }
+  .sh-nav-links { display: flex; align-items: center; height: 100%; }
+  .sh-nav-link {
+    display: flex; flex-direction: column;
+    align-self: stretch; justify-content: center;
+    padding: 0 1.25rem;
+    font-size: 12px; font-weight: 900;
+    text-transform: uppercase; letter-spacing: 0.05em; line-height: 1.25;
+    color: #00205B; text-decoration: none;
     border-bottom: 3px solid transparent;
+    transition: color 0.15s;
   }
+  .sh-nav-link:hover { color: #E03C31; }
+  .sh-nav-link--active { color: #E03C31; border-bottom-color: #E03C31; }
+  .sh-nav-sep { height: 2.5rem; width: 1px; background: #e2e8f0; }
 
-  /* ── Icon font ──────────────────────────────────────────────────────────── */
+  /* Search button */
+  .sh-search {
+    margin-left: auto; margin-right: 0.5rem;
+    color: #00205B; background: none; border: none; cursor: pointer;
+    padding: 0; line-height: 1; transition: color 0.15s;
+  }
+  .sh-search:hover { color: #E03C31; }
+
+  /* Register CTA */
+  .sh-register {
+    margin-left: 1rem; display: flex; align-items: center; gap: 0.375rem;
+    padding: 0.5rem 1.25rem; background: #E03C31; color: #fff;
+    border-radius: 9999px; font-size: 11px; font-weight: 900;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    text-decoration: none; white-space: nowrap; flex-shrink: 0;
+    transition: background-color 0.15s;
+  }
+  .sh-register:hover { background: #b91c1c; }
+  .sh-register-icon { font-size: 15px; }
+
+  /* Material symbols */
   .material-symbols-outlined {
     font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   }
+
+  @media (min-width: 1024px) {
+    
+    
+    
+  }
+
+  
+  
+  
+
+  
+  
 
   @media (min-width: 1024px) {
     
@@ -162,52 +250,52 @@
 </script></head>
 <body class="font-body text-on-surface bg-white">
 <!-- Top Utility Bar -->
-<div class="w-full bg-[#f8f9fa] border-b border-slate-200 py-2 px-8">
-  <div class="max-w-7xl mx-auto flex justify-between items-center text-[11px] font-bold text-slate-500 uppercase tracking-wider">
-    <div class="flex items-center gap-4">
-      <a class="hover:text-[#00205B] transition-colors flex items-center gap-1" href="#">
-        <span class="text-[14px]">←</span> BACK TO GOV.VG
+<div id="site-util-bar">
+  <div class="su-inner">
+    <div class="su-left">
+      <a class="su-back" href="#">
+        <span class="su-back-arrow">←</span> BACK TO GOV.VG
       </a>
-      <span class="text-slate-300 font-normal">|</span>
-      <a class="hover:text-[#00205B] transition-colors" href="#">CONTACT US</a>
+      <span class="su-divider">|</span>
+      <a class="su-contact" href="#">CONTACT US</a>
     </div>
-    <div class="hidden md:block">OFFICIAL PORTAL OF THE BRITISH VIRGIN ISLANDS ELECTIONS</div>
+    <div class="su-portal-name">OFFICIAL PORTAL OF THE BRITISH VIRGIN ISLANDS ELECTIONS</div>
   </div>
 </div>
 <!-- Main Navigation Header -->
-<header class="w-full bg-white border-b border-slate-100">
-  <div class="max-w-7xl mx-auto px-8 py-5">
-    <div class="flex items-center">
-      <a href="../../index.html" class="flex items-center gap-4 shrink-0 mr-auto hover:opacity-90 transition-opacity">
+<header id="site-header">
+  <div class="sh-inner">
+    <div class="sh-row">
+      <a href="../../index.html" class="sh-logo">
         <img alt="British Virgin Islands Coat of Arms"
-             class="h-14 w-auto object-contain"
+             class="sh-logo-img"
              width="391" height="427"
              src="../../assets/bvi-crest.png"/>
-        <div class="flex flex-col">
-          <span class="text-3xl font-black text-[#00205B] tracking-tight leading-none">elections.gov.vg</span>
-          <span class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mt-1 leading-none">DEPARTMENT OF ELECTIONS</span>
+        <div class="sh-logo-text">
+          <span class="sh-logo-title">elections.gov.vg</span>
+          <span class="sh-logo-sub">DEPARTMENT OF ELECTIONS</span>
         </div>
       </a>
-      <nav class="hidden lg:flex items-center h-full ml-8">
-        <div class="flex items-center h-full">
-          <a class="px-5 font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col nav-underline-active text-[#E03C31]" href="#"><span>FOR</span><span>VOTERS</span></a>
-<div class="h-10 w-[1px] bg-slate-200"></div>
-<a class="px-5 font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col text-[#00205B]" href="#"><span>FOR</span><span>CANDIDATES</span></a>
-<div class="h-10 w-[1px] bg-slate-200"></div>
-<a class="px-5 font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col text-[#00205B]" href="#"><span>FOR</span><span>POLL WORKERS</span></a>
-<div class="h-10 w-[1px] bg-slate-200"></div>
-<a class="px-5 font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col text-[#00205B]" href="#"><span>IMPORTANT</span><span>DATES</span></a>
-<div class="h-10 w-[1px] bg-slate-200"></div>
-<a class="px-5 font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col text-[#00205B]" href="#"><span>ELECTION</span><span>RESULTS</span></a>
-<div class="h-10 w-[1px] bg-slate-200"></div>
-<a class="px-5 font-black text-[12px] leading-tight uppercase tracking-wide hover:text-secondary transition-colors flex flex-col text-[#00205B]" href="#"><span>NEWS &amp;</span><span>POLICIES</span></a>
+      <nav class="sh-nav">
+        <div class="sh-nav-links">
+          <a class="sh-nav-link sh-nav-link--active" href="#"><span>FOR</span><span>VOTERS</span></a>
+<div class="sh-nav-sep"></div>
+<a class="sh-nav-link" href="#"><span>FOR</span><span>CANDIDATES</span></a>
+<div class="sh-nav-sep"></div>
+<a class="sh-nav-link" href="#"><span>FOR</span><span>POLL WORKERS</span></a>
+<div class="sh-nav-sep"></div>
+<a class="sh-nav-link" href="#"><span>IMPORTANT</span><span>DATES</span></a>
+<div class="sh-nav-sep"></div>
+<a class="sh-nav-link" href="#"><span>ELECTION</span><span>RESULTS</span></a>
+<div class="sh-nav-sep"></div>
+<a class="sh-nav-link" href="#"><span>NEWS &amp;</span><span>POLICIES</span></a>
         </div>
-        <button class="ml-auto mr-2 text-[#00205B] hover:text-secondary transition-colors">
-          <span class="material-symbols-outlined text-2xl" style="font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24">search</span>
+        <button class="sh-search" aria-label="Search">
+          <span class="material-symbols-outlined" style="font-size:24px;line-height:1;display:block">search</span>
         </button>
       </nav>
-      <a href="#" class="ml-4 flex items-center gap-1.5 px-5 py-2 bg-[#E03C31] hover:bg-red-700 text-white rounded-full text-[11px] font-black uppercase tracking-wider transition-all whitespace-nowrap shrink-0">
-        <span class="material-symbols-outlined text-[15px]" style="font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24">how_to_reg</span>
+      <a href="#" class="sh-register">
+        <span class="material-symbols-outlined sh-register-icon">how_to_reg</span>
         Register
       </a>
     </div>
