@@ -510,8 +510,8 @@
           <p class="text-slate-300 text-sm leading-relaxed">All polling stations reporting. Results certified by the Supervisor of Elections on November 27, 2024.</p>
         </div>
         <div class="flex gap-3 shrink-0">
-          <button class="bg-[#E03C31] text-white px-6 py-3.5 rounded-lg font-black text-xs uppercase tracking-wider hover:brightness-110 transition-all shadow-md flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">bar_chart</span> Results by Candidate</button>
-          <button class="bg-white/10 hover:bg-white/20 text-white px-6 py-3.5 rounded-lg font-black text-xs uppercase tracking-wider transition-all flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">download</span> Download PDF</button>
+          <button onclick="switchErTab('er-panel-candidate');document.getElementById('er-tab-bar').scrollIntoView({behavior:'smooth',block:'start'})" class="bg-[#E03C31] text-white px-6 py-3.5 rounded-lg font-black text-xs uppercase tracking-wider hover:brightness-110 transition-all shadow-md flex items-center gap-2 cursor-pointer"><span class="material-symbols-outlined text-[18px]">bar_chart</span> Results by Candidate</button>
+          <a href="election-results-2024.pdf" download class="bg-white/10 hover:bg-white/20 text-white px-6 py-3.5 rounded-lg font-black text-xs uppercase tracking-wider transition-all flex items-center gap-2 no-underline"><span class="material-symbols-outlined text-[18px]">download</span> Download PDF</a>
         </div>
       </div>
     </div>
