@@ -25,14 +25,8 @@ tailwind.config = {
   }
 }
 </script>
-<script>document.documentElement.style.background='#f8f9fa';requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.add('page-loaded');});});</script>
 <style>
   html { overflow-y: scroll; background: #f8f9fa; }
-  body { opacity: 0; }
-  @keyframes navFadeIn { from { opacity: 0; } to { opacity: 1; } }
-  html.page-loaded body { opacity: 1; animation: navFadeIn 0.15s ease-out; }
-  @keyframes navFadeOut { from { opacity: 1; } to { opacity: 0; } }
-  html.page-loaded body.page-exit { animation: navFadeOut 0.1s ease-in both; }
   header.w-full { min-height: 88px; box-sizing: border-box; }
 
   .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
@@ -531,34 +525,6 @@ function filterEvents(audience) {
 }
 </script>
 
-<script id="bvi-smooth-nav">
-(function(){
-  // 1. Prefetch pages on hover so they load before click
-  var prefetched={};
-  document.addEventListener('mouseover',function(e){
-    var a=e.target.closest('a[href]');
-    if(!a||!a.href||prefetched[a.href]) return;
-    if(a.href.indexOf('github.io')<0&&a.href.indexOf(location.hostname)<0) return;
-    if(a.href===location.href) return;
-    prefetched[a.href]=1;
-    var l=document.createElement('link');
-    l.rel='prefetch'; l.href=a.href;
-    document.head.appendChild(l);
-  });
-  // 2. Smooth fade-out before navigating
-  document.addEventListener('click',function(e){
-    var a=e.target.closest('a[href]');
-    if(!a||!a.href) return;
-    if(a.href===location.href) return;
-    if(a.target==='_blank'||e.ctrlKey||e.metaKey||e.shiftKey) return;
-    if(a.href.indexOf('github.io')<0&&a.href.indexOf(location.hostname)<0) return;
-    if(a.href.startsWith('mailto:')||a.href.startsWith('tel:')) return;
-    e.preventDefault();
-    var href=a.href;
-    document.body.classList.add('page-exit');
-    setTimeout(function(){ window.location.href=href; },100);
-  });
-})();
-</script>
+
 </body>
 </html>
