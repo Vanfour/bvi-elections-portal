@@ -28,6 +28,14 @@ tailwind.config = {
 <style>
   html { overflow-y: scroll; background: #f8f9fa; }
   header.w-full { min-height: 88px; box-sizing: border-box; }
+  /* ── Critical nav layout (mirrors Tailwind classes applied before CDN runs) ── */
+  header.w-full > div > div { display: flex; align-items: center; }
+  header.w-full nav { display: none; }
+  @media (min-width: 1024px) {
+    header.w-full nav { display: flex; align-items: center; height: 100%; margin-left: 2rem; }
+    header.w-full nav > div { display: flex; align-items: center; height: 100%; }
+    header.w-full nav > div > a { display: flex; flex-direction: column; }
+  }
 
   .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
   .nav-underline-active {
