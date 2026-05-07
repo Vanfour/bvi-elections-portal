@@ -170,6 +170,20 @@
   .state-dropdown-item{display:flex;align-items:center;gap:8px;padding:10px 16px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;border-left:3px solid transparent;transition:all .15s;color:#475569;width:100%;text-align:left;}
   .state-dropdown-item:hover{background:#f8fafc;color:#00205B;}
   .state-dropdown-item.active{border-left-color:#E03C31;color:#00205B;background:#f8fafc;}
+
+  /* ── Election-results in-page tabs ───────────────────────────────────────── */
+  .er-tab {
+    padding: 0.625rem 1.5rem;
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    white-space: nowrap; border-radius: 9999px;
+    background: none; border: none; cursor: pointer;
+    color: #64748b;
+    transition: color 0.15s ease, background-color 0.15s ease;
+  }
+  .er-tab:hover { color: #00205B; background-color: #f1f5f9; }
+  .er-tab--active { background-color: #00205B; color: #ffffff; font-weight: 900; }
+  .er-tab--active:hover { background-color: #00205B; color: #ffffff; }
 </style>
 <script id="bvi-nav-wiring">
 (function(){
@@ -502,54 +516,142 @@
       </div>
     </div>
   </section>
+  <!-- ── Sticky Tab Bar ─────────────────────────────────────────────────── -->
   <section class="w-full bg-white border-b border-slate-200 sticky top-0 z-30">
     <div class="max-w-7xl mx-auto px-8">
       <div class="flex items-center justify-between">
-        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-4">
-          <a class="px-6 py-2.5 text-[12px] font-black uppercase tracking-widest whitespace-nowrap bg-primary text-white rounded-full" href="#">Summary</a>
-          <a class="px-6 py-4 text-[12px] font-bold uppercase tracking-widest whitespace-nowrap text-slate-500 hover:text-primary hover:bg-slate-50 rounded-full" href="#">By District</a>
-          <a class="px-6 py-4 text-[12px] font-bold uppercase tracking-widest whitespace-nowrap text-slate-500 hover:text-primary hover:bg-slate-50 rounded-full" href="#">By Candidate</a>
-          <a class="px-6 py-4 text-[12px] font-bold uppercase tracking-widest whitespace-nowrap text-slate-500 hover:text-primary hover:bg-slate-50 rounded-full" href="#">By Party</a>
+        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-4" id="er-tab-bar">
+          <button class="er-tab er-tab--active" data-panel="er-panel-summary">Summary</button>
+          <button class="er-tab" data-panel="er-panel-district">By District</button>
+          <button class="er-tab" data-panel="er-panel-candidate">By Candidate</button>
+          <button class="er-tab" data-panel="er-panel-party">By Party</button>
         </div>
         <div class="ml-auto flex items-center"><div class="h-6 w-[1px] bg-slate-200 mr-4"></div><a class="flex items-center gap-2 px-4 text-[12px] font-black uppercase tracking-widest text-slate-500 hover:text-primary transition-all whitespace-nowrap rounded-full py-4" href="#"><span class="material-symbols-outlined text-[20px]">download</span> Download Results</a></div>
       </div>
     </div>
   </section>
-  <section class="w-full bg-white py-10">
-    <div class="max-w-7xl mx-auto px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="group bg-[#fcfdfe] border border-slate-200 p-8 rounded-xl shadow-sm border-t-4 border-t-[#00205B] hover:-translate-y-1 hover:shadow-md transition-all flex flex-col"><div class="w-12 h-12 rounded-full bg-[#00205B]/10 flex items-center justify-center mb-6"><span class="material-symbols-outlined text-[#00205B] text-2xl">how_to_vote</span></div><p class="text-[10px] font-black text-slate-500 uppercase tracking-[0.15em] mb-2">Total Votes Cast</p><h3 class="text-4xl font-black text-[#00205B] font-headline tracking-tight mt-auto">12,482</h3><p class="text-[11px] font-medium text-slate-400 mt-1">Validated ballots</p></div>
-        <div class="group bg-[#fcfdfe] border border-slate-200 p-8 rounded-xl shadow-sm border-t-4 border-t-green-500 hover:-translate-y-1 hover:shadow-md transition-all flex flex-col"><div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center mb-6"><span class="material-symbols-outlined text-green-600 text-2xl">analytics</span></div><p class="text-[10px] font-black text-slate-500 uppercase tracking-[0.15em] mb-2">Voter Turnout</p><h3 class="text-4xl font-black text-[#00205B] font-headline tracking-tight mt-auto">74.2%</h3><p class="text-[11px] font-medium text-green-600 mt-1 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">trending_up</span> Higher than last election</p></div>
-        <div class="group bg-[#fcfdfe] border border-slate-200 p-8 rounded-xl shadow-sm border-t-4 border-t-[#00205B] hover:-translate-y-1 hover:shadow-md transition-all flex flex-col"><div class="w-12 h-12 rounded-full bg-[#00205B]/10 flex items-center justify-center mb-6"><span class="material-symbols-outlined text-[#00205B] text-2xl">group</span></div><p class="text-[10px] font-black text-slate-500 uppercase tracking-[0.15em] mb-2">Registered Voters</p><h3 class="text-4xl font-black text-[#00205B] font-headline tracking-tight mt-auto">16,822</h3><p class="text-[11px] font-medium text-slate-400 mt-1">Eligible electorate</p></div>
-        <div class="group bg-[#fcfdfe] border border-slate-200 p-8 rounded-xl shadow-sm border-t-4 border-t-green-500 hover:-translate-y-1 hover:shadow-md transition-all flex flex-col"><div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center mb-6"><span class="material-symbols-outlined text-green-600 text-2xl">check_circle</span></div><p class="text-[10px] font-black text-slate-500 uppercase tracking-[0.15em] mb-2">Polling Stations</p><h3 class="text-4xl font-black text-[#00205B] font-headline tracking-tight mt-auto">100%</h3><p class="text-[11px] font-medium text-green-600 mt-1">All stations reporting</p></div>
+
+  <!-- ── TAB: SUMMARY ───────────────────────────────────────────────────── -->
+  <div id="er-panel-summary">
+    <section class="w-full bg-white py-10">
+      <div class="max-w-7xl mx-auto px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="group bg-[#fcfdfe] border border-slate-200 p-8 rounded-xl shadow-sm border-t-4 border-t-[#00205B] hover:-translate-y-1 hover:shadow-md transition-all flex flex-col"><div class="w-12 h-12 rounded-full bg-[#00205B]/10 flex items-center justify-center mb-6"><span class="material-symbols-outlined text-[#00205B] text-2xl">how_to_vote</span></div><p class="text-[10px] font-black text-slate-500 uppercase tracking-[0.15em] mb-2">Total Votes Cast</p><h3 class="text-4xl font-black text-[#00205B] font-headline tracking-tight mt-auto">12,482</h3><p class="text-[11px] font-medium text-slate-400 mt-1">Validated ballots</p></div>
+          <div class="group bg-[#fcfdfe] border border-slate-200 p-8 rounded-xl shadow-sm border-t-4 border-t-green-500 hover:-translate-y-1 hover:shadow-md transition-all flex flex-col"><div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center mb-6"><span class="material-symbols-outlined text-green-600 text-2xl">analytics</span></div><p class="text-[10px] font-black text-slate-500 uppercase tracking-[0.15em] mb-2">Voter Turnout</p><h3 class="text-4xl font-black text-[#00205B] font-headline tracking-tight mt-auto">74.2%</h3><p class="text-[11px] font-medium text-green-600 mt-1 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">trending_up</span> Higher than last election</p></div>
+          <div class="group bg-[#fcfdfe] border border-slate-200 p-8 rounded-xl shadow-sm border-t-4 border-t-[#00205B] hover:-translate-y-1 hover:shadow-md transition-all flex flex-col"><div class="w-12 h-12 rounded-full bg-[#00205B]/10 flex items-center justify-center mb-6"><span class="material-symbols-outlined text-[#00205B] text-2xl">group</span></div><p class="text-[10px] font-black text-slate-500 uppercase tracking-[0.15em] mb-2">Registered Voters</p><h3 class="text-4xl font-black text-[#00205B] font-headline tracking-tight mt-auto">16,822</h3><p class="text-[11px] font-medium text-slate-400 mt-1">Eligible electorate</p></div>
+          <div class="group bg-[#fcfdfe] border border-slate-200 p-8 rounded-xl shadow-sm border-t-4 border-t-green-500 hover:-translate-y-1 hover:shadow-md transition-all flex flex-col"><div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center mb-6"><span class="material-symbols-outlined text-green-600 text-2xl">check_circle</span></div><p class="text-[10px] font-black text-slate-500 uppercase tracking-[0.15em] mb-2">Polling Stations</p><h3 class="text-4xl font-black text-[#00205B] font-headline tracking-tight mt-auto">100%</h3><p class="text-[11px] font-medium text-green-600 mt-1">All stations reporting</p></div>
+        </div>
       </div>
-    </div>
-  </section>
-  <section class="w-full bg-white pb-16">
-    <div class="max-w-7xl mx-auto px-8">
-      <div class="flex items-center justify-between mb-6"><h2 class="text-2xl font-black text-primary font-headline">Results by Electoral District</h2><span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Sort by: District Number</span></div>
-      <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
-        <table class="w-full text-left border-collapse">
-          <thead class="bg-slate-50 border-b border-slate-200"><tr>
-            <th class="px-6 py-4 text-[11px] font-black text-slate-500 uppercase tracking-widest">District Name</th>
-            <th class="px-6 py-4 text-[11px] font-black text-slate-500 uppercase tracking-widest">Winning Candidate</th>
-            <th class="px-6 py-4 text-[11px] font-black text-slate-500 uppercase tracking-widest">Party</th>
-            <th class="px-6 py-4 text-[11px] font-black text-slate-500 uppercase tracking-widest text-right">Votes</th>
-            <th class="px-6 py-4 text-[11px] font-black text-slate-500 uppercase tracking-widest text-right">Share</th>
-          </tr></thead>
-          <tbody class="divide-y divide-slate-100">
-            <tr class="hover:bg-slate-50"><td class="px-6 py-5"><span class="font-bold text-primary block">District 1</span><span class="text-xs text-slate-500 uppercase tracking-wide">First District</span></td><td class="px-6 py-5"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-green-500"></span><span class="font-bold text-primary">Andrew A. Fahie</span></div></td><td class="px-6 py-5"><span class="text-sm font-medium text-slate-600">VIP</span></td><td class="px-6 py-5 text-right font-black text-primary">742</td><td class="px-6 py-5 text-right font-bold text-slate-500">81.5%</td></tr>
-            <tr class="hover:bg-slate-50"><td class="px-6 py-5"><span class="font-bold text-primary block">District 2</span><span class="text-xs text-slate-500 uppercase tracking-wide">Second District</span></td><td class="px-6 py-5"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-green-500"></span><span class="font-bold text-primary">Melvin M. Turnbull</span></div></td><td class="px-6 py-5"><span class="text-sm font-medium text-slate-600">NDP</span></td><td class="px-6 py-5 text-right font-black text-primary">568</td><td class="px-6 py-5 text-right font-bold text-slate-500">62.3%</td></tr>
-            <tr class="hover:bg-slate-50"><td class="px-6 py-5"><span class="font-bold text-primary block">District 3</span><span class="text-xs text-slate-500 uppercase tracking-wide">Third District</span></td><td class="px-6 py-5"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-green-500"></span><span class="font-bold text-primary">Julian Fraser</span></div></td><td class="px-6 py-5"><span class="text-sm font-medium text-slate-600">PU</span></td><td class="px-6 py-5 text-right font-black text-primary">601</td><td class="px-6 py-5 text-right font-bold text-slate-500">68.7%</td></tr>
-            <tr class="hover:bg-slate-50"><td class="px-6 py-5"><span class="font-bold text-primary block">District 4</span><span class="text-xs text-slate-500 uppercase tracking-wide">Fourth District</span></td><td class="px-6 py-5"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-green-500"></span><span class="font-bold text-primary">Mark Vanterpool</span></div></td><td class="px-6 py-5"><span class="text-sm font-medium text-slate-600">NDP</span></td><td class="px-6 py-5 text-right font-black text-primary">492</td><td class="px-6 py-5 text-right font-bold text-slate-500">54.1%</td></tr>
-          </tbody>
-        </table>
+    </section>
+    <section class="w-full bg-white pb-16">
+      <div class="max-w-7xl mx-auto px-8">
+        <div class="flex items-center justify-between mb-6"><h2 class="text-2xl font-black text-primary font-headline">Winners at a Glance</h2><span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">All 13 Districts</span></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="bg-white border border-slate-200 rounded-xl p-5 flex items-center gap-4 hover:shadow-sm transition-all"><div class="w-10 h-10 rounded-full bg-[#00205B]/10 flex items-center justify-center shrink-0"><span class="text-xs font-black text-[#00205B]">D1</span></div><div class="flex-1 min-w-0"><p class="font-black text-[#00205B] text-sm truncate">Andrew A. Fahie</p><p class="text-xs text-slate-500 mt-0.5">VIP · 742 votes · 81.5%</p></div><span class="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-black uppercase rounded-full shrink-0">Won</span></div>
+          <div class="bg-white border border-slate-200 rounded-xl p-5 flex items-center gap-4 hover:shadow-sm transition-all"><div class="w-10 h-10 rounded-full bg-[#00205B]/10 flex items-center justify-center shrink-0"><span class="text-xs font-black text-[#00205B]">D2</span></div><div class="flex-1 min-w-0"><p class="font-black text-[#00205B] text-sm truncate">Melvin M. Turnbull</p><p class="text-xs text-slate-500 mt-0.5">NDP · 568 votes · 62.3%</p></div><span class="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-black uppercase rounded-full shrink-0">Won</span></div>
+          <div class="bg-white border border-slate-200 rounded-xl p-5 flex items-center gap-4 hover:shadow-sm transition-all"><div class="w-10 h-10 rounded-full bg-[#00205B]/10 flex items-center justify-center shrink-0"><span class="text-xs font-black text-[#00205B]">D3</span></div><div class="flex-1 min-w-0"><p class="font-black text-[#00205B] text-sm truncate">Julian Fraser</p><p class="text-xs text-slate-500 mt-0.5">PU · 601 votes · 68.7%</p></div><span class="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-black uppercase rounded-full shrink-0">Won</span></div>
+          <div class="bg-white border border-slate-200 rounded-xl p-5 flex items-center gap-4 hover:shadow-sm transition-all"><div class="w-10 h-10 rounded-full bg-[#00205B]/10 flex items-center justify-center shrink-0"><span class="text-xs font-black text-[#00205B]">D4</span></div><div class="flex-1 min-w-0"><p class="font-black text-[#00205B] text-sm truncate">Mark Vanterpool</p><p class="text-xs text-slate-500 mt-0.5">NDP · 492 votes · 54.1%</p></div><span class="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-black uppercase rounded-full shrink-0">Won</span></div>
+          <div class="bg-white border border-slate-200 rounded-xl p-5 flex items-center gap-4 hover:shadow-sm transition-all"><div class="w-10 h-10 rounded-full bg-[#00205B]/10 flex items-center justify-center shrink-0"><span class="text-xs font-black text-[#00205B]">D5</span></div><div class="flex-1 min-w-0"><p class="font-black text-[#00205B] text-sm truncate">Delores Christopher</p><p class="text-xs text-slate-500 mt-0.5">NDP · 521 votes · 57.4%</p></div><span class="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-black uppercase rounded-full shrink-0">Won</span></div>
+          <div class="bg-white border border-slate-200 rounded-xl p-5 flex items-center gap-4 hover:shadow-sm transition-all"><div class="w-10 h-10 rounded-full bg-[#00205B]/10 flex items-center justify-center shrink-0"><span class="text-xs font-black text-[#00205B]">D6</span></div><div class="flex-1 min-w-0"><p class="font-black text-[#00205B] text-sm truncate">Natalio Wheatley</p><p class="text-xs text-slate-500 mt-0.5">VIP · 478 votes · 52.6%</p></div><span class="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-black uppercase rounded-full shrink-0">Won</span></div>
+        </div>
+        <div class="flex justify-center mt-6"><button onclick="switchErTab('er-panel-district')" class="px-8 py-3.5 border-2 border-[#00205B] text-[#00205B] bg-transparent rounded-lg font-black text-xs uppercase tracking-widest hover:bg-[#00205B] hover:text-white transition-all flex items-center gap-2">View Full District Results <span class="material-symbols-outlined text-[18px]">arrow_forward</span></button></div>
       </div>
-      <div class="flex justify-center mt-4">
-        <button class="px-8 py-3.5 border-2 border-[#00205B] text-[#00205B] bg-transparent rounded-lg font-black text-xs uppercase tracking-widest hover:bg-[#00205B] hover:text-white transition-all flex items-center gap-2">View All 13 Districts <span class="material-symbols-outlined text-[18px]">expand_more</span></button>
+    </section>
+  </div>
+
+  <!-- ── TAB: BY DISTRICT ───────────────────────────────────────────────── -->
+  <div id="er-panel-district" class="hidden">
+    <section class="w-full bg-white py-10 pb-16">
+      <div class="max-w-7xl mx-auto px-8">
+        <div class="flex items-center justify-between mb-6"><h2 class="text-2xl font-black text-primary font-headline">Results by Electoral District</h2><span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Sort by: District Number</span></div>
+        <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+          <table class="w-full text-left border-collapse">
+            <thead class="bg-slate-50 border-b border-slate-200"><tr>
+              <th class="px-6 py-4 text-[11px] font-black text-slate-500 uppercase tracking-widest">District</th>
+              <th class="px-6 py-4 text-[11px] font-black text-slate-500 uppercase tracking-widest">Winning Candidate</th>
+              <th class="px-6 py-4 text-[11px] font-black text-slate-500 uppercase tracking-widest">Party</th>
+              <th class="px-6 py-4 text-[11px] font-black text-slate-500 uppercase tracking-widest text-right">Votes</th>
+              <th class="px-6 py-4 text-[11px] font-black text-slate-500 uppercase tracking-widest text-right">Share</th>
+            </tr></thead>
+            <tbody class="divide-y divide-slate-100">
+              <tr class="hover:bg-slate-50"><td class="px-6 py-5"><span class="font-bold text-primary block">District 1</span><span class="text-xs text-slate-500 uppercase tracking-wide">First District</span></td><td class="px-6 py-5"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-green-500"></span><span class="font-bold text-primary">Andrew A. Fahie</span></div></td><td class="px-6 py-5"><span class="text-sm font-medium text-slate-600">VIP</span></td><td class="px-6 py-5 text-right font-black text-primary">742</td><td class="px-6 py-5 text-right font-bold text-slate-500">81.5%</td></tr>
+              <tr class="hover:bg-slate-50"><td class="px-6 py-5"><span class="font-bold text-primary block">District 2</span><span class="text-xs text-slate-500 uppercase tracking-wide">Second District</span></td><td class="px-6 py-5"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-green-500"></span><span class="font-bold text-primary">Melvin M. Turnbull</span></div></td><td class="px-6 py-5"><span class="text-sm font-medium text-slate-600">NDP</span></td><td class="px-6 py-5 text-right font-black text-primary">568</td><td class="px-6 py-5 text-right font-bold text-slate-500">62.3%</td></tr>
+              <tr class="hover:bg-slate-50"><td class="px-6 py-5"><span class="font-bold text-primary block">District 3</span><span class="text-xs text-slate-500 uppercase tracking-wide">Third District</span></td><td class="px-6 py-5"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-green-500"></span><span class="font-bold text-primary">Julian Fraser</span></div></td><td class="px-6 py-5"><span class="text-sm font-medium text-slate-600">PU</span></td><td class="px-6 py-5 text-right font-black text-primary">601</td><td class="px-6 py-5 text-right font-bold text-slate-500">68.7%</td></tr>
+              <tr class="hover:bg-slate-50"><td class="px-6 py-5"><span class="font-bold text-primary block">District 4</span><span class="text-xs text-slate-500 uppercase tracking-wide">Fourth District</span></td><td class="px-6 py-5"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-green-500"></span><span class="font-bold text-primary">Mark Vanterpool</span></div></td><td class="px-6 py-5"><span class="text-sm font-medium text-slate-600">NDP</span></td><td class="px-6 py-5 text-right font-black text-primary">492</td><td class="px-6 py-5 text-right font-bold text-slate-500">54.1%</td></tr>
+              <tr class="hover:bg-slate-50"><td class="px-6 py-5"><span class="font-bold text-primary block">District 5</span><span class="text-xs text-slate-500 uppercase tracking-wide">Fifth District</span></td><td class="px-6 py-5"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-green-500"></span><span class="font-bold text-primary">Delores Christopher</span></div></td><td class="px-6 py-5"><span class="text-sm font-medium text-slate-600">NDP</span></td><td class="px-6 py-5 text-right font-black text-primary">521</td><td class="px-6 py-5 text-right font-bold text-slate-500">57.4%</td></tr>
+              <tr class="hover:bg-slate-50"><td class="px-6 py-5"><span class="font-bold text-primary block">District 6</span><span class="text-xs text-slate-500 uppercase tracking-wide">Sixth District</span></td><td class="px-6 py-5"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-green-500"></span><span class="font-bold text-primary">Natalio Wheatley</span></div></td><td class="px-6 py-5"><span class="text-sm font-medium text-slate-600">VIP</span></td><td class="px-6 py-5 text-right font-black text-primary">478</td><td class="px-6 py-5 text-right font-bold text-slate-500">52.6%</td></tr>
+              <tr class="bg-slate-50"><td colspan="5" class="px-6 py-4 text-center text-[11px] font-bold text-slate-400 uppercase tracking-widest">Districts 7–13: Data pending full certification</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
+
+  <!-- ── TAB: BY CANDIDATE ──────────────────────────────────────────────── -->
+  <div id="er-panel-candidate" class="hidden">
+    <section class="w-full bg-white py-10 pb-16">
+      <div class="max-w-7xl mx-auto px-8">
+        <div class="flex items-center justify-between mb-6"><h2 class="text-2xl font-black text-primary font-headline">Results by Candidate</h2><span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">All Districts · Sorted by Votes</span></div>
+        <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+          <table class="w-full text-left border-collapse">
+            <thead class="bg-slate-50 border-b border-slate-200"><tr>
+              <th class="px-6 py-4 text-[11px] font-black text-slate-500 uppercase tracking-widest">Candidate</th>
+              <th class="px-6 py-4 text-[11px] font-black text-slate-500 uppercase tracking-widest">Party</th>
+              <th class="px-6 py-4 text-[11px] font-black text-slate-500 uppercase tracking-widest">District</th>
+              <th class="px-6 py-4 text-[11px] font-black text-slate-500 uppercase tracking-widest text-right">Votes</th>
+              <th class="px-6 py-4 text-[11px] font-black text-slate-500 uppercase tracking-widest text-right">Share</th>
+              <th class="px-6 py-4 text-[11px] font-black text-slate-500 uppercase tracking-widest">Result</th>
+            </tr></thead>
+            <tbody class="divide-y divide-slate-100">
+              <tr class="hover:bg-slate-50"><td class="px-6 py-5"><span class="font-bold text-primary">Andrew A. Fahie</span></td><td class="px-6 py-5"><span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-[10px] font-black uppercase rounded-full">VIP</span></td><td class="px-6 py-5 text-sm text-slate-600">District 1</td><td class="px-6 py-5 text-right font-black text-primary">742</td><td class="px-6 py-5 text-right font-bold text-slate-500">81.5%</td><td class="px-6 py-5"><span class="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-black uppercase rounded-full">Elected</span></td></tr>
+              <tr class="hover:bg-slate-50"><td class="px-6 py-5"><span class="font-bold text-primary">Julian Fraser</span></td><td class="px-6 py-5"><span class="px-2.5 py-1 bg-purple-50 text-purple-700 text-[10px] font-black uppercase rounded-full">PU</span></td><td class="px-6 py-5 text-sm text-slate-600">District 3</td><td class="px-6 py-5 text-right font-black text-primary">601</td><td class="px-6 py-5 text-right font-bold text-slate-500">68.7%</td><td class="px-6 py-5"><span class="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-black uppercase rounded-full">Elected</span></td></tr>
+              <tr class="hover:bg-slate-50"><td class="px-6 py-5"><span class="font-bold text-primary">Melvin M. Turnbull</span></td><td class="px-6 py-5"><span class="px-2.5 py-1 bg-red-50 text-red-700 text-[10px] font-black uppercase rounded-full">NDP</span></td><td class="px-6 py-5 text-sm text-slate-600">District 2</td><td class="px-6 py-5 text-right font-black text-primary">568</td><td class="px-6 py-5 text-right font-bold text-slate-500">62.3%</td><td class="px-6 py-5"><span class="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-black uppercase rounded-full">Elected</span></td></tr>
+              <tr class="hover:bg-slate-50"><td class="px-6 py-5"><span class="font-bold text-primary">Delores Christopher</span></td><td class="px-6 py-5"><span class="px-2.5 py-1 bg-red-50 text-red-700 text-[10px] font-black uppercase rounded-full">NDP</span></td><td class="px-6 py-5 text-sm text-slate-600">District 5</td><td class="px-6 py-5 text-right font-black text-primary">521</td><td class="px-6 py-5 text-right font-bold text-slate-500">57.4%</td><td class="px-6 py-5"><span class="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-black uppercase rounded-full">Elected</span></td></tr>
+              <tr class="hover:bg-slate-50"><td class="px-6 py-5"><span class="font-bold text-primary">Mark Vanterpool</span></td><td class="px-6 py-5"><span class="px-2.5 py-1 bg-red-50 text-red-700 text-[10px] font-black uppercase rounded-full">NDP</span></td><td class="px-6 py-5 text-sm text-slate-600">District 4</td><td class="px-6 py-5 text-right font-black text-primary">492</td><td class="px-6 py-5 text-right font-bold text-slate-500">54.1%</td><td class="px-6 py-5"><span class="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-black uppercase rounded-full">Elected</span></td></tr>
+              <tr class="hover:bg-slate-50"><td class="px-6 py-5"><span class="font-bold text-primary">Natalio Wheatley</span></td><td class="px-6 py-5"><span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-[10px] font-black uppercase rounded-full">VIP</span></td><td class="px-6 py-5 text-sm text-slate-600">District 6</td><td class="px-6 py-5 text-right font-black text-primary">478</td><td class="px-6 py-5 text-right font-bold text-slate-500">52.6%</td><td class="px-6 py-5"><span class="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-black uppercase rounded-full">Elected</span></td></tr>
+              <tr class="bg-slate-50"><td colspan="6" class="px-6 py-4 text-center text-[11px] font-bold text-slate-400 uppercase tracking-widest">Full candidate list pending certification of remaining districts</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ── TAB: BY PARTY ──────────────────────────────────────────────────── -->
+  <div id="er-panel-party" class="hidden">
+    <section class="w-full bg-white py-10 pb-16">
+      <div class="max-w-7xl mx-auto px-8">
+        <div class="flex items-center justify-between mb-6"><h2 class="text-2xl font-black text-primary font-headline">Results by Party</h2><span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">2024 General Election</span></div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          <div class="bg-white border border-slate-200 rounded-xl p-8 shadow-sm border-t-4 border-t-red-500">
+            <div class="flex items-center justify-between mb-4"><span class="text-xs font-black uppercase tracking-widest text-red-600">NDP</span><span class="px-3 py-1 bg-red-50 text-red-700 text-[11px] font-black uppercase rounded-full">3 Seats</span></div>
+            <h3 class="text-4xl font-black text-[#00205B] font-headline mb-1">1,581</h3>
+            <p class="text-sm font-medium text-slate-500 mb-4">Total votes across districts</p>
+            <div class="w-full bg-slate-100 rounded-full h-2"><div class="bg-red-500 h-2 rounded-full" style="width:43%"></div></div>
+            <p class="text-[11px] text-slate-500 mt-2 font-bold">43% vote share</p>
+          </div>
+          <div class="bg-white border border-slate-200 rounded-xl p-8 shadow-sm border-t-4 border-t-blue-600">
+            <div class="flex items-center justify-between mb-4"><span class="text-xs font-black uppercase tracking-widest text-blue-700">VIP</span><span class="px-3 py-1 bg-blue-50 text-blue-700 text-[11px] font-black uppercase rounded-full">2 Seats</span></div>
+            <h3 class="text-4xl font-black text-[#00205B] font-headline mb-1">1,220</h3>
+            <p class="text-sm font-medium text-slate-500 mb-4">Total votes across districts</p>
+            <div class="w-full bg-slate-100 rounded-full h-2"><div class="bg-blue-600 h-2 rounded-full" style="width:33%"></div></div>
+            <p class="text-[11px] text-slate-500 mt-2 font-bold">33% vote share</p>
+          </div>
+          <div class="bg-white border border-slate-200 rounded-xl p-8 shadow-sm border-t-4 border-t-purple-600">
+            <div class="flex items-center justify-between mb-4"><span class="text-xs font-black uppercase tracking-widest text-purple-700">PU</span><span class="px-3 py-1 bg-purple-50 text-purple-700 text-[11px] font-black uppercase rounded-full">1 Seat</span></div>
+            <h3 class="text-4xl font-black text-[#00205B] font-headline mb-1">601</h3>
+            <p class="text-sm font-medium text-slate-500 mb-4">Total votes across districts</p>
+            <div class="w-full bg-slate-100 rounded-full h-2"><div class="bg-purple-600 h-2 rounded-full" style="width:16%"></div></div>
+            <p class="text-[11px] text-slate-500 mt-2 font-bold">16% vote share</p>
+          </div>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 text-center">
+          <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Remaining 7 districts pending · Final party totals subject to change</p>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>
 
 <!-- Footer -->
@@ -623,4 +725,25 @@
   });
 </script>
 
+<script>
+/* ── Election Results in-page tab switcher ─────────────────────────────── */
+function switchErTab(panelId) {
+  document.querySelectorAll('[id^="er-panel-"]').forEach(function(p){
+    p.classList.add('hidden');
+  });
+  var target = document.getElementById(panelId);
+  if (target) target.classList.remove('hidden');
+  document.querySelectorAll('.er-tab').forEach(function(t){
+    t.classList.toggle('er-tab--active', t.dataset.panel === panelId);
+  });
+}
+(function(){
+  var bar = document.getElementById('er-tab-bar');
+  if (!bar) return;
+  bar.addEventListener('click', function(e){
+    var btn = e.target.closest('.er-tab');
+    if (btn && btn.dataset.panel) switchErTab(btn.dataset.panel);
+  });
+})();
+</script>
 </body></html>
