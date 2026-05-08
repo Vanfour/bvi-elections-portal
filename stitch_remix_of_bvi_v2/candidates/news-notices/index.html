@@ -420,7 +420,7 @@
 <p class="text-slate-500 font-medium text-base">Stay updated with the latest announcements, guidelines, and alerts for candidates.</p>
 </div>
 <!-- News Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div id="notices-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 <!-- Card 1 -->
 <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-slate-300 transition-all group flex flex-col h-full">
 <div class="flex justify-between items-start mb-4">
@@ -493,9 +493,39 @@
                             Read More <span class="material-symbols-outlined text-sm">arrow_forward</span>
 </div>
 </div>
+<!-- Hidden batch 2 — revealed by Load More -->
+<div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-slate-300 transition-all group flex flex-col h-full hidden notice-extra">
+<div class="flex justify-between items-start mb-4">
+<span class="px-2.5 py-1 bg-blue-50 text-[#00205B] text-[10px] font-black uppercase tracking-wider rounded">Voter Education</span>
+<span class="text-[11px] font-bold text-slate-400">Sep 20, 2024</span>
+</div>
+<h4 class="text-xl font-bold text-[#00205B] mb-3 group-hover:text-secondary transition-colors">Polling station locations confirmed</h4>
+<p class="text-slate-600 text-sm leading-relaxed mb-6">Full list of designated polling stations published for all nine districts.</p>
+<div class="mt-auto flex items-center text-[#00205B] text-[11px] font-black uppercase tracking-wider gap-1">Read More <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
+</div>
+<div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-slate-300 transition-all group flex flex-col h-full hidden notice-extra">
+<div class="flex justify-between items-start mb-4">
+<span class="px-2.5 py-1 bg-red-50 text-secondary text-[10px] font-black uppercase tracking-wider rounded">Candidates</span>
+<span class="text-[11px] font-bold text-slate-400">Sep 15, 2024</span>
+</div>
+<h4 class="text-xl font-bold text-[#00205B] mb-3 group-hover:text-secondary transition-colors">Campaign finance reporting deadline</h4>
+<p class="text-slate-600 text-sm leading-relaxed mb-6">All candidates must submit campaign expenditure reports by October 1.</p>
+<div class="mt-auto flex items-center text-[#00205B] text-[11px] font-black uppercase tracking-wider gap-1">Read More <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
+</div>
+<div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-slate-300 transition-all group flex flex-col h-full hidden notice-extra">
+<div class="flex justify-between items-start mb-4">
+<span class="px-2.5 py-1 bg-orange-50 text-orange-700 text-[10px] font-black uppercase tracking-wider rounded">Alert</span>
+<span class="text-[11px] font-bold text-slate-400">Sep 10, 2024</span>
+</div>
+<h4 class="text-xl font-bold text-[#00205B] mb-3 group-hover:text-secondary transition-colors">Revised code of conduct issued</h4>
+<p class="text-slate-600 text-sm leading-relaxed mb-6">Updated guidelines on permitted campaign activities during the election period.</p>
+<div class="mt-auto flex items-center text-[#00205B] text-[11px] font-black uppercase tracking-wider gap-1">Read More <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
+</div>
 </div>
 <div class="mt-16 flex justify-center">
-<button class="px-8 py-3 bg-white border border-slate-200 text-[#00205B] font-black text-xs uppercase tracking-widest rounded-lg hover:bg-slate-50 transition-all">Load More Notices</button>
+<button id="load-more-btn" onclick="loadMoreNotices()" class="px-8 py-3 bg-white border border-slate-200 text-[#00205B] font-black text-xs uppercase tracking-widest rounded-lg hover:bg-slate-50 transition-all flex items-center gap-2">
+  <span class="material-symbols-outlined text-[16px]">expand_more</span> Load More Notices
+</button>
 </div>
 </div>
 </div>
@@ -592,4 +622,12 @@
 
 
 
+<script>
+function loadMoreNotices() {
+  var hidden = document.querySelectorAll('.notice-extra.hidden');
+  hidden.forEach(function(card) { card.classList.remove('hidden'); });
+  // Hide button once all cards are shown
+  document.getElementById('load-more-btn').style.display = 'none';
+}
+</script>
 </body></html>
