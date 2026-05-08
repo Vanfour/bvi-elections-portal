@@ -252,7 +252,21 @@
 </style>
 <script id="bvi-nav-wiring">
 (function(){
-  var L={voters:'./index.html',candidates:'../../candidates/upcoming-elections/index.html',pollWorkers:'../../poll-workers/layout-1/index.html',electionResults:'../../election-results/index.html',newsPolicies:'../../news-policies/index.html',importantDates:'../../important-dates/index.html',keyActions:null,faqs:null,newsNotices:null,mobileVersion:null,desktopVersion:null,votingDay:'../voting-day/index.html'};
+  var L={
+    voters:'./index.html',
+    candidates:'../../candidates/upcoming-elections/index.html',
+    pollWorkers:'../../poll-workers/layout-1/index.html',
+    electionResults:'../../election-results/index.html',
+    newsPolicies:'../../news-policies/index.html',
+    importantDates:'../../important-dates/index.html',
+    votingDay:'../voting-day/index.html',
+    checkStatus:'../check-status/index.html',
+    pollingPlace:'../polling-place/index.html',
+    advancePoll:'../advance-poll/index.html',
+    electionDetails:'../election-details/index.html',
+    register:'../register/index.html',
+    mobileVersion:null, desktopVersion:null
+  };
   function wire(){
     document.querySelectorAll('a[href="#"]').forEach(function(a){
       var t=a.textContent.replace(/\s+/g,' ').trim().toUpperCase();
@@ -261,13 +275,13 @@
       else if(/^FOR[\s]*POLL[\s]*WORKERS$/.test(t)) a.href=L.pollWorkers;
       else if(/ELECTION[\s\S]{0,2}RESULTS/.test(t)&&t.length<25) a.href=L.electionResults;
       else if(/NEWS/.test(t)&&/POLIC/.test(t)&&t.length<25) a.href=L.newsPolicies;
-      else if(/IMPORTANT.*DATES/.test(t)&&L.importantDates) a.href=L.importantDates;
-      else if(/KEY\s+ACTIONS/.test(t)&&L.keyActions) a.href=L.keyActions;
-      else if(/\bFAQS?\b/.test(t)&&L.faqs) a.href=L.faqs;
-      else if(/NEWS/.test(t)&&/NOTICES/.test(t)&&L.newsNotices) a.href=L.newsNotices;
-      else if(/VIEW.*ELECTION.*DETAIL/.test(t)&&L.importantDates&&!a.classList.contains('tab-active')&&!a.classList.contains('tab-inactive')) a.href=L.importantDates;
-      else if(/PEOPLE\s+VIEW.*CANDIDATES/.test(t)&&L.candidates) a.href=L.candidates;
-      else if(/REGISTER/.test(t)&&a.classList.contains('sh-register')) a.href='../register/index.html';
+      else if(/IMPORTANT.*DATES/.test(t)) a.href=L.importantDates;
+      else if(/ELECTION.*DETAIL/.test(t)) a.href=L.electionDetails;
+      else if(/CHECK.*MY.*STATUS/.test(t)||/CHECK.*STATUS/.test(t)||/VOTER.*REGISTRATION/.test(t)) a.href=L.checkStatus;
+      else if(/FIND.*POLLING.*PLACE/.test(t)||/FIND.*POLLING.*STATION/.test(t)||/POLLING.*STATION/.test(t)) a.href=L.pollingPlace;
+      else if(/ADVANCE.*POLL/.test(t)||/ADVANCE.*POLLING/.test(t)) a.href=L.advancePoll;
+      else if(/REGISTER/.test(t)&&(a.classList.contains('sh-register')||/VOTE/.test(t))) a.href=L.register;
+      else if(/VOTING.*DAY/.test(t)) a.href=L.votingDay;
     });
     // Wire action buttons
     document.querySelectorAll('button:not([onclick])').forEach(function(btn){
