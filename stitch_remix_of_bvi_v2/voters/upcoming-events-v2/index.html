@@ -241,11 +241,18 @@
   .mob-nav-footer { padding: 1.25rem 1.5rem; border-top: 1px solid #f1f5f9; }
   /* ── Extra responsive header tweaks ─────────────────────────────────────── */
   @media (max-width: 640px) { .sh-inner { padding: 0.75rem 1.25rem !important; } #site-util-bar { padding: 0.4rem 1.25rem !important; } }
+  /* ── Floating state switcher ─────────────────────────────────────────────── */
+  .state-dropdown{position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;display:inline-block;}
+  .state-dropdown-menu{display:none;position:absolute;right:0;bottom:calc(100% + 8px);top:auto;background:white;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.16);min-width:220px;z-index:201;overflow:hidden;}
+  .state-dropdown.open .state-dropdown-menu{display:block;}
+  .state-dropdown-item{display:flex;align-items:center;gap:8px;padding:10px 16px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;border-left:3px solid transparent;transition:all .15s;color:#475569;width:100%;text-align:left;background:none;border:none;}
+  .state-dropdown-item:hover{background:#f8fafc;color:#00205B;}
+  .state-dropdown-item.active{border-left-color:#E03C31;color:#00205B;background:#f8fafc;}
 
 </style>
 <script id="bvi-nav-wiring">
 (function(){
-  var L={voters:'../upcoming-events-v1/index.html',candidates:'../../candidates/upcoming-elections/index.html',pollWorkers:'../../poll-workers/layout-1/index.html',electionResults:'../election-results/index.html',newsPolicies:'../../candidates/news-notices/index.html',keyActions:null,faqs:null,newsNotices:null,mobileVersion:null,desktopVersion:null};
+  var L={voters:'./index.html',candidates:'../../candidates/upcoming-elections/index.html',pollWorkers:'../../poll-workers/layout-1/index.html',electionResults:'../../election-results/index.html',newsPolicies:'../../news-policies/index.html',importantDates:'../../important-dates/index.html',keyActions:null,faqs:null,newsNotices:null,mobileVersion:null,desktopVersion:null,votingDay:'../voting-day/index.html'};
   function wire(){
     document.querySelectorAll('a[href="#"]').forEach(function(a){
       var t=a.textContent.replace(/\s+/g,' ').trim().toUpperCase();
@@ -355,7 +362,7 @@
       </button>
     </div>
     <div class="mob-nav-links">
-      <a class="mob-nav-link" href="../upcoming-events-v1/index.html"><span class="material-symbols-outlined text-[20px]">how_to_vote</span>For Voters</a>
+      <a class="mob-nav-link" href="../upcoming-events-v2/index.html"><span class="material-symbols-outlined text-[20px]">how_to_vote</span>For Voters</a>
       <a class="mob-nav-link" href="../../candidates/upcoming-elections/index.html"><span class="material-symbols-outlined text-[20px]">person_raised_hand</span>For Candidates</a>
       <a class="mob-nav-link" href="../../poll-workers/layout-1/index.html"><span class="material-symbols-outlined text-[20px]">badge</span>For Poll Workers</a>
       <a class="mob-nav-link" href="../../important-dates/index.html"><span class="material-symbols-outlined text-[20px]">event</span>Important Dates</a>
@@ -367,6 +374,21 @@
         <span class="material-symbols-outlined text-[18px]">how_to_reg</span>Register to Vote
       </a>
     </div>
+  </div>
+</div>
+<!-- Floating Prototype State Switcher -->
+<div class="state-dropdown" id="stateDropdown">
+  <button onclick="toggleStateDropdown()" class="flex items-center gap-2 px-5 py-3 bg-[#E03C31] hover:bg-[#b91c1c] text-white rounded-full text-[11px] font-black uppercase tracking-wider transition-all shadow-lg">
+    <span class="material-symbols-outlined text-[16px]">tune</span>
+    <span>Upcoming Election</span>
+    <span class="material-symbols-outlined text-[16px]" id="dropdownChevron">expand_more</span>
+  </button>
+  <div class="state-dropdown-menu" id="stateDropdownMenu">
+    <div class="px-4 py-2 text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">Prototype View</div>
+    <button onclick="window.location.href='../no-election/'" class="state-dropdown-item">No Election</button>
+    <button onclick="window.location.href='../upcoming-events-v2/'" class="state-dropdown-item active">Upcoming Election</button>
+    <button onclick="window.location.href='../voting-day/'" class="state-dropdown-item">Voting Day</button>
+    <button onclick="window.location.href='../election-results/'" class="state-dropdown-item">After Election</button>
   </div>
 </div>
 <!-- Voter Information Hub Header Section -->
@@ -726,5 +748,20 @@
 </div>
 </div>
 </footer>
-
+<script>
+function toggleStateDropdown(){
+  var d=document.getElementById('stateDropdown');
+  var c=document.getElementById('dropdownChevron');
+  d.classList.toggle('open');
+  if(c) c.textContent = d.classList.contains('open') ? 'expand_less' : 'expand_more';
+}
+document.addEventListener('click',function(e){
+  var d=document.getElementById('stateDropdown');
+  if(d && !d.contains(e.target)) {
+    d.classList.remove('open');
+    var c=document.getElementById('dropdownChevron');
+    if(c) c.textContent='expand_more';
+  }
+});
+</script>
 </body></html>

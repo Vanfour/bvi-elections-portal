@@ -244,7 +244,7 @@
 </style>
 <script id="bvi-nav-wiring">
 (function(){
-  var L={voters:'../upcoming-events-v1/index.html',candidates:'../../candidates/election-results/index.html',pollWorkers:'../../poll-workers/layout-1/index.html',electionResults:'../../election-results/index.html',newsPolicies:'../../news-policies/index.html',keyActions:null,faqs:null,newsNotices:null,mobileVersion:null,desktopVersion:null,importantDates:'../../important-dates/index.html',votingDay:'../voting-day/index.html'};
+  var L={voters:'../upcoming-events-v2/index.html',candidates:'../../candidates/election-results/index.html',pollWorkers:'../../poll-workers/layout-1/index.html',electionResults:'../../election-results/index.html',newsPolicies:'../../news-policies/index.html',keyActions:null,faqs:null,newsNotices:null,mobileVersion:null,desktopVersion:null,importantDates:'../../important-dates/index.html',votingDay:'../voting-day/index.html'};
   function wire(){
     document.querySelectorAll('a[href="#"]').forEach(function(a){
       var t=a.textContent.replace(/\s+/g,' ').trim().toUpperCase();
@@ -357,7 +357,7 @@
       </button>
     </div>
     <div class="mob-nav-links">
-      <a class="mob-nav-link" href="../upcoming-events-v1/index.html"><span class="material-symbols-outlined text-[20px]">how_to_vote</span>For Voters</a>
+      <a class="mob-nav-link" href="../upcoming-events-v2/index.html"><span class="material-symbols-outlined text-[20px]">how_to_vote</span>For Voters</a>
       <a class="mob-nav-link" href="../../candidates/upcoming-elections/index.html"><span class="material-symbols-outlined text-[20px]">person_raised_hand</span>For Candidates</a>
       <a class="mob-nav-link" href="../../poll-workers/layout-1/index.html"><span class="material-symbols-outlined text-[20px]">badge</span>For Poll Workers</a>
       <a class="mob-nav-link" href="../../important-dates/index.html"><span class="material-symbols-outlined text-[20px]">event</span>Important Dates</a>
@@ -391,7 +391,7 @@
       <div class="state-dropdown-menu" id="stateDropdownMenu">
         <div class="px-4 py-2 text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">Prototype View</div>
         <button onclick="window.location.href='../no-election/'" class="state-dropdown-item">No Election</button>
-        <button onclick="window.location.href='../upcoming-events-v1/'" class="state-dropdown-item">Upcoming Election</button>
+        <button onclick="window.location.href='../upcoming-events-v2/'" class="state-dropdown-item">Upcoming Election</button>
         <button onclick="window.location.href='../voting-day/'" class="state-dropdown-item">Voting Day</button>
         <button onclick="window.location.href='../election-results/'" class="state-dropdown-item active">After Election</button>
       </div>
