@@ -216,6 +216,9 @@
   /* ── Extra responsive header tweaks ─────────────────────────────────────── */
   @media (max-width: 640px) { .sh-inner { padding: 0.75rem 1.25rem !important; } #site-util-bar { padding: 0.4rem 1.25rem !important; } .sh-register { display: none !important; } }
 
+  /* Hide scrollbar while keeping scroll functionality */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 </style>
 <script id="bvi-nav-wiring">
 (function(){
