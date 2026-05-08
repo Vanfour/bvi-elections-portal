@@ -203,8 +203,8 @@
             transform: rotate(180deg);
         }
     
-  .state-dropdown{position:relative;display:inline-block;}
-  .state-dropdown-menu{display:none;position:absolute;left:0;top:calc(100% + 6px);background:white;border:1px solid #e2e8f0;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.12);min-width:210px;z-index:50;overflow:hidden;}
+  .state-dropdown{position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;display:inline-block;}
+  .state-dropdown-menu{display:none;position:absolute;right:0;bottom:calc(100% + 8px);top:auto;background:white;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.16);min-width:220px;z-index:201;overflow:hidden;}
   .state-dropdown.open .state-dropdown-menu{display:block;}
   .state-dropdown-item{display:flex;align-items:center;gap:8px;padding:10px 16px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;border-left:3px solid transparent;transition:all .15s;color:#475569;width:100%;text-align:left;background:none;border-top:none;border-right:none;border-bottom:none;}
   .state-dropdown-item:hover{background:#f8fafc;color:#00205B;}
@@ -314,17 +314,15 @@
 </div>
 </div>
 </section>
-<!-- Preview State Dropdown -->
-<div class="w-full bg-white border-b border-slate-100">
-  <div class="max-w-7xl mx-auto px-8 py-4 flex items-center justify-start">
-    <div class="state-dropdown" id="stateDropdown">
-      <button onclick="toggleStateDropdown()" class="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg text-[11px] font-black uppercase tracking-wider transition-all border border-slate-200">
+<!-- Preview State floating widget (bottom-right) -->
+<div class="state-dropdown" id="stateDropdown">
+  <button onclick="toggleStateDropdown()" class="flex items-center gap-2 px-5 py-3 bg-[#00205B] hover:bg-[#001849] text-white rounded-full text-[11px] font-black uppercase tracking-wider transition-all shadow-lg">
         <span class="material-symbols-outlined text-[16px]">tune</span>
         <span>Voting Day</span>
         <span class="material-symbols-outlined text-[16px]" id="dropdownChevron">expand_more</span>
       </button>
       <div class="state-dropdown-menu" id="stateDropdownMenu">
-        <div class="px-4 py-2 text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">Preview State</div>
+        <div class="px-4 py-2 text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">Prototype View</div>
         <button onclick="window.location.href='../no-election/'" class="state-dropdown-item">No Election</button>
         <button onclick="window.location.href='../upcoming-events-v1/'" class="state-dropdown-item">Upcoming Election</button>
         <button onclick="window.location.href='../voting-day/'" class="state-dropdown-item active">Voting Day</button>

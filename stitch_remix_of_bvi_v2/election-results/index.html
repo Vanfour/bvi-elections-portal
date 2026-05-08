@@ -164,8 +164,9 @@
   .no-scrollbar::-webkit-scrollbar{display:none;} .no-scrollbar{-ms-overflow-style:none;scrollbar-width:none;}
   @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.4);}}
   .live-dot{animation:pulse-dot 1.4s ease-in-out infinite;}
-  .state-dropdown{position:relative;display:inline-block;}
-  .state-dropdown-menu{display:none;position:absolute;right:0;top:calc(100% + 6px);background:white;border:1px solid #e2e8f0;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.12);min-width:200px;z-index:50;overflow:hidden;}
+  /* ── Preview State floating widget ──────────────────────────────────────── */
+  .state-dropdown{position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;display:inline-block;}
+  .state-dropdown-menu{display:none;position:absolute;right:0;bottom:calc(100% + 8px);top:auto;background:white;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.16);min-width:220px;z-index:201;overflow:hidden;}
   .state-dropdown.open .state-dropdown-menu{display:block;}
   .state-dropdown-item{display:flex;align-items:center;gap:8px;padding:10px 16px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;border-left:3px solid transparent;transition:all .15s;color:#475569;width:100%;text-align:left;}
   .state-dropdown-item:hover{background:#f8fafc;color:#00205B;}
@@ -366,28 +367,24 @@
 <!-- CURRENT ELECTION — State Toggle Content                        -->
 <!-- ══════════════════════════════════════════════════════════════ -->
 
-<!-- Preview State Toggle — above current election content, left aligned -->
-<div class="w-full bg-white border-b border-slate-100">
-  <div class="max-w-7xl mx-auto px-8 py-4 flex items-center justify-start">
-    <div class="state-dropdown" id="stateDropdown">
-      <button onclick="toggleDropdown()" class="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg text-[11px] font-black uppercase tracking-wider transition-all border border-slate-200">
-        <span class="material-symbols-outlined text-[16px]">tune</span>
-        <span id="stateLabel">Preview State</span>
-        <span class="material-symbols-outlined text-[16px]" id="dropdownChevron">expand_more</span>
-      </button>
-      <div class="state-dropdown-menu" id="stateDropdownMenu">
-        <div class="px-4 py-2 text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">Prototype View</div>
-        <button onclick="setState('before')" class="state-dropdown-item" id="opt-before">
-          <span class="material-symbols-outlined text-[16px] text-amber-500">schedule</span> Before Election
-        </button>
-        <button onclick="setState('during')" class="state-dropdown-item" id="opt-during">
-          <span class="material-symbols-outlined text-[16px] text-red-500">radio_button_checked</span> During Election
-        </button>
-        <button onclick="setState('after')" class="state-dropdown-item active" id="opt-after">
-          <span class="material-symbols-outlined text-[16px] text-green-600">check_circle</span> After Election
-        </button>
-      </div>
-    </div>
+<!-- Preview State floating widget (bottom-right) -->
+<div class="state-dropdown" id="stateDropdown">
+  <button onclick="toggleDropdown()" class="flex items-center gap-2 px-5 py-3 bg-[#00205B] hover:bg-[#001849] text-white rounded-full text-[11px] font-black uppercase tracking-wider transition-all shadow-lg">
+    <span class="material-symbols-outlined text-[16px]">tune</span>
+    <span id="stateLabel">After Election</span>
+    <span class="material-symbols-outlined text-[16px]" id="dropdownChevron">expand_more</span>
+  </button>
+  <div class="state-dropdown-menu" id="stateDropdownMenu">
+    <div class="px-4 py-2 text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">Prototype View</div>
+    <button onclick="setState('before')" class="state-dropdown-item" id="opt-before">
+      <span class="material-symbols-outlined text-[16px] text-amber-500">schedule</span> Before Election
+    </button>
+    <button onclick="setState('during')" class="state-dropdown-item" id="opt-during">
+      <span class="material-symbols-outlined text-[16px] text-red-500">radio_button_checked</span> During Election
+    </button>
+    <button onclick="setState('after')" class="state-dropdown-item active" id="opt-after">
+      <span class="material-symbols-outlined text-[16px] text-green-600">check_circle</span> After Election
+    </button>
   </div>
 </div>
 
