@@ -1,0 +1,282 @@
+<!DOCTYPE html><html lang="en"><head>
+<title>For Candidates - Election Process</title>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode:"class",
+    theme:{ extend:{ colors:{ secondary:"#E03C31", primary:"#00205B", surface:"#f8f9fa", "on-surface":"#191c1d", "surface-container":"#edeeef", outline:"#757681", "outline-variant":"#c5c6d1", "on-primary":"#ffffff", "surface-container-low":"#f3f4f5", "surface-bright":"#f8f9fa" }, borderRadius:{ DEFAULT:"0.25rem", lg:"0.5rem", xl:"0.75rem", full:"9999px" }, fontFamily:{ headline:["Public Sans"], body:["Inter"], label:["Inter"] } } }
+  }
+</script>
+<style>
+  html{overflow-y:scroll;background:#f8f9fa;}
+  body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:#191c1d;background:#ffffff;}
+  #site-util-bar{width:100%;background:#f8f9fa;border-bottom:1px solid #e2e8f0;padding:0.5rem 2rem;box-sizing:border-box;}
+  .su-inner{max-width:80rem;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.05em;}
+  .su-left{display:flex;align-items:center;gap:1rem;}
+  .su-back,.su-contact{color:inherit;text-decoration:none;display:flex;align-items:center;gap:0.25rem;transition:color 0.15s ease;}
+  .su-back:hover,.su-contact:hover{color:#00205B;}
+  .su-back-arrow{font-size:14px;}
+  .su-divider{color:#cbd5e1;font-weight:400;}
+  .su-portal-name{display:none;}
+  @media(min-width:768px){.su-portal-name{display:block;}}
+  #site-header{width:100%;background:#fff;border-bottom:1px solid #f1f5f9;box-sizing:border-box;}
+  .sh-inner{max-width:80rem;margin:0 auto;padding:1.25rem 2rem;box-sizing:border-box;}
+  .sh-row{display:flex;align-items:center;}
+  .sh-logo{display:flex;align-items:center;gap:1rem;flex-shrink:0;margin-right:auto;text-decoration:none;transition:opacity 0.15s ease;}
+  .sh-logo:hover{opacity:0.9;}
+  .sh-logo-img{height:3.5rem;width:auto;object-fit:contain;display:block;}
+  .sh-logo-text{display:flex;flex-direction:column;}
+  .sh-logo-title{font-family:'Inter',system-ui,sans-serif;font-size:1.875rem;font-weight:900;color:#00205B;letter-spacing:-0.025em;line-height:1;}
+  .sh-logo-sub{font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#94a3b8;margin-top:0.25rem;line-height:1;}
+  .sh-nav{display:none;align-items:center;height:100%;margin-left:2rem;}
+  @media(min-width:1024px){.sh-nav{display:flex;}}
+  .sh-nav-links{display:flex;align-items:center;height:100%;}
+  .sh-nav-link{display:flex;flex-direction:column;align-self:stretch;justify-content:center;padding:0 1.25rem;box-sizing:border-box;font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;line-height:1.25;color:#00205B;text-decoration:none;border-bottom:3px solid transparent;transition:color 0.15s ease,border-bottom-color 0.15s ease;will-change:color;}
+  .sh-nav-link:hover{color:#E03C31;}
+  .sh-nav-link--active{color:#E03C31;border-bottom-color:#E03C31;}
+  .sh-nav-sep{height:2.5rem;width:1px;background:#e2e8f0;flex-shrink:0;}
+  .sh-search{margin-left:auto;margin-right:0.5rem;color:#00205B;background:none;border:none;cursor:pointer;padding:0;line-height:1;transition:color 0.15s ease;}
+  .sh-search:hover{color:#E03C31;}
+  .sh-register{margin-left:1rem;display:flex;align-items:center;gap:0.375rem;padding:0.5rem 1.25rem;background:#E03C31;color:#fff;border-radius:9999px;font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background-color 0.15s ease;}
+  .sh-register:hover{background:#b91c1c;}
+  .sh-register-icon{font-size:15px;}
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+  .tab-active{border-bottom:2px solid #E03C31;color:#00205B;font-weight:700;}
+  .tab-inactive{color:#64748b;border-bottom:2px solid transparent;}
+  .tab-inactive:hover{background-color:#f1f5f9;color:#00205B;}
+  .no-scrollbar::-webkit-scrollbar{display:none;}
+  .no-scrollbar{-ms-overflow-style:none;scrollbar-width:none;}
+</style>
+<script id="bvi-nav-wiring">
+(function(){
+  var L={voters:'../../voters/upcoming-events-v1/index.html',candidates:'../upcoming-elections/index.html',pollWorkers:'../../poll-workers/layout-1/index.html',electionResults:'../../election-results/index.html',newsPolicies:'../../news-policies/index.html',keyActions:'../key-actions/index.html',faqs:'../faqs/index.html',newsNotices:'../news-notices/index.html',importantDates:'../../important-dates/index.html',mobileVersion:null,desktopVersion:null};
+  function wire(){
+    document.querySelectorAll('a[href="#"]').forEach(function(a){
+      var t=a.textContent.replace(/\s+/g,' ').trim().toUpperCase();
+      if(/^FOR[\s]*VOTERS$/.test(t)) a.href=L.voters;
+      else if(/^FOR[\s]*CANDIDATES$/.test(t)) a.href=L.candidates;
+      else if(/^FOR[\s]*POLL[\s]*WORKERS$/.test(t)) a.href=L.pollWorkers;
+      else if(/ELECTION[\s\S]{0,2}RESULTS/.test(t)&&t.length<25) a.href=L.electionResults;
+      else if(/NEWS/.test(t)&&/POLIC/.test(t)&&t.length<25) a.href=L.newsPolicies;
+      else if(/IMPORTANT.*DATES/.test(t)&&a.classList.contains('tab-inactive')&&L.candidates) a.href=L.candidates;
+      else if(/IMPORTANT.*DATES/.test(t)&&L.importantDates) a.href=L.importantDates;
+      else if(/KEY\s+ACTIONS/.test(t)&&L.keyActions) a.href=L.keyActions;
+      else if(/\bFAQS?\b/.test(t)&&L.faqs) a.href=L.faqs;
+      else if(/NEWS/.test(t)&&/NOTICES/.test(t)&&L.newsNotices) a.href=L.newsNotices;
+      else if(/REGISTER/.test(t)&&a.classList.contains('sh-register')&&L.voters) a.href=L.voters;
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',wire);
+  else wire();
+})();
+</script></head>
+<body class="font-body text-on-surface bg-white">
+<div id="site-util-bar">
+  <div class="su-inner">
+    <div class="su-left">
+      <a class="su-back" href="#"><span class="su-back-arrow">←</span> BACK TO GOV.VG</a>
+      <span class="su-divider">|</span>
+      <a class="su-contact" href="#">CONTACT US</a>
+    </div>
+    <div class="su-portal-name">OFFICIAL PORTAL OF THE BRITISH VIRGIN ISLANDS ELECTIONS</div>
+  </div>
+</div>
+<header id="site-header">
+  <div class="sh-inner">
+    <div class="sh-row">
+      <a href="../../index.html" class="sh-logo">
+        <img alt="British Virgin Islands Coat of Arms" class="sh-logo-img" width="391" height="427" src="../../assets/bvi-crest.png"/>
+        <div class="sh-logo-text">
+          <span class="sh-logo-title">elections.gov.vg</span>
+          <span class="sh-logo-sub">DEPARTMENT OF ELECTIONS</span>
+        </div>
+      </a>
+      <nav class="sh-nav">
+        <div class="sh-nav-links">
+          <a class="sh-nav-link" href="#"><span>FOR</span><span>VOTERS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link sh-nav-link--active" href="#"><span>FOR</span><span>CANDIDATES</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>FOR</span><span>POLL WORKERS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>IMPORTANT</span><span>DATES</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>ELECTION</span><span>RESULTS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>NEWS &amp;</span><span>POLICIES</span></a>
+        </div>
+        <button class="sh-search" aria-label="Search">
+          <span class="material-symbols-outlined" style="font-size:24px;line-height:1;display:block">search</span>
+        </button>
+      </nav>
+      <a href="#" class="sh-register">
+        <span class="material-symbols-outlined sh-register-icon">how_to_reg</span>
+        Register
+      </a>
+    </div>
+  </div>
+</header>
+<section class="w-full bg-white border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-8 py-10">
+    <div class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">
+      <a href="../key-actions/index.html" class="hover:text-[#00205B] transition-colors">Key Actions</a>
+      <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+      <span class="text-[#00205B]">Election Process</span>
+    </div>
+    <h1 class="text-4xl md:text-5xl font-black text-[#00205B] font-headline leading-tight mb-3">The Election Process</h1>
+    <p class="text-slate-500 text-base max-w-2xl">A step-by-step overview of how the BVI general election works — from writ to certification of results.</p>
+  </div>
+</section>
+<section class="w-full bg-[#f8f9fa] py-16">
+<div class="max-w-7xl mx-auto px-8">
+
+  <!-- Timeline -->
+  <h2 class="text-2xl font-black text-[#00205B] mb-8">Election Timeline</h2>
+  <div class="relative">
+    <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-slate-200 hidden md:block"></div>
+    <div class="space-y-6">
+
+      
+      <div class="flex gap-6 items-start">
+        <div class="w-12 h-12 bg-blue-50 border-2 border-blue-200 rounded-full flex items-center justify-center shrink-0 relative z-10">
+          <span class="material-symbols-outlined text-[#00205B] text-[20px]">gavel</span>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex-1">
+          <h3 class="font-black text-[#00205B] mb-2">Issue of Writ</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">The Governor issues the Election Writ, officially setting the election date and the deadline for nominations. This starts the formal election calendar.</p>
+        </div>
+      </div>
+      <div class="flex gap-6 items-start">
+        <div class="w-12 h-12 bg-amber-50 border-2 border-amber-200 rounded-full flex items-center justify-center shrink-0 relative z-10">
+          <span class="material-symbols-outlined text-amber-600 text-[20px]">edit_document</span>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex-1">
+          <h3 class="font-black text-[#00205B] mb-2">Nomination Day</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Prospective candidates submit their nomination papers to the Returning Officer for their district. All eligibility checks are completed on this day.</p>
+        </div>
+      </div>
+      <div class="flex gap-6 items-start">
+        <div class="w-12 h-12 bg-green-50 border-2 border-green-200 rounded-full flex items-center justify-center shrink-0 relative z-10">
+          <span class="material-symbols-outlined text-green-600 text-[20px]">campaign</span>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex-1">
+          <h3 class="font-black text-[#00205B] mb-2">Campaign Period</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Candidates and parties may campaign within the rules set out in the Elections Act. Campaign finance rules apply from this date.</p>
+        </div>
+      </div>
+      <div class="flex gap-6 items-start">
+        <div class="w-12 h-12 bg-red-50 border-2 border-red-200 rounded-full flex items-center justify-center shrink-0 relative z-10">
+          <span class="material-symbols-outlined text-[#E03C31] text-[20px]">how_to_vote</span>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex-1">
+          <h3 class="font-black text-[#00205B] mb-2">Polling Day</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Registered voters cast their ballots at designated polling stations between 7:00 AM and 6:00 PM. Poll workers and candidates' agents are present.</p>
+        </div>
+      </div>
+      <div class="flex gap-6 items-start">
+        <div class="w-12 h-12 bg-purple-50 border-2 border-purple-200 rounded-full flex items-center justify-center shrink-0 relative z-10">
+          <span class="material-symbols-outlined text-purple-600 text-[20px]">calculate</span>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex-1">
+          <h3 class="font-black text-[#00205B] mb-2">Count & Declaration</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Votes are counted in each district by the Returning Officer. Results are declared publicly and candidates are notified.</p>
+        </div>
+      </div>
+      <div class="flex gap-6 items-start">
+        <div class="w-12 h-12 bg-green-50 border-2 border-green-200 rounded-full flex items-center justify-center shrink-0 relative z-10">
+          <span class="material-symbols-outlined text-green-600 text-[20px]">verified</span>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex-1">
+          <h3 class="font-black text-[#00205B] mb-2">Certification of Results</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">The Supervisor of Elections certifies the final results within 7 days. Elected members are issued a Certificate of Election.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Voting System Box -->
+  <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="bg-white rounded-xl border border-slate-200 p-8 shadow-sm">
+      <h3 class="font-black text-[#00205B] text-lg mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-[22px]">ballot</span> Voting System</h3>
+      <p class="text-sm text-slate-600 leading-relaxed mb-4">The BVI uses a First-Past-the-Post (FPTP) system. The candidate with the most votes in each district wins the seat, regardless of whether they obtain a majority.</p>
+      <p class="text-sm text-slate-600 leading-relaxed">The House of Assembly consists of 13 elected members — 9 from single-member districts and 4 elected at-large across the Territory.</p>
+    </div>
+    <div class="bg-white rounded-xl border border-slate-200 p-8 shadow-sm">
+      <h3 class="font-black text-[#00205B] text-lg mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-[22px]">policy</span> Legal Framework</h3>
+      <p class="text-sm text-slate-600 leading-relaxed mb-4">Elections are governed by the <strong>Virgin Islands Constitution Order 2007</strong> and the <strong>Elections Act (Cap. 68)</strong>.</p>
+      <ul class="space-y-2">
+        <li class="flex items-center gap-2 text-sm text-slate-600"><span class="material-symbols-outlined text-[#00205B] text-[16px]">arrow_forward</span>Elections Act (Cap. 68)</li>
+        <li class="flex items-center gap-2 text-sm text-slate-600"><span class="material-symbols-outlined text-[#00205B] text-[16px]">arrow_forward</span>VI Constitution Order 2007</li>
+        <li class="flex items-center gap-2 text-sm text-slate-600"><span class="material-symbols-outlined text-[#00205B] text-[16px]">arrow_forward</span>Candidate Code of Conduct</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-10 flex flex-wrap gap-4">
+    <a href="../../important-dates/index.html" class="flex items-center gap-2 bg-[#00205B] text-white px-6 py-3.5 rounded-lg font-black text-xs uppercase tracking-wider hover:bg-[#001849] transition-all no-underline">
+      <span class="material-symbols-outlined text-[18px]">calendar_today</span> View Important Dates
+    </a>
+    <a href="../key-actions/index.html" class="flex items-center gap-2 border-2 border-[#00205B] text-[#00205B] px-6 py-3.5 rounded-lg font-black text-xs uppercase tracking-wider hover:bg-slate-50 transition-all no-underline">
+      <span class="material-symbols-outlined text-[18px]">arrow_back</span> Back to Key Actions
+    </a>
+  </div>
+</div>
+</section>
+<footer class="w-full bg-[#00205B] text-white pt-20 pb-10">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+<div class="lg:col-span-4">
+  <div class="flex items-center gap-4 mb-6">
+    <img alt="Department of Elections Crest" class="h-16 w-auto" src="../../assets/bvi-crest.png" width="391" height="427">
+    <div class="flex flex-col">
+      <span class="text-2xl font-black tracking-tight leading-none">elections.gov.vg</span>
+      <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1 leading-none">DEPARTMENT OF ELECTIONS</span>
+    </div>
+  </div>
+  <p class="text-slate-300 text-sm leading-relaxed mb-8 max-w-sm">Committed to ensuring free, fair, and transparent democratic processes for all citizens of the Virgin Islands.</p>
+</div>
+<div class="lg:col-span-2">
+  <h5 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">RESOURCES</h5>
+  <ul class="space-y-4">
+    <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Voter Registration</a></li>
+    <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Find Polling Station</a></li>
+    <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Election Results</a></li>
+    <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Forms &amp; Guides</a></li>
+  </ul>
+</div>
+<div class="lg:col-span-2">
+  <h5 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">GOVERNANCE</h5>
+  <ul class="space-y-4">
+    <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Elections Act</a></li>
+    <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Code of Conduct</a></li>
+    <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+    <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Accessibility</a></li>
+  </ul>
+</div>
+<div class="lg:col-span-4">
+  <h5 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">CONTACT US</h5>
+  <div class="space-y-4">
+    <div class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary text-xl">location_on</span><p class="text-sm text-slate-300">Office of the Supervisor of Elections<br>Road Town, Tortola<br>British Virgin Islands</p></div>
+    <div class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary text-xl">call</span><p class="text-sm text-slate-300">+1 (284) 468-4380</p></div>
+    <div class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary text-xl">mail</span><p class="text-sm text-slate-300">elections@gov.vg</p></div>
+    <div class="pt-4"><p class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">OPERATING HOURS</p><p class="text-sm text-slate-300">Mon - Fri: 8:30 AM – 4:30 PM</p></div>
+  </div>
+</div>
+</div>
+<div class="border-t border-white border-opacity-10 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+  <p class="text-slate-400 text-xs font-medium">© 2026 Department of Elections of the Virgin Islands. All rights reserved.</p>
+  <div class="flex gap-8 text-[11px] font-black uppercase tracking-widest text-slate-500">
+    <a class="hover:text-white transition-colors" href="#">Terms of Use</a>
+    <a class="hover:text-white transition-colors" href="#">Sitemap</a>
+  </div>
+</div>
+</div>
+</footer>
+</body></html>
