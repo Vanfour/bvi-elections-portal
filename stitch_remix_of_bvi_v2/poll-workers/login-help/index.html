@@ -42,7 +42,9 @@
   .sh-register:hover{background:#b91c1c;}
   .sh-register-icon{font-size:15px;}
   .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
-  details summary::-webkit-details-marker{display:none;}
+  details > summary{list-style:none;}
+  details > summary::-webkit-details-marker{display:none;}
+  details > summary::marker{display:none;content:"";}
   details[open] .faq-icon{transform:rotate(180deg);}
   .faq-icon{transition:transform 0.2s;}
 </style>
@@ -154,7 +156,7 @@
             <span class="font-bold text-[#00205B]">I didn't receive my login credentials</span>
             <span class="material-symbols-outlined faq-icon text-slate-400">expand_more</span>
           </summary>
-          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+          <div class="px-6 pb-5 text-sm text-slate-600 leading-relaxed pt-2">
             <p class="mb-3">Your Worker ID and temporary password are sent to the email address you provided during registration. Please check:</p>
             <ul class="space-y-2 list-none">
               <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[#E03C31] text-[16px] mt-0.5">check_circle</span>Your spam or junk folder</li>
@@ -170,7 +172,7 @@
             <span class="font-bold text-[#00205B]">I forgot my password</span>
             <span class="material-symbols-outlined faq-icon text-slate-400">expand_more</span>
           </summary>
-          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+          <div class="px-6 pb-5 text-sm text-slate-600 leading-relaxed pt-2">
             <p class="mb-3">To reset your password, contact the Elections Office with your full name and Worker ID. A new temporary password will be sent to your registered email within one business day.</p>
             <p>For urgent requests on or close to Election Day, call us directly at <strong class="text-[#00205B]">+1 (284) 468-3701</strong>.</p>
           </div>
@@ -181,7 +183,7 @@
             <span class="font-bold text-[#00205B]">My Worker ID is not recognised</span>
             <span class="material-symbols-outlined faq-icon text-slate-400">expand_more</span>
           </summary>
-          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+          <div class="px-6 pb-5 text-sm text-slate-600 leading-relaxed pt-2">
             <p class="mb-3">Worker IDs follow the format <strong>PW-YYYY-XXXX</strong> (e.g. PW-2024-0042). Make sure you are entering it exactly as shown in your appointment letter, including the dashes.</p>
             <p>If your ID still isn't recognised, your account may not yet be activated. Please allow 24 hours after receiving your appointment letter, then contact us if the issue persists.</p>
           </div>
@@ -192,7 +194,7 @@
             <span class="font-bold text-[#00205B]">My account has been locked</span>
             <span class="material-symbols-outlined faq-icon text-slate-400">expand_more</span>
           </summary>
-          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+          <div class="px-6 pb-5 text-sm text-slate-600 leading-relaxed pt-2">
             <p>Accounts are locked after 5 failed login attempts. Please contact the Elections Office to unlock your account. For security purposes, we cannot unlock accounts via email — you will need to call or visit in person with a valid photo ID.</p>
           </div>
         </details>
@@ -202,7 +204,7 @@
             <span class="font-bold text-[#00205B]">The portal is not loading or showing an error</span>
             <span class="material-symbols-outlined faq-icon text-slate-400">expand_more</span>
           </summary>
-          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+          <div class="px-6 pb-5 text-sm text-slate-600 leading-relaxed pt-2">
             <p class="mb-3">Please try the following steps:</p>
             <ul class="space-y-2 list-none">
               <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[#E03C31] text-[16px] mt-0.5">check_circle</span>Clear your browser cache and cookies</li>
