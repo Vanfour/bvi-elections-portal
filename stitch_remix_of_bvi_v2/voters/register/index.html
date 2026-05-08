@@ -298,7 +298,7 @@
               </div>
             </div>
             <div class="flex justify-end mt-8">
-              <button onclick="goStep(2)" class="bg-[#00205B] hover:bg-[#001849] text-white font-black text-xs uppercase tracking-wider px-4 md:px-8 py-3.5 rounded-lg transition-all flex items-center gap-2">
+              <button onclick="goStep(2)" class="w-full bg-[#00205B] hover:bg-[#001849] text-white font-black text-xs uppercase tracking-wider px-4 md:px-8 py-3.5 rounded-lg transition-all flex items-center justify-center gap-2">
                 Continue
                 <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
               </button>
@@ -358,14 +358,14 @@
                 <p class="text-[11px] text-slate-400 mt-1.5">Your district is based on your place of residence.</p>
               </div>
             </div>
-            <div class="flex justify-between mt-8">
-              <button onclick="goStep(1)" class="border border-slate-200 text-slate-600 hover:border-slate-400 font-black text-xs uppercase tracking-wider px-6 py-3.5 rounded-lg transition-all flex items-center gap-2">
-                <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-                Back
-              </button>
-              <button onclick="goStep(3)" class="bg-[#00205B] hover:bg-[#001849] text-white font-black text-xs uppercase tracking-wider px-4 md:px-8 py-3.5 rounded-lg transition-all flex items-center gap-2">
+            <div class="flex flex-col gap-3 mt-8">
+              <button onclick="goStep(3)" class="w-full bg-[#00205B] hover:bg-[#001849] text-white font-black text-xs uppercase tracking-wider px-4 md:px-8 py-3.5 rounded-lg transition-all flex items-center justify-center gap-2">
                 Review Application
                 <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+              </button>
+              <button onclick="goStep(1)" class="w-full border border-slate-200 text-slate-600 hover:border-slate-400 font-black text-xs uppercase tracking-wider px-6 py-3.5 rounded-lg transition-all flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                Back
               </button>
             </div>
           </div>
@@ -414,14 +414,14 @@
               </label>
             </div>
 
-            <div class="flex justify-between mt-8">
-              <button onclick="goStep(2)" class="border border-slate-200 text-slate-600 hover:border-slate-400 font-black text-xs uppercase tracking-wider px-6 py-3.5 rounded-lg transition-all flex items-center gap-2">
-                <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-                Back
-              </button>
-              <button onclick="handleSubmit()" class="bg-[#E03C31] hover:bg-[#b91c1c] text-white font-black text-xs uppercase tracking-widest px-4 md:px-8 py-3.5 rounded-lg transition-all flex items-center gap-2 shadow-sm">
+            <div class="flex flex-col gap-3 mt-8">
+              <button onclick="handleSubmit()" class="w-full bg-[#E03C31] hover:bg-[#b91c1c] text-white font-black text-xs uppercase tracking-widest px-4 md:px-8 py-3.5 rounded-lg transition-all flex items-center justify-center gap-2 shadow-sm">
                 <span class="material-symbols-outlined text-[18px]">how_to_reg</span>
                 Submit Registration
+              </button>
+              <button onclick="goStep(2)" class="w-full border border-slate-200 text-slate-600 hover:border-slate-400 font-black text-xs uppercase tracking-wider px-6 py-3.5 rounded-lg transition-all flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                Back
               </button>
             </div>
           </div>
