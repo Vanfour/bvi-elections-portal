@@ -222,6 +222,15 @@
         .hide-scrollbar::-webkit-scrollbar {
             display: none; 
         }
+
+  /* ── Mobile register strip ──────────────────────────────────────────────── */
+  @media (max-width: 640px) {
+    .sh-register { display: none !important; }
+    .sh-logo-title { font-size: 1.35rem; }
+    .sh-logo-img { height: 2.5rem; }
+  }
+  .mob-register-strip { display: none; width: 100%; background: #fff; border-top: 1px solid #f1f5f9; padding: 0.625rem 1.25rem; }
+  @media (max-width: 640px) { .mob-register-strip { display: block; } }
 </style>
 <script id="bvi-nav-wiring">
 (function(){
@@ -314,6 +323,13 @@
     </div>
   </div>
 </header>
+<!-- Mobile Register Strip -->
+<div class="mob-register-strip">
+  <a href="#" class="sh-register flex items-center justify-center gap-2 w-full bg-[#E03C31] hover:bg-[#b91c1c] text-white py-2.5 rounded-full font-black text-xs uppercase tracking-wider transition-all">
+    <span class="material-symbols-outlined" style="font-size:16px">how_to_reg</span>
+    Register to Vote
+  </a>
+</div>
 <!-- Voter Information Hub Header Section -->
 <section class="w-full bg-white">
 <div class="max-w-7xl mx-auto px-4 md:px-8 py-8 md:py-12">
