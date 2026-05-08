@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<title>Important Update for Candidates – BVI Elections</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode:"class",
+    theme:{extend:{"colors":{"secondary":"#E03C31","primary":"#00205B"},"fontFamily":{"headline":["Public Sans"],"body":["Inter"],"label":["Inter"]}}}
+  }
+</script>
+<style>
+  html{overflow-y:scroll;background:#f8f9fa;}
+  body{font-family:'Inter',system-ui,sans-serif;color:#191c1d;background:#f8f9fa;}
+  #site-util-bar{width:100%;background:#f8f9fa;border-bottom:1px solid #e2e8f0;padding:0.5rem 2rem;box-sizing:border-box;}
+  .su-inner{max-width:80rem;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.05em;}
+  .su-left{display:flex;align-items:center;gap:1rem;}
+  .su-back,.su-contact{color:inherit;text-decoration:none;display:flex;align-items:center;gap:0.25rem;transition:color 0.15s;}
+  .su-back:hover,.su-contact:hover{color:#00205B;}
+  #site-header{width:100%;background:#fff;border-bottom:1px solid #f1f5f9;box-sizing:border-box;}
+  .sh-inner{max-width:80rem;margin:0 auto;padding:1.25rem 2rem;box-sizing:border-box;}
+  .sh-row{display:flex;align-items:center;}
+  .sh-logo{display:flex;align-items:center;gap:1rem;flex-shrink:0;margin-right:auto;text-decoration:none;}
+  .sh-logo-img{height:3.5rem;width:auto;object-fit:contain;display:block;}
+  .sh-logo-title{font-size:1.875rem;font-weight:900;color:#00205B;letter-spacing:-0.025em;line-height:1;}
+  .sh-logo-sub{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#94a3b8;margin-top:0.25rem;line-height:1;}
+  .sh-nav{display:none;align-items:center;height:100%;margin-left:2rem;}
+  @media(min-width:1024px){.sh-nav{display:flex;}}
+  .sh-nav-links{display:flex;align-items:center;height:100%;}
+  .sh-nav-link{display:flex;flex-direction:column;align-self:stretch;justify-content:center;padding:0 1.25rem;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;line-height:1.25;color:#00205B;text-decoration:none;border-bottom:3px solid transparent;transition:color 0.15s,border-bottom-color 0.15s;}
+  .sh-nav-link:hover{color:#E03C31;}
+  .sh-nav-link--active{color:#E03C31;border-bottom-color:#E03C31;}
+  .sh-nav-sep{height:2.5rem;width:1px;background:#e2e8f0;flex-shrink:0;}
+  .sh-search{margin-left:auto;margin-right:0.5rem;color:#00205B;background:none;border:none;cursor:pointer;padding:0;line-height:1;transition:color 0.15s;}
+  .sh-search:hover{color:#E03C31;}
+  .sh-register{margin-left:1rem;display:flex;align-items:center;gap:0.375rem;padding:0.5rem 1.25rem;background:#E03C31;color:#fff;border-radius:9999px;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background-color 0.15s;}
+  .sh-register:hover{background:#b91c1c;}
+  .sh-register-icon{font-size:15px;}
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+  .article-body p{margin-bottom:1.25rem;line-height:1.8;color:#374151;}
+  .article-body h3{font-size:1.125rem;font-weight:800;color:#00205B;margin:2rem 0 0.75rem;}
+  .article-body ul{margin-bottom:1.25rem;padding-left:0;list-style:none;}
+  .article-body ul li{display:flex;align-items:flex-start;gap:0.5rem;margin-bottom:0.5rem;font-size:0.9rem;color:#374151;line-height:1.6;}
+  .article-body ul li::before{content:'';display:inline-block;width:6px;height:6px;background:#E03C31;border-radius:50%;margin-top:0.45rem;flex-shrink:0;}
+</style>
+<script id="bvi-nav-wiring">
+(function(){
+  var L={voters:'../../voters/upcoming-events-v1/index.html',candidates:'../../candidates/upcoming-elections/index.html',pollWorkers:'../layout-1/index.html',electionResults:'../../election-results/index.html',newsPolicies:'../../news-policies/index.html',importantDates:'../../important-dates/index.html'};
+  function wire(){
+    document.querySelectorAll('a[href="#"]').forEach(function(a){
+      var t=a.textContent.replace(/\s+/g,' ').trim().toUpperCase();
+      if(/^FOR[\s]*VOTERS$/.test(t)) a.href=L.voters;
+      else if(/^FOR[\s]*CANDIDATES$/.test(t)) a.href=L.candidates;
+      else if(/^FOR[\s]*POLL[\s]*WORKERS$/.test(t)) a.href=L.pollWorkers;
+      else if(/ELECTION[\s\S]{0,2}RESULTS/.test(t)&&t.length<25) a.href=L.electionResults;
+      else if(/NEWS/.test(t)&&/POLIC/.test(t)&&t.length<25) a.href=L.newsPolicies;
+      else if(/IMPORTANT.*DATES/.test(t)) a.href=L.importantDates;
+      else if(/REGISTER/.test(t)&&a.classList.contains('sh-register')) a.href=L.voters;
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',wire);
+  else wire();
+})();
+</script>
+</head>
+<body class="font-body bg-[#f8f9fa]">
+<div id="site-util-bar"><div class="su-inner"><div class="su-left"><a class="su-back" href="../layout-1/index.html"><span>←</span> BACK TO POLL WORKERS</a><span style="color:#cbd5e1">|</span><a class="su-contact" href="#">CONTACT US</a></div><div>OFFICIAL PORTAL OF THE BRITISH VIRGIN ISLANDS ELECTIONS</div></div></div>
+<header id="site-header"><div class="sh-inner"><div class="sh-row">
+  <a href="../../index.html" class="sh-logo"><img alt="BVI Coat of Arms" class="sh-logo-img" width="391" height="427" src="../../assets/bvi-crest.png"/><div><div class="sh-logo-title">elections.gov.vg</div><div class="sh-logo-sub">DEPARTMENT OF ELECTIONS</div></div></a>
+  <nav class="sh-nav"><div class="sh-nav-links">
+    <a class="sh-nav-link" href="#"><span>FOR</span><span>VOTERS</span></a><div class="sh-nav-sep"></div>
+    <a class="sh-nav-link" href="#"><span>FOR</span><span>CANDIDATES</span></a><div class="sh-nav-sep"></div>
+    <a class="sh-nav-link sh-nav-link--active" href="#"><span>FOR</span><span>POLL WORKERS</span></a><div class="sh-nav-sep"></div>
+    <a class="sh-nav-link" href="#"><span>IMPORTANT</span><span>DATES</span></a><div class="sh-nav-sep"></div>
+    <a class="sh-nav-link" href="#"><span>ELECTION</span><span>RESULTS</span></a><div class="sh-nav-sep"></div>
+    <a class="sh-nav-link" href="#"><span>NEWS &amp;</span><span>POLICIES</span></a>
+  </div><button class="sh-search"><span class="material-symbols-outlined" style="font-size:24px;line-height:1;display:block">search</span></button></nav>
+  <a href="#" class="sh-register"><span class="material-symbols-outlined sh-register-icon">how_to_reg</span>Register</a>
+</div></div></header>
+
+<section class="w-full bg-white border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-8 py-4">
+    <div class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest">
+      <a href="../layout-1/index.html" class="hover:text-[#00205B] transition-colors">For Poll Workers</a>
+      <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+      <span class="text-[#00205B]">News & Notices</span>
+      <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+      <span class="text-slate-500 normal-case font-medium truncate max-w-xs">Important update for candidates</span>
+    </div>
+  </div>
+</section>
+
+<section class="w-full bg-[#f8f9fa] py-8">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div class="lg:col-span-2">
+        <article class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+          <div class="px-8 pt-8 pb-4">
+            <div class="flex items-center gap-3 mb-5">
+              <span class="bg-red-50 text-[#E03C31] text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider">Candidates</span>
+              <span class="text-slate-300">·</span>
+              <span class="text-slate-400 text-xs font-semibold">Oct 10, 2024</span>
+              <span class="text-slate-300">·</span>
+              <span class="text-slate-400 text-xs font-semibold flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 2 min read</span>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-black text-[#00205B] font-headline leading-tight mb-4">Important Update for Candidates: Nomination Submission Process</h1>
+            <div class="flex items-center gap-3 pb-5 border-b border-slate-100">
+              <div class="w-9 h-9 bg-[#00205B] rounded-full flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-white text-[18px]">person</span></div>
+              <div><p class="text-sm font-bold text-[#00205B]">Department of Elections</p><p class="text-xs text-slate-400">Official Communications Office</p></div>
+              <div class="ml-auto flex items-center gap-2">
+                <button onclick="copyLink()" class="flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#00205B] transition-colors border border-slate-200 rounded-full px-3 py-1.5"><span class="material-symbols-outlined text-[15px]">share</span> Share</button>
+                <span id="copy-toast" class="hidden text-xs text-green-600 font-bold">Link copied!</span>
+              </div>
+            </div>
+          </div>
+          <div class="px-8 py-6 article-body">
+            <p>The Department of Elections wishes to notify all prospective candidates for the 2024 BVI General Election of important changes to the nomination submission process. These changes take immediate effect and apply to all candidates contesting seats in any of the nine districts or the at-large category.</p>
+
+            <h3>Key Changes to Nomination Submissions</h3>
+            <p>Following a review of the nomination process, the following amendments have been made to ensure greater accuracy and transparency in the filing of nomination papers:</p>
+            <ul>
+              <li>All nomination papers must now be submitted in person at the designated Returning Officer's office for the relevant district</li>
+              <li>Electronic or postal submissions will no longer be accepted for primary nomination documents</li>
+              <li>A non-refundable nomination deposit of $500 (district) or $1,000 (at-large) is required at time of submission</li>
+              <li>Two qualified nominators who are registered voters in the relevant district must be present at submission</li>
+              <li>All supporting documents must be certified copies, not originals</li>
+            </ul>
+
+            <h3>Nomination Deadline</h3>
+            <p>The deadline for the submission of all nomination papers remains <strong>Nomination Day, October 29, 2024</strong>. Returning Officers will be available at their respective offices from 9:00 AM to 4:00 PM on Nomination Day.</p>
+            <p>Candidates are strongly advised to submit their papers well in advance of the deadline to allow time for any queries or corrections to be resolved before the close of nominations.</p>
+
+            <h3>Required Documents Checklist</h3>
+            <ul>
+              <li>Completed Nomination Form (Form C) — available from the Elections Office</li>
+              <li>Certified copy of valid BVI Passport or National Identity Card</li>
+              <li>Proof of BVI Status or Belonger status</li>
+              <li>Signed declarations from two nominators registered in the district</li>
+              <li>Nomination deposit (cash or bank draft payable to the Government of the Virgin Islands)</li>
+              <li>Completed Campaign Finance Declaration form</li>
+            </ul>
+
+            <h3>Contact Your Returning Officer</h3>
+            <p>Each district has a designated Returning Officer who can answer questions about the nomination process. Contact details for all Returning Officers are available on the Elections Office website or by calling the main Elections Office line.</p>
+
+            <div class="bg-red-50 border border-red-200 rounded-xl p-5 flex items-start gap-4 mt-2 not-prose">
+              <span class="material-symbols-outlined text-[#E03C31] text-[24px] mt-0.5">warning</span>
+              <div>
+                <p class="text-sm font-black text-[#E03C31] mb-1">Important Notice</p>
+                <p class="text-sm text-red-800 leading-relaxed">Incomplete or incorrectly filed nomination papers will be rejected. The Department of Elections cannot accept late submissions under any circumstances. Candidates are encouraged to seek legal advice if uncertain about any requirements.</p>
+              </div>
+            </div>
+          </div>
+          <div class="px-8 py-5 border-t border-slate-100 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div class="flex flex-wrap gap-2">
+              <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest mr-1">Tags:</span>
+              <span class="bg-slate-100 text-slate-600 text-[10px] font-bold px-2.5 py-1 rounded-full">Candidates</span>
+              <span class="bg-slate-100 text-slate-600 text-[10px] font-bold px-2.5 py-1 rounded-full">Nominations</span>
+              <span class="bg-slate-100 text-slate-600 text-[10px] font-bold px-2.5 py-1 rounded-full">2024 Election</span>
+            </div>
+            <a href="../layout-1/index.html" class="text-xs font-black text-[#00205B] uppercase tracking-wider flex items-center gap-1 hover:text-[#E03C31] transition-colors"><span class="material-symbols-outlined text-[16px]">arrow_back</span> Back to Poll Workers</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="space-y-5">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+          <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">More News & Notices</h3>
+          <div class="space-y-4">
+            <a href="../news-detail/index.html" class="flex items-start gap-3 group">
+              <div class="w-2 h-2 bg-blue-400 rounded-full mt-1.5 shrink-0"></div>
+              <div><p class="text-sm font-bold text-[#00205B] group-hover:text-[#E03C31] transition-colors leading-snug">New voter guidelines released</p><p class="text-[11px] text-slate-400 mt-0.5">Oct 12, 2024 · Voter Education</p></div>
+            </a>
+            <a href="../news-schedule/index.html" class="flex items-start gap-3 group">
+              <div class="w-2 h-2 bg-slate-300 rounded-full mt-1.5 shrink-0"></div>
+              <div><p class="text-sm font-bold text-[#00205B] group-hover:text-[#E03C31] transition-colors leading-snug">Changes in election schedule</p><p class="text-[11px] text-slate-400 mt-0.5">Oct 08, 2024 · Alert</p></div>
+            </a>
+            <div class="pt-2 border-t border-slate-100">
+              <a href="../../news-policies/index.html" class="text-xs font-black text-[#E03C31] uppercase tracking-wider flex items-center gap-1 hover:gap-2 transition-all">View all news <span class="material-symbols-outlined text-[15px]">arrow_forward</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="bg-[#00205B] rounded-2xl p-6 text-white">
+          <h3 class="text-xs font-black uppercase tracking-widest mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-yellow-300">info</span>Key Dates</h3>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-start gap-2"><span class="material-symbols-outlined text-slate-400 text-[16px] mt-0.5">calendar_today</span><div><p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Nomination Day</p><p class="font-semibold">October 29, 2024</p></div></div>
+            <div class="flex items-start gap-2"><span class="material-symbols-outlined text-slate-400 text-[16px] mt-0.5">calendar_today</span><div><p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Election Day</p><p class="font-semibold">November 25, 2024</p></div></div>
+            <div class="flex items-start gap-2"><span class="material-symbols-outlined text-slate-400 text-[16px] mt-0.5">call</span><div><p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Enquiries</p><p class="font-semibold">+1 (284) 468-3701</p></div></div>
+          </div>
+        </div>
+        <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5">
+          <div class="flex items-start gap-3"><span class="material-symbols-outlined text-amber-500 text-[20px] mt-0.5">warning</span><div><p class="text-xs font-black text-amber-800 mb-1">Nomination Deadline</p><p class="text-xs text-amber-700 leading-relaxed">All nomination papers must be submitted by <strong>October 29, 2024</strong>. No late submissions will be accepted.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-[#00205B] text-white mt-8 py-8"><div class="max-w-7xl mx-auto px-8 text-center"><p class="text-xs text-slate-400">© 2024 Department of Elections, British Virgin Islands. All rights reserved.</p><p class="text-xs text-slate-500 mt-1">For assistance call <span class="text-white font-semibold">+1 (284) 468-3701</span> or email <span class="text-white font-semibold">elections@gov.vg</span></p></div></footer>
+<script>function copyLink(){navigator.clipboard.writeText(window.location.href).then(function(){var t=document.getElementById('copy-toast');t.classList.remove('hidden');setTimeout(function(){t.classList.add('hidden');},2000);});}</script>
+</body></html>
