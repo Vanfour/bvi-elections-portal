@@ -1,0 +1,27 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BVI Department of Elections//Election Day 2024//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:election-day-2024@elections.gov.vg
+DTSTART;TZID=America/Tortola:20241125T060000
+DTEND;TZID=America/Tortola:20241125T180000
+SUMMARY:BVI General Election Day 2024
+DESCRIPTION:General Election Day for the British Virgin Islands. Polls are open from 6:00 AM to 6:00 PM. Bring your Voter ID card and visit your assigned polling station. For more information visit elections.gov.vg.
+LOCATION:Your Assigned Polling Station\, British Virgin Islands
+URL:https://elections.gov.vg
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Reminder: BVI General Election Day is tomorrow – 6 AM to 6 PM
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:BVI General Election Day: Polls close at 6:00 PM today
+END:VALARM
+END:VEVENT
+END:VCALENDAR
