@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<title>News Detail – BVI Elections</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode:"class",
+    theme:{extend:{"colors":{"secondary":"#E03C31","primary":"#00205B"},"fontFamily":{"headline":["Public Sans"],"body":["Inter"],"label":["Inter"]}}}
+  }
+</script>
+<style>
+  html{overflow-y:scroll;background:#f8f9fa;}
+  body{font-family:'Inter',system-ui,sans-serif;color:#191c1d;background:#f8f9fa;}
+  #site-util-bar{width:100%;background:#f8f9fa;border-bottom:1px solid #e2e8f0;padding:0.5rem 2rem;box-sizing:border-box;}
+  .su-inner{max-width:80rem;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.05em;}
+  .su-left{display:flex;align-items:center;gap:1rem;}
+  .su-back,.su-contact{color:inherit;text-decoration:none;display:flex;align-items:center;gap:0.25rem;transition:color 0.15s;}
+  .su-back:hover,.su-contact:hover{color:#00205B;}
+  #site-header{width:100%;background:#fff;border-bottom:1px solid #f1f5f9;box-sizing:border-box;}
+  .sh-inner{max-width:80rem;margin:0 auto;padding:1.25rem 2rem;box-sizing:border-box;}
+  .sh-row{display:flex;align-items:center;}
+  .sh-logo{display:flex;align-items:center;gap:1rem;flex-shrink:0;margin-right:auto;text-decoration:none;}
+  .sh-logo-img{height:3.5rem;width:auto;object-fit:contain;display:block;}
+  .sh-logo-title{font-size:1.875rem;font-weight:900;color:#00205B;letter-spacing:-0.025em;line-height:1;}
+  .sh-logo-sub{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#94a3b8;margin-top:0.25rem;line-height:1;}
+  .sh-nav{display:none;align-items:center;height:100%;margin-left:2rem;}
+  @media(min-width:1024px){.sh-nav{display:flex;}}
+  .sh-nav-links{display:flex;align-items:center;height:100%;}
+  .sh-nav-link{display:flex;flex-direction:column;align-self:stretch;justify-content:center;padding:0 1.25rem;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;line-height:1.25;color:#00205B;text-decoration:none;border-bottom:3px solid transparent;transition:color 0.15s,border-bottom-color 0.15s;}
+  .sh-nav-link:hover{color:#E03C31;}
+  .sh-nav-link--active{color:#E03C31;border-bottom-color:#E03C31;}
+  .sh-nav-sep{height:2.5rem;width:1px;background:#e2e8f0;flex-shrink:0;}
+  .sh-search{margin-left:auto;margin-right:0.5rem;color:#00205B;background:none;border:none;cursor:pointer;padding:0;line-height:1;transition:color 0.15s;}
+  .sh-search:hover{color:#E03C31;}
+  .sh-register{margin-left:1rem;display:flex;align-items:center;gap:0.375rem;padding:0.5rem 1.25rem;background:#E03C31;color:#fff;border-radius:9999px;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background-color 0.15s;}
+  .sh-register:hover{background:#b91c1c;}
+  .sh-register-icon{font-size:15px;}
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+  /* Article body typography */
+  .article-body p{margin-bottom:1.25rem;line-height:1.8;color:#374151;}
+  .article-body h3{font-size:1.125rem;font-weight:800;color:#00205B;margin:2rem 0 0.75rem;}
+  .article-body ul{margin-bottom:1.25rem;padding-left:0;list-style:none;}
+  .article-body ul li{display:flex;align-items:flex-start;gap:0.5rem;margin-bottom:0.5rem;font-size:0.9rem;color:#374151;line-height:1.6;}
+  .article-body ul li::before{content:'';display:inline-block;width:6px;height:6px;background:#E03C31;border-radius:50%;margin-top:0.45rem;flex-shrink:0;}
+</style>
+<script id="bvi-nav-wiring">
+(function(){
+  var L={voters:'../../voters/upcoming-events-v1/index.html',candidates:'../../candidates/upcoming-elections/index.html',pollWorkers:'../layout-1/index.html',electionResults:'../../election-results/index.html',newsPolicies:'../../news-policies/index.html',importantDates:'../../important-dates/index.html'};
+  function wire(){
+    document.querySelectorAll('a[href="#"]').forEach(function(a){
+      var t=a.textContent.replace(/\s+/g,' ').trim().toUpperCase();
+      if(/^FOR[\s]*VOTERS$/.test(t)) a.href=L.voters;
+      else if(/^FOR[\s]*CANDIDATES$/.test(t)) a.href=L.candidates;
+      else if(/^FOR[\s]*POLL[\s]*WORKERS$/.test(t)) a.href=L.pollWorkers;
+      else if(/ELECTION[\s\S]{0,2}RESULTS/.test(t)&&t.length<25) a.href=L.electionResults;
+      else if(/NEWS/.test(t)&&/POLIC/.test(t)&&t.length<25) a.href=L.newsPolicies;
+      else if(/IMPORTANT.*DATES/.test(t)) a.href=L.importantDates;
+      else if(/REGISTER/.test(t)&&a.classList.contains('sh-register')) a.href=L.voters;
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',wire);
+  else wire();
+})();
+</script>
+</head>
+<body class="font-body bg-[#f8f9fa]">
+
+<!-- Utility Bar -->
+<div id="site-util-bar">
+  <div class="su-inner">
+    <div class="su-left">
+      <a class="su-back" href="../layout-1/index.html"><span>←</span> BACK TO POLL WORKERS</a>
+      <span style="color:#cbd5e1">|</span>
+      <a class="su-contact" href="#">CONTACT US</a>
+    </div>
+    <div>OFFICIAL PORTAL OF THE BRITISH VIRGIN ISLANDS ELECTIONS</div>
+  </div>
+</div>
+
+<!-- Header -->
+<header id="site-header">
+  <div class="sh-inner">
+    <div class="sh-row">
+      <a href="../../index.html" class="sh-logo">
+        <img alt="BVI Coat of Arms" class="sh-logo-img" width="391" height="427" src="../../assets/bvi-crest.png"/>
+        <div>
+          <div class="sh-logo-title">elections.gov.vg</div>
+          <div class="sh-logo-sub">DEPARTMENT OF ELECTIONS</div>
+        </div>
+      </a>
+      <nav class="sh-nav">
+        <div class="sh-nav-links">
+          <a class="sh-nav-link" href="#"><span>FOR</span><span>VOTERS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>FOR</span><span>CANDIDATES</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link sh-nav-link--active" href="#"><span>FOR</span><span>POLL WORKERS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>IMPORTANT</span><span>DATES</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>ELECTION</span><span>RESULTS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>NEWS &amp;</span><span>POLICIES</span></a>
+        </div>
+        <button class="sh-search" aria-label="Search">
+          <span class="material-symbols-outlined" style="font-size:24px;line-height:1;display:block">search</span>
+        </button>
+      </nav>
+      <a href="#" class="sh-register">
+        <span class="material-symbols-outlined sh-register-icon">how_to_reg</span>
+        Register
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Breadcrumb -->
+<section class="w-full bg-white border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-8 py-4">
+    <div class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest">
+      <a href="../layout-1/index.html" class="hover:text-[#00205B] transition-colors">For Poll Workers</a>
+      <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+      <span class="text-[#00205B]">News & Notices</span>
+      <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+      <span class="text-slate-500 normal-case font-medium truncate max-w-xs">New voter guidelines released</span>
+    </div>
+  </div>
+</section>
+
+<!-- Article Layout -->
+<section class="w-full bg-[#f8f9fa] py-8">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      <!-- Article Main -->
+      <div class="lg:col-span-2">
+        <article class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+
+          <!-- Category + Meta -->
+          <div class="px-8 pt-8 pb-4">
+            <div class="flex items-center gap-3 mb-5">
+              <span class="bg-blue-50 text-[#00205B] text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider">Voter Education</span>
+              <span class="text-slate-300">·</span>
+              <span class="text-slate-400 text-xs font-semibold">Oct 12, 2024</span>
+              <span class="text-slate-300">·</span>
+              <span class="text-slate-400 text-xs font-semibold flex items-center gap-1">
+                <span class="material-symbols-outlined text-[14px]">schedule</span> 3 min read
+              </span>
+            </div>
+
+            <!-- Headline -->
+            <h1 class="text-3xl md:text-4xl font-black text-[#00205B] font-headline leading-tight mb-4">
+              New Voter Guidelines Released for 2024 General Election
+            </h1>
+
+            <!-- Byline -->
+            <div class="flex items-center gap-3 pb-5 border-b border-slate-100">
+              <div class="w-9 h-9 bg-[#00205B] rounded-full flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-white text-[18px]">person</span>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">Department of Elections</p>
+                <p class="text-xs text-slate-400">Official Communications Office</p>
+              </div>
+              <!-- Share -->
+              <div class="ml-auto flex items-center gap-2">
+                <button onclick="copyLink()" class="flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#00205B] transition-colors border border-slate-200 rounded-full px-3 py-1.5">
+                  <span class="material-symbols-outlined text-[15px]">share</span> Share
+                </button>
+                <span id="copy-toast" class="hidden text-xs text-green-600 font-bold">Link copied!</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Article Body -->
+          <div class="px-8 py-6 article-body">
+            <p>The Department of Elections of the British Virgin Islands is pleased to announce the release of updated voter guidelines ahead of the November 25, 2024 General Election. These updated procedures have been developed in consultation with electoral stakeholders to ensure a smooth, transparent, and accessible voting experience for all eligible citizens.</p>
+
+            <h3>What Has Changed</h3>
+            <p>The revised guidelines introduce several key updates to the voter identification and polling station procedures. All voters are now required to present a valid government-issued photo ID at their assigned polling station before receiving a ballot paper.</p>
+            <ul>
+              <li>Valid BVI Passport or National Identity Card now required at the polls</li>
+              <li>Voter registration cards alone are no longer sufficient as primary ID</li>
+              <li>Advance poll application window extended to 14 days before Election Day</li>
+              <li>New accessible voting booths installed at all nine polling stations</li>
+              <li>Voter assistance officers available at every station to support those in need</li>
+            </ul>
+
+            <h3>Voter Identification Requirements</h3>
+            <p>To cast a ballot in the 2024 General Election, each voter must present one of the following forms of photo identification: a valid BVI Passport, a BVI Driver's Licence, or an official National Identity Card issued by the Government of the Virgin Islands.</p>
+            <p>Voters who do not possess any of the above documents are encouraged to contact the Elections Office no later than November 15, 2024 to discuss alternative verification arrangements.</p>
+
+            <h3>Polling Station Locations</h3>
+            <p>All nine district polling stations remain at their previously designated locations. A full list of stations, along with accessibility information and opening hours, is available on the Elections Office website and at all government offices across the Territory.</p>
+            <ul>
+              <li>Polls open at 6:00 AM and close at 6:00 PM on November 25, 2024</li>
+              <li>Voters in the queue before 6:00 PM will be permitted to vote</li>
+              <li>No campaigning is permitted within 200 metres of any polling station</li>
+            </ul>
+
+            <h3>Further Information</h3>
+            <p>For the full text of the updated voter guidelines, please download the PDF document below or visit any of the Department of Elections' public offices. Members of the public may also contact the Elections Office by phone or email with any questions.</p>
+
+            <!-- Download CTA -->
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 flex items-center gap-4 mt-2 not-prose">
+              <div class="w-12 h-12 bg-[#00205B] rounded-xl flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-white text-[22px]">picture_as_pdf</span>
+              </div>
+              <div class="flex-1">
+                <p class="text-sm font-black text-[#00205B]">2024 Voter Guidelines (Full Document)</p>
+                <p class="text-xs text-slate-500 mt-0.5">PDF · 1.2 MB · Published Oct 12, 2024</p>
+              </div>
+              <a href="voter-guidelines-2024.pdf" download class="flex items-center gap-1.5 bg-[#00205B] hover:bg-[#001849] text-white px-4 py-2.5 rounded-xl font-black text-xs uppercase tracking-wider transition-all shrink-0">
+                <span class="material-symbols-outlined text-[16px]">download</span> Download
+              </a>
+            </div>
+          </div>
+
+          <!-- Footer: Tags + Nav -->
+          <div class="px-8 py-5 border-t border-slate-100 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div class="flex flex-wrap gap-2">
+              <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest mr-1">Tags:</span>
+              <span class="bg-slate-100 text-slate-600 text-[10px] font-bold px-2.5 py-1 rounded-full">Voter Education</span>
+              <span class="bg-slate-100 text-slate-600 text-[10px] font-bold px-2.5 py-1 rounded-full">Guidelines</span>
+              <span class="bg-slate-100 text-slate-600 text-[10px] font-bold px-2.5 py-1 rounded-full">2024 Election</span>
+            </div>
+            <a href="../layout-1/index.html" class="text-xs font-black text-[#00205B] uppercase tracking-wider flex items-center gap-1 hover:text-[#E03C31] transition-colors">
+              <span class="material-symbols-outlined text-[16px]">arrow_back</span> Back to Poll Workers
+            </a>
+          </div>
+
+        </article>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="space-y-5">
+
+        <!-- More News -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+          <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">More News & Notices</h3>
+          <div class="space-y-4">
+
+            <a href="news-candidates/index.html" class="flex items-start gap-3 group">
+              <div class="w-2 h-2 bg-[#E03C31] rounded-full mt-1.5 shrink-0"></div>
+              <div>
+                <p class="text-sm font-bold text-[#00205B] group-hover:text-[#E03C31] transition-colors leading-snug">Important update for candidates</p>
+                <p class="text-[11px] text-slate-400 mt-0.5">Oct 10, 2024 · Candidates</p>
+              </div>
+            </a>
+
+            <a href="news-schedule/index.html" class="flex items-start gap-3 group">
+              <div class="w-2 h-2 bg-slate-300 rounded-full mt-1.5 shrink-0"></div>
+              <div>
+                <p class="text-sm font-bold text-[#00205B] group-hover:text-[#E03C31] transition-colors leading-snug">Changes in election schedule</p>
+                <p class="text-[11px] text-slate-400 mt-0.5">Oct 08, 2024 · Alert</p>
+              </div>
+            </a>
+
+            <div class="pt-2 border-t border-slate-100">
+              <a href="../../news-policies/index.html" class="text-xs font-black text-[#E03C31] uppercase tracking-wider flex items-center gap-1 hover:gap-2 transition-all">
+                View all news <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Info -->
+        <div class="bg-[#00205B] rounded-2xl p-6 text-white">
+          <h3 class="text-xs font-black uppercase tracking-widest mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[16px] text-yellow-300">info</span>
+            Key Information
+          </h3>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-slate-400 text-[16px] mt-0.5">calendar_today</span>
+              <div>
+                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Election Day</p>
+                <p class="font-semibold">November 25, 2024</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-slate-400 text-[16px] mt-0.5">schedule</span>
+              <div>
+                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Polling Hours</p>
+                <p class="font-semibold">6:00 AM – 6:00 PM</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-slate-400 text-[16px] mt-0.5">call</span>
+              <div>
+                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Enquiries</p>
+                <p class="font-semibold">+1 (284) 468-3701</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alert box -->
+        <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5">
+          <div class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-amber-500 text-[20px] mt-0.5">warning</span>
+            <div>
+              <p class="text-xs font-black text-amber-800 mb-1">Voter Registration Deadline</p>
+              <p class="text-xs text-amber-700 leading-relaxed">The deadline to register or update your details is <strong>November 8, 2024</strong>. Ensure your information is correct before Election Day.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#00205B] text-white mt-8 py-8">
+  <div class="max-w-7xl mx-auto px-8 text-center">
+    <p class="text-xs text-slate-400">© 2024 Department of Elections, British Virgin Islands. All rights reserved.</p>
+    <p class="text-xs text-slate-500 mt-1">For assistance call <span class="text-white font-semibold">+1 (284) 468-3701</span> or email <span class="text-white font-semibold">elections@gov.vg</span></p>
+  </div>
+</footer>
+
+<script>
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href).then(function() {
+    var toast = document.getElementById('copy-toast');
+    toast.classList.remove('hidden');
+    setTimeout(function(){ toast.classList.add('hidden'); }, 2000);
+  });
+}
+</script>
+</body></html>
