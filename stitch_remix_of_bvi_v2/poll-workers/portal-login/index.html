@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<title>Poll Worker Portal – Login</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode:"class",
+    theme:{extend:{"colors":{"secondary":"#E03C31","primary":"#00205B","surface-bright":"#f8f9fa"},"fontFamily":{"headline":["Public Sans"],"body":["Inter"],"label":["Inter"]}}}
+  }
+</script>
+<style>
+  html{overflow-y:scroll;background:#f8f9fa;}
+  body{font-family:'Inter',system-ui,sans-serif;color:#191c1d;background:#f8f9fa;}
+  #site-util-bar{width:100%;background:#f8f9fa;border-bottom:1px solid #e2e8f0;padding:0.5rem 2rem;box-sizing:border-box;}
+  .su-inner{max-width:80rem;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.05em;}
+  .su-left{display:flex;align-items:center;gap:1rem;}
+  .su-back,.su-contact{color:inherit;text-decoration:none;display:flex;align-items:center;gap:0.25rem;transition:color 0.15s;}
+  .su-back:hover,.su-contact:hover{color:#00205B;}
+  #site-header{width:100%;background:#fff;border-bottom:1px solid #f1f5f9;box-sizing:border-box;}
+  .sh-inner{max-width:80rem;margin:0 auto;padding:1.25rem 2rem;box-sizing:border-box;}
+  .sh-row{display:flex;align-items:center;}
+  .sh-logo{display:flex;align-items:center;gap:1rem;flex-shrink:0;margin-right:auto;text-decoration:none;}
+  .sh-logo-img{height:3.5rem;width:auto;object-fit:contain;display:block;}
+  .sh-logo-title{font-family:'Inter',system-ui,sans-serif;font-size:1.875rem;font-weight:900;color:#00205B;letter-spacing:-0.025em;line-height:1;}
+  .sh-logo-sub{font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#94a3b8;margin-top:0.25rem;line-height:1;}
+  .sh-nav{display:none;align-items:center;height:100%;margin-left:2rem;}
+  @media(min-width:1024px){.sh-nav{display:flex;}}
+  .sh-nav-links{display:flex;align-items:center;height:100%;}
+  .sh-nav-link{display:flex;flex-direction:column;align-self:stretch;justify-content:center;padding:0 1.25rem;font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;line-height:1.25;color:#00205B;text-decoration:none;border-bottom:3px solid transparent;transition:color 0.15s,border-bottom-color 0.15s;}
+  .sh-nav-link:hover{color:#E03C31;}
+  .sh-nav-link--active{color:#E03C31;border-bottom-color:#E03C31;}
+  .sh-nav-sep{height:2.5rem;width:1px;background:#e2e8f0;flex-shrink:0;}
+  .sh-search{margin-left:auto;margin-right:0.5rem;color:#00205B;background:none;border:none;cursor:pointer;padding:0;line-height:1;transition:color 0.15s;}
+  .sh-search:hover{color:#E03C31;}
+  .sh-register{margin-left:1rem;display:flex;align-items:center;gap:0.375rem;padding:0.5rem 1.25rem;background:#E03C31;color:#fff;border-radius:9999px;font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background-color 0.15s;}
+  .sh-register:hover{background:#b91c1c;}
+  .sh-register-icon{font-size:15px;}
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+</style>
+<script id="bvi-nav-wiring">
+(function(){
+  var L={voters:'../../voters/upcoming-events-v1/index.html',candidates:'../../candidates/upcoming-elections/index.html',pollWorkers:'../layout-1/index.html',electionResults:'../../election-results/index.html',newsPolicies:'../../news-policies/index.html',importantDates:'../../important-dates/index.html'};
+  function wire(){
+    document.querySelectorAll('a[href="#"]').forEach(function(a){
+      var t=a.textContent.replace(/\s+/g,' ').trim().toUpperCase();
+      if(/^FOR[\s]*VOTERS$/.test(t)) a.href=L.voters;
+      else if(/^FOR[\s]*CANDIDATES$/.test(t)) a.href=L.candidates;
+      else if(/^FOR[\s]*POLL[\s]*WORKERS$/.test(t)) a.href=L.pollWorkers;
+      else if(/ELECTION[\s\S]{0,2}RESULTS/.test(t)&&t.length<25) a.href=L.electionResults;
+      else if(/NEWS/.test(t)&&/POLIC/.test(t)&&t.length<25) a.href=L.newsPolicies;
+      else if(/IMPORTANT.*DATES/.test(t)) a.href=L.importantDates;
+      else if(/REGISTER/.test(t)&&a.classList.contains('sh-register')) a.href=L.voters;
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',wire);
+  else wire();
+})();
+</script>
+</head>
+<body class="font-body text-on-surface bg-[#f8f9fa]">
+
+<!-- Utility Bar -->
+<div id="site-util-bar">
+  <div class="su-inner">
+    <div class="su-left">
+      <a class="su-back" href="../layout-1/index.html"><span>←</span> BACK TO POLL WORKERS</a>
+      <span style="color:#cbd5e1">|</span>
+      <a class="su-contact" href="#">CONTACT US</a>
+    </div>
+    <div>OFFICIAL PORTAL OF THE BRITISH VIRGIN ISLANDS ELECTIONS</div>
+  </div>
+</div>
+
+<!-- Header -->
+<header id="site-header">
+  <div class="sh-inner">
+    <div class="sh-row">
+      <a href="../../index.html" class="sh-logo">
+        <img alt="BVI Coat of Arms" class="sh-logo-img" width="391" height="427" src="../../assets/bvi-crest.png"/>
+        <div>
+          <div class="sh-logo-title">elections.gov.vg</div>
+          <div class="sh-logo-sub">DEPARTMENT OF ELECTIONS</div>
+        </div>
+      </a>
+      <nav class="sh-nav">
+        <div class="sh-nav-links">
+          <a class="sh-nav-link" href="#"><span>FOR</span><span>VOTERS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>FOR</span><span>CANDIDATES</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link sh-nav-link--active" href="#"><span>FOR</span><span>POLL WORKERS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>IMPORTANT</span><span>DATES</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>ELECTION</span><span>RESULTS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>NEWS &amp;</span><span>POLICIES</span></a>
+        </div>
+        <button class="sh-search" aria-label="Search">
+          <span class="material-symbols-outlined" style="font-size:24px;line-height:1;display:block">search</span>
+        </button>
+      </nav>
+      <a href="#" class="sh-register">
+        <span class="material-symbols-outlined sh-register-icon">how_to_reg</span>
+        Register
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Breadcrumb + Title -->
+<section class="w-full bg-white border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-8 py-6">
+    <div class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">
+      <a href="../layout-1/index.html" class="hover:text-[#00205B] transition-colors">For Poll Workers</a>
+      <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+      <span class="text-[#00205B]">Portal Login</span>
+    </div>
+    <div class="flex items-center gap-5">
+      <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-[#E03C31] text-[30px]">lock</span>
+      </div>
+      <div>
+        <h1 class="text-4xl md:text-5xl font-black text-[#00205B] font-headline leading-tight">Poll Worker Portal</h1>
+        <p class="text-slate-500 text-base mt-2">Access your assignments, training materials, and election day schedule.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Content -->
+<section class="w-full bg-[#f8f9fa] py-8">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+
+      <!-- Login Form -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+        <h2 class="text-xl font-black text-[#00205B] mb-1">Sign In to Your Account</h2>
+        <p class="text-sm text-slate-500 mb-6">Use the credentials provided in your appointment letter.</p>
+
+        <div id="login-form-wrap">
+          <form onsubmit="handleLogin(event)" class="space-y-5">
+            <div>
+              <label class="block text-xs font-black text-slate-600 uppercase tracking-widest mb-1.5">Worker ID</label>
+              <input type="text" placeholder="e.g. PW-2024-0042" class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#00205B]/20 focus:border-[#00205B] transition-all"/>
+            </div>
+            <div>
+              <label class="block text-xs font-black text-slate-600 uppercase tracking-widest mb-1.5">Password</label>
+              <input type="password" placeholder="Enter your password" class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#00205B]/20 focus:border-[#00205B] transition-all"/>
+            </div>
+            <div class="flex items-center justify-between">
+              <label class="flex items-center gap-2 text-sm text-slate-600 cursor-pointer">
+                <input type="checkbox" class="rounded border-slate-300 text-[#00205B]"/>
+                Keep me signed in
+              </label>
+              <a href="login-help/index.html" class="text-xs font-bold text-[#E03C31] hover:underline">Forgot password?</a>
+            </div>
+            <button type="submit" class="w-full bg-[#E03C31] hover:bg-[#b91c1c] text-white py-3.5 rounded-xl font-black text-sm uppercase tracking-wider transition-all shadow-md">
+              Login to Portal
+            </button>
+          </form>
+        </div>
+
+        <!-- Success State (hidden) -->
+        <div id="login-success" class="hidden text-center py-4">
+          <div class="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="material-symbols-outlined text-green-500 text-[36px]">check_circle</span>
+          </div>
+          <h3 class="text-lg font-black text-[#00205B] mb-1">Login Successful!</h3>
+          <p class="text-sm text-slate-500 mb-4">Welcome back. Loading your dashboard…</p>
+          <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+            <div id="progress-bar" class="h-2 bg-[#E03C31] rounded-full transition-all duration-[2000ms]" style="width:0%"></div>
+          </div>
+        </div>
+
+        <p class="text-xs text-slate-400 text-center mt-6">Having trouble? <a href="login-help/index.html" class="text-[#00205B] font-bold hover:underline">Get login help →</a></p>
+      </div>
+
+      <!-- Info Panel -->
+      <div class="space-y-5">
+
+        <!-- What's in the portal -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+          <h3 class="text-sm font-black text-[#00205B] uppercase tracking-widest mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px] text-[#E03C31]">apps</span>
+            What's in Your Portal
+          </h3>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3 p-3 bg-slate-50 rounded-xl">
+              <span class="material-symbols-outlined text-[#00205B] text-[20px] mt-0.5">assignment</span>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">Your Assignment</p>
+                <p class="text-xs text-slate-500 mt-0.5">View your polling station, role, and reporting time.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 bg-slate-50 rounded-xl">
+              <span class="material-symbols-outlined text-[#00205B] text-[20px] mt-0.5">school</span>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">Training Materials</p>
+                <p class="text-xs text-slate-500 mt-0.5">Manuals, videos, and quizzes for election day readiness.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 bg-slate-50 rounded-xl">
+              <span class="material-symbols-outlined text-[#00205B] text-[20px] mt-0.5">schedule</span>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">Schedule & Roster</p>
+                <p class="text-xs text-slate-500 mt-0.5">Full shift details and team contact information.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 bg-slate-50 rounded-xl">
+              <span class="material-symbols-outlined text-[#00205B] text-[20px] mt-0.5">notifications_active</span>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">Important Updates</p>
+                <p class="text-xs text-slate-500 mt-0.5">Real-time notices from the Elections Office.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notice -->
+        <div class="bg-[#00205B] rounded-2xl p-6 text-white">
+          <div class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-yellow-300 text-[22px] mt-0.5">info</span>
+            <div>
+              <p class="text-sm font-black mb-1">First time logging in?</p>
+              <p class="text-xs text-slate-300 leading-relaxed">Your Worker ID and temporary password were sent to the email address you provided during registration. Check your inbox (and spam folder) for a message from <span class="text-white font-semibold">noreply@elections.gov.vg</span>.</p>
+              <a href="login-help/index.html" class="inline-flex items-center gap-1 mt-3 text-xs font-black text-yellow-300 hover:text-yellow-200 transition-colors">
+                Need help? <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#00205B] text-white mt-8 py-8">
+  <div class="max-w-7xl mx-auto px-8 text-center">
+    <p class="text-xs text-slate-400">© 2024 Department of Elections, British Virgin Islands. All rights reserved.</p>
+    <p class="text-xs text-slate-500 mt-1">For technical assistance call <span class="text-white font-semibold">+1 (284) 468-3701</span> or email <span class="text-white font-semibold">elections@gov.vg</span></p>
+  </div>
+</footer>
+
+<script>
+function handleLogin(e) {
+  e.preventDefault();
+  document.getElementById('login-form-wrap').classList.add('hidden');
+  document.getElementById('login-success').classList.remove('hidden');
+  setTimeout(function() {
+    document.getElementById('progress-bar').style.width = '100%';
+  }, 100);
+}
+</script>
+</body></html>

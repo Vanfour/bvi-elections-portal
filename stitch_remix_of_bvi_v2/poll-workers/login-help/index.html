@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<title>Poll Worker Portal – Login Help</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode:"class",
+    theme:{extend:{"colors":{"secondary":"#E03C31","primary":"#00205B","surface-bright":"#f8f9fa"},"fontFamily":{"headline":["Public Sans"],"body":["Inter"],"label":["Inter"]}}}
+  }
+</script>
+<style>
+  html{overflow-y:scroll;background:#f8f9fa;}
+  body{font-family:'Inter',system-ui,sans-serif;color:#191c1d;background:#f8f9fa;}
+  #site-util-bar{width:100%;background:#f8f9fa;border-bottom:1px solid #e2e8f0;padding:0.5rem 2rem;box-sizing:border-box;}
+  .su-inner{max-width:80rem;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.05em;}
+  .su-left{display:flex;align-items:center;gap:1rem;}
+  .su-back,.su-contact{color:inherit;text-decoration:none;display:flex;align-items:center;gap:0.25rem;transition:color 0.15s;}
+  .su-back:hover,.su-contact:hover{color:#00205B;}
+  #site-header{width:100%;background:#fff;border-bottom:1px solid #f1f5f9;box-sizing:border-box;}
+  .sh-inner{max-width:80rem;margin:0 auto;padding:1.25rem 2rem;box-sizing:border-box;}
+  .sh-row{display:flex;align-items:center;}
+  .sh-logo{display:flex;align-items:center;gap:1rem;flex-shrink:0;margin-right:auto;text-decoration:none;}
+  .sh-logo-img{height:3.5rem;width:auto;object-fit:contain;display:block;}
+  .sh-logo-title{font-family:'Inter',system-ui,sans-serif;font-size:1.875rem;font-weight:900;color:#00205B;letter-spacing:-0.025em;line-height:1;}
+  .sh-logo-sub{font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#94a3b8;margin-top:0.25rem;line-height:1;}
+  .sh-nav{display:none;align-items:center;height:100%;margin-left:2rem;}
+  @media(min-width:1024px){.sh-nav{display:flex;}}
+  .sh-nav-links{display:flex;align-items:center;height:100%;}
+  .sh-nav-link{display:flex;flex-direction:column;align-self:stretch;justify-content:center;padding:0 1.25rem;font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;line-height:1.25;color:#00205B;text-decoration:none;border-bottom:3px solid transparent;transition:color 0.15s,border-bottom-color 0.15s;}
+  .sh-nav-link:hover{color:#E03C31;}
+  .sh-nav-link--active{color:#E03C31;border-bottom-color:#E03C31;}
+  .sh-nav-sep{height:2.5rem;width:1px;background:#e2e8f0;flex-shrink:0;}
+  .sh-search{margin-left:auto;margin-right:0.5rem;color:#00205B;background:none;border:none;cursor:pointer;padding:0;line-height:1;transition:color 0.15s;}
+  .sh-search:hover{color:#E03C31;}
+  .sh-register{margin-left:1rem;display:flex;align-items:center;gap:0.375rem;padding:0.5rem 1.25rem;background:#E03C31;color:#fff;border-radius:9999px;font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background-color 0.15s;}
+  .sh-register:hover{background:#b91c1c;}
+  .sh-register-icon{font-size:15px;}
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+  details summary::-webkit-details-marker{display:none;}
+  details[open] .faq-icon{transform:rotate(180deg);}
+  .faq-icon{transition:transform 0.2s;}
+</style>
+<script id="bvi-nav-wiring">
+(function(){
+  var L={voters:'../../voters/upcoming-events-v1/index.html',candidates:'../../candidates/upcoming-elections/index.html',pollWorkers:'../layout-1/index.html',electionResults:'../../election-results/index.html',newsPolicies:'../../news-policies/index.html',importantDates:'../../important-dates/index.html'};
+  function wire(){
+    document.querySelectorAll('a[href="#"]').forEach(function(a){
+      var t=a.textContent.replace(/\s+/g,' ').trim().toUpperCase();
+      if(/^FOR[\s]*VOTERS$/.test(t)) a.href=L.voters;
+      else if(/^FOR[\s]*CANDIDATES$/.test(t)) a.href=L.candidates;
+      else if(/^FOR[\s]*POLL[\s]*WORKERS$/.test(t)) a.href=L.pollWorkers;
+      else if(/ELECTION[\s\S]{0,2}RESULTS/.test(t)&&t.length<25) a.href=L.electionResults;
+      else if(/NEWS/.test(t)&&/POLIC/.test(t)&&t.length<25) a.href=L.newsPolicies;
+      else if(/IMPORTANT.*DATES/.test(t)) a.href=L.importantDates;
+      else if(/REGISTER/.test(t)&&a.classList.contains('sh-register')) a.href=L.voters;
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',wire);
+  else wire();
+})();
+</script>
+</head>
+<body class="font-body text-on-surface bg-[#f8f9fa]">
+
+<!-- Utility Bar -->
+<div id="site-util-bar">
+  <div class="su-inner">
+    <div class="su-left">
+      <a class="su-back" href="../layout-1/index.html"><span>←</span> BACK TO POLL WORKERS</a>
+      <span style="color:#cbd5e1">|</span>
+      <a class="su-contact" href="#">CONTACT US</a>
+    </div>
+    <div>OFFICIAL PORTAL OF THE BRITISH VIRGIN ISLANDS ELECTIONS</div>
+  </div>
+</div>
+
+<!-- Header -->
+<header id="site-header">
+  <div class="sh-inner">
+    <div class="sh-row">
+      <a href="../../index.html" class="sh-logo">
+        <img alt="BVI Coat of Arms" class="sh-logo-img" width="391" height="427" src="../../assets/bvi-crest.png"/>
+        <div>
+          <div class="sh-logo-title">elections.gov.vg</div>
+          <div class="sh-logo-sub">DEPARTMENT OF ELECTIONS</div>
+        </div>
+      </a>
+      <nav class="sh-nav">
+        <div class="sh-nav-links">
+          <a class="sh-nav-link" href="#"><span>FOR</span><span>VOTERS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>FOR</span><span>CANDIDATES</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link sh-nav-link--active" href="#"><span>FOR</span><span>POLL WORKERS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>IMPORTANT</span><span>DATES</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>ELECTION</span><span>RESULTS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>NEWS &amp;</span><span>POLICIES</span></a>
+        </div>
+        <button class="sh-search" aria-label="Search">
+          <span class="material-symbols-outlined" style="font-size:24px;line-height:1;display:block">search</span>
+        </button>
+      </nav>
+      <a href="#" class="sh-register">
+        <span class="material-symbols-outlined sh-register-icon">how_to_reg</span>
+        Register
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Breadcrumb + Title -->
+<section class="w-full bg-white border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-8 py-6">
+    <div class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">
+      <a href="../layout-1/index.html" class="hover:text-[#00205B] transition-colors">For Poll Workers</a>
+      <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+      <a href="../portal-login/index.html" class="hover:text-[#00205B] transition-colors">Portal Login</a>
+      <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+      <span class="text-[#00205B]">Login Help</span>
+    </div>
+    <div class="flex items-center gap-5">
+      <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-[#E03C31] text-[30px]">help</span>
+      </div>
+      <div>
+        <h1 class="text-4xl md:text-5xl font-black text-[#00205B] font-headline leading-tight">Login Help</h1>
+        <p class="text-slate-500 text-base mt-2">Trouble signing in? We'll get you sorted.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Content -->
+<section class="w-full bg-[#f8f9fa] py-8">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      <!-- FAQ / Common Issues -->
+      <div class="lg:col-span-2 space-y-4">
+
+        <h2 class="text-lg font-black text-[#00205B] mb-2">Common Login Issues</h2>
+
+        <details class="group bg-white border border-slate-200 rounded-xl shadow-sm" open>
+          <summary class="flex justify-between items-center p-6 cursor-pointer outline-none list-none">
+            <span class="font-bold text-[#00205B]">I didn't receive my login credentials</span>
+            <span class="material-symbols-outlined faq-icon text-slate-400">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+            <p class="mb-3">Your Worker ID and temporary password are sent to the email address you provided during registration. Please check:</p>
+            <ul class="space-y-2 list-none">
+              <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[#E03C31] text-[16px] mt-0.5">check_circle</span>Your spam or junk folder</li>
+              <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[#E03C31] text-[16px] mt-0.5">check_circle</span>That you're checking the correct email account</li>
+              <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[#E03C31] text-[16px] mt-0.5">check_circle</span>Emails from <strong>noreply@elections.gov.vg</strong></li>
+            </ul>
+            <p class="mt-3">If you still can't find it, contact the Elections Office to have your credentials resent.</p>
+          </div>
+        </details>
+
+        <details class="group bg-white border border-slate-200 rounded-xl shadow-sm">
+          <summary class="flex justify-between items-center p-6 cursor-pointer outline-none list-none">
+            <span class="font-bold text-[#00205B]">I forgot my password</span>
+            <span class="material-symbols-outlined faq-icon text-slate-400">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+            <p class="mb-3">To reset your password, contact the Elections Office with your full name and Worker ID. A new temporary password will be sent to your registered email within one business day.</p>
+            <p>For urgent requests on or close to Election Day, call us directly at <strong class="text-[#00205B]">+1 (284) 468-3701</strong>.</p>
+          </div>
+        </details>
+
+        <details class="group bg-white border border-slate-200 rounded-xl shadow-sm">
+          <summary class="flex justify-between items-center p-6 cursor-pointer outline-none list-none">
+            <span class="font-bold text-[#00205B]">My Worker ID is not recognised</span>
+            <span class="material-symbols-outlined faq-icon text-slate-400">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+            <p class="mb-3">Worker IDs follow the format <strong>PW-YYYY-XXXX</strong> (e.g. PW-2024-0042). Make sure you are entering it exactly as shown in your appointment letter, including the dashes.</p>
+            <p>If your ID still isn't recognised, your account may not yet be activated. Please allow 24 hours after receiving your appointment letter, then contact us if the issue persists.</p>
+          </div>
+        </details>
+
+        <details class="group bg-white border border-slate-200 rounded-xl shadow-sm">
+          <summary class="flex justify-between items-center p-6 cursor-pointer outline-none list-none">
+            <span class="font-bold text-[#00205B]">My account has been locked</span>
+            <span class="material-symbols-outlined faq-icon text-slate-400">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+            <p>Accounts are locked after 5 failed login attempts. Please contact the Elections Office to unlock your account. For security purposes, we cannot unlock accounts via email — you will need to call or visit in person with a valid photo ID.</p>
+          </div>
+        </details>
+
+        <details class="group bg-white border border-slate-200 rounded-xl shadow-sm">
+          <summary class="flex justify-between items-center p-6 cursor-pointer outline-none list-none">
+            <span class="font-bold text-[#00205B]">The portal is not loading or showing an error</span>
+            <span class="material-symbols-outlined faq-icon text-slate-400">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+            <p class="mb-3">Please try the following steps:</p>
+            <ul class="space-y-2 list-none">
+              <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[#E03C31] text-[16px] mt-0.5">check_circle</span>Clear your browser cache and cookies</li>
+              <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[#E03C31] text-[16px] mt-0.5">check_circle</span>Try a different browser (Chrome, Firefox, Edge)</li>
+              <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[#E03C31] text-[16px] mt-0.5">check_circle</span>Disable browser extensions</li>
+              <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[#E03C31] text-[16px] mt-0.5">check_circle</span>Check your internet connection</li>
+            </ul>
+            <p class="mt-3">If the issue persists, contact our technical support team.</p>
+          </div>
+        </details>
+
+        <!-- Reset request form -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 mt-6">
+          <h3 class="text-sm font-black text-[#00205B] uppercase tracking-widest mb-1">Request a Password Reset</h3>
+          <p class="text-xs text-slate-500 mb-5">Fill in the form below and we'll send new credentials to your registered email within one business day.</p>
+
+          <div id="reset-form-wrap">
+            <form onsubmit="handleReset(event)" class="space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-black text-slate-600 uppercase tracking-widest mb-1.5">Full Name</label>
+                  <input type="text" placeholder="As per appointment letter" class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#00205B]/20 focus:border-[#00205B] transition-all"/>
+                </div>
+                <div>
+                  <label class="block text-xs font-black text-slate-600 uppercase tracking-widest mb-1.5">Worker ID</label>
+                  <input type="text" placeholder="e.g. PW-2024-0042" class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#00205B]/20 focus:border-[#00205B] transition-all"/>
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs font-black text-slate-600 uppercase tracking-widest mb-1.5">Registered Email</label>
+                <input type="email" placeholder="your@email.com" class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#00205B]/20 focus:border-[#00205B] transition-all"/>
+              </div>
+              <button type="submit" class="bg-[#00205B] hover:bg-[#001849] text-white px-6 py-3 rounded-xl font-black text-xs uppercase tracking-wider transition-all shadow-sm">
+                Send Reset Request
+              </button>
+            </form>
+          </div>
+
+          <div id="reset-success" class="hidden text-center py-4">
+            <div class="w-14 h-14 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-3">
+              <span class="material-symbols-outlined text-green-500 text-[30px]">mark_email_read</span>
+            </div>
+            <h3 class="text-base font-black text-[#00205B] mb-1">Request Submitted!</h3>
+            <p class="text-sm text-slate-500">We'll send your new credentials to your registered email within one business day.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar: Contact -->
+      <div class="space-y-5">
+        <div class="bg-[#00205B] rounded-2xl p-6 text-white">
+          <h3 class="text-sm font-black uppercase tracking-widest mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px] text-yellow-300">support_agent</span>
+            Contact Elections Office
+          </h3>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-slate-300 text-[18px] mt-0.5">call</span>
+              <div>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">Phone</p>
+                <p class="text-sm font-semibold">+1 (284) 468-3701</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-slate-300 text-[18px] mt-0.5">mail</span>
+              <div>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">Email</p>
+                <p class="text-sm font-semibold">elections@gov.vg</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-slate-300 text-[18px] mt-0.5">schedule</span>
+              <div>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">Office Hours</p>
+                <p class="text-sm font-semibold">Mon – Fri, 8:30 AM – 4:30 PM</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-slate-300 text-[18px] mt-0.5">location_on</span>
+              <div>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-0.5">Address</p>
+                <p class="text-sm font-semibold leading-snug">3rd Floor, Cutlass Tower<br>Road Town, Tortola, BVI</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="../portal-login/index.html" class="flex items-center justify-center gap-2 w-full bg-[#E03C31] hover:bg-[#b91c1c] text-white py-3.5 rounded-xl font-black text-xs uppercase tracking-wider transition-all shadow-md text-center">
+          <span class="material-symbols-outlined text-[18px]">login</span>
+          Back to Login
+        </a>
+
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4">
+          <div class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-amber-500 text-[18px] mt-0.5">warning</span>
+            <p class="text-xs text-amber-800 leading-relaxed"><strong>Election Day Support:</strong> On November 25, 2024, technical support is available from 5:00 AM to 8:00 PM. Call the dedicated hotline: <strong>+1 (284) 468-3702</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#00205B] text-white mt-8 py-8">
+  <div class="max-w-7xl mx-auto px-8 text-center">
+    <p class="text-xs text-slate-400">© 2024 Department of Elections, British Virgin Islands. All rights reserved.</p>
+    <p class="text-xs text-slate-500 mt-1">For technical assistance call <span class="text-white font-semibold">+1 (284) 468-3701</span> or email <span class="text-white font-semibold">elections@gov.vg</span></p>
+  </div>
+</footer>
+
+<script>
+function handleReset(e) {
+  e.preventDefault();
+  document.getElementById('reset-form-wrap').classList.add('hidden');
+  document.getElementById('reset-success').classList.remove('hidden');
+}
+</script>
+</body></html>
