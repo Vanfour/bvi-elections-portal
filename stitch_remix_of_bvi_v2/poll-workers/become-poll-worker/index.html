@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<title>Become a Poll Worker – BVI Elections</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode:"class",
+    theme:{extend:{"colors":{"secondary":"#E03C31","primary":"#00205B","surface-bright":"#f8f9fa"},"fontFamily":{"headline":["Public Sans"],"body":["Inter"],"label":["Inter"]}}}
+  }
+</script>
+<style>
+  html{overflow-y:scroll;background:#f8f9fa;}
+  body{font-family:'Inter',system-ui,sans-serif;color:#191c1d;background:#f8f9fa;}
+  #site-util-bar{width:100%;background:#f8f9fa;border-bottom:1px solid #e2e8f0;padding:0.5rem 2rem;box-sizing:border-box;}
+  .su-inner{max-width:80rem;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.05em;}
+  .su-left{display:flex;align-items:center;gap:1rem;}
+  .su-back,.su-contact{color:inherit;text-decoration:none;display:flex;align-items:center;gap:0.25rem;transition:color 0.15s;}
+  .su-back:hover,.su-contact:hover{color:#00205B;}
+  #site-header{width:100%;background:#fff;border-bottom:1px solid #f1f5f9;box-sizing:border-box;}
+  .sh-inner{max-width:80rem;margin:0 auto;padding:1.25rem 2rem;box-sizing:border-box;}
+  .sh-row{display:flex;align-items:center;}
+  .sh-logo{display:flex;align-items:center;gap:1rem;flex-shrink:0;margin-right:auto;text-decoration:none;}
+  .sh-logo-img{height:3.5rem;width:auto;object-fit:contain;display:block;}
+  .sh-logo-title{font-family:'Inter',system-ui,sans-serif;font-size:1.875rem;font-weight:900;color:#00205B;letter-spacing:-0.025em;line-height:1;}
+  .sh-logo-sub{font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#94a3b8;margin-top:0.25rem;line-height:1;}
+  .sh-nav{display:none;align-items:center;height:100%;margin-left:2rem;}
+  @media(min-width:1024px){.sh-nav{display:flex;}}
+  .sh-nav-links{display:flex;align-items:center;height:100%;}
+  .sh-nav-link{display:flex;flex-direction:column;align-self:stretch;justify-content:center;padding:0 1.25rem;font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;line-height:1.25;color:#00205B;text-decoration:none;border-bottom:3px solid transparent;transition:color 0.15s,border-bottom-color 0.15s;}
+  .sh-nav-link:hover{color:#E03C31;}
+  .sh-nav-link--active{color:#E03C31;border-bottom-color:#E03C31;}
+  .sh-nav-sep{height:2.5rem;width:1px;background:#e2e8f0;flex-shrink:0;}
+  .sh-search{margin-left:auto;margin-right:0.5rem;color:#00205B;background:none;border:none;cursor:pointer;padding:0;line-height:1;transition:color 0.15s;}
+  .sh-search:hover{color:#E03C31;}
+  .sh-register{margin-left:1rem;display:flex;align-items:center;gap:0.375rem;padding:0.5rem 1.25rem;background:#E03C31;color:#fff;border-radius:9999px;font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background-color 0.15s;}
+  .sh-register:hover{background:#b91c1c;}
+  .sh-register-icon{font-size:15px;}
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+</style>
+<script id="bvi-nav-wiring">
+(function(){
+  var L={voters:'../../voters/upcoming-events-v1/index.html',candidates:'../../candidates/upcoming-elections/index.html',pollWorkers:'../layout-1/index.html',electionResults:'../../election-results/index.html',newsPolicies:'../../news-policies/index.html',importantDates:'../../important-dates/index.html'};
+  function wire(){
+    document.querySelectorAll('a[href="#"]').forEach(function(a){
+      var t=a.textContent.replace(/\s+/g,' ').trim().toUpperCase();
+      if(/^FOR[\s]*VOTERS$/.test(t)) a.href=L.voters;
+      else if(/^FOR[\s]*CANDIDATES$/.test(t)) a.href=L.candidates;
+      else if(/^FOR[\s]*POLL[\s]*WORKERS$/.test(t)) a.href=L.pollWorkers;
+      else if(/ELECTION[\s\S]{0,2}RESULTS/.test(t)&&t.length<25) a.href=L.electionResults;
+      else if(/NEWS/.test(t)&&/POLIC/.test(t)&&t.length<25) a.href=L.newsPolicies;
+      else if(/IMPORTANT.*DATES/.test(t)) a.href=L.importantDates;
+      else if(/REGISTER/.test(t)&&a.classList.contains('sh-register')) a.href=L.voters;
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',wire);
+  else wire();
+})();
+</script>
+</head>
+<body class="font-body text-on-surface bg-[#f8f9fa]">
+
+<!-- Utility Bar -->
+<div id="site-util-bar">
+  <div class="su-inner">
+    <div class="su-left">
+      <a class="su-back" href="../layout-1/index.html"><span>←</span> BACK TO POLL WORKERS</a>
+      <span style="color:#cbd5e1">|</span>
+      <a class="su-contact" href="#">CONTACT US</a>
+    </div>
+    <div>OFFICIAL PORTAL OF THE BRITISH VIRGIN ISLANDS ELECTIONS</div>
+  </div>
+</div>
+
+<!-- Header -->
+<header id="site-header">
+  <div class="sh-inner">
+    <div class="sh-row">
+      <a href="../../index.html" class="sh-logo">
+        <img alt="BVI Coat of Arms" class="sh-logo-img" width="391" height="427" src="../../assets/bvi-crest.png"/>
+        <div>
+          <div class="sh-logo-title">elections.gov.vg</div>
+          <div class="sh-logo-sub">DEPARTMENT OF ELECTIONS</div>
+        </div>
+      </a>
+      <nav class="sh-nav">
+        <div class="sh-nav-links">
+          <a class="sh-nav-link" href="#"><span>FOR</span><span>VOTERS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>FOR</span><span>CANDIDATES</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link sh-nav-link--active" href="#"><span>FOR</span><span>POLL WORKERS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>IMPORTANT</span><span>DATES</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>ELECTION</span><span>RESULTS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>NEWS &amp;</span><span>POLICIES</span></a>
+        </div>
+        <button class="sh-search" aria-label="Search">
+          <span class="material-symbols-outlined" style="font-size:24px;line-height:1;display:block">search</span>
+        </button>
+      </nav>
+      <a href="#" class="sh-register">
+        <span class="material-symbols-outlined sh-register-icon">how_to_reg</span>
+        Register
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Breadcrumb + Title -->
+<section class="w-full bg-white border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-8 py-6">
+    <div class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">
+      <a href="../layout-1/index.html" class="hover:text-[#00205B] transition-colors">For Poll Workers</a>
+      <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+      <span class="text-[#00205B]">Become a Poll Worker</span>
+    </div>
+    <div class="flex items-center gap-5">
+      <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-[#E03C31] text-[30px]">groups</span>
+      </div>
+      <div>
+        <h1 class="text-4xl md:text-5xl font-black text-[#00205B] font-headline leading-tight">Become a Poll Worker</h1>
+        <p class="text-slate-500 text-base mt-2">Serve your community and play a vital role in ensuring free and fair elections.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Content -->
+<section class="w-full bg-[#f8f9fa] py-8">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      <!-- Left: Main Content -->
+      <div class="lg:col-span-2 space-y-6">
+
+        <!-- Why become a poll worker -->
+        <div class="bg-gradient-to-br from-[#001849] to-[#00205B] rounded-2xl p-8 text-white">
+          <h2 class="text-2xl font-black font-headline mb-2">Why Become a Poll Worker?</h2>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6">Poll workers are the backbone of every election. They ensure that every eligible voter can cast their ballot fairly, securely, and with dignity.</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white/10 rounded-xl p-5 text-center">
+              <span class="material-symbols-outlined text-yellow-300 text-[32px] mb-2 block">volunteer_activism</span>
+              <p class="text-sm font-black">Serve Your Community</p>
+              <p class="text-xs text-slate-300 mt-1">Make a direct impact on democracy in the BVI.</p>
+            </div>
+            <div class="bg-white/10 rounded-xl p-5 text-center">
+              <span class="material-symbols-outlined text-yellow-300 text-[32px] mb-2 block">payments</span>
+              <p class="text-sm font-black">Receive Compensation</p>
+              <p class="text-xs text-slate-300 mt-1">Poll workers receive a stipend for their service.</p>
+            </div>
+            <div class="bg-white/10 rounded-xl p-5 text-center">
+              <span class="material-symbols-outlined text-yellow-300 text-[32px] mb-2 block">school</span>
+              <p class="text-sm font-black">Free Training Provided</p>
+              <p class="text-xs text-slate-300 mt-1">Full training before Election Day at no cost to you.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Eligibility -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-7">
+          <h2 class="text-xl font-black text-[#00205B] mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[22px] text-[#E03C31]">checklist</span>
+            Eligibility Requirements
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="flex items-start gap-3 bg-slate-50 rounded-xl p-4">
+              <span class="material-symbols-outlined text-green-500 text-[20px] mt-0.5">check_circle</span>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">BVI Citizen or Belonger</p>
+                <p class="text-xs text-slate-500 mt-0.5">Must hold BVI status or belonger status.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 bg-slate-50 rounded-xl p-4">
+              <span class="material-symbols-outlined text-green-500 text-[20px] mt-0.5">check_circle</span>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">18 Years or Older</p>
+                <p class="text-xs text-slate-500 mt-0.5">Must be of legal age on Election Day.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 bg-slate-50 rounded-xl p-4">
+              <span class="material-symbols-outlined text-green-500 text-[20px] mt-0.5">check_circle</span>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">Registered Voter</p>
+                <p class="text-xs text-slate-500 mt-0.5">Must be on the current electoral roll.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 bg-slate-50 rounded-xl p-4">
+              <span class="material-symbols-outlined text-green-500 text-[20px] mt-0.5">check_circle</span>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">Not a Candidate</p>
+                <p class="text-xs text-slate-500 mt-0.5">Cannot be standing for election.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 bg-slate-50 rounded-xl p-4">
+              <span class="material-symbols-outlined text-green-500 text-[20px] mt-0.5">check_circle</span>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">Available on Election Day</p>
+                <p class="text-xs text-slate-500 mt-0.5">Must be available from 5:00 AM to 8:00 PM on November 25, 2024.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 bg-slate-50 rounded-xl p-4">
+              <span class="material-symbols-outlined text-green-500 text-[20px] mt-0.5">check_circle</span>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">Attend Training</p>
+                <p class="text-xs text-slate-500 mt-0.5">Must complete mandatory pre-election training sessions.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Roles Available -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-7">
+          <h2 class="text-xl font-black text-[#00205B] mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[22px] text-[#E03C31]">badge</span>
+            Available Roles
+          </h2>
+          <div class="space-y-3">
+            <div class="flex items-start gap-4 border border-slate-100 rounded-xl p-4 hover:border-[#00205B]/30 transition-all">
+              <div class="w-10 h-10 bg-[#00205B]/10 rounded-xl flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[#00205B] text-[20px]">manage_accounts</span>
+              </div>
+              <div>
+                <p class="font-black text-[#00205B] text-sm">Presiding Officer</p>
+                <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Responsible for the overall administration of the polling station. Manages staff and ensures procedures are followed.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 border border-slate-100 rounded-xl p-4 hover:border-[#00205B]/30 transition-all">
+              <div class="w-10 h-10 bg-[#00205B]/10 rounded-xl flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[#00205B] text-[20px]">how_to_vote</span>
+              </div>
+              <div>
+                <p class="font-black text-[#00205B] text-sm">Poll Clerk</p>
+                <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Verifies voter identity against the electoral roll and issues ballot papers to eligible voters.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 border border-slate-100 rounded-xl p-4 hover:border-[#00205B]/30 transition-all">
+              <div class="w-10 h-10 bg-[#00205B]/10 rounded-xl flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[#00205B] text-[20px]">security</span>
+              </div>
+              <div>
+                <p class="font-black text-[#00205B] text-sm">Ballot Box Officer</p>
+                <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Oversees the secure handling of ballot boxes throughout the day, including sealing at close of polls.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 border border-slate-100 rounded-xl p-4 hover:border-[#00205B]/30 transition-all">
+              <div class="w-10 h-10 bg-[#00205B]/10 rounded-xl flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[#00205B] text-[20px]">accessibility_new</span>
+              </div>
+              <div>
+                <p class="font-black text-[#00205B] text-sm">Voter Assistance Officer</p>
+                <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Assists elderly, disabled, or otherwise impaired voters in exercising their right to vote.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- What to Expect -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-7">
+          <h2 class="text-xl font-black text-[#00205B] mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[22px] text-[#E03C31]">timeline</span>
+            What to Expect
+          </h2>
+          <div class="space-y-4">
+            <div class="flex gap-4">
+              <div class="flex flex-col items-center">
+                <div class="w-8 h-8 rounded-full bg-[#00205B] text-white flex items-center justify-center text-xs font-black shrink-0">1</div>
+                <div class="w-0.5 bg-slate-200 flex-1 mt-2"></div>
+              </div>
+              <div class="pb-6">
+                <p class="font-black text-[#00205B] text-sm">Submit Your Application</p>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">Complete the application form on this page. Applications close on October 31, 2024.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex flex-col items-center">
+                <div class="w-8 h-8 rounded-full bg-[#00205B] text-white flex items-center justify-center text-xs font-black shrink-0">2</div>
+                <div class="w-0.5 bg-slate-200 flex-1 mt-2"></div>
+              </div>
+              <div class="pb-6">
+                <p class="font-black text-[#00205B] text-sm">Receive Your Appointment Letter</p>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">Successful applicants will receive a formal appointment letter by email within 2 weeks of applying.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex flex-col items-center">
+                <div class="w-8 h-8 rounded-full bg-[#00205B] text-white flex items-center justify-center text-xs font-black shrink-0">3</div>
+                <div class="w-0.5 bg-slate-200 flex-1 mt-2"></div>
+              </div>
+              <div class="pb-6">
+                <p class="font-black text-[#00205B] text-sm">Attend Mandatory Training</p>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">All poll workers must attend a training session the week before Election Day. Location and time will be in your appointment letter.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex flex-col items-center">
+                <div class="w-8 h-8 rounded-full bg-[#E03C31] text-white flex items-center justify-center text-xs font-black shrink-0">4</div>
+              </div>
+              <div>
+                <p class="font-black text-[#00205B] text-sm">Serve on Election Day</p>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">Report to your assigned polling station by 5:00 AM on November 25, 2024. Polls close at 6:00 PM.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Sidebar -->
+      <div class="space-y-5">
+
+        <!-- Apply form -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+          <h3 class="text-base font-black text-[#00205B] mb-1">Apply Now</h3>
+          <p class="text-xs text-slate-500 mb-4">Applications close <strong>October 31, 2024</strong>.</p>
+
+          <div id="apply-form-wrap">
+            <form onsubmit="handleApply(event)" class="space-y-3">
+              <div>
+                <label class="block text-xs font-black text-slate-600 uppercase tracking-widest mb-1.5">Full Name</label>
+                <input type="text" placeholder="Your full legal name" class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#00205B]/20 focus:border-[#00205B] transition-all"/>
+              </div>
+              <div>
+                <label class="block text-xs font-black text-slate-600 uppercase tracking-widest mb-1.5">Email Address</label>
+                <input type="email" placeholder="your@email.com" class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#00205B]/20 focus:border-[#00205B] transition-all"/>
+              </div>
+              <div>
+                <label class="block text-xs font-black text-slate-600 uppercase tracking-widest mb-1.5">Phone Number</label>
+                <input type="tel" placeholder="+1 (284) 000-0000" class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#00205B]/20 focus:border-[#00205B] transition-all"/>
+              </div>
+              <div>
+                <label class="block text-xs font-black text-slate-600 uppercase tracking-widest mb-1.5">District</label>
+                <select class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-600 focus:outline-none focus:ring-2 focus:ring-[#00205B]/20 focus:border-[#00205B] transition-all bg-white">
+                  <option value="">Select your district…</option>
+                  <option>Road Town</option>
+                  <option>Sea Cows Bay</option>
+                  <option>East End / Long Look</option>
+                  <option>Enmore / Josiah's Bay</option>
+                  <option>North Windward</option>
+                  <option>Virgin Gorda</option>
+                  <option>Anegada</option>
+                  <option>Jost Van Dyke</option>
+                  <option>At-Large</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-black text-slate-600 uppercase tracking-widest mb-1.5">Preferred Role</label>
+                <select class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-600 focus:outline-none focus:ring-2 focus:ring-[#00205B]/20 focus:border-[#00205B] transition-all bg-white">
+                  <option value="">No preference</option>
+                  <option>Presiding Officer</option>
+                  <option>Poll Clerk</option>
+                  <option>Ballot Box Officer</option>
+                  <option>Voter Assistance Officer</option>
+                </select>
+              </div>
+              <button type="submit" class="w-full bg-[#E03C31] hover:bg-[#b91c1c] text-white py-3.5 rounded-xl font-black text-xs uppercase tracking-wider transition-all shadow-md">
+                Submit Application
+              </button>
+            </form>
+          </div>
+
+          <div id="apply-success" class="hidden text-center py-4">
+            <div class="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="material-symbols-outlined text-green-500 text-[36px]">check_circle</span>
+            </div>
+            <h3 class="text-base font-black text-[#00205B] mb-1">Application Submitted!</h3>
+            <p class="text-sm text-slate-500 leading-relaxed">Thank you for applying. You'll receive a confirmation email shortly. Successful applicants will be notified within 2 weeks.</p>
+          </div>
+        </div>
+
+        <!-- Key dates -->
+        <div class="bg-[#00205B] rounded-2xl p-6 text-white">
+          <h3 class="text-sm font-black uppercase tracking-widest mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px] text-yellow-300">calendar_today</span>
+            Key Dates
+          </h3>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center shrink-0 text-center">
+                <div><p class="text-[10px] font-black text-slate-300 leading-none">OCT</p><p class="text-base font-black leading-tight">31</p></div>
+              </div>
+              <div>
+                <p class="text-xs font-black">Application Deadline</p>
+                <p class="text-[11px] text-slate-400 mt-0.5">Last day to submit your poll worker application.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center shrink-0 text-center">
+                <div><p class="text-[10px] font-black text-slate-300 leading-none">NOV</p><p class="text-base font-black leading-tight">18</p></div>
+              </div>
+              <div>
+                <p class="text-xs font-black">Mandatory Training</p>
+                <p class="text-[11px] text-slate-400 mt-0.5">All appointed poll workers must attend.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 bg-[#E03C31] rounded-lg flex items-center justify-center shrink-0 text-center">
+                <div><p class="text-[10px] font-black text-red-200 leading-none">NOV</p><p class="text-base font-black leading-tight">25</p></div>
+              </div>
+              <div>
+                <p class="text-xs font-black">Election Day</p>
+                <p class="text-[11px] text-slate-400 mt-0.5">Report at 5:00 AM · Polls close 6:00 PM.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+          <p class="text-xs font-black text-[#00205B] uppercase tracking-widest mb-3">Questions?</p>
+          <div class="space-y-2">
+            <div class="flex items-center gap-2 text-sm text-slate-600">
+              <span class="material-symbols-outlined text-[16px] text-slate-400">call</span>
+              +1 (284) 468-3701
+            </div>
+            <div class="flex items-center gap-2 text-sm text-slate-600">
+              <span class="material-symbols-outlined text-[16px] text-slate-400">mail</span>
+              elections@gov.vg
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#00205B] text-white mt-8 py-8">
+  <div class="max-w-7xl mx-auto px-8 text-center">
+    <p class="text-xs text-slate-400">© 2024 Department of Elections, British Virgin Islands. All rights reserved.</p>
+    <p class="text-xs text-slate-500 mt-1">For assistance call <span class="text-white font-semibold">+1 (284) 468-3701</span> or email <span class="text-white font-semibold">elections@gov.vg</span></p>
+  </div>
+</footer>
+
+<script>
+function handleApply(e) {
+  e.preventDefault();
+  document.getElementById('apply-form-wrap').classList.add('hidden');
+  document.getElementById('apply-success').classList.remove('hidden');
+}
+</script>
+</body></html>
