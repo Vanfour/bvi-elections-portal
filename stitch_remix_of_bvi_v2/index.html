@@ -148,6 +148,53 @@ tailwind.config = {
   .section-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,32,91,0.12); }
   .scroll-hide::-webkit-scrollbar { display: none; }
   .scroll-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* ── Mobile hamburger ───────────────────────────────────────────────────── */
+  .mob-menu-btn {
+    display: none; background: none; border: none; cursor: pointer;
+    color: #00205B; padding: 0.25rem; margin-left: 0.75rem;
+    transition: color 0.15s;
+  }
+  .mob-menu-btn:hover { color: #E03C31; }
+  @media (max-width: 1023px) { .mob-menu-btn { display: flex; align-items: center; } }
+
+  /* ── Mobile nav overlay ─────────────────────────────────────────────────── */
+  #mob-nav {
+    display: none; position: fixed; inset: 0; z-index: 500;
+    background: rgba(0,0,0,0.4); backdrop-filter: blur(2px);
+  }
+  #mob-nav.open { display: block; }
+  #mob-nav-panel {
+    position: absolute; top: 0; right: 0; bottom: 0;
+    width: min(320px, 85vw); background: #fff;
+    box-shadow: -8px 0 32px rgba(0,0,0,0.15);
+    display: flex; flex-direction: column; overflow-y: auto;
+  }
+  .mob-nav-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 1.5rem; border-bottom: 1px solid #f1f5f9;
+  }
+  .mob-nav-title { font-size: 12px; font-weight: 900; color: #00205B; text-transform: uppercase; letter-spacing: 0.08em; }
+  .mob-nav-close { background: none; border: none; cursor: pointer; color: #94a3b8; padding: 0.25rem; transition: color 0.15s; }
+  .mob-nav-close:hover { color: #E03C31; }
+  .mob-nav-links { flex: 1; padding: 1rem 0; }
+  .mob-nav-link {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.875rem 1.5rem; font-size: 13px; font-weight: 900;
+    text-transform: uppercase; letter-spacing: 0.05em; color: #00205B;
+    text-decoration: none; border-left: 3px solid transparent;
+    transition: all 0.15s;
+  }
+  .mob-nav-link:hover { background: #f8fafc; border-left-color: #E03C31; color: #E03C31; }
+  .mob-nav-footer { padding: 1.25rem 1.5rem; border-top: 1px solid #f1f5f9; }
+
+  /* ── Responsive header logo ─────────────────────────────────────────────── */
+  @media (max-width: 640px) {
+    .sh-logo-title { font-size: 1.35rem; }
+    .sh-logo-img { height: 2.5rem; }
+    .sh-inner { padding: 1rem 1.25rem; }
+    #site-util-bar { padding: 0.4rem 1.25rem; }
+  }
 </style>
 <script id="bvi-nav-wiring">
 (function(){
@@ -215,38 +262,80 @@ tailwind.config = {
           <span class="material-symbols-outlined" style="font-size:24px;line-height:1;display:block">search</span>
         </button>
       </nav>
-      <a href="#" class="sh-register">
+      <a href="voters/upcoming-events-v1/index.html" class="sh-register">
         <span class="material-symbols-outlined sh-register-icon">how_to_reg</span>
         Register
       </a>
+      <!-- Hamburger (mobile only) -->
+      <button class="mob-menu-btn" onclick="openMobNav()" aria-label="Open menu">
+        <span class="material-symbols-outlined" style="font-size:28px">menu</span>
+      </button>
     </div>
   </div>
 </header>
 
+<!-- Mobile Nav Overlay -->
+<div id="mob-nav" onclick="closeMobNavOutside(event)">
+  <div id="mob-nav-panel">
+    <div class="mob-nav-header">
+      <span class="mob-nav-title">Menu</span>
+      <button class="mob-nav-close" onclick="closeMobNav()">
+        <span class="material-symbols-outlined" style="font-size:24px">close</span>
+      </button>
+    </div>
+    <div class="mob-nav-links">
+      <a class="mob-nav-link" href="voters/upcoming-events-v1/index.html">
+        <span class="material-symbols-outlined text-[20px]">how_to_vote</span>For Voters
+      </a>
+      <a class="mob-nav-link" href="candidates/upcoming-elections/index.html">
+        <span class="material-symbols-outlined text-[20px]">person_raised_hand</span>For Candidates
+      </a>
+      <a class="mob-nav-link" href="poll-workers/layout-1/index.html">
+        <span class="material-symbols-outlined text-[20px]">badge</span>For Poll Workers
+      </a>
+      <a class="mob-nav-link" href="important-dates/index.html">
+        <span class="material-symbols-outlined text-[20px]">event</span>Important Dates
+      </a>
+      <a class="mob-nav-link" href="election-results/index.html">
+        <span class="material-symbols-outlined text-[20px]">bar_chart</span>Election Results
+      </a>
+      <a class="mob-nav-link" href="news-policies/index.html">
+        <span class="material-symbols-outlined text-[20px]">newspaper</span>News & Policies
+      </a>
+    </div>
+    <div class="mob-nav-footer">
+      <a href="voters/upcoming-events-v1/index.html" class="flex items-center justify-center gap-2 w-full bg-[#E03C31] hover:bg-[#b91c1c] text-white py-3 rounded-xl font-black text-xs uppercase tracking-wider transition-all">
+        <span class="material-symbols-outlined text-[18px]">how_to_reg</span>Register to Vote
+      </a>
+    </div>
+  </div>
+</div>
+
 <!-- Hero -->
-<section class="w-full bg-[#00205B] text-white py-16 px-8">
+<section class="w-full bg-[#00205B] text-white py-10 md:py-16 px-5 md:px-8">
   <div class="max-w-7xl mx-auto">
     <p class="text-[11px] font-bold uppercase tracking-widest text-[#b2c5ff] mb-3">British Virgin Islands</p>
-    <h1 class="text-5xl md:text-6xl font-black font-headline leading-[1.05] mb-4">Department<br>of Elections</h1>
-    <p class="text-lg text-[#dae2ff] max-w-xl mb-8">Your official source for electoral information, voter registration, candidate resources, and election results.</p>
-    <div class="flex flex-wrap gap-3">
-      <a href="voters/upcoming-events-v1/index.html" class="inline-flex items-center gap-2 px-6 py-3 bg-[#E03C31] hover:bg-red-700 text-white rounded-full text-sm font-black uppercase tracking-wide transition-all">
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-black font-headline leading-[1.05] mb-4">Department<br>of Elections</h1>
+    <p class="text-base md:text-lg text-[#dae2ff] max-w-xl mb-7">Your official source for electoral information, voter registration, candidate resources, and election results.</p>
+    <div class="flex flex-col sm:flex-row flex-wrap gap-3">
+      <a href="voters/upcoming-events-v1/index.html" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#E03C31] hover:bg-red-700 text-white rounded-full text-sm font-black uppercase tracking-wide transition-all">
         <span class="material-symbols-outlined text-[18px]">how_to_vote</span>Register to Vote
       </a>
-      <a href="election-results/index.html" class="inline-flex items-center gap-2 px-6 py-3 bg-white bg-opacity-10 hover:bg-opacity-20 text-white rounded-full text-sm font-black uppercase tracking-wide transition-all border border-white border-opacity-20">
+      <a href="election-results/index.html" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white bg-opacity-10 hover:bg-opacity-20 text-white rounded-full text-sm font-black uppercase tracking-wide transition-all border border-white border-opacity-20">
         <span class="material-symbols-outlined text-[18px]">bar_chart</span>Election Results
       </a>
     </div>
   </div>
 </section>
 
-<!-- ═══ 6 SECTION PREVIEWS — LEFT TO RIGHT ═══ -->
-<section class="py-14 bg-[#f8f9fa]">
-  <div class="max-w-7xl mx-auto px-8 mb-8">
+<!-- ═══ 6 SECTION PREVIEWS ═══ -->
+<section class="py-10 md:py-14 bg-[#f8f9fa]">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 mb-6 md:mb-8">
     <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-2">Explore</p>
-    <h2 class="text-3xl font-black text-[#00205B] font-headline">Everything in one place</h2>
+    <h2 class="text-2xl md:text-3xl font-black text-[#00205B] font-headline">Everything in one place</h2>
   </div>
-  <div class="flex gap-5 overflow-x-auto scroll-hide px-8 pb-6">
+  <!-- Mobile: 2-col grid | Desktop: horizontal scroll row -->
+  <div class="hidden md:flex gap-5 overflow-x-auto scroll-hide px-8 pb-6">
 
     <!-- 01 FOR VOTERS -->
     <a href="voters/upcoming-events-v1/index.html" class="section-card flex-shrink-0 w-72 bg-white rounded-2xl p-7 border border-slate-100 flex flex-col" style="text-decoration:none; color:inherit">
@@ -363,10 +452,99 @@ tailwind.config = {
     </a>
 
   </div>
+
+  <!-- Mobile 2-col grid (hidden on md+) -->
+  <div class="md:hidden grid grid-cols-2 gap-3 px-5">
+    <a href="voters/upcoming-events-v1/index.html" class="section-card bg-white rounded-2xl p-5 border border-slate-100 flex flex-col" style="text-decoration:none;color:inherit">
+      <div class="w-10 h-10 rounded-xl bg-[#dae2ff] flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[#00205B] text-xl">how_to_vote</span></div>
+      <p class="text-[9px] font-black uppercase tracking-widest text-[#00205B] mb-0.5">Section 01</p>
+      <h3 class="text-base font-black text-[#00205B] font-headline mb-3">For Voters</h3>
+      <ul class="space-y-1.5 flex-1">
+        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Register to Vote</li>
+        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Find Polling Station</li>
+        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Check Status</li>
+      </ul>
+      <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+        <span class="text-[#00205B] font-bold text-xs">Voter Hub</span>
+        <span class="material-symbols-outlined text-[#00205B] text-lg">arrow_forward</span>
+      </div>
+    </a>
+    <a href="candidates/upcoming-elections/index.html" class="section-card bg-white rounded-2xl p-5 border border-slate-100 flex flex-col" style="text-decoration:none;color:inherit">
+      <div class="w-10 h-10 rounded-xl bg-[#ffdad5] flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[#E03C31] text-xl">person_raised_hand</span></div>
+      <p class="text-[9px] font-black uppercase tracking-widest text-[#E03C31] mb-0.5">Section 02</p>
+      <h3 class="text-base font-black text-[#00205B] font-headline mb-3">For Candidates</h3>
+      <ul class="space-y-1.5 flex-1">
+        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Prepare to Run</li>
+        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Key Dates</li>
+        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>FAQs</li>
+      </ul>
+      <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+        <span class="text-[#00205B] font-bold text-xs">Candidate Hub</span>
+        <span class="material-symbols-outlined text-[#00205B] text-lg">arrow_forward</span>
+      </div>
+    </a>
+    <a href="poll-workers/layout-1/index.html" class="section-card bg-white rounded-2xl p-5 border border-slate-100 flex flex-col" style="text-decoration:none;color:inherit">
+      <div class="w-10 h-10 rounded-xl bg-[#d1fae5] flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[#007A33] text-xl">badge</span></div>
+      <p class="text-[9px] font-black uppercase tracking-widest text-[#007A33] mb-0.5">Section 03</p>
+      <h3 class="text-base font-black text-[#00205B] font-headline mb-3">Poll Workers</h3>
+      <ul class="space-y-1.5 flex-1">
+        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Login to Portal</li>
+        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Become a Worker</li>
+        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Training</li>
+      </ul>
+      <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+        <span class="text-[#00205B] font-bold text-xs">Worker Hub</span>
+        <span class="material-symbols-outlined text-[#00205B] text-lg">arrow_forward</span>
+      </div>
+    </a>
+    <a href="important-dates/index.html" class="section-card bg-white rounded-2xl p-5 border border-slate-100 flex flex-col" style="text-decoration:none;color:inherit">
+      <div class="w-10 h-10 rounded-xl bg-[#fef3c7] flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[#b45309] text-xl">event</span></div>
+      <p class="text-[9px] font-black uppercase tracking-widest text-[#b45309] mb-0.5">Section 04</p>
+      <h3 class="text-base font-black text-[#00205B] font-headline mb-3">Important Dates</h3>
+      <ul class="space-y-1.5 flex-1">
+        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Election: Nov 25</li>
+        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Reg. Deadline</li>
+        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Nomination Period</li>
+      </ul>
+      <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+        <span class="text-[#00205B] font-bold text-xs">View Dates</span>
+        <span class="material-symbols-outlined text-[#00205B] text-lg">arrow_forward</span>
+      </div>
+    </a>
+    <a href="election-results/index.html" class="section-card bg-white rounded-2xl p-5 border border-slate-100 flex flex-col" style="text-decoration:none;color:inherit">
+      <div class="w-10 h-10 rounded-xl bg-[#ede9fe] flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[#5b21b6] text-xl">bar_chart</span></div>
+      <p class="text-[9px] font-black uppercase tracking-widest text-[#5b21b6] mb-0.5">Section 05</p>
+      <h3 class="text-base font-black text-[#00205B] font-headline mb-3">Election Results</h3>
+      <ul class="space-y-1.5 flex-1">
+        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>General 2024</li>
+        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>By District</li>
+        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Historical</li>
+      </ul>
+      <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+        <span class="text-[#00205B] font-bold text-xs">View Results</span>
+        <span class="material-symbols-outlined text-[#00205B] text-lg">arrow_forward</span>
+      </div>
+    </a>
+    <a href="news-policies/index.html" class="section-card bg-white rounded-2xl p-5 border border-slate-100 flex flex-col" style="text-decoration:none;color:inherit">
+      <div class="w-10 h-10 rounded-xl bg-[#cffafe] flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[#0e7490] text-xl">newspaper</span></div>
+      <p class="text-[9px] font-black uppercase tracking-widest text-[#0e7490] mb-0.5">Section 06</p>
+      <h3 class="text-base font-black text-[#00205B] font-headline mb-3">News & Policies</h3>
+      <ul class="space-y-1.5 flex-1">
+        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Announcements</li>
+        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Press Releases</li>
+        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Documents</li>
+      </ul>
+      <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+        <span class="text-[#00205B] font-bold text-xs">Browse News</span>
+        <span class="material-symbols-outlined text-[#00205B] text-lg">arrow_forward</span>
+      </div>
+    </a>
+  </div>
+
 </section>
 
 <!-- Screen Index -->
-<section class="max-w-7xl mx-auto px-8 py-12 border-t border-slate-200">
+<section class="max-w-7xl mx-auto px-5 md:px-8 py-10 md:py-12 border-t border-slate-200">
   <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-2">Prototype</p>
   <h2 class="text-2xl font-black text-[#00205B] font-headline mb-8">Design Screen Index</h2>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -424,7 +602,7 @@ tailwind.config = {
 </section>
 
 <!-- Footer -->
-<footer class="bg-[#00205B] text-white py-10 px-8 mt-8">
+<footer class="bg-[#00205B] text-white py-8 md:py-10 px-5 md:px-8 mt-6 md:mt-8">
   <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
     <div>
       <div class="text-xl font-black font-headline">elections.gov.vg</div>
@@ -434,5 +612,10 @@ tailwind.config = {
   </div>
 </footer>
 
+<script>
+function openMobNav(){document.getElementById('mob-nav').classList.add('open');document.body.style.overflow='hidden';}
+function closeMobNav(){document.getElementById('mob-nav').classList.remove('open');document.body.style.overflow='';}
+function closeMobNavOutside(e){if(e.target===document.getElementById('mob-nav'))closeMobNav();}
+</script>
 </body>
 </html>
