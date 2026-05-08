@@ -69,7 +69,7 @@
       else if(/ELECTION[\s\S]{0,2}RESULTS/.test(t)&&t.length<25) a.href=L.electionResults;
       else if(/NEWS/.test(t)&&/POLIC/.test(t)&&t.length<25) a.href=L.newsPolicies;
       else if(/IMPORTANT.*DATES/.test(t)) a.href=L.importantDates;
-      else if(/REGISTER/.test(t)&&a.classList.contains('sh-register')) a.href=L.voters;
+      else if(/REGISTER/.test(t)&&a.classList.contains('sh-register')) a.href='../../voters/register/index.html';
     });
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',wire);

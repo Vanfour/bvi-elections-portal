@@ -239,7 +239,7 @@
       else if(/FIND.*POLLING.*PLACE/.test(t)&&L.votingDay) a.href=L.votingDay;
       else if(/APPLY.*ADVANCE.*POLL/.test(t)&&L.votingDay) a.href=L.votingDay;
       else if(/PEOPLE\s+VIEW.*CANDIDATES/.test(t)&&L.candidates) a.href=L.candidates;
-      else if(/REGISTER/.test(t)&&a.classList.contains('sh-register')&&L.voters) a.href=L.voters;
+      else if(/REGISTER/.test(t)&&a.classList.contains('sh-register')) a.href='../register/index.html';
     });
     // Wire action buttons
     document.querySelectorAll('button:not([onclick])').forEach(function(btn){

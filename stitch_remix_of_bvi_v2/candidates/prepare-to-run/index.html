@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<title>Prepare to Run – BVI Elections</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode:"class",
+    theme:{extend:{"colors":{"secondary":"#E03C31","primary":"#00205B","surface-bright":"#f8f9fa"},"fontFamily":{"headline":["Public Sans"],"body":["Inter"],"label":["Inter"]}}}
+  }
+</script>
+<style>
+  html{overflow-y:scroll;background:#f8f9fa;}
+  body{font-family:'Inter',system-ui,sans-serif;color:#191c1d;background:#f8f9fa;}
+  #site-util-bar{width:100%;background:#f8f9fa;border-bottom:1px solid #e2e8f0;padding:0.5rem 2rem;box-sizing:border-box;}
+  .su-inner{max-width:80rem;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.05em;}
+  .su-left{display:flex;align-items:center;gap:1rem;}
+  .su-back,.su-contact{color:inherit;text-decoration:none;display:flex;align-items:center;gap:0.25rem;transition:color 0.15s;}
+  .su-back:hover,.su-contact:hover{color:#00205B;}
+  #site-header{width:100%;background:#fff;border-bottom:1px solid #f1f5f9;box-sizing:border-box;}
+  .sh-inner{max-width:80rem;margin:0 auto;padding:1.25rem 2rem;box-sizing:border-box;}
+  .sh-row{display:flex;align-items:center;}
+  .sh-logo{display:flex;align-items:center;gap:1rem;flex-shrink:0;margin-right:auto;text-decoration:none;}
+  .sh-logo-img{height:3.5rem;width:auto;object-fit:contain;display:block;}
+  .sh-logo-title{font-family:'Inter',system-ui,sans-serif;font-size:1.875rem;font-weight:900;color:#00205B;letter-spacing:-0.025em;line-height:1;}
+  .sh-logo-sub{font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#94a3b8;margin-top:0.25rem;line-height:1;}
+  .sh-nav{display:none;align-items:center;height:100%;margin-left:2rem;}
+  @media(min-width:1024px){.sh-nav{display:flex;}}
+  .sh-nav-links{display:flex;align-items:center;height:100%;}
+  .sh-nav-link{display:flex;flex-direction:column;align-self:stretch;justify-content:center;padding:0 1.25rem;font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;line-height:1.25;color:#00205B;text-decoration:none;border-bottom:3px solid transparent;transition:color 0.15s,border-bottom-color 0.15s;}
+  .sh-nav-link:hover{color:#E03C31;}
+  .sh-nav-link--active{color:#E03C31;border-bottom-color:#E03C31;}
+  .sh-nav-sep{height:2.5rem;width:1px;background:#e2e8f0;flex-shrink:0;}
+  .sh-search{margin-left:auto;margin-right:0.5rem;color:#00205B;background:none;border:none;cursor:pointer;padding:0;line-height:1;transition:color 0.15s;}
+  .sh-search:hover{color:#E03C31;}
+  .sh-register{margin-left:1rem;display:flex;align-items:center;gap:0.375rem;padding:0.5rem 1.25rem;background:#E03C31;color:#fff;border-radius:9999px;font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background-color 0.15s;}
+  .sh-register:hover{background:#b91c1c;}
+  .sh-register-icon{font-size:15px;}
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+
+  /* ── Mobile register strip ──────────────────────────────────────────────── */
+  @media (max-width: 640px) {
+    .sh-register { display: none !important; }
+    .sh-logo-title { font-size: 1.35rem; }
+    .sh-logo-img { height: 2.5rem; }
+  }
+  .mob-register-strip { display: none; width: 100%; background: #fff; border-top: 1px solid #f1f5f9; padding: 0.625rem 1.25rem; }
+  @media (max-width: 640px) { .mob-register-strip { display: block; } }
+</style>
+<script id="bvi-nav-wiring">
+(function(){
+  var L={voters:'../../voters/upcoming-events-v1/index.html',candidates:'../upcoming-elections/index.html',pollWorkers:'../../poll-workers/layout-1/index.html',electionResults:'../../election-results/index.html',newsPolicies:'../../news-policies/index.html',importantDates:'../../important-dates/index.html'};
+  function wire(){
+    document.querySelectorAll('a[href="#"]').forEach(function(a){
+      var t=a.textContent.replace(/\s+/g,' ').trim().toUpperCase();
+      if(/^FOR[\s]*VOTERS$/.test(t)) a.href=L.voters;
+      else if(/^FOR[\s]*CANDIDATES$/.test(t)) a.href=L.candidates;
+      else if(/^FOR[\s]*POLL[\s]*WORKERS$/.test(t)) a.href=L.pollWorkers;
+      else if(/ELECTION[\s\S]{0,2}RESULTS/.test(t)&&t.length<25) a.href=L.electionResults;
+      else if(/NEWS/.test(t)&&/POLIC/.test(t)&&t.length<25) a.href=L.newsPolicies;
+      else if(/IMPORTANT.*DATES/.test(t)) a.href=L.importantDates;
+      else if(/REGISTER/.test(t)&&a.classList.contains('sh-register')) a.href='../../voters/register/index.html';
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',wire);
+  else wire();
+})();
+</script>
+</head>
+<body class="font-body text-on-surface bg-[#f8f9fa]">
+
+<!-- Utility Bar -->
+<div id="site-util-bar">
+  <div class="su-inner">
+    <div class="su-left">
+      <a class="su-back" href="../upcoming-elections/index.html"><span>←</span> BACK TO CANDIDATES</a>
+      <span style="color:#cbd5e1">|</span>
+      <a class="su-contact" href="#">CONTACT US</a>
+    </div>
+    <div>OFFICIAL PORTAL OF THE BRITISH VIRGIN ISLANDS ELECTIONS</div>
+  </div>
+</div>
+
+<!-- Header -->
+<header id="site-header">
+  <div class="sh-inner">
+    <div class="sh-row">
+      <a href="../../index.html" class="sh-logo">
+        <img alt="BVI Coat of Arms" class="sh-logo-img" width="391" height="427" src="../../assets/bvi-crest.png"/>
+        <div>
+          <div class="sh-logo-title">elections.gov.vg</div>
+          <div class="sh-logo-sub">DEPARTMENT OF ELECTIONS</div>
+        </div>
+      </a>
+      <nav class="sh-nav">
+        <div class="sh-nav-links">
+          <a class="sh-nav-link" href="#"><span>FOR</span><span>VOTERS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link sh-nav-link--active" href="#"><span>FOR</span><span>CANDIDATES</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>FOR</span><span>POLL WORKERS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>IMPORTANT</span><span>DATES</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>ELECTION</span><span>RESULTS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>NEWS &amp;</span><span>POLICIES</span></a>
+        </div>
+        <button class="sh-search" aria-label="Search">
+          <span class="material-symbols-outlined" style="font-size:24px;line-height:1;display:block">search</span>
+        </button>
+      </nav>
+      <a href="#" class="sh-register">
+        <span class="material-symbols-outlined sh-register-icon">how_to_reg</span>
+        Register
+      </a>
+    </div>
+  </div>
+</header>
+<!-- Mobile Register Strip -->
+<div class="mob-register-strip">
+  <a href="#" class="sh-register flex items-center justify-center gap-2 w-full bg-[#E03C31] hover:bg-[#b91c1c] text-white py-2.5 rounded-full font-black text-xs uppercase tracking-wider transition-all">
+    <span class="material-symbols-outlined" style="font-size:16px">how_to_reg</span>
+    Register to Vote
+  </a>
+</div>
+
+<!-- Breadcrumb + Title -->
+<section class="w-full bg-white border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-8 py-6">
+    <div class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">
+      <a href="../upcoming-elections/index.html" class="hover:text-[#00205B] transition-colors">For Candidates</a>
+      <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+      <span class="text-[#00205B]">Prepare to Run</span>
+    </div>
+    <div class="flex items-center gap-5">
+      <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-[#E03C31] text-[30px]">how_to_vote</span>
+      </div>
+      <div>
+        <h1 class="text-4xl md:text-5xl font-black text-[#00205B] font-headline leading-tight">Prepare to Run</h1>
+        <p class="text-slate-500 text-base mt-2">Everything you need to know to stand as a candidate in the British Virgin Islands General Election.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Content -->
+<section class="w-full bg-[#f8f9fa] py-8">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      <!-- Left: Main Content (2 cols wide) -->
+      <div class="lg:col-span-2 space-y-6">
+
+        <!-- Why Run? -->
+        <div class="bg-gradient-to-br from-[#001849] to-[#00205B] rounded-2xl p-8 text-white">
+          <h2 class="text-2xl font-black font-headline mb-2">Why Stand for Election?</h2>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6">Becoming a candidate is one of the most meaningful ways to serve the British Virgin Islands. Your voice, your vision, and your values can directly shape the future of your community.</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white/10 rounded-xl p-5 text-center">
+              <span class="material-symbols-outlined text-yellow-300 text-[32px] mb-2 block">account_balance</span>
+              <p class="text-sm font-black">Shape Policy</p>
+              <p class="text-xs text-slate-300 mt-1">Directly influence decisions that affect everyday life in the BVI.</p>
+            </div>
+            <div class="bg-white/10 rounded-xl p-5 text-center">
+              <span class="material-symbols-outlined text-yellow-300 text-[32px] mb-2 block">groups</span>
+              <p class="text-sm font-black">Represent Your District</p>
+              <p class="text-xs text-slate-300 mt-1">Be a voice for your constituents at the highest level.</p>
+            </div>
+            <div class="bg-white/10 rounded-xl p-5 text-center">
+              <span class="material-symbols-outlined text-yellow-300 text-[32px] mb-2 block">volunteer_activism</span>
+              <p class="text-sm font-black">Serve Your Community</p>
+              <p class="text-xs text-slate-300 mt-1">Leave a lasting legacy of public service and civic leadership.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Eligibility Requirements -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-7">
+          <h2 class="text-xl font-black text-[#00205B] mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[22px] text-[#E03C31]">checklist</span>
+            Eligibility Requirements
+          </h2>
+          <p class="text-sm text-slate-500 mb-5 leading-relaxed">To stand as a candidate in a BVI General Election, you must meet all of the following criteria under the Elections Act.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="flex items-start gap-3 bg-slate-50 rounded-xl p-4">
+              <span class="material-symbols-outlined text-green-500 text-[20px] mt-0.5">check_circle</span>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">Belonger Status</p>
+                <p class="text-xs text-slate-500 mt-0.5">Must hold BVI Belonger status as defined in the Constitution.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 bg-slate-50 rounded-xl p-4">
+              <span class="material-symbols-outlined text-green-500 text-[20px] mt-0.5">check_circle</span>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">18 Years or Older</p>
+                <p class="text-xs text-slate-500 mt-0.5">Must be at least 18 years of age on Nomination Day.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 bg-slate-50 rounded-xl p-4">
+              <span class="material-symbols-outlined text-green-500 text-[20px] mt-0.5">check_circle</span>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">Registered Voter</p>
+                <p class="text-xs text-slate-500 mt-0.5">Must be registered on the current electoral roll in the BVI.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 bg-slate-50 rounded-xl p-4">
+              <span class="material-symbols-outlined text-green-500 text-[20px] mt-0.5">check_circle</span>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">Domiciled in BVI</p>
+                <p class="text-xs text-slate-500 mt-0.5">Must be ordinarily resident and domiciled in the Virgin Islands.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 bg-slate-50 rounded-xl p-4">
+              <span class="material-symbols-outlined text-green-500 text-[20px] mt-0.5">check_circle</span>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">No Disqualifying Offence</p>
+                <p class="text-xs text-slate-500 mt-0.5">Must not have been convicted of a disqualifying electoral offence.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 bg-slate-50 rounded-xl p-4">
+              <span class="material-symbols-outlined text-green-500 text-[20px] mt-0.5">check_circle</span>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">Not a Public Officer</p>
+                <p class="text-xs text-slate-500 mt-0.5">Serving public officers must resign before standing for election.</p>
+              </div>
+            </div>
+          </div>
+          <a href="../candidate-requirements/index.html" class="mt-5 inline-flex items-center gap-2 text-[#E03C31] text-sm font-bold hover:underline">
+            <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+            View full candidate requirements
+          </a>
+        </div>
+
+        <!-- Step-by-step Process -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-7">
+          <h2 class="text-xl font-black text-[#00205B] mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[22px] text-[#E03C31]">timeline</span>
+            The Candidacy Process
+          </h2>
+          <div class="space-y-4">
+
+            <div class="flex gap-4">
+              <div class="flex flex-col items-center">
+                <div class="w-8 h-8 rounded-full bg-[#00205B] text-white flex items-center justify-center text-xs font-black shrink-0">1</div>
+                <div class="w-0.5 bg-slate-200 flex-1 mt-2"></div>
+              </div>
+              <div class="pb-6">
+                <p class="font-black text-[#00205B] text-sm">Confirm Your Eligibility</p>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">Review the candidate requirements and ensure you meet all legal criteria under the Elections Act before proceeding.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex flex-col items-center">
+                <div class="w-8 h-8 rounded-full bg-[#00205B] text-white flex items-center justify-center text-xs font-black shrink-0">2</div>
+                <div class="w-0.5 bg-slate-200 flex-1 mt-2"></div>
+              </div>
+              <div class="pb-6">
+                <p class="font-black text-[#00205B] text-sm">Obtain Nomination Papers</p>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">Collect your official nomination papers from the Office of the Supervisor of Elections or download from the Forms &amp; Documents section.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex flex-col items-center">
+                <div class="w-8 h-8 rounded-full bg-[#00205B] text-white flex items-center justify-center text-xs font-black shrink-0">3</div>
+                <div class="w-0.5 bg-slate-200 flex-1 mt-2"></div>
+              </div>
+              <div class="pb-6">
+                <p class="font-black text-[#00205B] text-sm">Secure Nominators</p>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">Your nomination must be signed by registered voters in the district you wish to represent. A proposer and seconder are required.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex flex-col items-center">
+                <div class="w-8 h-8 rounded-full bg-[#00205B] text-white flex items-center justify-center text-xs font-black shrink-0">4</div>
+                <div class="w-0.5 bg-slate-200 flex-1 mt-2"></div>
+              </div>
+              <div class="pb-6">
+                <p class="font-black text-[#00205B] text-sm">Pay the Nomination Deposit</p>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">A nomination deposit of $500 USD is required. This is refundable if you receive more than one-eighth of the valid votes cast.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex flex-col items-center">
+                <div class="w-8 h-8 rounded-full bg-[#E03C31] text-white flex items-center justify-center text-xs font-black shrink-0">5</div>
+                <div class="w-0.5 bg-transparent flex-1 mt-2"></div>
+              </div>
+              <div class="pb-2">
+                <p class="font-black text-[#00205B] text-sm">Submit on Nomination Day</p>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed">Deliver your completed nomination papers and deposit to the Returning Officer on or before Nomination Day, <strong class="text-[#00205B]">October 25, 2024</strong>.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Key Resources -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-7">
+          <h2 class="text-xl font-black text-[#00205B] mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[22px] text-[#E03C31]">library_books</span>
+            Key Resources
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <a href="../candidate-requirements/index.html" class="flex items-center gap-4 p-4 border border-slate-200 rounded-xl hover:border-[#00205B] hover:shadow-sm transition-all group">
+              <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[#00205B] text-[20px]">fact_check</span>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">Candidate Requirements</p>
+                <p class="text-xs text-slate-500">Full eligibility criteria and legal obligations.</p>
+              </div>
+            </a>
+            <a href="../election-process/index.html" class="flex items-center gap-4 p-4 border border-slate-200 rounded-xl hover:border-[#00205B] hover:shadow-sm transition-all group">
+              <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[#00205B] text-[20px]">account_balance</span>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">Election Process</p>
+                <p class="text-xs text-slate-500">How the BVI electoral system works.</p>
+              </div>
+            </a>
+            <a href="../campaign-finance/index.html" class="flex items-center gap-4 p-4 border border-slate-200 rounded-xl hover:border-[#00205B] hover:shadow-sm transition-all group">
+              <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[#00205B] text-[20px]">payments</span>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">Campaign Finance</p>
+                <p class="text-xs text-slate-500">Spending limits, disclosure, and reporting rules.</p>
+              </div>
+            </a>
+            <a href="../forms-documents/index.html" class="flex items-center gap-4 p-4 border border-slate-200 rounded-xl hover:border-[#00205B] hover:shadow-sm transition-all group">
+              <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[#00205B] text-[20px]">description</span>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">Forms &amp; Documents</p>
+                <p class="text-xs text-slate-500">Download nomination papers and official forms.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Sidebar -->
+      <div class="lg:col-span-1 space-y-5">
+
+        <!-- Expression of Interest Form -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sticky top-6">
+          <!-- Form state -->
+          <div id="interest-form">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[#E03C31] text-[22px]">campaign</span>
+              </div>
+              <div>
+                <h3 class="text-base font-black text-[#00205B]">Express Your Interest</h3>
+                <p class="text-xs text-slate-500">We'll send you a candidacy pack.</p>
+              </div>
+            </div>
+            <form onsubmit="handleInterest(event)" class="space-y-3">
+              <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1 uppercase tracking-wide">Full Name</label>
+                <input type="text" placeholder="e.g. John A. Smith" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#00205B]/20 focus:border-[#00205B] transition-all" required/>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1 uppercase tracking-wide">Email Address</label>
+                <input type="email" placeholder="your@email.com" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#00205B]/20 focus:border-[#00205B] transition-all" required/>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1 uppercase tracking-wide">Phone Number</label>
+                <input type="tel" placeholder="+1 (284) 000-0000" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#00205B]/20 focus:border-[#00205B] transition-all"/>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1 uppercase tracking-wide">District of Interest</label>
+                <select class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#00205B]/20 focus:border-[#00205B] transition-all" required>
+                  <option value="">Select a district…</option>
+                  <option>District 1 – West End &amp; Capoons Bay</option>
+                  <option>District 2 – Carrot Bay &amp; Apple Bay</option>
+                  <option>District 3 – Road Town (North)</option>
+                  <option>District 4 – Road Town (South)</option>
+                  <option>District 5 – East End / Long Look</option>
+                  <option>District 6 – Virgin Gorda</option>
+                  <option>District 7 – Anegada</option>
+                  <option>District 8 – Jost Van Dyke</option>
+                  <option>At Large – 1</option>
+                  <option>At Large – 2</option>
+                  <option>At Large – 3</option>
+                  <option>At Large – 4</option>
+                </select>
+              </div>
+              <button type="submit" class="w-full bg-[#E03C31] hover:bg-[#b91c1c] text-white py-3 rounded-lg font-black text-xs uppercase tracking-widest transition-all shadow-sm mt-1">
+                Send Candidacy Pack
+              </button>
+            </form>
+          </div>
+
+          <!-- Success state (hidden by default) -->
+          <div id="interest-success" class="hidden text-center py-4">
+            <div class="w-14 h-14 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="material-symbols-outlined text-green-500 text-[32px]">check_circle</span>
+            </div>
+            <h4 class="text-base font-black text-[#00205B] mb-1">Request Received!</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">Your candidacy information pack will be sent to your email within 1–2 business days.</p>
+            <button onclick="resetInterestForm()" class="mt-4 text-xs font-bold text-[#E03C31] hover:underline">Submit another</button>
+          </div>
+        </div>
+
+        <!-- Important Dates Card -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+          <h3 class="text-base font-black text-[#00205B] mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#E03C31] text-[20px]">event</span>
+            Key Dates for Candidates
+          </h3>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 rounded-full bg-slate-300 mt-1.5 shrink-0"></div>
+              <div>
+                <p class="text-xs font-black text-[#00205B] uppercase tracking-wide">Oct 1, 2024</p>
+                <p class="text-xs text-slate-500">Nomination papers available</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 rounded-full bg-slate-300 mt-1.5 shrink-0"></div>
+              <div>
+                <p class="text-xs font-black text-[#00205B] uppercase tracking-wide">Oct 25, 2024</p>
+                <p class="text-xs text-slate-500">Nomination Day — papers due</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 rounded-full bg-slate-300 mt-1.5 shrink-0"></div>
+              <div>
+                <p class="text-xs font-black text-[#00205B] uppercase tracking-wide">Oct 26 – Nov 24</p>
+                <p class="text-xs text-slate-500">Official campaign period</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 rounded-full bg-[#E03C31] mt-1.5 shrink-0"></div>
+              <div>
+                <p class="text-xs font-black text-[#E03C31] uppercase tracking-wide">Nov 25, 2024</p>
+                <p class="text-xs text-slate-500 font-bold">Election Day</p>
+              </div>
+            </div>
+          </div>
+          <a href="../upcoming-elections/index.html" class="mt-4 inline-flex items-center gap-1.5 text-[#E03C31] text-xs font-bold hover:underline">
+            <span class="material-symbols-outlined text-[16px]">calendar_today</span>
+            View full electoral calendar
+          </a>
+        </div>
+
+        <!-- Contact Card -->
+        <div class="bg-[#f8f9fa] rounded-2xl border border-slate-200 p-6">
+          <h3 class="text-sm font-black text-[#00205B] mb-2">Need Help?</h3>
+          <p class="text-xs text-slate-500 leading-relaxed mb-4">Contact the Office of the Supervisor of Elections for assistance with your candidacy application.</p>
+          <a href="../contact-office/index.html" class="flex items-center gap-2 text-xs font-bold text-[#00205B] hover:text-[#E03C31] transition-colors">
+            <span class="material-symbols-outlined text-[16px]">call</span>
+            Contact the Office
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#00205B] text-white mt-8">
+  <div class="max-w-7xl mx-auto px-8 py-12">
+    <div class="flex flex-col md:flex-row justify-between items-start gap-8">
+      <div class="flex items-center gap-4">
+        <img alt="BVI Coat of Arms" class="h-14 w-auto opacity-80" width="391" height="427" src="../../assets/bvi-crest.png"/>
+        <div>
+          <div class="text-xl font-black tracking-tight">elections.gov.vg</div>
+          <div class="text-[10px] font-bold uppercase tracking-widest text-blue-300 mt-0.5">Department of Elections, BVI</div>
+        </div>
+      </div>
+      <div class="text-xs text-blue-300">
+        <p>© 2024 Department of Elections, British Virgin Islands</p>
+        <p class="mt-1">Road Town, Tortola, British Virgin Islands</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function handleInterest(e) {
+  e.preventDefault();
+  document.getElementById('interest-form').classList.add('hidden');
+  document.getElementById('interest-success').classList.remove('hidden');
+}
+function resetInterestForm() {
+  document.getElementById('interest-success').classList.add('hidden');
+  document.getElementById('interest-form').classList.remove('hidden');
+}
+</script>
+</body>
+</html>

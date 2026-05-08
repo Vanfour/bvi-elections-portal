@@ -78,7 +78,7 @@
       else if(/KEY\s+ACTIONS/.test(t)&&L.keyActions) a.href=L.keyActions;
       else if(/\bFAQS?\b/.test(t)&&L.faqs) a.href=L.faqs;
       else if(/NEWS/.test(t)&&/NOTICES/.test(t)&&L.newsNotices) a.href=L.newsNotices;
-      else if(/REGISTER/.test(t)&&a.classList.contains('sh-register')&&L.voters) a.href=L.voters;
+      else if(/REGISTER/.test(t)&&a.classList.contains('sh-register')) a.href='../../voters/register/index.html';
     });
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',wire);

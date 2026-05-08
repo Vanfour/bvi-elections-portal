@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<title>Register to Vote – BVI Elections</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode:"class",
+    theme:{extend:{colors:{secondary:"#E03C31",primary:"#00205B"},fontFamily:{headline:["Public Sans"],body:["Inter"],label:["Inter"]}}}
+  }
+</script>
+<style>
+  html{overflow-y:scroll;background:#f8f9fa;}
+  body{font-family:'Inter',system-ui,sans-serif;color:#191c1d;background:#f8f9fa;}
+  #site-util-bar{width:100%;background:#f8f9fa;border-bottom:1px solid #e2e8f0;padding:0.5rem 2rem;box-sizing:border-box;}
+  .su-inner{max-width:80rem;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.05em;}
+  .su-left{display:flex;align-items:center;gap:1rem;}
+  .su-back,.su-contact{color:inherit;text-decoration:none;display:flex;align-items:center;gap:0.25rem;transition:color 0.15s;}
+  .su-back:hover,.su-contact:hover{color:#00205B;}
+  .su-portal-name{display:none;}
+  @media(min-width:768px){.su-portal-name{display:block;}}
+  #site-header{width:100%;background:#fff;border-bottom:1px solid #f1f5f9;box-sizing:border-box;}
+  .sh-inner{max-width:80rem;margin:0 auto;padding:1.25rem 2rem;box-sizing:border-box;}
+  .sh-row{display:flex;align-items:center;}
+  .sh-logo{display:flex;align-items:center;gap:1rem;flex-shrink:0;margin-right:auto;text-decoration:none;}
+  .sh-logo-img{height:3.5rem;width:auto;object-fit:contain;display:block;}
+  .sh-logo-title{font-family:'Inter',system-ui,sans-serif;font-size:1.875rem;font-weight:900;color:#00205B;letter-spacing:-0.025em;line-height:1;}
+  .sh-logo-sub{font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#94a3b8;margin-top:0.25rem;line-height:1;}
+  .sh-nav{display:none;align-items:center;height:100%;margin-left:2rem;}
+  @media(min-width:1024px){.sh-nav{display:flex;}}
+  .sh-nav-links{display:flex;align-items:center;height:100%;}
+  .sh-nav-link{display:flex;flex-direction:column;align-self:stretch;justify-content:center;padding:0 1.25rem;font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;line-height:1.25;color:#00205B;text-decoration:none;border-bottom:3px solid transparent;transition:color 0.15s,border-bottom-color 0.15s;}
+  .sh-nav-link:hover{color:#E03C31;}
+  .sh-nav-link--active{color:#E03C31;border-bottom-color:#E03C31;}
+  .sh-nav-sep{height:2.5rem;width:1px;background:#e2e8f0;flex-shrink:0;}
+  .sh-search{margin-left:auto;margin-right:0.5rem;color:#00205B;background:none;border:none;cursor:pointer;padding:0;line-height:1;transition:color 0.15s;}
+  .sh-search:hover{color:#E03C31;}
+  .sh-register{margin-left:1rem;display:flex;align-items:center;gap:0.375rem;padding:0.5rem 1.25rem;background:#E03C31;color:#fff;border-radius:9999px;font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background-color 0.15s;}
+  .sh-register:hover{background:#b91c1c;}
+  .sh-register-icon{font-size:15px;}
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+
+  /* ── Step indicator ── */
+  .step-dot{width:2rem;height:2rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;flex-shrink:0;transition:all 0.25s;}
+  .step-dot.active{background:#00205B;color:#fff;}
+  .step-dot.done{background:#E03C31;color:#fff;}
+  .step-dot.idle{background:#e2e8f0;color:#94a3b8;}
+  .step-line{flex:1;height:2px;background:#e2e8f0;}
+  .step-line.done{background:#E03C31;}
+
+  /* ── Step panels ── */
+  .step-panel{display:none;}
+  .step-panel.active{display:block;}
+
+  /* Desktop only for now */
+</style>
+<script id="bvi-nav-wiring">
+(function(){
+  var L={voters:'../upcoming-events-v1/index.html',candidates:'../../candidates/upcoming-elections/index.html',pollWorkers:'../../poll-workers/layout-1/index.html',electionResults:'../../election-results/index.html',newsPolicies:'../../news-policies/index.html',importantDates:'../../important-dates/index.html'};
+  function wire(){
+    document.querySelectorAll('a[href="#"]').forEach(function(a){
+      var t=a.textContent.replace(/\s+/g,' ').trim().toUpperCase();
+      if(/^FOR[\s]*VOTERS$/.test(t)) a.href=L.voters;
+      else if(/^FOR[\s]*CANDIDATES$/.test(t)) a.href=L.candidates;
+      else if(/^FOR[\s]*POLL[\s]*WORKERS$/.test(t)) a.href=L.pollWorkers;
+      else if(/ELECTION[\s\S]{0,2}RESULTS/.test(t)&&t.length<25) a.href=L.electionResults;
+      else if(/NEWS/.test(t)&&/POLIC/.test(t)&&t.length<25) a.href=L.newsPolicies;
+      else if(/IMPORTANT.*DATES/.test(t)) a.href=L.importantDates;
+      else if(/REGISTER/.test(t)&&a.classList.contains('sh-register')) a.href='./index.html';
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',wire);
+  else wire();
+})();
+</script>
+</head>
+<body class="font-body text-on-surface bg-[#f8f9fa]">
+
+<!-- Utility Bar -->
+<div id="site-util-bar">
+  <div class="su-inner">
+    <div class="su-left">
+      <a class="su-back" href="../upcoming-events-v1/index.html"><span>←</span> BACK TO VOTERS</a>
+      <span style="color:#cbd5e1">|</span>
+      <a class="su-contact" href="#">CONTACT US</a>
+    </div>
+    <div class="su-portal-name">OFFICIAL PORTAL OF THE BRITISH VIRGIN ISLANDS ELECTIONS</div>
+  </div>
+</div>
+
+<!-- Header -->
+<header id="site-header">
+  <div class="sh-inner">
+    <div class="sh-row">
+      <a href="../../index.html" class="sh-logo">
+        <img alt="BVI Coat of Arms" class="sh-logo-img" width="391" height="427" src="../../assets/bvi-crest.png"/>
+        <div>
+          <div class="sh-logo-title">elections.gov.vg</div>
+          <div class="sh-logo-sub">DEPARTMENT OF ELECTIONS</div>
+        </div>
+      </a>
+      <nav class="sh-nav">
+        <div class="sh-nav-links">
+          <a class="sh-nav-link sh-nav-link--active" href="#"><span>FOR</span><span>VOTERS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>FOR</span><span>CANDIDATES</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>FOR</span><span>POLL WORKERS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>IMPORTANT</span><span>DATES</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>ELECTION</span><span>RESULTS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>NEWS &amp;</span><span>POLICIES</span></a>
+        </div>
+        <button class="sh-search" aria-label="Search">
+          <span class="material-symbols-outlined" style="font-size:24px;line-height:1;display:block">search</span>
+        </button>
+      </nav>
+      <a href="#" class="sh-register">
+        <span class="material-symbols-outlined sh-register-icon">how_to_reg</span>
+        Register
+      </a>
+    </div>
+  </div>
+</header>
+<!-- Mobile Register Strip -->
+<!-- Page Hero -->
+<section class="w-full bg-white border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-8 py-6">
+    <div class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">
+      <a href="../upcoming-events-v1/index.html" class="hover:text-[#00205B] transition-colors">For Voters</a>
+      <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+      <span class="text-[#00205B]">Register to Vote</span>
+    </div>
+    <div class="flex items-center gap-5">
+      <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-[#E03C31] text-[30px]">how_to_reg</span>
+      </div>
+      <div>
+        <h1 class="text-4xl md:text-5xl font-black text-[#00205B] font-headline leading-tight">Register to Vote</h1>
+        <p class="text-slate-500 text-base mt-2">Complete your voter registration for the British Virgin Islands General Election.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Content -->
+<section class="w-full bg-[#f8f9fa] py-8">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      <!-- Left: Registration Form (2 cols wide) -->
+      <div class="lg:col-span-2">
+
+        <!-- Step Indicator -->
+        <div class="flex items-center mb-6" id="step-indicator">
+          <div class="step-dot active" id="dot-1">1</div>
+          <div class="step-line" id="line-1"></div>
+          <div class="step-dot idle" id="dot-2">2</div>
+          <div class="step-line" id="line-2"></div>
+          <div class="step-dot idle" id="dot-3">3</div>
+        </div>
+        <div id="step-labels" class="flex justify-between text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6">
+          <span id="label-1" class="text-[#00205B]">Personal Details</span>
+          <span id="label-2">Contact &amp; Address</span>
+          <span id="label-3">Review &amp; Submit</span>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+
+          <!-- ── Step 1: Personal Details ── -->
+          <div class="step-panel active" id="panel-1">
+            <h2 class="text-xl font-black text-[#00205B] mb-1">Personal Details</h2>
+            <p class="text-sm text-slate-500 mb-6">Enter your name and identification information exactly as it appears on your official documents.</p>
+            <div class="space-y-5">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-[11px] font-black text-slate-500 uppercase tracking-wider mb-1.5">First Name <span class="text-[#E03C31]">*</span></label>
+                  <input id="fn" type="text" placeholder="e.g. John" class="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-[#00205B] transition-colors" required/>
+                </div>
+                <div>
+                  <label class="block text-[11px] font-black text-slate-500 uppercase tracking-wider mb-1.5">Last Name <span class="text-[#E03C31]">*</span></label>
+                  <input id="ln" type="text" placeholder="e.g. Smith" class="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-[#00205B] transition-colors" required/>
+                </div>
+              </div>
+              <div>
+                <label class="block text-[11px] font-black text-slate-500 uppercase tracking-wider mb-1.5">Middle Name(s) <span class="text-xs font-normal normal-case tracking-normal text-slate-400">(optional)</span></label>
+                <input type="text" placeholder="e.g. Anthony" class="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-[#00205B] transition-colors"/>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-[11px] font-black text-slate-500 uppercase tracking-wider mb-1.5">Date of Birth <span class="text-[#E03C31]">*</span></label>
+                  <input id="dob" type="date" class="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-[#00205B] transition-colors" required/>
+                </div>
+                <div>
+                  <label class="block text-[11px] font-black text-slate-500 uppercase tracking-wider mb-1.5">Gender <span class="text-[#E03C31]">*</span></label>
+                  <select class="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm bg-white focus:outline-none focus:border-[#00205B] transition-colors" required>
+                    <option value="">Select…</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Prefer not to say</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label class="block text-[11px] font-black text-slate-500 uppercase tracking-wider mb-1.5">BVI Status <span class="text-[#E03C31]">*</span></label>
+                <select class="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm bg-white focus:outline-none focus:border-[#00205B] transition-colors" required>
+                  <option value="">Select your status…</option>
+                  <option>BVI Belonger</option>
+                  <option>British Overseas Territory Citizen (BVI)</option>
+                  <option>Naturalised Belonger</option>
+                </select>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-[11px] font-black text-slate-500 uppercase tracking-wider mb-1.5">ID Type <span class="text-[#E03C31]">*</span></label>
+                  <select class="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm bg-white focus:outline-none focus:border-[#00205B] transition-colors" required>
+                    <option value="">Select…</option>
+                    <option>Passport</option>
+                    <option>BVI Driver's Licence</option>
+                    <option>Belonger's Card</option>
+                    <option>National ID Card</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-[11px] font-black text-slate-500 uppercase tracking-wider mb-1.5">ID Number <span class="text-[#E03C31]">*</span></label>
+                  <input type="text" placeholder="e.g. A1234567" class="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-[#00205B] transition-colors" required/>
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-end mt-8">
+              <button onclick="goStep(2)" class="bg-[#00205B] hover:bg-[#001849] text-white font-black text-xs uppercase tracking-wider px-8 py-3.5 rounded-lg transition-all flex items-center gap-2">
+                Continue
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- ── Step 2: Contact & Address ── -->
+          <div class="step-panel" id="panel-2">
+            <h2 class="text-xl font-black text-[#00205B] mb-1">Contact &amp; Address</h2>
+            <p class="text-sm text-slate-500 mb-6">Your address determines which electoral district you will be registered in.</p>
+            <div class="space-y-5">
+              <div>
+                <label class="block text-[11px] font-black text-slate-500 uppercase tracking-wider mb-1.5">Email Address <span class="text-[#E03C31]">*</span></label>
+                <input type="email" placeholder="your@email.com" class="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-[#00205B] transition-colors" required/>
+              </div>
+              <div>
+                <label class="block text-[11px] font-black text-slate-500 uppercase tracking-wider mb-1.5">Phone Number</label>
+                <input type="tel" placeholder="+1 (284) 000-0000" class="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-[#00205B] transition-colors"/>
+              </div>
+              <div>
+                <label class="block text-[11px] font-black text-slate-500 uppercase tracking-wider mb-1.5">Street Address <span class="text-[#E03C31]">*</span></label>
+                <input type="text" placeholder="e.g. 14 Main Street" class="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-[#00205B] transition-colors" required/>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-[11px] font-black text-slate-500 uppercase tracking-wider mb-1.5">Town / Settlement <span class="text-[#E03C31]">*</span></label>
+                  <input type="text" placeholder="e.g. Road Town" class="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-[#00205B] transition-colors" required/>
+                </div>
+                <div>
+                  <label class="block text-[11px] font-black text-slate-500 uppercase tracking-wider mb-1.5">Island <span class="text-[#E03C31]">*</span></label>
+                  <select class="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm bg-white focus:outline-none focus:border-[#00205B] transition-colors" required>
+                    <option value="">Select…</option>
+                    <option>Tortola</option>
+                    <option>Virgin Gorda</option>
+                    <option>Anegada</option>
+                    <option>Jost Van Dyke</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label class="block text-[11px] font-black text-slate-500 uppercase tracking-wider mb-1.5">Electoral District <span class="text-[#E03C31]">*</span></label>
+                <select class="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm bg-white focus:outline-none focus:border-[#00205B] transition-colors" required>
+                  <option value="">Select your district…</option>
+                  <option>District 1 – West End &amp; Capoon's Bay</option>
+                  <option>District 2 – Carrot Bay &amp; Apple Bay</option>
+                  <option>District 3 – Road Town (North)</option>
+                  <option>District 4 – Road Town (South)</option>
+                  <option>District 5 – East End / Long Look</option>
+                  <option>District 6 – Sea Cows Bay</option>
+                  <option>District 7 – West Tortola</option>
+                  <option>District 8 – Virgin Gorda</option>
+                  <option>District 9 – Anegada</option>
+                  <option>District 10 – Jost Van Dyke</option>
+                  <option>At Large</option>
+                </select>
+                <p class="text-[11px] text-slate-400 mt-1.5">Your district is based on your place of residence.</p>
+              </div>
+            </div>
+            <div class="flex justify-between mt-8">
+              <button onclick="goStep(1)" class="border border-slate-200 text-slate-600 hover:border-slate-400 font-black text-xs uppercase tracking-wider px-6 py-3.5 rounded-lg transition-all flex items-center gap-2">
+                <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                Back
+              </button>
+              <button onclick="goStep(3)" class="bg-[#00205B] hover:bg-[#001849] text-white font-black text-xs uppercase tracking-wider px-8 py-3.5 rounded-lg transition-all flex items-center gap-2">
+                Review Application
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- ── Step 3: Review & Submit ── -->
+          <div class="step-panel" id="panel-3">
+            <h2 class="text-xl font-black text-[#00205B] mb-1">Review &amp; Submit</h2>
+            <p class="text-sm text-slate-500 mb-6">Please review your details and confirm your declaration before submitting your registration.</p>
+
+            <!-- Review Summary -->
+            <div class="bg-slate-50 rounded-xl border border-slate-200 p-6 mb-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-sm font-black text-[#00205B] uppercase tracking-wider">Application Summary</h3>
+                <button onclick="goStep(1)" class="text-[#E03C31] text-xs font-bold hover:underline">Edit</button>
+              </div>
+              <div class="space-y-2.5 text-sm">
+                <div class="flex justify-between py-1.5 border-b border-slate-200">
+                  <span class="text-slate-500 font-medium">Full Name</span>
+                  <span class="font-black text-[#00205B]" id="review-name">—</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-slate-200">
+                  <span class="text-slate-500 font-medium">Date of Birth</span>
+                  <span class="font-black text-[#00205B]" id="review-dob">—</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-slate-200">
+                  <span class="text-slate-500 font-medium">BVI Status</span>
+                  <span class="font-black text-[#00205B]">BVI Belonger</span>
+                </div>
+                <div class="flex justify-between py-1.5">
+                  <span class="text-slate-500 font-medium">Electoral District</span>
+                  <span class="font-black text-[#00205B]">District 3 – Road Town</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Declaration -->
+            <div id="decl-box" class="bg-blue-50 border border-blue-200 rounded-xl p-5 mb-6">
+              <h3 class="text-sm font-black text-[#00205B] mb-3 flex items-center gap-2">
+                <span class="material-symbols-outlined text-[18px]">gavel</span>
+                Declaration
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">I declare that the information provided in this application is true and correct to the best of my knowledge. I understand that providing false information is a criminal offence under the Elections Act (Cap. 127) of the British Virgin Islands.</p>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" id="declaration" class="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#00205B] focus:ring-[#00205B]"/>
+                <span class="text-xs font-bold text-slate-700">I confirm this declaration and consent to my information being processed for electoral purposes.</span>
+              </label>
+            </div>
+
+            <div class="flex justify-between mt-8">
+              <button onclick="goStep(2)" class="border border-slate-200 text-slate-600 hover:border-slate-400 font-black text-xs uppercase tracking-wider px-6 py-3.5 rounded-lg transition-all flex items-center gap-2">
+                <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                Back
+              </button>
+              <button onclick="handleSubmit()" class="bg-[#E03C31] hover:bg-[#b91c1c] text-white font-black text-xs uppercase tracking-widest px-8 py-3.5 rounded-lg transition-all flex items-center gap-2 shadow-sm">
+                <span class="material-symbols-outlined text-[18px]">how_to_reg</span>
+                Submit Registration
+              </button>
+            </div>
+          </div>
+
+          <!-- ── Success State ── -->
+          <div class="step-panel text-center py-8" id="panel-success">
+            <div class="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="material-symbols-outlined text-green-500 text-[44px]">check_circle</span>
+            </div>
+            <h2 class="text-3xl font-black text-[#00205B] font-headline mb-3">Registration Submitted!</h2>
+            <p class="text-slate-500 text-base max-w-md mx-auto leading-relaxed mb-2">Thank you. Your voter registration application has been received by the Department of Elections.</p>
+            <p class="text-slate-400 text-sm max-w-md mx-auto leading-relaxed mb-8">You will receive a confirmation email within 2–3 business days. If approved, your name will be added to the electoral roll.</p>
+
+            <!-- Ref Number -->
+            <div class="inline-flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-6 py-4 mb-8">
+              <span class="material-symbols-outlined text-[#00205B] text-[22px]">confirmation_number</span>
+              <div class="text-left">
+                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Reference Number</p>
+                <p class="text-lg font-black text-[#00205B]">BVI-REG-2024-<span id="ref-num">04817</span></p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-3">
+              <a href="../check-status/index.html" class="flex items-center gap-2 bg-[#00205B] hover:bg-[#001849] text-white font-black text-xs uppercase tracking-wider px-6 py-3 rounded-lg transition-all">
+                <span class="material-symbols-outlined text-[18px]">person_search</span>
+                Check My Status Later
+              </a>
+              <a href="../upcoming-events-v1/index.html" class="flex items-center gap-2 border border-slate-200 text-[#00205B] hover:border-[#00205B] font-black text-xs uppercase tracking-wider px-6 py-3 rounded-lg transition-all">
+                <span class="material-symbols-outlined text-[18px]">home</span>
+                Back to Voters Home
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Sidebar -->
+      <div class="lg:col-span-1 space-y-5">
+
+        <!-- Eligibility Card -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+          <h3 class="text-base font-black text-[#00205B] mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#E03C31] text-[20px]">checklist</span>
+            Who Can Register?
+          </h3>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-green-500 text-[18px] mt-0.5">check_circle</span>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">BVI Belonger</p>
+                <p class="text-xs text-slate-500">Must hold Belonger or BOTC (BVI) status.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-green-500 text-[18px] mt-0.5">check_circle</span>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">18 Years or Older</p>
+                <p class="text-xs text-slate-500">Must be 18+ on or before Election Day.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-green-500 text-[18px] mt-0.5">check_circle</span>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">Resident in BVI</p>
+                <p class="text-xs text-slate-500">Must be ordinarily resident in the district where registering.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-green-500 text-[18px] mt-0.5">check_circle</span>
+              <div>
+                <p class="text-sm font-bold text-[#00205B]">Valid Government ID</p>
+                <p class="text-xs text-slate-500">Passport, Driver's Licence, or Belonger's Card required.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-red-400 text-[18px] mt-0.5">cancel</span>
+              <div>
+                <p class="text-sm font-bold text-slate-500">Currently Imprisoned</p>
+                <p class="text-xs text-slate-400">Persons serving a custodial sentence are not eligible.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Deadline Card -->
+        <div class="bg-gradient-to-br from-[#001849] to-[#00205B] rounded-2xl p-6 text-white">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="material-symbols-outlined text-yellow-300 text-[24px]">schedule</span>
+            <h3 class="text-base font-black">Registration Deadline</h3>
+          </div>
+          <p class="text-3xl font-black font-headline mb-1">Oct 14, 2024</p>
+          <p class="text-sm text-slate-300 leading-relaxed">The electoral roll closes on October 14th. Applications received after this date will not be processed for the November election.</p>
+          <div class="mt-4 pt-4 border-t border-white/10 text-xs text-blue-200">
+            <span class="font-black text-white">Election Day:</span> November 25, 2024
+          </div>
+        </div>
+
+        <!-- In-Person Option -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+          <h3 class="text-base font-black text-[#00205B] mb-3 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#E03C31] text-[20px]">location_on</span>
+            Register In Person
+          </h3>
+          <p class="text-xs text-slate-500 leading-relaxed mb-4">You may also register in person at the Office of the Supervisor of Elections.</p>
+          <div class="bg-slate-50 rounded-xl p-4 space-y-2">
+            <div class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-[#00205B] text-[16px] mt-0.5">apartment</span>
+              <p class="text-xs text-slate-600">Government Administration Building, Road Town, Tortola</p>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-[#00205B] text-[16px] mt-0.5">schedule</span>
+              <p class="text-xs text-slate-600">Mon – Fri, 8:30 AM – 4:30 PM</p>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-[#00205B] text-[16px] mt-0.5">call</span>
+              <p class="text-xs text-slate-600">+1 (284) 468-3701</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Already registered? -->
+        <div class="bg-[#f8f9fa] rounded-2xl border border-slate-200 p-6">
+          <h3 class="text-sm font-black text-[#00205B] mb-2">Already Registered?</h3>
+          <p class="text-xs text-slate-500 leading-relaxed mb-4">Check your current registration status and confirm your details before Election Day.</p>
+          <a href="../check-status/index.html" class="flex items-center gap-2 text-xs font-bold text-[#E03C31] hover:underline">
+            <span class="material-symbols-outlined text-[16px]">person_search</span>
+            Check My Status
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#00205B] text-white mt-8">
+  <div class="max-w-7xl mx-auto px-8 py-12">
+    <div class="flex flex-col md:flex-row justify-between items-start gap-8">
+      <div class="flex items-center gap-4">
+        <img alt="BVI Coat of Arms" class="h-14 w-auto opacity-80" width="391" height="427" src="../../assets/bvi-crest.png"/>
+        <div>
+          <div class="text-xl font-black tracking-tight">elections.gov.vg</div>
+          <div class="text-[10px] font-bold uppercase tracking-widest text-blue-300 mt-0.5">Department of Elections, BVI</div>
+        </div>
+      </div>
+      <div class="text-xs text-blue-300">
+        <p>© 2024 Department of Elections, British Virgin Islands</p>
+        <p class="mt-1">Road Town, Tortola, British Virgin Islands</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+var currentStep = 1;
+
+function goStep(n) {
+  // Hide current panel
+  var cur = document.getElementById('panel-' + currentStep);
+  if (cur) cur.classList.remove('active');
+
+  // Update step dots and lines
+  for (var i = 1; i <= 3; i++) {
+    var dot = document.getElementById('dot-' + i);
+    var lbl = document.getElementById('label-' + i);
+    if (dot) {
+      if (i < n)       dot.className = 'step-dot done';
+      else if (i === n) dot.className = 'step-dot active';
+      else              dot.className = 'step-dot idle';
+    }
+    if (lbl) {
+      lbl.style.color = (i === n) ? '#00205B' : '#94a3b8';
+    }
+    if (i < 3) {
+      var line = document.getElementById('line-' + i);
+      if (line) line.className = 'step-line' + (i < n ? ' done' : '');
+    }
+  }
+
+  // Populate review summary when reaching step 3
+  if (n === 3) {
+    var fn  = document.getElementById('fn').value  || '—';
+    var ln  = document.getElementById('ln').value  || '—';
+    var dob = document.getElementById('dob').value;
+    document.getElementById('review-name').textContent = fn + ' ' + ln;
+    if (dob) {
+      var d = new Date(dob + 'T00:00:00');
+      document.getElementById('review-dob').textContent =
+        d.toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' });
+    }
+  }
+
+  currentStep = n;
+  var next = document.getElementById('panel-' + n);
+  if (next) next.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function handleSubmit() {
+  var decl = document.getElementById('declaration');
+  if (!decl || !decl.checked) {
+    // Highlight declaration box
+    var declBox = document.getElementById('decl-box');
+    if (declBox) { declBox.style.borderColor = '#E03C31'; declBox.style.background = '#fff5f5'; }
+    if (decl) { decl.parentElement.style.color = '#E03C31'; }
+    return;
+  }
+  // Hide stepper UI
+  var ind = document.getElementById('step-indicator');
+  var labels = document.getElementById('step-labels');
+  if (ind)    ind.style.display    = 'none';
+  if (labels) labels.style.display = 'none';
+  // Switch to success panel
+  var p3 = document.getElementById('panel-3');
+  if (p3) p3.classList.remove('active');
+  var ps = document.getElementById('panel-success');
+  if (ps) ps.classList.add('active');
+  // Generate random reference number
+  var ref = document.getElementById('ref-num');
+  if (ref) ref.textContent = String(Math.floor(10000 + Math.random() * 90000));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
