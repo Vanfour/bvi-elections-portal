@@ -421,44 +421,45 @@
 <section class="w-full bg-white pb-12">
 <div class="max-w-7xl mx-auto px-4 md:px-8">
 <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
-<div class="relative p-8 pl-4 md:pl-12 lg:pl-16 flex flex-col lg:flex-row items-center gap-8 lg:gap-16 bg-gradient-to-br from-[#001849] to-[#00205B]">
+<div class="relative p-6 md:p-8 lg:p-16 flex flex-col lg:flex-row items-center gap-4 md:gap-8 lg:gap-16 bg-gradient-to-br from-[#001849] to-[#00205B]">
 <!-- Left Content: Countdown Timer -->
-<div class="flex-1 w-full">
-<h2 class="text-3xl font-black text-white font-headline mb-2">Election Day is here!</h2>
-<div class="flex flex-wrap gap-4"><div class="w-full mb-4"><span class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.15em]">Polling ends in</span></div>
-<div class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-4 min-w-[85px] text-center shadow-sm">
-<span class="block text-4xl font-black text-white leading-none mb-2">42</span>
-<span class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em]">Days</span>
+<div class="w-full">
+<h2 class="text-2xl md:text-3xl font-black text-white font-headline mb-4 md:mb-8 text-center lg:text-left">Election Day <span class="font-normal text-slate-300">is here!</span></h2>
+<span class="block text-[10px] font-black text-white/50 uppercase tracking-[0.2em] mb-3 text-center lg:text-left">Polling ends in</span>
+<div class="grid grid-cols-4 gap-3 md:gap-4">
+<div class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-2 md:p-4 text-center shadow-sm">
+<span class="block text-2xl md:text-4xl font-black text-white leading-none mb-1 md:mb-2">42</span>
+<span class="text-[8px] md:text-[10px] font-bold text-slate-400 uppercase tracking-wider md:tracking-[0.15em]">Days</span>
 </div>
-<div class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-4 min-w-[85px] text-center shadow-sm">
-<span class="block text-4xl font-black text-white leading-none mb-2">03</span>
-<span class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em]">Hrs</span>
+<div class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-2 md:p-4 text-center shadow-sm">
+<span class="block text-2xl md:text-4xl font-black text-white leading-none mb-1 md:mb-2">03</span>
+<span class="text-[8px] md:text-[10px] font-bold text-slate-400 uppercase tracking-wider md:tracking-[0.15em]">Hrs</span>
 </div>
-<div class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-4 min-w-[85px] text-center shadow-sm">
-<span class="block text-4xl font-black text-white leading-none mb-2">28</span>
-<span class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em]">Mins</span>
+<div class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-2 md:p-4 text-center shadow-sm">
+<span class="block text-2xl md:text-4xl font-black text-white leading-none mb-1 md:mb-2">28</span>
+<span class="text-[8px] md:text-[10px] font-bold text-slate-400 uppercase tracking-wider md:tracking-[0.15em]">Mins</span>
 </div>
-<div class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-4 min-w-[85px] text-center shadow-sm">
-<span class="block text-4xl font-black text-white leading-none mb-2">17</span>
-<span class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em]">Secs</span>
+<div class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-2 md:p-4 text-center shadow-sm">
+<span class="block text-2xl md:text-4xl font-black text-white leading-none mb-1 md:mb-2">17</span>
+<span class="text-[8px] md:text-[10px] font-bold text-slate-400 uppercase tracking-wider md:tracking-[0.15em]">Secs</span>
 </div>
 </div>
 </div>
 <!-- Vertical Divider -->
 <div class="hidden lg:block w-[1px] h-32 bg-white/10"></div>
 <!-- Right Content -->
-<div class="flex-1 w-full flex flex-col justify-center self-stretch">
-<div class="flex gap-4 mb-4 items-center">
-<span class="material-symbols-outlined text-white text-3xl font-bold">calendar_today</span>
+<div class="w-full flex flex-col items-center lg:items-start self-stretch mt-4 lg:mt-0">
+<div class="flex items-start gap-4 mb-4 md:mb-8 text-center lg:text-left">
+<span class="material-symbols-outlined text-white text-3xl font-bold mt-1 hidden sm:block">calendar_today</span>
 <div class="flex flex-col">
-<span class="text-xl font-black text-white">Monday, November 25, 2024</span>
+<span class="text-lg md:text-xl font-black text-white">Monday, November 25, 2024</span>
+<span class="text-sm font-bold text-slate-300 mt-1">Polls open 6:00 AM – 6:00 PM</span>
 </div>
 </div>
-<div class="flex flex-wrap gap-3">
-<button class="bg-[#E03C31] text-white px-4 md:px-8 py-3.5 rounded-lg font-black text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-md">VIEW ELECTION UPDATES</button>
-<a href="../election-day-2024.ics" download class="border-2 border-white border-opacity-30 text-white px-6 py-3.5 rounded-lg font-black text-xs uppercase tracking-wider hover:bg-white/5 active:scale-95 transition-all flex items-center gap-2" style="display:inline-flex;align-items:center;gap:0.5rem;">
-<span class="material-symbols-outlined text-[20px] font-bold">calendar_add_on</span>
-                            Add to Calendar</a>
+<div class="flex flex-col sm:flex-row gap-4 w-full">
+<button class="bg-[#E03C31] text-white w-full sm:w-auto px-4 md:px-8 py-4 rounded-xl font-black text-xs uppercase tracking-wider hover:brightness-110 active:scale-[0.98] transition-all shadow-lg">View Election Updates</button>
+<a href="../election-day-2024.ics" download class="border-2 border-white/30 text-white w-full sm:w-auto px-6 py-4 rounded-xl font-black text-xs uppercase tracking-wider hover:bg-white/5 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px] font-bold">calendar_add_on</span>Add to Calendar</a>
 </div>
 </div>
 </div>
