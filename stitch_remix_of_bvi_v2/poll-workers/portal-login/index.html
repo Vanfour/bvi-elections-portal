@@ -326,4 +326,10 @@ function handleLogin(e) {
   }, 100);
 }
 </script>
+
+<script>
+function openMobNav(){document.getElementById('mob-nav').classList.add('open');document.body.style.overflow='hidden';}
+function closeMobNav(){document.getElementById('mob-nav').classList.remove('open');document.body.style.overflow='';}
+function closeMobNavOutside(e){if(e.target===document.getElementById('mob-nav'))closeMobNav();}
+</script>
 </body></html>

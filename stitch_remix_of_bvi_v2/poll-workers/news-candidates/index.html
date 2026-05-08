@@ -267,4 +267,10 @@
 
 <footer class="bg-[#00205B] text-white mt-8 py-8"><div class="max-w-7xl mx-auto px-4 md:px-8 text-center"><p class="text-xs text-slate-400">© 2024 Department of Elections, British Virgin Islands. All rights reserved.</p><p class="text-xs text-slate-500 mt-1">For assistance call <span class="text-white font-semibold">+1 (284) 468-3701</span> or email <span class="text-white font-semibold">elections@gov.vg</span></p></div></footer>
 <script>function copyLink(){navigator.clipboard.writeText(window.location.href).then(function(){var t=document.getElementById('copy-toast');t.classList.remove('hidden');setTimeout(function(){t.classList.add('hidden');},2000);});}</script>
+
+<script>
+function openMobNav(){document.getElementById('mob-nav').classList.add('open');document.body.style.overflow='hidden';}
+function closeMobNav(){document.getElementById('mob-nav').classList.remove('open');document.body.style.overflow='';}
+function closeMobNavOutside(e){if(e.target===document.getElementById('mob-nav'))closeMobNav();}
+</script>
 </body></html>
