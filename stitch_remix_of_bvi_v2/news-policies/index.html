@@ -503,12 +503,149 @@
 </div>
 <!-- Load Archive Button -->
 <div class="mt-16 flex justify-center">
-<button class="border-2 border-[#00205B] text-[#00205B] text-xs font-black uppercase tracking-widest px-10 py-4 rounded-lg hover:bg-[#00205B] hover:text-white transition-all shadow-sm">
-                    Load Archive 2023 - 2020
-                </button>
+  <button id="load-archive-btn" onclick="loadArchive()" class="border-2 border-[#00205B] text-[#00205B] text-xs font-black uppercase tracking-widest px-10 py-4 rounded-lg hover:bg-[#00205B] hover:text-white transition-all shadow-sm flex items-center gap-3">
+    <span class="material-symbols-outlined text-[18px]">archive</span>
+    <span id="archive-btn-label">Load Archive 2023 – 2020</span>
+  </button>
 </div>
+
+<!-- Archive Grid (hidden until button clicked) -->
+<div id="archive-section" style="display:none;" class="mt-12">
+  <div class="flex items-center gap-4 mb-10">
+    <div class="h-px flex-1 bg-slate-200"></div>
+    <span class="text-[11px] font-black text-slate-400 uppercase tracking-widest px-4">Archive · 2020 – 2023</span>
+    <div class="h-px flex-1 bg-slate-200"></div>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Archive Card 1 -->
+    <div data-cat="election-report" class="bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col p-6 opacity-0 archive-card">
+      <div class="flex items-center justify-between mb-4">
+        <span class="text-[10px] font-black uppercase tracking-widest text-[#00205B] bg-primary-fixed px-2.5 py-1 rounded">ELECTION REPORT</span>
+        <span class="text-slate-400 text-[11px] font-bold">Nov 2023</span>
+      </div>
+      <h4 class="text-lg font-black text-[#00205B] font-headline mb-3 leading-tight">2023 By-Election Summary Report</h4>
+      <p class="text-slate-600 text-sm mb-6 leading-relaxed flex-grow">Comprehensive report on voter turnout, district results, and procedural observations from the 2023 by-election.</p>
+      <a class="flex items-center gap-2 text-[#00205B] text-[11px] font-black uppercase tracking-widest group" href="#">
+        <span>Download PDF</span>
+        <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">picture_as_pdf</span>
+      </a>
+    </div>
+    <!-- Archive Card 2 -->
+    <div data-cat="policy-document" class="bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col p-6 opacity-0 archive-card">
+      <div class="flex items-center justify-between mb-4">
+        <span class="text-[10px] font-black uppercase tracking-widest text-[#00205B] bg-primary-fixed px-2.5 py-1 rounded">POLICY DOCUMENT</span>
+        <span class="text-slate-400 text-[11px] font-bold">Mar 2023</span>
+      </div>
+      <h4 class="text-lg font-black text-[#00205B] font-headline mb-3 leading-tight">Revised Voter Registration Regulations 2023</h4>
+      <p class="text-slate-600 text-sm mb-6 leading-relaxed flex-grow">Amendments to registration eligibility and documentation requirements as approved by the House of Assembly.</p>
+      <a class="flex items-center gap-2 text-[#00205B] text-[11px] font-black uppercase tracking-widest group" href="#">
+        <span>Download PDF</span>
+        <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">picture_as_pdf</span>
+      </a>
+    </div>
+    <!-- Archive Card 3 -->
+    <div data-cat="press-release" class="bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col p-6 opacity-0 archive-card">
+      <div class="flex items-center justify-between mb-4">
+        <span class="text-[10px] font-black uppercase tracking-widest text-[#00205B] bg-primary-fixed px-2.5 py-1 rounded">PRESS RELEASE</span>
+        <span class="text-slate-400 text-[11px] font-bold">Jan 2022</span>
+      </div>
+      <h4 class="text-lg font-black text-[#00205B] font-headline mb-3 leading-tight">Department Launches Digital Voter Verification</h4>
+      <p class="text-slate-600 text-sm mb-6 leading-relaxed flex-grow">The Department of Elections announces the rollout of an online portal for citizens to verify their voter registration status.</p>
+      <a class="flex items-center gap-2 text-[#00205B] text-[11px] font-black uppercase tracking-widest group" href="#">
+        <span>Read Full Release</span>
+        <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+      </a>
+    </div>
+    <!-- Archive Card 4 -->
+    <div data-cat="election-report" class="bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col p-6 opacity-0 archive-card">
+      <div class="flex items-center justify-between mb-4">
+        <span class="text-[10px] font-black uppercase tracking-widest text-[#00205B] bg-primary-fixed px-2.5 py-1 rounded">ELECTION REPORT</span>
+        <span class="text-slate-400 text-[11px] font-bold">Dec 2021</span>
+      </div>
+      <h4 class="text-lg font-black text-[#00205B] font-headline mb-3 leading-tight">General Election 2021 – Final Results Report</h4>
+      <p class="text-slate-600 text-sm mb-6 leading-relaxed flex-grow">Official certified results of the 2021 BVI General Election including district-by-district vote tallies and spoilt ballot data.</p>
+      <a class="flex items-center gap-2 text-[#00205B] text-[11px] font-black uppercase tracking-widest group" href="#">
+        <span>Download PDF</span>
+        <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">picture_as_pdf</span>
+      </a>
+    </div>
+    <!-- Archive Card 5 -->
+    <div data-cat="official-notice" class="bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col p-6 opacity-0 archive-card">
+      <div class="flex items-center justify-between mb-4">
+        <span class="text-[10px] font-black uppercase tracking-widest text-[#00205B] bg-primary-fixed px-2.5 py-1 rounded">OFFICIAL NOTICE</span>
+        <span class="text-slate-400 text-[11px] font-bold">Aug 2021</span>
+      </div>
+      <h4 class="text-lg font-black text-[#00205B] font-headline mb-3 leading-tight">Nomination Day Notice – General Election 2021</h4>
+      <p class="text-slate-600 text-sm mb-6 leading-relaxed flex-grow">Official public notice for Nomination Day procedures, deposit requirements, and submission deadlines for the 2021 election.</p>
+      <a class="flex items-center gap-2 text-[#00205B] text-[11px] font-black uppercase tracking-widest group" href="#">
+        <span>Read Full Notice</span>
+        <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+      </a>
+    </div>
+    <!-- Archive Card 6 -->
+    <div data-cat="policy-document" class="bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col p-6 opacity-0 archive-card">
+      <div class="flex items-center justify-between mb-4">
+        <span class="text-[10px] font-black uppercase tracking-widest text-[#00205B] bg-primary-fixed px-2.5 py-1 rounded">POLICY DOCUMENT</span>
+        <span class="text-slate-400 text-[11px] font-bold">Feb 2020</span>
+      </div>
+      <h4 class="text-lg font-black text-[#00205B] font-headline mb-3 leading-tight">Electoral Boundaries Commission Report 2020</h4>
+      <p class="text-slate-600 text-sm mb-6 leading-relaxed flex-grow">Full report and recommendations from the Electoral Boundaries Commission on district delineation ahead of the 2021 general election.</p>
+      <a class="flex items-center gap-2 text-[#00205B] text-[11px] font-black uppercase tracking-widest group" href="#">
+        <span>Download PDF</span>
+        <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">picture_as_pdf</span>
+      </a>
+    </div>
+  </div>
+</div>
+
 </div>
 </section>
+
+<script>
+function loadArchive() {
+  var btn = document.getElementById('load-archive-btn');
+  var label = document.getElementById('archive-btn-label');
+  var section = document.getElementById('archive-section');
+
+  // Loading state
+  btn.disabled = true;
+  btn.style.opacity = '0.7';
+  btn.style.cursor = 'wait';
+  label.textContent = 'Loading archive…';
+
+  setTimeout(function() {
+    // Show archive section
+    section.style.display = 'block';
+
+    // Fade in each card with stagger
+    var cards = document.querySelectorAll('.archive-card');
+    cards.forEach(function(card, i) {
+      setTimeout(function() {
+        card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        card.style.transform = 'translateY(0)';
+        card.style.opacity = '1';
+      }, i * 80);
+    });
+
+    // Update button to "loaded" state
+    btn.style.opacity = '1';
+    btn.style.cursor = 'default';
+    btn.style.background = '#f1f5f9';
+    btn.style.borderColor = '#cbd5e1';
+    btn.style.color = '#94a3b8';
+    label.textContent = 'Archive Loaded · 2020 – 2023';
+
+    // Scroll to archive
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 900);
+}
+
+// Set initial state for archive cards
+document.querySelectorAll('.archive-card').forEach(function(card) {
+  card.style.opacity = '0';
+  card.style.transform = 'translateY(16px)';
+});
+</script>
 <!-- Footer -->
 <footer class="w-full bg-[#00205B] text-white pt-20 pb-10">
 <div class="max-w-7xl mx-auto px-8">
