@@ -334,11 +334,11 @@ tailwind.config = {
     <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-2">Explore</p>
     <h2 class="text-2xl md:text-3xl font-black text-[#00205B] font-headline">Everything in one place</h2>
   </div>
-  <!-- Mobile: 2-col grid | Desktop: horizontal scroll row -->
-  <div class="hidden md:flex gap-5 overflow-x-auto scroll-hide px-8 pb-6">
+  <!-- Horizontal scroll on all screen sizes -->
+  <div class="flex gap-4 overflow-x-auto scroll-hide px-5 md:px-8 pb-6">
 
     <!-- 01 FOR VOTERS -->
-    <a href="voters/upcoming-events-v1/index.html" class="section-card flex-shrink-0 w-72 bg-white rounded-2xl p-7 border border-slate-100 flex flex-col" style="text-decoration:none; color:inherit">
+    <a href="voters/upcoming-events-v1/index.html" class="section-card flex-shrink-0 w-64 md:w-72 bg-white rounded-2xl p-6 md:p-7 border border-slate-100 flex flex-col" style="text-decoration:none; color:inherit">
       <div class="w-11 h-11 rounded-xl bg-[#dae2ff] flex items-center justify-center mb-5">
         <span class="material-symbols-outlined text-[#00205B] text-2xl">how_to_vote</span>
       </div>
@@ -357,7 +357,7 @@ tailwind.config = {
     </a>
 
     <!-- 02 FOR CANDIDATES -->
-    <a href="candidates/upcoming-elections/index.html" class="section-card flex-shrink-0 w-72 bg-white rounded-2xl p-7 border border-slate-100 flex flex-col" style="text-decoration:none; color:inherit">
+    <a href="candidates/upcoming-elections/index.html" class="section-card flex-shrink-0 w-64 md:w-72 bg-white rounded-2xl p-6 md:p-7 border border-slate-100 flex flex-col" style="text-decoration:none; color:inherit">
       <div class="w-11 h-11 rounded-xl bg-[#ffdad5] flex items-center justify-center mb-5">
         <span class="material-symbols-outlined text-[#E03C31] text-2xl">person_raised_hand</span>
       </div>
@@ -376,7 +376,7 @@ tailwind.config = {
     </a>
 
     <!-- 03 FOR POLL WORKERS -->
-    <a href="poll-workers/layout-1/index.html" class="section-card flex-shrink-0 w-72 bg-white rounded-2xl p-7 border border-slate-100 flex flex-col" style="text-decoration:none; color:inherit">
+    <a href="poll-workers/layout-1/index.html" class="section-card flex-shrink-0 w-64 md:w-72 bg-white rounded-2xl p-6 md:p-7 border border-slate-100 flex flex-col" style="text-decoration:none; color:inherit">
       <div class="w-11 h-11 rounded-xl bg-[#d1fae5] flex items-center justify-center mb-5">
         <span class="material-symbols-outlined text-[#007A33] text-2xl">badge</span>
       </div>
@@ -395,7 +395,7 @@ tailwind.config = {
     </a>
 
     <!-- 04 IMPORTANT DATES -->
-    <a href="important-dates/index.html" class="section-card flex-shrink-0 w-72 bg-white rounded-2xl p-7 border border-slate-100 flex flex-col" style="text-decoration:none; color:inherit">
+    <a href="important-dates/index.html" class="section-card flex-shrink-0 w-64 md:w-72 bg-white rounded-2xl p-6 md:p-7 border border-slate-100 flex flex-col" style="text-decoration:none; color:inherit">
       <div class="w-11 h-11 rounded-xl bg-[#fef3c7] flex items-center justify-center mb-5">
         <span class="material-symbols-outlined text-[#b45309] text-2xl">event</span>
       </div>
@@ -414,7 +414,7 @@ tailwind.config = {
     </a>
 
     <!-- 05 ELECTION RESULTS -->
-    <a href="election-results/index.html" class="section-card flex-shrink-0 w-72 bg-white rounded-2xl p-7 border border-slate-100 flex flex-col" style="text-decoration:none; color:inherit">
+    <a href="election-results/index.html" class="section-card flex-shrink-0 w-64 md:w-72 bg-white rounded-2xl p-6 md:p-7 border border-slate-100 flex flex-col" style="text-decoration:none; color:inherit">
       <div class="w-11 h-11 rounded-xl bg-[#ede9fe] flex items-center justify-center mb-5">
         <span class="material-symbols-outlined text-[#5b21b6] text-2xl">bar_chart</span>
       </div>
@@ -433,7 +433,7 @@ tailwind.config = {
     </a>
 
     <!-- 06 NEWS & POLICIES -->
-    <a href="news-policies/index.html" class="section-card flex-shrink-0 w-72 bg-white rounded-2xl p-7 border border-slate-100 flex flex-col" style="text-decoration:none; color:inherit">
+    <a href="news-policies/index.html" class="section-card flex-shrink-0 w-64 md:w-72 bg-white rounded-2xl p-6 md:p-7 border border-slate-100 flex flex-col" style="text-decoration:none; color:inherit">
       <div class="w-11 h-11 rounded-xl bg-[#cffafe] flex items-center justify-center mb-5">
         <span class="material-symbols-outlined text-[#0e7490] text-2xl">newspaper</span>
       </div>
@@ -453,93 +453,6 @@ tailwind.config = {
 
   </div>
 
-  <!-- Mobile 2-col grid (hidden on md+) -->
-  <div class="md:hidden grid grid-cols-1 gap-3 px-5">
-    <a href="voters/upcoming-events-v1/index.html" class="section-card bg-white rounded-2xl p-5 border border-slate-100 flex flex-col" style="text-decoration:none;color:inherit">
-      <div class="w-10 h-10 rounded-xl bg-[#dae2ff] flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[#00205B] text-xl">how_to_vote</span></div>
-      <p class="text-[9px] font-black uppercase tracking-widest text-[#00205B] mb-0.5">Section 01</p>
-      <h3 class="text-base font-black text-[#00205B] font-headline mb-3">For Voters</h3>
-      <ul class="space-y-1.5 flex-1">
-        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Register to Vote</li>
-        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Find Polling Station</li>
-        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Check Status</li>
-      </ul>
-      <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-        <span class="text-[#00205B] font-bold text-xs">Voter Hub</span>
-        <span class="material-symbols-outlined text-[#00205B] text-lg">arrow_forward</span>
-      </div>
-    </a>
-    <a href="candidates/upcoming-elections/index.html" class="section-card bg-white rounded-2xl p-5 border border-slate-100 flex flex-col" style="text-decoration:none;color:inherit">
-      <div class="w-10 h-10 rounded-xl bg-[#ffdad5] flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[#E03C31] text-xl">person_raised_hand</span></div>
-      <p class="text-[9px] font-black uppercase tracking-widest text-[#E03C31] mb-0.5">Section 02</p>
-      <h3 class="text-base font-black text-[#00205B] font-headline mb-3">For Candidates</h3>
-      <ul class="space-y-1.5 flex-1">
-        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Prepare to Run</li>
-        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Key Dates</li>
-        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>FAQs</li>
-      </ul>
-      <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-        <span class="text-[#00205B] font-bold text-xs">Candidate Hub</span>
-        <span class="material-symbols-outlined text-[#00205B] text-lg">arrow_forward</span>
-      </div>
-    </a>
-    <a href="poll-workers/layout-1/index.html" class="section-card bg-white rounded-2xl p-5 border border-slate-100 flex flex-col" style="text-decoration:none;color:inherit">
-      <div class="w-10 h-10 rounded-xl bg-[#d1fae5] flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[#007A33] text-xl">badge</span></div>
-      <p class="text-[9px] font-black uppercase tracking-widest text-[#007A33] mb-0.5">Section 03</p>
-      <h3 class="text-base font-black text-[#00205B] font-headline mb-3">Poll Workers</h3>
-      <ul class="space-y-1.5 flex-1">
-        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Login to Portal</li>
-        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Become a Worker</li>
-        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Training</li>
-      </ul>
-      <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-        <span class="text-[#00205B] font-bold text-xs">Worker Hub</span>
-        <span class="material-symbols-outlined text-[#00205B] text-lg">arrow_forward</span>
-      </div>
-    </a>
-    <a href="important-dates/index.html" class="section-card bg-white rounded-2xl p-5 border border-slate-100 flex flex-col" style="text-decoration:none;color:inherit">
-      <div class="w-10 h-10 rounded-xl bg-[#fef3c7] flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[#b45309] text-xl">event</span></div>
-      <p class="text-[9px] font-black uppercase tracking-widest text-[#b45309] mb-0.5">Section 04</p>
-      <h3 class="text-base font-black text-[#00205B] font-headline mb-3">Important Dates</h3>
-      <ul class="space-y-1.5 flex-1">
-        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Election: Nov 25</li>
-        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Reg. Deadline</li>
-        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Nomination Period</li>
-      </ul>
-      <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-        <span class="text-[#00205B] font-bold text-xs">View Dates</span>
-        <span class="material-symbols-outlined text-[#00205B] text-lg">arrow_forward</span>
-      </div>
-    </a>
-    <a href="election-results/index.html" class="section-card bg-white rounded-2xl p-5 border border-slate-100 flex flex-col" style="text-decoration:none;color:inherit">
-      <div class="w-10 h-10 rounded-xl bg-[#ede9fe] flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[#5b21b6] text-xl">bar_chart</span></div>
-      <p class="text-[9px] font-black uppercase tracking-widest text-[#5b21b6] mb-0.5">Section 05</p>
-      <h3 class="text-base font-black text-[#00205B] font-headline mb-3">Election Results</h3>
-      <ul class="space-y-1.5 flex-1">
-        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>General 2024</li>
-        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>By District</li>
-        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Historical</li>
-      </ul>
-      <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-        <span class="text-[#00205B] font-bold text-xs">View Results</span>
-        <span class="material-symbols-outlined text-[#00205B] text-lg">arrow_forward</span>
-      </div>
-    </a>
-    <a href="news-policies/index.html" class="section-card bg-white rounded-2xl p-5 border border-slate-100 flex flex-col" style="text-decoration:none;color:inherit">
-      <div class="w-10 h-10 rounded-xl bg-[#cffafe] flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[#0e7490] text-xl">newspaper</span></div>
-      <p class="text-[9px] font-black uppercase tracking-widest text-[#0e7490] mb-0.5">Section 06</p>
-      <h3 class="text-base font-black text-[#00205B] font-headline mb-3">News & Policies</h3>
-      <ul class="space-y-1.5 flex-1">
-        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Announcements</li>
-        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Press Releases</li>
-        <li class="flex items-center gap-1.5 text-[11px] text-slate-600"><span class="material-symbols-outlined text-[13px] text-[#007A33]">check_circle</span>Documents</li>
-      </ul>
-      <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-        <span class="text-[#00205B] font-bold text-xs">Browse News</span>
-        <span class="material-symbols-outlined text-[#00205B] text-lg">arrow_forward</span>
-      </div>
-    </a>
-  </div>
 
 </section>
 
