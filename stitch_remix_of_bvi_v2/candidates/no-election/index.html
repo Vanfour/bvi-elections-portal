@@ -235,10 +235,33 @@
   }
   .mob-register-strip { display: none; width: 100%; background: #fff; border-top: 1px solid #f1f5f9; padding: 0.625rem 1.25rem; }
   @media (max-width: 640px) { .mob-register-strip { display: block; } }
+
+  /* ── Mobile hamburger ────────────────────────────────────────────────────── */
+  .mob-menu-btn {
+    display: none; background: none; border: none; cursor: pointer;
+    color: #00205B; padding: 0.25rem; margin-left: 0.75rem; transition: color 0.15s;
+  }
+  .mob-menu-btn:hover { color: #E03C31; }
+  @media (max-width: 1023px) { .mob-menu-btn { display: flex; align-items: center; } }
+  /* ── Mobile nav overlay ──────────────────────────────────────────────────── */
+  #mob-nav { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.4); backdrop-filter: blur(2px); }
+  #mob-nav.open { display: block; }
+  #mob-nav-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(320px,85vw); background: #fff; box-shadow: -8px 0 32px rgba(0,0,0,0.15); display: flex; flex-direction: column; overflow-y: auto; }
+  .mob-nav-header { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; border-bottom: 1px solid #f1f5f9; }
+  .mob-nav-title { font-size: 12px; font-weight: 900; color: #00205B; text-transform: uppercase; letter-spacing: 0.08em; }
+  .mob-nav-close { background: none; border: none; cursor: pointer; color: #94a3b8; padding: 0.25rem; transition: color 0.15s; }
+  .mob-nav-close:hover { color: #E03C31; }
+  .mob-nav-links { flex: 1; padding: 1rem 0; }
+  .mob-nav-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1.5rem; font-size: 13px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; color: #00205B; text-decoration: none; border-left: 3px solid transparent; transition: all 0.15s; }
+  .mob-nav-link:hover { background: #f8fafc; border-left-color: #E03C31; color: #E03C31; }
+  .mob-nav-footer { padding: 1.25rem 1.5rem; border-top: 1px solid #f1f5f9; }
+  /* ── Extra responsive header tweaks ─────────────────────────────────────── */
+  @media (max-width: 640px) { .sh-inner { padding: 0.75rem 1.25rem !important; } #site-util-bar { padding: 0.4rem 1.25rem !important; } }
+
 </style>
 <script id="bvi-nav-wiring">
 (function(){
-  var L={voters:'../../voters/no-election/index.html',candidates:'./index.html',pollWorkers:'../../poll-workers/layout-1/index.html',electionResults:'../../election-results/index.html',newsPolicies:'../../news-policies/index.html',keyActions:'../key-actions/index.html',faqs:'../faqs/index.html',newsNotices:'../news-notices/index.html',mobileVersion:'../no-election-mobile/index.html',desktopVersion:null,importantDates:'../../important-dates/index.html'};
+  var L={voters:'../../voters/no-election/index.html',candidates:'./index.html',pollWorkers:'../../poll-workers/layout-1/index.html',electionResults:'../../election-results/index.html',newsPolicies:'../../news-policies/index.html',keyActions:'../key-actions/index.html',faqs:'../faqs/index.html',newsNotices:'../news-notices/index.html',mobileVersion:null,desktopVersion:null,importantDates:'../../important-dates/index.html'};
   function wire(){
     document.querySelectorAll('a[href="#"]').forEach(function(a){
       var t=a.textContent.replace(/\s+/g,' ').trim().toUpperCase();
@@ -330,6 +353,10 @@
         <span class="material-symbols-outlined sh-register-icon">how_to_reg</span>
         Register
       </a>
+      <!-- Hamburger (mobile only) -->
+      <button class="mob-menu-btn" onclick="openMobNav()" aria-label="Open menu">
+        <span class="material-symbols-outlined" style="font-size:28px">menu</span>
+      </button>
     </div>
   </div>
 </header>
@@ -340,12 +367,36 @@
     Register to Vote
   </a>
 </div>
+<!-- Mobile Nav Overlay -->
+<div id="mob-nav" onclick="closeMobNavOutside(event)">
+  <div id="mob-nav-panel">
+    <div class="mob-nav-header">
+      <span class="mob-nav-title">Menu</span>
+      <button class="mob-nav-close" onclick="closeMobNav()">
+        <span class="material-symbols-outlined" style="font-size:24px">close</span>
+      </button>
+    </div>
+    <div class="mob-nav-links">
+      <a class="mob-nav-link" href="../../voters/upcoming-events-v1/index.html"><span class="material-symbols-outlined text-[20px]">how_to_vote</span>For Voters</a>
+      <a class="mob-nav-link" href="../upcoming-elections/index.html"><span class="material-symbols-outlined text-[20px]">person_raised_hand</span>For Candidates</a>
+      <a class="mob-nav-link" href="../../poll-workers/layout-1/index.html"><span class="material-symbols-outlined text-[20px]">badge</span>For Poll Workers</a>
+      <a class="mob-nav-link" href="../../important-dates/index.html"><span class="material-symbols-outlined text-[20px]">event</span>Important Dates</a>
+      <a class="mob-nav-link" href="../../election-results/index.html"><span class="material-symbols-outlined text-[20px]">bar_chart</span>Election Results</a>
+      <a class="mob-nav-link" href="../../news-policies/index.html"><span class="material-symbols-outlined text-[20px]">newspaper</span>News & Policies</a>
+    </div>
+    <div class="mob-nav-footer">
+      <a href="../../voters/register/index.html" class="flex items-center justify-center gap-2 w-full bg-[#E03C31] hover:bg-[#b91c1c] text-white py-3 rounded-xl font-black text-xs uppercase tracking-wider transition-all">
+        <span class="material-symbols-outlined text-[18px]">how_to_reg</span>Register to Vote
+      </a>
+    </div>
+  </div>
+</div>
 <!-- Candidate Information Header -->
 <section class="w-full bg-white">
-<div class="max-w-7xl mx-auto px-8 py-12">
+<div class="max-w-7xl mx-auto px-4 md:px-8 py-8 md:py-12">
 <div class="flex items-start gap-4">
 <div class="flex flex-col">
-<h1 class="text-5xl md:text-7xl font-black text-[#00205B] font-headline leading-[1.1]">For Candidates</h1>
+<h1 class="text-2xl sm:text-5xl md:text-7xl font-black text-[#00205B] font-headline leading-[1.1]">For Candidates</h1>
 </div>
 </div>
 </div>
@@ -369,17 +420,17 @@
 </div>
 <!-- Main Event Countdown (Updated to "No election scheduled") -->
 <section class="w-full bg-white pb-12">
-<div class="max-w-7xl mx-auto px-8">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
 <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
-<div class="relative p-8 pl-12 lg:p-16 flex flex-col lg:flex-row items-center gap-8 lg:gap-16 bg-[#001849]">
+<div class="relative p-8 pl-4 md:pl-12 lg:p-16 flex flex-col lg:flex-row items-center gap-8 lg:gap-16 bg-[#001849]">
 <!-- Left Content: Message -->
 <div class="flex-1 w-full text-center lg:text-left">
 <h2 class="text-3xl lg:text-4xl font-black text-white font-headline">No election is scheduled at the moment.</h2>
 </div>
 <!-- Right Content: Buttons -->
 <div class="flex-1 w-full flex flex-col lg:flex-row items-center justify-center lg:justify-end gap-4">
-<button class="w-full lg:w-auto bg-[#E03C31] text-white px-8 py-4 rounded-lg font-black text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-md">Prepare to Run</button>
-<button class="w-full lg:w-auto border-2 border-white text-white px-8 py-4 rounded-lg font-black text-xs uppercase tracking-wider hover:bg-white/10 active:scale-95 transition-all">View Candidate Guidelines</button>
+<button class="w-full lg:w-auto bg-[#E03C31] text-white px-4 md:px-8 py-4 rounded-lg font-black text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-md">Prepare to Run</button>
+<button class="w-full lg:w-auto border-2 border-white text-white px-4 md:px-8 py-4 rounded-lg font-black text-xs uppercase tracking-wider hover:bg-white/10 active:scale-95 transition-all">View Candidate Guidelines</button>
 </div>
 </div>
 </div>
@@ -387,27 +438,27 @@
 </section>
 <!-- Interactive Tabs & Content Container -->
 <section class="w-full bg-white pb-24">
-<div class="max-w-7xl mx-auto px-8">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
 <!-- Tab Navigation Bar -->
 <div class="w-full border-slate-200">
 <div class="border border-slate-200 rounded-t-lg overflow-hidden bg-slate-50">
 <nav class="flex w-full overflow-x-auto no-scrollbar items-center">
-<a class="flex items-center gap-2.5 px-8 py-4 text-xs uppercase tracking-widest transition-all shrink-0 tab-inactive" href="#">
+<a class="flex items-center gap-2.5 px-4 md:px-8 py-4 text-xs uppercase tracking-widest transition-all shrink-0 tab-inactive" href="#">
 <span class="material-symbols-outlined text-[20px]">bolt</span>
             Key Actions
         </a>
 <div class="h-6 w-[1px] bg-slate-200 shrink-0"></div>
-<a class="flex items-center gap-2.5 px-8 py-4 text-xs uppercase tracking-widest transition-all shrink-0 tab-active" href="#">
+<a class="flex items-center gap-2.5 px-4 md:px-8 py-4 text-xs uppercase tracking-widest transition-all shrink-0 tab-active" href="#">
 <span class="material-symbols-outlined text-[20px]">calendar_today</span>
             Important Dates
         </a>
 <div class="h-6 w-[1px] bg-slate-200 shrink-0"></div>
-<a class="flex items-center gap-2.5 px-8 py-4 text-xs uppercase tracking-widest transition-all shrink-0 tab-inactive" href="#">
+<a class="flex items-center gap-2.5 px-4 md:px-8 py-4 text-xs uppercase tracking-widest transition-all shrink-0 tab-inactive" href="#">
 <span class="material-symbols-outlined text-[20px]">quiz</span>
             FAQs
         </a>
 <div class="h-6 w-[1px] bg-slate-200 shrink-0"></div>
-<a class="flex items-center gap-2.5 px-8 py-4 text-xs uppercase tracking-widest transition-all shrink-0 tab-inactive" href="#">
+<a class="flex items-center gap-2.5 px-4 md:px-8 py-4 text-xs uppercase tracking-widest transition-all shrink-0 tab-inactive" href="#">
 <span class="material-symbols-outlined text-[20px]">newspaper</span>
             News &amp; Notices
         </a>
@@ -432,7 +483,7 @@
 <div class="flex-1">
 <input class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-sm transition-all" placeholder="Enter your email" required="" type="email">
 </div>
-<button class="bg-[#E03C31] text-white px-8 py-3 rounded-lg font-black text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-sm shrink-0" type="submit">Notify Me</button>
+<button class="bg-[#E03C31] text-white px-4 md:px-8 py-3 rounded-lg font-black text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-sm shrink-0" type="submit">Notify Me</button>
 </form>
 </div></div>
 </div>
@@ -441,7 +492,7 @@
 </section>
 <!-- Footer -->
 <footer class="w-full bg-[#00205B] text-white pt-20 pb-10">
-<div class="max-w-7xl mx-auto px-8">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
 <!-- Branding Column -->
 <div class="lg:col-span-4">

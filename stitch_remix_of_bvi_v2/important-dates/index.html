@@ -162,10 +162,33 @@ tailwind.config = {
   }
   .mob-register-strip { display: none; width: 100%; background: #fff; border-top: 1px solid #f1f5f9; padding: 0.625rem 1.25rem; }
   @media (max-width: 640px) { .mob-register-strip { display: block; } }
+
+  /* ── Mobile hamburger ────────────────────────────────────────────────────── */
+  .mob-menu-btn {
+    display: none; background: none; border: none; cursor: pointer;
+    color: #00205B; padding: 0.25rem; margin-left: 0.75rem; transition: color 0.15s;
+  }
+  .mob-menu-btn:hover { color: #E03C31; }
+  @media (max-width: 1023px) { .mob-menu-btn { display: flex; align-items: center; } }
+  /* ── Mobile nav overlay ──────────────────────────────────────────────────── */
+  #mob-nav { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.4); backdrop-filter: blur(2px); }
+  #mob-nav.open { display: block; }
+  #mob-nav-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(320px,85vw); background: #fff; box-shadow: -8px 0 32px rgba(0,0,0,0.15); display: flex; flex-direction: column; overflow-y: auto; }
+  .mob-nav-header { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; border-bottom: 1px solid #f1f5f9; }
+  .mob-nav-title { font-size: 12px; font-weight: 900; color: #00205B; text-transform: uppercase; letter-spacing: 0.08em; }
+  .mob-nav-close { background: none; border: none; cursor: pointer; color: #94a3b8; padding: 0.25rem; transition: color 0.15s; }
+  .mob-nav-close:hover { color: #E03C31; }
+  .mob-nav-links { flex: 1; padding: 1rem 0; }
+  .mob-nav-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1.5rem; font-size: 13px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; color: #00205B; text-decoration: none; border-left: 3px solid transparent; transition: all 0.15s; }
+  .mob-nav-link:hover { background: #f8fafc; border-left-color: #E03C31; color: #E03C31; }
+  .mob-nav-footer { padding: 1.25rem 1.5rem; border-top: 1px solid #f1f5f9; }
+  /* ── Extra responsive header tweaks ─────────────────────────────────────── */
+  @media (max-width: 640px) { .sh-inner { padding: 0.75rem 1.25rem !important; } #site-util-bar { padding: 0.4rem 1.25rem !important; } }
+
 </style>
 <script id="bvi-nav-wiring">
 (function(){
-  var L={voters:'../voters/upcoming-events-v1/index.html',candidates:'../candidates/upcoming-elections/index.html',pollWorkers:'../poll-workers/layout-1/index.html',electionResults:'../election-results/index.html',newsPolicies:'../news-policies/index.html',importantDates:'./index.html',mobileVersion:'../important-dates-mobile/index.html',desktopVersion:null};
+  var L={voters:'../voters/upcoming-events-v1/index.html',candidates:'../candidates/upcoming-elections/index.html',pollWorkers:'../poll-workers/layout-1/index.html',electionResults:'../election-results/index.html',newsPolicies:'../news-policies/index.html',importantDates:'./index.html',mobileVersion:null,desktopVersion:null};
   function wire(){
     document.querySelectorAll('a[href="#"]').forEach(function(a){
       var t=a.textContent.replace(/\s+/g,' ').trim().toUpperCase();
@@ -250,6 +273,10 @@ tailwind.config = {
         <span class="material-symbols-outlined sh-register-icon">how_to_reg</span>
         Register
       </a>
+      <!-- Hamburger (mobile only) -->
+      <button class="mob-menu-btn" onclick="openMobNav()" aria-label="Open menu">
+        <span class="material-symbols-outlined" style="font-size:28px">menu</span>
+      </button>
     </div>
   </div>
 </header>
@@ -260,14 +287,38 @@ tailwind.config = {
     Register to Vote
   </a>
 </div>
+<!-- Mobile Nav Overlay -->
+<div id="mob-nav" onclick="closeMobNavOutside(event)">
+  <div id="mob-nav-panel">
+    <div class="mob-nav-header">
+      <span class="mob-nav-title">Menu</span>
+      <button class="mob-nav-close" onclick="closeMobNav()">
+        <span class="material-symbols-outlined" style="font-size:24px">close</span>
+      </button>
+    </div>
+    <div class="mob-nav-links">
+      <a class="mob-nav-link" href="../voters/upcoming-events-v1/index.html"><span class="material-symbols-outlined text-[20px]">how_to_vote</span>For Voters</a>
+      <a class="mob-nav-link" href="../candidates/upcoming-elections/index.html"><span class="material-symbols-outlined text-[20px]">person_raised_hand</span>For Candidates</a>
+      <a class="mob-nav-link" href="../poll-workers/layout-1/index.html"><span class="material-symbols-outlined text-[20px]">badge</span>For Poll Workers</a>
+      <a class="mob-nav-link" href="index.html"><span class="material-symbols-outlined text-[20px]">event</span>Important Dates</a>
+      <a class="mob-nav-link" href="../election-results/index.html"><span class="material-symbols-outlined text-[20px]">bar_chart</span>Election Results</a>
+      <a class="mob-nav-link" href="../news-policies/index.html"><span class="material-symbols-outlined text-[20px]">newspaper</span>News & Policies</a>
+    </div>
+    <div class="mob-nav-footer">
+      <a href="../voters/register/index.html" class="flex items-center justify-center gap-2 w-full bg-[#E03C31] hover:bg-[#b91c1c] text-white py-3 rounded-xl font-black text-xs uppercase tracking-wider transition-all">
+        <span class="material-symbols-outlined text-[18px]">how_to_reg</span>Register to Vote
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- Page Hero -->
 <section class="w-full bg-white border-b border-slate-100">
-  <div class="max-w-7xl mx-auto px-8 py-12">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 py-8 md:py-12">
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
       <div>
         <p class="text-[11px] font-black uppercase tracking-widest text-[#E03C31] mb-3">General Election 2024</p>
-        <h1 class="text-5xl md:text-6xl font-black text-[#00205B] font-headline leading-[1.05]">Important Dates</h1>
+        <h1 class="text-2xl sm:text-5xl md:text-6xl font-black text-[#00205B] font-headline leading-[1.05]">Important Dates</h1>
         <p class="text-slate-500 text-base mt-4 max-w-xl">Key deadlines and milestones for the BVI General Election — November 25, 2024. Filter by audience to see what applies to you.</p>
       </div>
       <div class="flex items-center gap-3 shrink-0">
@@ -284,7 +335,7 @@ tailwind.config = {
 
 <!-- Main Content -->
 <section class="w-full py-10">
-  <div class="max-w-7xl mx-auto px-8">
+  <div class="max-w-7xl mx-auto px-4 md:px-8">
     <div class="flex flex-col lg:flex-row gap-8">
 
       <!-- Left Sidebar: Filters -->
@@ -672,8 +723,8 @@ tailwind.config = {
           </div>
 
           <!-- Empty state (hidden by default) -->
-          <div id="empty-state" class="hidden text-center py-16">
-            <span class="material-symbols-outlined text-5xl text-slate-300">event_busy</span>
+          <div id="empty-state" class="hidden text-center py-10 md:py-16">
+            <span class="material-symbols-outlined text-2xl sm:text-5xl text-slate-300">event_busy</span>
             <p class="text-slate-400 font-bold mt-3">No dates match this filter.</p>
           </div>
 
@@ -685,7 +736,7 @@ tailwind.config = {
 
 <!-- Footer -->
 <footer class="w-full bg-[#00205B] text-white pt-16 pb-10">
-  <div class="max-w-7xl mx-auto px-8">
+  <div class="max-w-7xl mx-auto px-4 md:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
       <div class="lg:col-span-4">
         <div class="flex items-center gap-4 mb-6">

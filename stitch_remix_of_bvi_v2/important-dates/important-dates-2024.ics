@@ -1,0 +1,27 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BVI Department of Elections//elections.gov.vg//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:bvi-election-day-2024@elections.gov.vg
+DTSTART:20241125T060000
+DTEND:20241125T180000
+SUMMARY:BVI General Election Day 2024
+DESCRIPTION:British Virgin Islands General Election. Polls open 6:00 AM – 6:00 PM. Visit elections.gov.vg for your polling station and candidate information.
+LOCATION:British Virgin Islands
+URL:https://elections.gov.vg
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Reminder: BVI General Election is tomorrow
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Reminder: BVI Election polls close in 2 hours
+END:VALARM
+END:VEVENT
+END:VCALENDAR

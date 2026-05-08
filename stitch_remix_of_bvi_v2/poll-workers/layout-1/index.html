@@ -207,10 +207,33 @@
   }
   .mob-register-strip { display: none; width: 100%; background: #fff; border-top: 1px solid #f1f5f9; padding: 0.625rem 1.25rem; }
   @media (max-width: 640px) { .mob-register-strip { display: block; } }
+
+  /* ── Mobile hamburger ────────────────────────────────────────────────────── */
+  .mob-menu-btn {
+    display: none; background: none; border: none; cursor: pointer;
+    color: #00205B; padding: 0.25rem; margin-left: 0.75rem; transition: color 0.15s;
+  }
+  .mob-menu-btn:hover { color: #E03C31; }
+  @media (max-width: 1023px) { .mob-menu-btn { display: flex; align-items: center; } }
+  /* ── Mobile nav overlay ──────────────────────────────────────────────────── */
+  #mob-nav { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.4); backdrop-filter: blur(2px); }
+  #mob-nav.open { display: block; }
+  #mob-nav-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(320px,85vw); background: #fff; box-shadow: -8px 0 32px rgba(0,0,0,0.15); display: flex; flex-direction: column; overflow-y: auto; }
+  .mob-nav-header { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; border-bottom: 1px solid #f1f5f9; }
+  .mob-nav-title { font-size: 12px; font-weight: 900; color: #00205B; text-transform: uppercase; letter-spacing: 0.08em; }
+  .mob-nav-close { background: none; border: none; cursor: pointer; color: #94a3b8; padding: 0.25rem; transition: color 0.15s; }
+  .mob-nav-close:hover { color: #E03C31; }
+  .mob-nav-links { flex: 1; padding: 1rem 0; }
+  .mob-nav-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1.5rem; font-size: 13px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; color: #00205B; text-decoration: none; border-left: 3px solid transparent; transition: all 0.15s; }
+  .mob-nav-link:hover { background: #f8fafc; border-left-color: #E03C31; color: #E03C31; }
+  .mob-nav-footer { padding: 1.25rem 1.5rem; border-top: 1px solid #f1f5f9; }
+  /* ── Extra responsive header tweaks ─────────────────────────────────────── */
+  @media (max-width: 640px) { .sh-inner { padding: 0.75rem 1.25rem !important; } #site-util-bar { padding: 0.4rem 1.25rem !important; } }
+
 </style>
 <script id="bvi-nav-wiring">
 (function(){
-  var L={voters:'../../voters/upcoming-events-v1/index.html',candidates:'../../candidates/upcoming-elections/index.html',pollWorkers:'./index.html',electionResults:'../../election-results/index.html',newsPolicies:'../../news-policies/index.html',keyActions:null,faqs:null,newsNotices:null,mobileVersion:'../layout-2/index.html',desktopVersion:null,importantDates:'../../important-dates/index.html'};
+  var L={voters:'../../voters/upcoming-events-v1/index.html',candidates:'../../candidates/upcoming-elections/index.html',pollWorkers:'./index.html',electionResults:'../../election-results/index.html',newsPolicies:'../../news-policies/index.html',keyActions:null,faqs:null,newsNotices:null,mobileVersion:null,desktopVersion:null,importantDates:'../../important-dates/index.html'};
   function wire(){
     document.querySelectorAll('a[href="#"]').forEach(function(a){
       var t=a.textContent.replace(/\s+/g,' ').trim().toUpperCase();
@@ -296,6 +319,10 @@
         <span class="material-symbols-outlined sh-register-icon">how_to_reg</span>
         Register
       </a>
+      <!-- Hamburger (mobile only) -->
+      <button class="mob-menu-btn" onclick="openMobNav()" aria-label="Open menu">
+        <span class="material-symbols-outlined" style="font-size:28px">menu</span>
+      </button>
     </div>
   </div>
 </header>
@@ -306,21 +333,45 @@
     Register to Vote
   </a>
 </div>
+<!-- Mobile Nav Overlay -->
+<div id="mob-nav" onclick="closeMobNavOutside(event)">
+  <div id="mob-nav-panel">
+    <div class="mob-nav-header">
+      <span class="mob-nav-title">Menu</span>
+      <button class="mob-nav-close" onclick="closeMobNav()">
+        <span class="material-symbols-outlined" style="font-size:24px">close</span>
+      </button>
+    </div>
+    <div class="mob-nav-links">
+      <a class="mob-nav-link" href="../../voters/upcoming-events-v1/index.html"><span class="material-symbols-outlined text-[20px]">how_to_vote</span>For Voters</a>
+      <a class="mob-nav-link" href="../../candidates/upcoming-elections/index.html"><span class="material-symbols-outlined text-[20px]">person_raised_hand</span>For Candidates</a>
+      <a class="mob-nav-link" href="index.html"><span class="material-symbols-outlined text-[20px]">badge</span>For Poll Workers</a>
+      <a class="mob-nav-link" href="../../important-dates/index.html"><span class="material-symbols-outlined text-[20px]">event</span>Important Dates</a>
+      <a class="mob-nav-link" href="../../election-results/index.html"><span class="material-symbols-outlined text-[20px]">bar_chart</span>Election Results</a>
+      <a class="mob-nav-link" href="../../news-policies/index.html"><span class="material-symbols-outlined text-[20px]">newspaper</span>News & Policies</a>
+    </div>
+    <div class="mob-nav-footer">
+      <a href="../../voters/register/index.html" class="flex items-center justify-center gap-2 w-full bg-[#E03C31] hover:bg-[#b91c1c] text-white py-3 rounded-xl font-black text-xs uppercase tracking-wider transition-all">
+        <span class="material-symbols-outlined text-[18px]">how_to_reg</span>Register to Vote
+      </a>
+    </div>
+  </div>
+</div>
 <!-- Voter Information Hub Header Section -->
 <section class="w-full bg-white">
-<div class="max-w-7xl mx-auto px-8 py-12">
+<div class="max-w-7xl mx-auto px-4 md:px-8 py-8 md:py-12">
 <div class="flex items-start gap-4">
 <div class="flex flex-col">
-<h1 class="text-5xl md:text-7xl font-black text-[#00205B] font-headline leading-[1.1]">For Poll Workers</h1>
+<h1 class="text-2xl sm:text-5xl md:text-7xl font-black text-[#00205B] font-headline leading-[1.1]">For Poll Workers</h1>
 </div>
 </div>
 </div>
 </section>
 <!-- 1. Main Event Hero Card -->
 <section class="w-full bg-white pb-12">
-<div class="max-w-7xl mx-auto px-8">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
 <div class="bg-white border border-slate-200 rounded-xl overflow-hidden">
-<div class="relative p-8 pl-12 lg:p-16 flex flex-col lg:flex-row items-center gap-8 lg:gap-16 bg-gradient-to-br from-[#001849] to-[#00205B]">
+<div class="relative p-8 pl-4 md:pl-12 lg:p-16 flex flex-col lg:flex-row items-center gap-8 lg:gap-16 bg-gradient-to-br from-[#001849] to-[#00205B]">
 <!-- Left Content -->
 <div class="flex-1 w-full">
 <h2 class="text-3xl lg:text-4xl font-black text-white font-headline mb-4">Access Your Poll Worker Portal</h2>
@@ -331,8 +382,8 @@
 <!-- Right Content: CTA Buttons -->
 <div class="flex-1 w-full flex flex-col justify-center items-start lg:items-center self-stretch">
 <div class="flex flex-wrap gap-4">
-<a href="../portal-login/index.html" class="bg-[#E03C31] text-white px-8 py-4 rounded-lg font-black text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-md min-w-[200px] inline-flex items-center justify-center">Login to Portal</a>
-<a href="../login-help/index.html" class="border-2 border-white border-opacity-30 text-white px-8 py-4 rounded-lg font-black text-xs uppercase tracking-wider hover:bg-white/5 active:scale-95 transition-all flex items-center justify-center gap-2 min-w-[200px]">Need help logging in?</a>
+<a href="../portal-login/index.html" class="bg-[#E03C31] text-white px-4 md:px-8 py-4 rounded-lg font-black text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-md min-w-[200px] inline-flex items-center justify-center">Login to Portal</a>
+<a href="../login-help/index.html" class="border-2 border-white border-opacity-30 text-white px-4 md:px-8 py-4 rounded-lg font-black text-xs uppercase tracking-wider hover:bg-white/5 active:scale-95 transition-all flex items-center justify-center gap-2 min-w-[200px]">Need help logging in?</a>
 </div>
 </div>
 </div>
@@ -341,7 +392,7 @@
 </section>
 <!-- 2. Become a Poll Worker Section (New) -->
 <section class="w-full bg-white pb-12">
-<div class="max-w-7xl mx-auto px-8">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
 <div class="bg-surface-container-low border border-outline-variant rounded-xl p-8 lg:px-12 shadow-sm flex flex-col md:flex-row items-center justify-between gap-8">
 <div class="flex items-center gap-6">
 <div class="w-16 h-16 rounded-full bg-white border border-outline-variant flex items-center justify-center shrink-0">
@@ -360,8 +411,8 @@
 </section>
 <!-- 3. Important Dates (Full-width) -->
 <section class="w-full bg-white pb-12">
-<div class="max-w-7xl mx-auto px-8">
-<div class="p-8 lg:px-16 py-12 bg-[#F5F7FA] border border-[#E5E7EB] rounded-xl">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="p-8 lg:px-16 py-8 md:py-12 bg-[#F5F7FA] border border-[#E5E7EB] rounded-xl">
 <div class="mb-8 text-left">
 <h3 class="text-2xl font-black text-[#00205B] font-headline mb-1">Important Dates</h3>
 <p class="text-slate-500 font-medium text-sm">Stay informed with the electoral calendar to ensure you don't miss any critical deadlines.</p>
@@ -423,8 +474,8 @@
 </div>
 </section>
 <!-- 4. News & Notices Section -->
-<section class="w-full bg-[#f8f9fa] py-20 border-t border-slate-100">
-<div class="max-w-7xl mx-auto px-8">
+<section class="w-full bg-[#f8f9fa] py-8 md:py-12 md:py-20 border-t border-slate-100">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
 <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
 <div>
 <span class="text-secondary font-bold text-[10px] tracking-[0.2em] uppercase mb-2 block">LATEST UPDATES</span>
@@ -446,7 +497,7 @@
 <h4 class="text-xl font-black text-[#00205B] mb-4 leading-tight group-hover:text-secondary transition-colors">New voter guidelines released</h4>
 <p class="text-slate-500 text-sm leading-relaxed">Updated procedures for the upcoming election cycle.</p>
 </div>
-<div class="px-8 pb-8 flex items-center gap-2 text-secondary font-black text-[11px] uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="px-4 md:px-8 pb-8 flex items-center gap-2 text-secondary font-black text-[11px] uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
                         Read Story <span class="material-symbols-outlined text-sm font-black">chevron_right</span>
 </div>
 </a>
@@ -460,7 +511,7 @@
 <h4 class="text-xl font-black text-[#00205B] mb-4 leading-tight group-hover:text-secondary transition-colors">Important update for candidates</h4>
 <p class="text-slate-500 text-sm leading-relaxed">Changes in the nomination submission process.</p>
 </div>
-<div class="px-8 pb-8 flex items-center gap-2 text-secondary font-black text-[11px] uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="px-4 md:px-8 pb-8 flex items-center gap-2 text-secondary font-black text-[11px] uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
                         Read Story <span class="material-symbols-outlined text-sm font-black">chevron_right</span>
 </div>
 </a>
@@ -474,7 +525,7 @@
 <h4 class="text-xl font-black text-[#00205B] mb-4 leading-tight group-hover:text-secondary transition-colors">Changes in election schedule</h4>
 <p class="text-slate-500 text-sm leading-relaxed">Review the revised timeline for key electoral events.</p>
 </div>
-<div class="px-8 pb-8 flex items-center gap-2 text-secondary font-black text-[11px] uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="px-4 md:px-8 pb-8 flex items-center gap-2 text-secondary font-black text-[11px] uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
                         Read Story <span class="material-symbols-outlined text-sm font-black">chevron_right</span>
 </div>
 </a>
@@ -489,7 +540,7 @@
 </section>
 <!-- Footer -->
 <footer class="w-full bg-[#00205B] text-white pt-20 pb-10">
-<div class="max-w-7xl mx-auto px-8">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
 <!-- Branding Column -->
 <div class="lg:col-span-4">

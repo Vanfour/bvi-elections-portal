@@ -194,10 +194,33 @@
   }
   .mob-register-strip { display: none; width: 100%; background: #fff; border-top: 1px solid #f1f5f9; padding: 0.625rem 1.25rem; }
   @media (max-width: 640px) { .mob-register-strip { display: block; } }
+
+  /* ── Mobile hamburger ────────────────────────────────────────────────────── */
+  .mob-menu-btn {
+    display: none; background: none; border: none; cursor: pointer;
+    color: #00205B; padding: 0.25rem; margin-left: 0.75rem; transition: color 0.15s;
+  }
+  .mob-menu-btn:hover { color: #E03C31; }
+  @media (max-width: 1023px) { .mob-menu-btn { display: flex; align-items: center; } }
+  /* ── Mobile nav overlay ──────────────────────────────────────────────────── */
+  #mob-nav { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.4); backdrop-filter: blur(2px); }
+  #mob-nav.open { display: block; }
+  #mob-nav-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(320px,85vw); background: #fff; box-shadow: -8px 0 32px rgba(0,0,0,0.15); display: flex; flex-direction: column; overflow-y: auto; }
+  .mob-nav-header { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; border-bottom: 1px solid #f1f5f9; }
+  .mob-nav-title { font-size: 12px; font-weight: 900; color: #00205B; text-transform: uppercase; letter-spacing: 0.08em; }
+  .mob-nav-close { background: none; border: none; cursor: pointer; color: #94a3b8; padding: 0.25rem; transition: color 0.15s; }
+  .mob-nav-close:hover { color: #E03C31; }
+  .mob-nav-links { flex: 1; padding: 1rem 0; }
+  .mob-nav-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1.5rem; font-size: 13px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; color: #00205B; text-decoration: none; border-left: 3px solid transparent; transition: all 0.15s; }
+  .mob-nav-link:hover { background: #f8fafc; border-left-color: #E03C31; color: #E03C31; }
+  .mob-nav-footer { padding: 1.25rem 1.5rem; border-top: 1px solid #f1f5f9; }
+  /* ── Extra responsive header tweaks ─────────────────────────────────────── */
+  @media (max-width: 640px) { .sh-inner { padding: 0.75rem 1.25rem !important; } #site-util-bar { padding: 0.4rem 1.25rem !important; } }
+
 </style>
 <script id="bvi-nav-wiring">
 (function(){
-  var L={voters:'../voters/election-results/index.html',candidates:'../candidates/election-results/index.html',pollWorkers:'../poll-workers/layout-1/index.html',electionResults:'./index.html',newsPolicies:'../news-policies/index.html',importantDates:'../important-dates/index.html',mobileVersion:'../election-results-mobile/index.html',desktopVersion:null};
+  var L={voters:'../voters/election-results/index.html',candidates:'../candidates/election-results/index.html',pollWorkers:'../poll-workers/layout-1/index.html',electionResults:'./index.html',newsPolicies:'../news-policies/index.html',importantDates:'../important-dates/index.html',mobileVersion:null,desktopVersion:null};
   function wire(){
     document.querySelectorAll('a[href="#"]').forEach(function(a){
       var t=a.textContent.replace(/\s+/g,' ').trim().toUpperCase();
@@ -282,6 +305,10 @@
         <span class="material-symbols-outlined sh-register-icon">how_to_reg</span>
         Register
       </a>
+      <!-- Hamburger (mobile only) -->
+      <button class="mob-menu-btn" onclick="openMobNav()" aria-label="Open menu">
+        <span class="material-symbols-outlined" style="font-size:28px">menu</span>
+      </button>
     </div>
   </div>
 </header>
@@ -292,14 +319,38 @@
     Register to Vote
   </a>
 </div>
+<!-- Mobile Nav Overlay -->
+<div id="mob-nav" onclick="closeMobNavOutside(event)">
+  <div id="mob-nav-panel">
+    <div class="mob-nav-header">
+      <span class="mob-nav-title">Menu</span>
+      <button class="mob-nav-close" onclick="closeMobNav()">
+        <span class="material-symbols-outlined" style="font-size:24px">close</span>
+      </button>
+    </div>
+    <div class="mob-nav-links">
+      <a class="mob-nav-link" href="../voters/upcoming-events-v1/index.html"><span class="material-symbols-outlined text-[20px]">how_to_vote</span>For Voters</a>
+      <a class="mob-nav-link" href="../candidates/upcoming-elections/index.html"><span class="material-symbols-outlined text-[20px]">person_raised_hand</span>For Candidates</a>
+      <a class="mob-nav-link" href="../poll-workers/layout-1/index.html"><span class="material-symbols-outlined text-[20px]">badge</span>For Poll Workers</a>
+      <a class="mob-nav-link" href="../important-dates/index.html"><span class="material-symbols-outlined text-[20px]">event</span>Important Dates</a>
+      <a class="mob-nav-link" href="index.html"><span class="material-symbols-outlined text-[20px]">bar_chart</span>Election Results</a>
+      <a class="mob-nav-link" href="../news-policies/index.html"><span class="material-symbols-outlined text-[20px]">newspaper</span>News & Policies</a>
+    </div>
+    <div class="mob-nav-footer">
+      <a href="../voters/register/index.html" class="flex items-center justify-center gap-2 w-full bg-[#E03C31] hover:bg-[#b91c1c] text-white py-3 rounded-xl font-black text-xs uppercase tracking-wider transition-all">
+        <span class="material-symbols-outlined text-[18px]">how_to_reg</span>Register to Vote
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- Page Hero -->
 <section class="w-full bg-white border-b border-slate-100">
-  <div class="max-w-7xl mx-auto px-8 py-10">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 py-10">
     <div class="flex items-center justify-between gap-8">
       <!-- Left: Title + subtitle -->
       <div>
-        <h1 class="text-5xl md:text-6xl font-black text-[#00205B] font-headline leading-[1.1]">Election Results</h1>
+        <h1 class="text-2xl sm:text-5xl md:text-6xl font-black text-[#00205B] font-headline leading-[1.1]">Election Results</h1>
         <p class="text-slate-500 text-sm mt-2 font-medium">British Virgin Islands General Election · November 25, 2024</p>
       </div>
       <!-- Right: Historic Election Results CTA button -->
@@ -323,7 +374,7 @@
 
 <!-- Historic Cards — collapsible, shown below hero when button clicked -->
 <div class="w-full bg-[#f8f9fa]" id="historicSection" style="display:none;">
-  <div class="max-w-7xl mx-auto px-8 py-10">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 py-10">
     <div id="historicCards">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <!-- 2019 -->
@@ -407,7 +458,7 @@
 <!-- STATE: BEFORE ELECTION -->
 <div id="state-before" class="hidden">
   <section class="w-full bg-white pb-10">
-    <div class="max-w-7xl mx-auto px-8 pt-8">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 pt-8">
       <div class="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-xl p-8">
         <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
           <div class="flex-1">
@@ -430,7 +481,7 @@
     </div>
   </section>
   <section class="w-full bg-white pb-10">
-    <div class="max-w-7xl mx-auto px-8">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="bg-[#fcfdfe] border border-slate-200 p-8 rounded-xl shadow-sm border-t-4 border-t-[#00205B] flex flex-col">
           <div class="w-12 h-12 rounded-full bg-[#00205B]/10 flex items-center justify-center mb-6"><span class="material-symbols-outlined text-[#00205B] text-2xl">group</span></div>
@@ -454,7 +505,7 @@
     </div>
   </section>
   <section class="w-full bg-[#f8f9fa] border-t border-slate-200 py-10 mb-10">
-    <div class="max-w-7xl mx-auto px-8 flex flex-col lg:flex-row items-center justify-between gap-8">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col lg:flex-row items-center justify-between gap-8">
       <div><h3 class="text-xl font-black text-[#00205B] font-headline mb-2">Stay Informed for Election Day</h3><p class="text-slate-500 text-sm">View the full candidate list, find your polling station, and sign up for results alerts.</p></div>
       <div class="flex flex-wrap gap-3 shrink-0">
         <a href="#" class="bg-[#00205B] text-white px-6 py-3 rounded-lg font-black text-xs uppercase tracking-wider hover:brightness-110 transition-all flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">people</span> View Candidates</a>
@@ -468,8 +519,8 @@
 <!-- STATE: DURING ELECTION -->
 <div id="state-during" class="hidden">
   <section class="w-full pb-8">
-    <div class="max-w-7xl mx-auto px-8 pt-8">
-      <div class="bg-[#00205B] rounded-xl px-8 py-5 flex items-center justify-between gap-6">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 pt-8">
+      <div class="bg-[#00205B] rounded-xl px-4 md:px-8 py-5 flex items-center justify-between gap-6">
         <div class="flex items-center gap-4">
           <div class="live-dot w-3 h-3 rounded-full bg-red-400 shrink-0"></div>
           <div><p class="text-white font-black text-lg font-headline">LIVE — Counting in Progress</p><p class="text-slate-300 text-xs mt-0.5">Last updated: Nov 25, 2024 at 10:22 PM · <span class="text-green-400 font-bold">Auto-refreshing every 60s</span></p></div>
@@ -479,7 +530,7 @@
     </div>
   </section>
   <section class="w-full bg-white pb-10">
-    <div class="max-w-7xl mx-auto px-8">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="bg-[#fcfdfe] border border-slate-200 p-8 rounded-xl shadow-sm border-t-4 border-t-[#00205B] flex flex-col"><div class="w-12 h-12 rounded-full bg-[#00205B]/10 flex items-center justify-center mb-6"><span class="material-symbols-outlined text-[#00205B] text-2xl">how_to_vote</span></div><p class="text-[10px] font-black text-slate-500 uppercase tracking-[0.15em] mb-2">Votes Counted</p><h3 class="text-4xl font-black text-[#00205B] font-headline tracking-tight mt-auto">8,341</h3><p class="text-[11px] font-medium text-slate-400 mt-1">Of est. 12,500</p></div>
         <div class="bg-[#fcfdfe] border border-slate-200 p-8 rounded-xl shadow-sm border-t-4 border-t-amber-400 flex flex-col"><div class="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center mb-6"><span class="material-symbols-outlined text-amber-500 text-2xl">analytics</span></div><p class="text-[10px] font-black text-slate-500 uppercase tracking-[0.15em] mb-2">Turnout So Far</p><h3 class="text-4xl font-black text-[#00205B] font-headline tracking-tight mt-auto">49.6%</h3><p class="text-[11px] font-medium text-amber-600 mt-1">Counting ongoing</p></div>
@@ -489,7 +540,7 @@
     </div>
   </section>
   <section class="w-full bg-white pb-16">
-    <div class="max-w-7xl mx-auto px-8">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
       <div class="flex items-center justify-between mb-6"><h2 class="text-2xl font-black text-primary font-headline">Partial Results by District</h2><span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Updating live</span></div>
       <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
         <table class="w-full text-left border-collapse">
@@ -516,7 +567,7 @@
 <!-- STATE: AFTER ELECTION (Default) -->
 <div id="state-after">
   <section class="w-full bg-white pb-8">
-    <div class="max-w-7xl mx-auto px-8 pt-8">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 pt-8">
       <div class="bg-gradient-to-br from-[#001849] to-[#00205B] rounded-xl p-8 flex flex-col lg:flex-row items-center justify-between gap-8">
         <div class="flex-1">
           <div class="flex items-center gap-2 mb-3"><span class="w-2.5 h-2.5 rounded-full bg-green-400"></span><span class="text-[11px] font-black text-green-300 uppercase tracking-widest">Official Results · Certified</span></div>
@@ -532,7 +583,7 @@
   </section>
   <!-- ── Sticky Tab Bar ─────────────────────────────────────────────────── -->
   <section class="w-full bg-white border-b border-slate-200 sticky top-0 z-30">
-    <div class="max-w-7xl mx-auto px-8">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-4" id="er-tab-bar">
           <button class="er-tab er-tab--active" data-panel="er-panel-summary">Summary</button>
@@ -548,7 +599,7 @@
   <!-- ── TAB: SUMMARY ───────────────────────────────────────────────────── -->
   <div id="er-panel-summary">
     <section class="w-full bg-white py-10">
-      <div class="max-w-7xl mx-auto px-8">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div class="group bg-[#fcfdfe] border border-slate-200 p-8 rounded-xl shadow-sm border-t-4 border-t-[#00205B] hover:-translate-y-1 hover:shadow-md transition-all flex flex-col"><div class="w-12 h-12 rounded-full bg-[#00205B]/10 flex items-center justify-center mb-6"><span class="material-symbols-outlined text-[#00205B] text-2xl">how_to_vote</span></div><p class="text-[10px] font-black text-slate-500 uppercase tracking-[0.15em] mb-2">Total Votes Cast</p><h3 class="text-4xl font-black text-[#00205B] font-headline tracking-tight mt-auto">12,482</h3><p class="text-[11px] font-medium text-slate-400 mt-1">Validated ballots</p></div>
           <div class="group bg-[#fcfdfe] border border-slate-200 p-8 rounded-xl shadow-sm border-t-4 border-t-green-500 hover:-translate-y-1 hover:shadow-md transition-all flex flex-col"><div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center mb-6"><span class="material-symbols-outlined text-green-600 text-2xl">analytics</span></div><p class="text-[10px] font-black text-slate-500 uppercase tracking-[0.15em] mb-2">Voter Turnout</p><h3 class="text-4xl font-black text-[#00205B] font-headline tracking-tight mt-auto">74.2%</h3><p class="text-[11px] font-medium text-green-600 mt-1 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">trending_up</span> Higher than last election</p></div>
@@ -558,7 +609,7 @@
       </div>
     </section>
     <section class="w-full bg-white pb-16">
-      <div class="max-w-7xl mx-auto px-8">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
         <div class="flex items-center justify-between mb-6"><h2 class="text-2xl font-black text-primary font-headline">Winners at a Glance</h2><span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">All 13 Districts</span></div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div class="bg-white border border-slate-200 rounded-xl p-5 flex items-center gap-4 hover:shadow-sm transition-all"><div class="w-10 h-10 rounded-full bg-[#00205B]/10 flex items-center justify-center shrink-0"><span class="text-xs font-black text-[#00205B]">D1</span></div><div class="flex-1 min-w-0"><p class="font-black text-[#00205B] text-sm truncate">Andrew A. Fahie</p><p class="text-xs text-slate-500 mt-0.5">VIP · 742 votes · 81.5%</p></div><span class="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-black uppercase rounded-full shrink-0">Won</span></div>
@@ -568,7 +619,7 @@
           <div class="bg-white border border-slate-200 rounded-xl p-5 flex items-center gap-4 hover:shadow-sm transition-all"><div class="w-10 h-10 rounded-full bg-[#00205B]/10 flex items-center justify-center shrink-0"><span class="text-xs font-black text-[#00205B]">D5</span></div><div class="flex-1 min-w-0"><p class="font-black text-[#00205B] text-sm truncate">Delores Christopher</p><p class="text-xs text-slate-500 mt-0.5">NDP · 521 votes · 57.4%</p></div><span class="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-black uppercase rounded-full shrink-0">Won</span></div>
           <div class="bg-white border border-slate-200 rounded-xl p-5 flex items-center gap-4 hover:shadow-sm transition-all"><div class="w-10 h-10 rounded-full bg-[#00205B]/10 flex items-center justify-center shrink-0"><span class="text-xs font-black text-[#00205B]">D6</span></div><div class="flex-1 min-w-0"><p class="font-black text-[#00205B] text-sm truncate">Natalio Wheatley</p><p class="text-xs text-slate-500 mt-0.5">VIP · 478 votes · 52.6%</p></div><span class="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-black uppercase rounded-full shrink-0">Won</span></div>
         </div>
-        <div class="flex justify-center mt-6"><button onclick="switchErTab('er-panel-district')" class="px-8 py-3.5 border-2 border-[#00205B] text-[#00205B] bg-transparent rounded-lg font-black text-xs uppercase tracking-widest hover:bg-[#00205B] hover:text-white transition-all flex items-center gap-2">View Full District Results <span class="material-symbols-outlined text-[18px]">arrow_forward</span></button></div>
+        <div class="flex justify-center mt-6"><button onclick="switchErTab('er-panel-district')" class="px-4 md:px-8 py-3.5 border-2 border-[#00205B] text-[#00205B] bg-transparent rounded-lg font-black text-xs uppercase tracking-widest hover:bg-[#00205B] hover:text-white transition-all flex items-center gap-2">View Full District Results <span class="material-symbols-outlined text-[18px]">arrow_forward</span></button></div>
       </div>
     </section>
   </div>
@@ -576,7 +627,7 @@
   <!-- ── TAB: BY DISTRICT ───────────────────────────────────────────────── -->
   <div id="er-panel-district" class="hidden">
     <section class="w-full bg-white py-10 pb-16">
-      <div class="max-w-7xl mx-auto px-8">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
         <div class="flex items-center justify-between mb-6"><h2 class="text-2xl font-black text-primary font-headline">Results by Electoral District</h2><span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Sort by: District Number</span></div>
         <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
           <table class="w-full text-left border-collapse">
@@ -605,7 +656,7 @@
   <!-- ── TAB: BY CANDIDATE ──────────────────────────────────────────────── -->
   <div id="er-panel-candidate" class="hidden">
     <section class="w-full bg-white py-10 pb-16">
-      <div class="max-w-7xl mx-auto px-8">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
         <div class="flex items-center justify-between mb-6"><h2 class="text-2xl font-black text-primary font-headline">Results by Candidate</h2><span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">All Districts · Sorted by Votes</span></div>
         <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
           <table class="w-full text-left border-collapse">
@@ -635,7 +686,7 @@
   <!-- ── TAB: BY PARTY ──────────────────────────────────────────────────── -->
   <div id="er-panel-party" class="hidden">
     <section class="w-full bg-white py-10 pb-16">
-      <div class="max-w-7xl mx-auto px-8">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
         <div class="flex items-center justify-between mb-6"><h2 class="text-2xl font-black text-primary font-headline">Results by Party</h2><span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">2024 General Election</span></div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           <div class="bg-white border border-slate-200 rounded-xl p-8 shadow-sm border-t-4 border-t-red-500">
@@ -670,7 +721,7 @@
 
 <!-- Footer -->
 <footer class="w-full bg-[#00205B] text-white pt-20 pb-10">
-  <div class="max-w-7xl mx-auto px-8">
+  <div class="max-w-7xl mx-auto px-4 md:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
       <div class="lg:col-span-4">
         <div class="flex items-center gap-4 mb-6">

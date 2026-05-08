@@ -119,7 +119,30 @@
             background: #cbd5e1;
             border-radius: 10px;
         }
-    </style>
+    
+  /* ── Mobile hamburger ────────────────────────────────────────────────────── */
+  .mob-menu-btn {
+    display: none; background: none; border: none; cursor: pointer;
+    color: #00205B; padding: 0.25rem; margin-left: 0.75rem; transition: color 0.15s;
+  }
+  .mob-menu-btn:hover { color: #E03C31; }
+  @media (max-width: 1023px) { .mob-menu-btn { display: flex; align-items: center; } }
+  /* ── Mobile nav overlay ──────────────────────────────────────────────────── */
+  #mob-nav { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.4); backdrop-filter: blur(2px); }
+  #mob-nav.open { display: block; }
+  #mob-nav-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(320px,85vw); background: #fff; box-shadow: -8px 0 32px rgba(0,0,0,0.15); display: flex; flex-direction: column; overflow-y: auto; }
+  .mob-nav-header { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; border-bottom: 1px solid #f1f5f9; }
+  .mob-nav-title { font-size: 12px; font-weight: 900; color: #00205B; text-transform: uppercase; letter-spacing: 0.08em; }
+  .mob-nav-close { background: none; border: none; cursor: pointer; color: #94a3b8; padding: 0.25rem; transition: color 0.15s; }
+  .mob-nav-close:hover { color: #E03C31; }
+  .mob-nav-links { flex: 1; padding: 1rem 0; }
+  .mob-nav-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1.5rem; font-size: 13px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; color: #00205B; text-decoration: none; border-left: 3px solid transparent; transition: all 0.15s; }
+  .mob-nav-link:hover { background: #f8fafc; border-left-color: #E03C31; color: #E03C31; }
+  .mob-nav-footer { padding: 1.25rem 1.5rem; border-top: 1px solid #f1f5f9; }
+  /* ── Extra responsive header tweaks ─────────────────────────────────────── */
+  @media (max-width: 640px) { .sh-inner { padding: 0.75rem 1.25rem !important; } #site-util-bar { padding: 0.4rem 1.25rem !important; } }
+
+</style>
 <script id="bvi-nav-wiring">
 (function(){
   var L={voters:'../voters/compact-mobile/index.html',candidates:'../candidates/news-notices-mobile/index.html',pollWorkers:'../poll-workers/layout-2/index.html',electionResults:'../election-results-mobile/index.html',newsPolicies:'./index.html',importantDates:'../important-dates-mobile/index.html',mobileVersion:null,desktopVersion:'../news-policies/index.html'};
@@ -232,7 +255,37 @@
 </a>
 </div>
 </div>
+      <!-- Hamburger (mobile only) -->
+      <button class="mob-menu-btn" onclick="openMobNav()" aria-label="Open menu">
+        <span class="material-symbols-outlined" style="font-size:28px">menu</span>
+      </button>
+    </div>
+  </div>
 </header>
+<!-- Mobile Nav Overlay -->
+<div id="mob-nav" onclick="closeMobNavOutside(event)">
+  <div id="mob-nav-panel">
+    <div class="mob-nav-header">
+      <span class="mob-nav-title">Menu</span>
+      <button class="mob-nav-close" onclick="closeMobNav()">
+        <span class="material-symbols-outlined" style="font-size:24px">close</span>
+      </button>
+    </div>
+    <div class="mob-nav-links">
+      <a class="mob-nav-link" href="../voters/upcoming-events-v1/index.html"><span class="material-symbols-outlined text-[20px]">how_to_vote</span>For Voters</a>
+      <a class="mob-nav-link" href="../candidates/upcoming-elections/index.html"><span class="material-symbols-outlined text-[20px]">person_raised_hand</span>For Candidates</a>
+      <a class="mob-nav-link" href="../poll-workers/layout-1/index.html"><span class="material-symbols-outlined text-[20px]">badge</span>For Poll Workers</a>
+      <a class="mob-nav-link" href="../important-dates/index.html"><span class="material-symbols-outlined text-[20px]">event</span>Important Dates</a>
+      <a class="mob-nav-link" href="../election-results/index.html"><span class="material-symbols-outlined text-[20px]">bar_chart</span>Election Results</a>
+      <a class="mob-nav-link" href="../news-policies/index.html"><span class="material-symbols-outlined text-[20px]">newspaper</span>News & Policies</a>
+    </div>
+    <div class="mob-nav-footer">
+      <a href="../voters/register/index.html" class="flex items-center justify-center gap-2 w-full bg-[#E03C31] hover:bg-[#b91c1c] text-white py-3 rounded-xl font-black text-xs uppercase tracking-wider transition-all">
+        <span class="material-symbols-outlined text-[18px]">how_to_reg</span>Register to Vote
+      </a>
+    </div>
+  </div>
+</div>
 <!-- Mobile Nav Overlay -->
 <div class="lg:hidden fixed inset-0 z-40 bg-black/50 hidden" id="mobile-overlay" onclick="toggleMobileMenu()"></div>
 <div class="lg:hidden fixed top-0 right-0 h-full w-72 bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-300" id="mobile-nav">
@@ -297,7 +350,7 @@ function toggleMobileMenu() {
                             The 2024 Preliminary Voters List has been officially published and is now available for public inspection at designated locations across the territory and online.
                         </p>
 <div class="flex flex-col sm:flex-row gap-3 md:gap-4">
-<a href="../../voters/upcoming-events-v1/index.html" class="w-full sm:w-auto bg-[#00205B] text-white text-[10px] md:text-xs font-black uppercase tracking-widest px-6 py-3.5 rounded-lg hover:bg-[#001849] transition-all shadow-md no-underline inline-block text-center">
+<a href="../voters/upcoming-events-v1/index.html" class="w-full sm:w-auto bg-[#00205B] text-white text-[10px] md:text-xs font-black uppercase tracking-widest px-6 py-3.5 rounded-lg hover:bg-[#001849] transition-all shadow-md no-underline inline-block text-center">
                                 View Preliminary List
                             </a>
 <a href="#news-archive" class="w-full sm:w-auto border-2 border-slate-200 text-[#00205B] text-[10px] md:text-xs font-black uppercase tracking-widest px-6 py-3.5 rounded-lg hover:bg-slate-50 transition-all no-underline inline-block text-center">
@@ -464,7 +517,7 @@ function toggleMobileMenu() {
 </div>
 </div>
 <!-- Link Columns Stacked -->
-<div class="grid grid-cols-2 lg:col-span-4 gap-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:col-span-4 gap-8">
 <div>
 <h5 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6">RESOURCES</h5>
 <ul class="space-y-4">
