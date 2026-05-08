@@ -1,0 +1,346 @@
+<!DOCTYPE html><html lang="en"><head>
+<title>For Voters - Apply for Advance Poll</title>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode:"class",
+    theme:{ extend:{ colors:{ secondary:"#E03C31", primary:"#00205B", surface:"#f8f9fa", "on-surface":"#191c1d" }, borderRadius:{ DEFAULT:"0.25rem", lg:"0.5rem", xl:"0.75rem", full:"9999px" }, fontFamily:{ headline:["Public Sans"], body:["Inter"], label:["Inter"] } } }
+  }
+</script>
+<style>
+  html{overflow-y:scroll;background:#f8f9fa;}
+  body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:#191c1d;background:#ffffff;}
+  #site-util-bar{width:100%;background:#f8f9fa;border-bottom:1px solid #e2e8f0;padding:0.5rem 2rem;box-sizing:border-box;}
+  .su-inner{max-width:80rem;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.05em;}
+  .su-left{display:flex;align-items:center;gap:1rem;}
+  .su-back,.su-contact{color:inherit;text-decoration:none;display:flex;align-items:center;gap:0.25rem;transition:color 0.15s ease;}
+  .su-back:hover,.su-contact:hover{color:#00205B;}
+  .su-back-arrow{font-size:14px;}
+  .su-divider{color:#cbd5e1;font-weight:400;}
+  .su-portal-name{display:none;}
+  @media(min-width:768px){.su-portal-name{display:block;}}
+  #site-header{width:100%;background:#fff;border-bottom:1px solid #f1f5f9;box-sizing:border-box;}
+  .sh-inner{max-width:80rem;margin:0 auto;padding:1.25rem 2rem;box-sizing:border-box;}
+  .sh-row{display:flex;align-items:center;}
+  .sh-logo{display:flex;align-items:center;gap:1rem;flex-shrink:0;margin-right:auto;text-decoration:none;transition:opacity 0.15s ease;}
+  .sh-logo:hover{opacity:0.9;}
+  .sh-logo-img{height:3.5rem;width:auto;object-fit:contain;display:block;}
+  .sh-logo-text{display:flex;flex-direction:column;}
+  .sh-logo-title{font-family:'Inter',system-ui,sans-serif;font-size:1.875rem;font-weight:900;color:#00205B;letter-spacing:-0.025em;line-height:1;}
+  .sh-logo-sub{font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#94a3b8;margin-top:0.25rem;line-height:1;}
+  .sh-nav{display:none;align-items:center;height:100%;margin-left:2rem;}
+  @media(min-width:1024px){.sh-nav{display:flex;}}
+  .sh-nav-links{display:flex;align-items:center;height:100%;}
+  .sh-nav-link{display:flex;flex-direction:column;align-self:stretch;justify-content:center;padding:0 1.25rem;box-sizing:border-box;font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;line-height:1.25;color:#00205B;text-decoration:none;border-bottom:3px solid transparent;transition:color 0.15s ease,border-bottom-color 0.15s ease;}
+  .sh-nav-link:hover{color:#E03C31;}
+  .sh-nav-link--active{color:#E03C31;border-bottom-color:#E03C31;}
+  .sh-nav-sep{height:2.5rem;width:1px;background:#e2e8f0;flex-shrink:0;}
+  .sh-search{margin-left:auto;margin-right:0.5rem;color:#00205B;background:none;border:none;cursor:pointer;padding:0;line-height:1;transition:color 0.15s ease;}
+  .sh-search:hover{color:#E03C31;}
+  .sh-register{margin-left:1rem;display:flex;align-items:center;gap:0.375rem;padding:0.5rem 1.25rem;background:#E03C31;color:#fff;border-radius:9999px;font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background-color 0.15s ease;}
+  .sh-register:hover{background:#b91c1c;}
+  .sh-register-icon{font-size:15px;}
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+  .no-scrollbar::-webkit-scrollbar{display:none;}
+  .no-scrollbar{-ms-overflow-style:none;scrollbar-width:none;}
+</style>
+<script id="bvi-nav-wiring">
+(function(){
+  var L={voters:'../upcoming-events-v1/index.html',candidates:'../../candidates/upcoming-elections/index.html',pollWorkers:'../../poll-workers/layout-1/index.html',electionResults:'../../election-results/index.html',newsPolicies:'../../news-policies/index.html',importantDates:'../../important-dates/index.html',mobileVersion:null,desktopVersion:null};
+  function wire(){
+    document.querySelectorAll('a[href="#"]').forEach(function(a){
+      var t=a.textContent.replace(/\s+/g,' ').trim().toUpperCase();
+      if(/^FOR[\s]*VOTERS$/.test(t)) a.href=L.voters;
+      else if(/^FOR[\s]*CANDIDATES$/.test(t)) a.href=L.candidates;
+      else if(/^FOR[\s]*POLL[\s]*WORKERS$/.test(t)) a.href=L.pollWorkers;
+      else if(/ELECTION[\s\S]{0,2}RESULTS/.test(t)&&t.length<25) a.href=L.electionResults;
+      else if(/NEWS/.test(t)&&/POLIC/.test(t)&&t.length<25) a.href=L.newsPolicies;
+      else if(/IMPORTANT.*DATES/.test(t)&&L.importantDates) a.href=L.importantDates;
+      else if(/REGISTER/.test(t)&&a.classList.contains('sh-register')&&L.voters) a.href=L.voters;
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',wire);
+  else wire();
+})();
+</script></head>
+<body class="font-body text-on-surface bg-white">
+<div id="site-util-bar">
+  <div class="su-inner">
+    <div class="su-left">
+      <a class="su-back" href="#"><span class="su-back-arrow">←</span> BACK TO GOV.VG</a>
+      <span class="su-divider">|</span>
+      <a class="su-contact" href="#">CONTACT US</a>
+    </div>
+    <div class="su-portal-name">OFFICIAL PORTAL OF THE BRITISH VIRGIN ISLANDS ELECTIONS</div>
+  </div>
+</div>
+<header id="site-header">
+  <div class="sh-inner">
+    <div class="sh-row">
+      <a href="../../index.html" class="sh-logo">
+        <img alt="British Virgin Islands Coat of Arms" class="sh-logo-img" width="391" height="427" src="../../assets/bvi-crest.png"/>
+        <div class="sh-logo-text">
+          <span class="sh-logo-title">elections.gov.vg</span>
+          <span class="sh-logo-sub">DEPARTMENT OF ELECTIONS</span>
+        </div>
+      </a>
+      <nav class="sh-nav">
+        <div class="sh-nav-links">
+          <a class="sh-nav-link sh-nav-link--active" href="#"><span>FOR</span><span>VOTERS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>FOR</span><span>CANDIDATES</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>FOR</span><span>POLL WORKERS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>IMPORTANT</span><span>DATES</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>ELECTION</span><span>RESULTS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="#"><span>NEWS &amp;</span><span>POLICIES</span></a>
+        </div>
+        <button class="sh-search" aria-label="Search">
+          <span class="material-symbols-outlined" style="font-size:24px;line-height:1;display:block">search</span>
+        </button>
+      </nav>
+      <a href="#" class="sh-register">
+        <span class="material-symbols-outlined sh-register-icon">how_to_reg</span>
+        Register
+      </a>
+    </div>
+  </div>
+</header>
+<section class="w-full bg-white border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-8 py-10">
+    <div class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">
+      <a href="../upcoming-events-v1/index.html" class="hover:text-[#00205B] transition-colors">For Voters</a>
+      <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+      <span class="text-[#00205B]">Apply for Advance Poll</span>
+    </div>
+    <div class="flex items-center gap-5">
+      <div class="w-14 h-14 bg-amber-50 rounded-2xl flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-[#E03C31] text-[30px]">description</span>
+      </div>
+      <div>
+        <h1 class="text-4xl md:text-5xl font-black text-[#00205B] font-headline leading-tight">Apply for Advance Poll</h1>
+        <p class="text-slate-500 text-base mt-2 max-w-2xl">Can't make it on Polling Day? Apply to cast your vote early at a designated advance polling station.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="w-full bg-[#f8f9fa] py-16">
+<div class="max-w-7xl mx-auto px-8">
+
+  <!-- Info Banner -->
+  <div class="bg-amber-50 border border-amber-200 rounded-xl p-6 mb-10 flex items-start gap-4">
+    <span class="material-symbols-outlined text-amber-600 text-[28px] shrink-0">info</span>
+    <div>
+      <p class="font-black text-amber-800 mb-1">Advance Poll Dates: November 21–22, 2024</p>
+      <p class="text-sm text-amber-700">Advance polling is available for registered voters who are unable to vote on Election Day (November 25). You must apply in advance to use this service.</p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+    <!-- Application Form -->
+    <div class="bg-white rounded-xl border border-slate-200 p-8 shadow-sm">
+      <h2 class="text-xl font-black text-[#00205B] mb-2 flex items-center gap-2"><span class="material-symbols-outlined text-[22px]">edit_document</span> Advance Poll Application</h2>
+      <p class="text-sm text-slate-500 mb-8">Complete this form to register for advance polling. Applications must be submitted by <strong>November 15, 2024</strong>.</p>
+      <form onsubmit="submitAdvance(event)" class="space-y-5">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[11px] font-black text-slate-500 uppercase tracking-wider mb-1.5">First Name</label>
+            <input type="text" required placeholder="John" class="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-[#00205B] transition-colors">
+          </div>
+          <div>
+            <label class="block text-[11px] font-black text-slate-500 uppercase tracking-wider mb-1.5">Last Name</label>
+            <input type="text" required placeholder="Smith" class="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-[#00205B] transition-colors">
+          </div>
+        </div>
+        <div>
+          <label class="block text-[11px] font-black text-slate-500 uppercase tracking-wider mb-1.5">Date of Birth</label>
+          <input type="date" required class="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-[#00205B] transition-colors">
+        </div>
+        <div>
+          <label class="block text-[11px] font-black text-slate-500 uppercase tracking-wider mb-1.5">Voter ID Number</label>
+          <input type="text" required placeholder="e.g. VR-2024-00123" class="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-[#00205B] transition-colors">
+        </div>
+        <div>
+          <label class="block text-[11px] font-black text-slate-500 uppercase tracking-wider mb-1.5">Your District</label>
+          <select required class="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-[#00205B] transition-colors">
+            <option value="">— Select your district —</option>
+            <option>District 1 – West End & Capoon's Bay</option>
+            <option>District 2 – Carrot Bay & Apple Bay</option>
+            <option>District 3 – Road Town</option>
+            <option>District 4 – Road Town East</option>
+            <option>District 5 – East End & Long Look</option>
+            <option>District 6 – Sea Cows Bay</option>
+            <option>District 7 – West Tortola</option>
+            <option>District 8 – Virgin Gorda & Anegada</option>
+            <option>District 9 – Jost Van Dyke</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-[11px] font-black text-slate-500 uppercase tracking-wider mb-1.5">Reason for Advance Poll</label>
+          <select required class="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-[#00205B] transition-colors">
+            <option value="">— Select a reason —</option>
+            <option>Work commitments on Polling Day</option>
+            <option>Medical / health reasons</option>
+            <option>Travelling off-island on Polling Day</option>
+            <option>Religious observance</option>
+            <option>Caring responsibilities</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-[11px] font-black text-slate-500 uppercase tracking-wider mb-1.5">Preferred Advance Poll Date</label>
+          <div class="grid grid-cols-2 gap-3">
+            <label class="flex items-center gap-3 p-4 border border-slate-200 rounded-lg cursor-pointer hover:border-[#00205B] transition-colors">
+              <input type="radio" name="poll-date" value="nov21" class="accent-[#00205B]">
+              <div><p class="font-black text-[#00205B] text-sm">Nov 21</p><p class="text-xs text-slate-400">Thursday</p></div>
+            </label>
+            <label class="flex items-center gap-3 p-4 border border-slate-200 rounded-lg cursor-pointer hover:border-[#00205B] transition-colors">
+              <input type="radio" name="poll-date" value="nov22" class="accent-[#00205B]">
+              <div><p class="font-black text-[#00205B] text-sm">Nov 22</p><p class="text-xs text-slate-400">Friday</p></div>
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="w-full bg-[#00205B] hover:bg-[#001849] text-white font-black text-xs uppercase tracking-wider py-4 rounded-lg transition-all flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-[18px]">send</span> Submit Application
+        </button>
+      </form>
+      <div id="advance-success" class="hidden mt-6 p-5 bg-green-50 border border-green-200 rounded-xl">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-green-600 text-[28px]">check_circle</span>
+          <div>
+            <p class="font-black text-green-800">Application Submitted!</p>
+            <p class="text-xs text-green-700 mt-1">You will receive a confirmation reference number by email within 2 business days.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Eligibility & Info -->
+    <div class="space-y-6">
+      <div class="bg-white rounded-xl border border-slate-200 p-8 shadow-sm">
+        <h2 class="text-xl font-black text-[#00205B] mb-6 flex items-center gap-2"><span class="material-symbols-outlined text-[22px]">person_check</span> Who Can Apply?</h2>
+        <ul class="space-y-4">
+          
+          <li class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-green-600 text-[18px] mt-0.5">work</span>
+            <span class="text-sm text-slate-600">Working on Polling Day and unable to leave during polling hours</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-green-600 text-[18px] mt-0.5">flight</span>
+            <span class="text-sm text-slate-600">Absent from BVI on Polling Day due to work or study</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-green-600 text-[18px] mt-0.5">medical_services</span>
+            <span class="text-sm text-slate-600">Have a medical condition or disability preventing attendance</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-green-600 text-[18px] mt-0.5">church</span>
+            <span class="text-sm text-slate-600">Have a religious observance on Polling Day</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-green-600 text-[18px] mt-0.5">family_restroom</span>
+            <span class="text-sm text-slate-600">Are a caregiver unable to leave dependants</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-white rounded-xl border border-slate-200 p-8 shadow-sm">
+        <h2 class="text-xl font-black text-[#00205B] mb-6 flex items-center gap-2"><span class="material-symbols-outlined text-[22px]">calendar_today</span> Advance Poll Details</h2>
+        <div class="space-y-4">
+          <div class="flex gap-4 p-4 bg-slate-50 rounded-lg">
+            <span class="material-symbols-outlined text-[#00205B] text-[20px] shrink-0">event</span>
+            <div><p class="font-black text-[#00205B] text-sm">Dates</p><p class="text-sm text-slate-500">November 21–22, 2024 (Thursday & Friday)</p></div>
+          </div>
+          <div class="flex gap-4 p-4 bg-slate-50 rounded-lg">
+            <span class="material-symbols-outlined text-[#00205B] text-[20px] shrink-0">schedule</span>
+            <div><p class="font-black text-[#00205B] text-sm">Hours</p><p class="text-sm text-slate-500">8:00 AM – 6:00 PM</p></div>
+          </div>
+          <div class="flex gap-4 p-4 bg-slate-50 rounded-lg">
+            <span class="material-symbols-outlined text-[#00205B] text-[20px] shrink-0">location_on</span>
+            <div><p class="font-black text-[#00205B] text-sm">Location</p><p class="text-sm text-slate-500">Elections Office, Government Administration Building, Road Town</p></div>
+          </div>
+          <div class="flex gap-4 p-4 bg-slate-50 rounded-lg">
+            <span class="material-symbols-outlined text-[#00205B] text-[20px] shrink-0">badge</span>
+            <div><p class="font-black text-[#00205B] text-sm">Bring</p><p class="text-sm text-slate-500">Your Voter ID card or valid photo ID, plus your advance poll reference number</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+        <p class="text-[11px] font-black text-slate-400 uppercase tracking-wider mb-2">Application Deadline</p>
+        <p class="text-2xl font-black text-[#E03C31] mb-1">November 15, 2024</p>
+        <p class="text-xs text-slate-500">Applications received after this date will not be processed for the 2024 General Election.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<script>
+function submitAdvance(e) {
+  e.preventDefault();
+  document.getElementById('advance-success').classList.remove('hidden');
+  e.target.reset();
+  document.getElementById('advance-success').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+</script>
+<footer class="w-full bg-[#00205B] text-white pt-20 pb-10">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+<div class="lg:col-span-4">
+  <div class="flex items-center gap-4 mb-6">
+    <img alt="Department of Elections Crest" class="h-16 w-auto" src="../../assets/bvi-crest.png" width="391" height="427">
+    <div class="flex flex-col">
+      <span class="text-2xl font-black tracking-tight leading-none">elections.gov.vg</span>
+      <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1 leading-none">DEPARTMENT OF ELECTIONS</span>
+    </div>
+  </div>
+  <p class="text-slate-300 text-sm leading-relaxed mb-8 max-w-sm">Committed to ensuring free, fair, and transparent democratic processes for all citizens of the Virgin Islands.</p>
+</div>
+<div class="lg:col-span-2">
+  <h5 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">QUICK LINKS</h5>
+  <ul class="space-y-4">
+    <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="../election-details/index.html">View Election Details</a></li>
+    <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="../check-status/index.html">Check My Status</a></li>
+    <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="../polling-place/index.html">Find My Polling Place</a></li>
+    <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="../advance-poll/index.html">Apply for Advance Poll</a></li>
+  </ul>
+</div>
+<div class="lg:col-span-2">
+  <h5 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">GOVERNANCE</h5>
+  <ul class="space-y-4">
+    <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Elections Act</a></li>
+    <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Code of Conduct</a></li>
+    <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+    <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Accessibility</a></li>
+  </ul>
+</div>
+<div class="lg:col-span-4">
+  <h5 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">CONTACT US</h5>
+  <div class="space-y-4">
+    <div class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary text-xl">location_on</span><p class="text-sm text-slate-300">Office of the Supervisor of Elections<br>Road Town, Tortola<br>British Virgin Islands</p></div>
+    <div class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary text-xl">call</span><p class="text-sm text-slate-300">+1 (284) 468-4380</p></div>
+    <div class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary text-xl">mail</span><p class="text-sm text-slate-300">elections@gov.vg</p></div>
+    <div class="pt-4"><p class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">OPERATING HOURS</p><p class="text-sm text-slate-300">Mon - Fri: 8:30 AM – 4:30 PM</p></div>
+  </div>
+</div>
+</div>
+<div class="border-t border-white border-opacity-10 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+  <p class="text-slate-400 text-xs font-medium">© 2026 Department of Elections of the Virgin Islands. All rights reserved.</p>
+  <div class="flex gap-8 text-[11px] font-black uppercase tracking-widest text-slate-500">
+    <a class="hover:text-white transition-colors" href="#">Terms of Use</a>
+    <a class="hover:text-white transition-colors" href="#">Sitemap</a>
+  </div>
+</div>
+</div>
+</footer>
+</body></html>
