@@ -405,13 +405,13 @@
 </section>
 <!-- Preview State floating widget (bottom-right) -->
 <div class="state-dropdown" id="stateDropdown">
-  <button onclick="toggleStateDropdown()" class="flex items-center gap-2 px-5 py-3 bg-[#E03C31] hover:bg-[#b91c1c] text-white rounded-full text-[11px] font-black uppercase tracking-wider transition-all shadow-lg">
+  <button onclick="toggleStateDropdown()" class="flex items-center gap-2 px-5 py-3 bg-[#E03C31] hover:bg-[#b91c1c] text-white rounded-full text-xs font-black uppercase tracking-wider transition-all shadow-lg">
         <span class="material-symbols-outlined text-[16px]">tune</span>
         <span>No Election</span>
         <span class="material-symbols-outlined text-[16px]" id="dropdownChevron">expand_more</span>
       </button>
       <div class="state-dropdown-menu" id="stateDropdownMenu">
-        <div class="px-4 py-2 text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">Prototype View</div>
+        <div class="px-4 py-2 text-xs font-black text-slate-600 uppercase tracking-widest border-b border-slate-100">Prototype View</div>
         <button onclick="window.location.href='../no-election/'" class="state-dropdown-item active">No Election</button>
         <button onclick="window.location.href='../upcoming-elections/'" class="state-dropdown-item">Upcoming Election</button>
         <button onclick="window.location.href='../voting-day/'" class="state-dropdown-item">Voting Day</button>
@@ -472,7 +472,7 @@
 <div class="p-4 md:p-8 lg:p-12 lg:pt-16">
 <div class="mb-12">
 <h3 class="text-3xl font-black text-[#00205B] font-headline mb-2">Key Dates</h3>
-<p class="text-slate-500 font-medium text-base">Stay informed with the electoral calendar to ensure you don't miss any critical deadlines.</p>
+<p class="text-slate-700 font-medium text-base">Stay informed with the electoral calendar to ensure you don't miss any critical deadlines.</p>
 </div>
 <!-- Timeline Section -->
 <div class="relative"><div class="flex flex-col items-start bg-slate-50 rounded-xl p-8 lg:p-12 border border-slate-100">
@@ -480,7 +480,7 @@
 <span class="material-symbols-outlined text-primary text-2xl">notifications_active</span>
 </div>
 <h4 class="text-xl font-black text-[#00205B] mb-2">Get notified when new dates are announced.</h4>
-<p class="text-slate-500 text-sm mb-8 max-w-md">Be the first to know about nomination days, campaign periods, and official election schedules as they are confirmed.</p>
+<p class="text-slate-700 text-sm mb-8 max-w-md">Be the first to know about nomination days, campaign periods, and official election schedules as they are confirmed.</p>
 <form class="flex flex-col sm:flex-row w-full max-w-lg gap-3">
 <div class="flex-1">
 <input class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-sm transition-all" placeholder="Enter your email" required="" type="email">
@@ -502,7 +502,7 @@
 <img alt="Department of Elections Crest" class="h-16 w-auto" src="../../assets/bvi-crest.png" width="391" height="427">
 <div class="flex flex-col">
 <span class="text-2xl font-black tracking-tight leading-none">elections.gov.vg</span>
-<span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1 leading-none">DEPARTMENT OF ELECTIONS</span>
+<span class="text-xs font-bold uppercase tracking-widest text-slate-300 mt-1 leading-none">DEPARTMENT OF ELECTIONS</span>
 </div>
 </div>
 <p class="text-slate-300 text-sm leading-relaxed mb-8 max-w-sm">
@@ -522,7 +522,7 @@
 </div>
 <!-- Link Columns -->
 <div class="lg:col-span-2">
-<h5 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">RESOURCES</h5>
+<h5 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-6">RESOURCES</h5>
 <ul class="space-y-4">
 <li class=""><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Voter Registration</a></li>
 <li class=""><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Find Polling Station</a></li>
@@ -532,7 +532,7 @@
 </ul>
 </div>
 <div class="lg:col-span-2">
-<h5 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">GOVERNANCE</h5>
+<h5 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-6">GOVERNANCE</h5>
 <ul class="space-y-4">
 <li class=""><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Elections Act</a></li>
 <li class=""><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Boundary Commissions</a></li>
@@ -543,7 +543,7 @@
 </div>
 <!-- Contact Column -->
 <div class="lg:col-span-4">
-<h5 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">CONTACT US</h5>
+<h5 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-6">CONTACT US</h5>
 <div class="space-y-4">
 <div class="flex items-start gap-3">
 <span class="material-symbols-outlined text-secondary text-xl">location_on</span>
@@ -562,7 +562,7 @@
 <p class="text-sm text-slate-300">elections@gov.vg</p>
 </div>
 <div class="pt-4">
-<p class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">OPERATING HOURS</p>
+<p class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">OPERATING HOURS</p>
 <p class="text-sm text-slate-300">Mon - Fri: 8:30 AM – 4:30 PM</p>
 </div>
 </div>
@@ -570,10 +570,10 @@
 </div>
 <!-- Bottom Copyright -->
 <div class="border-t border-white border-opacity-10 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
-<p class="text-slate-400 text-xs font-medium">
+<p class="text-slate-300 text-xs font-medium">
                 © 2026 Department of Elections of the Virgin Islands. All rights reserved.
             </p>
-<div class="flex gap-8 text-[11px] font-black uppercase tracking-widest text-slate-500">
+<div class="flex gap-8 text-xs font-black uppercase tracking-widest text-slate-300">
 <a class="hover:text-white transition-colors" href="#">Terms of Use</a>
 <a class="hover:text-white transition-colors" href="#">Sitemap</a>
 </div>

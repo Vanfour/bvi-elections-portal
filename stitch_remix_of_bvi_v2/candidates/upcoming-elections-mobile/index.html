@@ -219,7 +219,7 @@ function switchTab(tabId, el) {
 <body class="font-body text-on-surface bg-white">
 <!-- Top Utility Bar -->
 <div class="w-full bg-[#f8f9fa] border-b border-slate-200 py-2 px-4 md:px-8">
-<div class="max-w-7xl mx-auto flex justify-between items-center text-[10px] md:text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+<div class="max-w-7xl mx-auto flex justify-between items-center text-xs md:text-xs font-bold text-slate-700 uppercase tracking-wider">
 <div class="flex items-center gap-2 md:gap-4">
 <a class="hover:text-[#00205B] transition-colors flex items-center gap-1" href="#">
 <span class="text-[12px] md:text-[14px]">←</span> BACK TO GOV.VG
@@ -241,7 +241,7 @@ function switchTab(tabId, el) {
 <img alt="British Virgin Islands Coat of Arms" class="h-10 md:h-14 w-auto object-contain" src="../../assets/bvi-crest.png" width="391" height="427">
 <div class="flex flex-col">
 <span class="text-xl md:text-3xl font-black text-[#00205B] tracking-tight leading-none">elections.gov.vg</span>
-<span class="text-[9px] md:text-[11px] font-bold uppercase tracking-widest text-slate-400 mt-1 leading-none">DEPARTMENT OF ELECTIONS</span>
+<span class="text-[9px] md:text-xs font-bold uppercase tracking-widest text-slate-600 mt-1 leading-none">DEPARTMENT OF ELECTIONS</span>
 </div>
 </div>
 <!-- Mobile Menu Button -->
@@ -287,7 +287,7 @@ function switchTab(tabId, el) {
 </button>
 </nav>
 <!-- Register CTA -->
-<a href="#" class="ml-4 flex items-center gap-1.5 px-5 py-2 bg-[#E03C31] hover:bg-red-700 text-white rounded-full text-[11px] font-black uppercase tracking-wider transition-all whitespace-nowrap shrink-0">
+<a href="#" class="ml-4 flex items-center gap-1.5 px-5 py-2 bg-[#E03C31] hover:bg-red-700 text-white rounded-full text-xs font-black uppercase tracking-wider transition-all whitespace-nowrap shrink-0">
   <span class="material-symbols-outlined text-[15px]">how_to_reg</span>
   Register
 </a>
@@ -343,19 +343,19 @@ function toggleMobileMenu() {
 <div class="flex flex-nowrap justify-center lg:justify-start gap-2 md:gap-4">
 <div class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-2 md:p-4 min-w-[60px] md:min-w-[85px] text-center shadow-sm">
 <span class="block text-2xl md:text-4xl font-black text-white leading-none mb-1 md:mb-2">42</span>
-<span class="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em]">Days</span>
+<span class="text-[9px] md:text-xs font-bold text-slate-600 uppercase tracking-[0.15em]">Days</span>
 </div>
 <div class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-2 md:p-4 min-w-[60px] md:min-w-[85px] text-center shadow-sm">
 <span class="block text-2xl md:text-4xl font-black text-white leading-none mb-1 md:mb-2">03</span>
-<span class="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em]">Hrs</span>
+<span class="text-[9px] md:text-xs font-bold text-slate-600 uppercase tracking-[0.15em]">Hrs</span>
 </div>
 <div class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-2 md:p-4 min-w-[60px] md:min-w-[85px] text-center shadow-sm">
 <span class="block text-2xl md:text-4xl font-black text-white leading-none mb-1 md:mb-2">28</span>
-<span class="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em]">Mins</span>
+<span class="text-[9px] md:text-xs font-bold text-slate-600 uppercase tracking-[0.15em]">Mins</span>
 </div>
 <div class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-2 md:p-4 min-w-[60px] md:min-w-[85px] text-center shadow-sm">
 <span class="block text-2xl md:text-4xl font-black text-white leading-none mb-1 md:mb-2">17</span>
-<span class="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em]">Secs</span>
+<span class="text-[9px] md:text-xs font-bold text-slate-600 uppercase tracking-[0.15em]">Secs</span>
 </div>
 </div>
 </div>
@@ -390,22 +390,22 @@ function toggleMobileMenu() {
 <div class="w-full border-slate-200">
 <div class="border border-slate-200 rounded-t-lg overflow-hidden bg-slate-50 rounded-b-none">
 <nav class="flex flex-col lg:flex-row w-full items-stretch lg:items-center" id="tab-container">
-<a class="tab-btn flex items-center gap-2.5 px-6 md:px-8 py-4 text-[10px] md:text-xs uppercase tracking-widest transition-all shrink-0 w-full lg:w-auto border-b border-slate-200 lg:border-b-0 tab-inactive" href="javascript:void(0)" onclick="switchTab('key-actions', this)">
+<a class="tab-btn flex items-center gap-2.5 px-6 md:px-8 py-4 text-xs md:text-xs uppercase tracking-widest transition-all shrink-0 w-full lg:w-auto border-b border-slate-200 lg:border-b-0 tab-inactive" href="javascript:void(0)" onclick="switchTab('key-actions', this)">
 <span class="material-symbols-outlined text-[18px] md:text-[20px]">bolt</span>
         Key Actions
     </a>
 <div class="hidden lg:block h-6 w-[1px] bg-slate-200 shrink-0"></div>
-<a class="tab-btn flex items-center gap-2.5 px-6 md:px-8 py-4 text-[10px] md:text-xs uppercase tracking-widest transition-all shrink-0 w-full lg:w-auto border-b border-slate-200 lg:border-b-0 tab-active bg-white lg:bg-transparent border-l-4 border-l-[#E03C31] lg:border-l-0" href="javascript:void(0)" onclick="switchTab('important-dates', this)">
+<a class="tab-btn flex items-center gap-2.5 px-6 md:px-8 py-4 text-xs md:text-xs uppercase tracking-widest transition-all shrink-0 w-full lg:w-auto border-b border-slate-200 lg:border-b-0 tab-active bg-white lg:bg-transparent border-l-4 border-l-[#E03C31] lg:border-l-0" href="javascript:void(0)" onclick="switchTab('important-dates', this)">
 <span class="material-symbols-outlined text-[18px] md:text-[20px]">calendar_today</span>
         Important Dates
     </a>
 <div class="hidden lg:block h-6 w-[1px] bg-slate-200 shrink-0"></div>
-<a class="tab-btn flex items-center gap-2.5 px-6 md:px-8 py-4 text-[10px] md:text-xs uppercase tracking-widest transition-all shrink-0 w-full lg:w-auto border-b border-slate-200 lg:border-b-0 tab-inactive" href="javascript:void(0)" onclick="switchTab('faqs', this)">
+<a class="tab-btn flex items-center gap-2.5 px-6 md:px-8 py-4 text-xs md:text-xs uppercase tracking-widest transition-all shrink-0 w-full lg:w-auto border-b border-slate-200 lg:border-b-0 tab-inactive" href="javascript:void(0)" onclick="switchTab('faqs', this)">
 <span class="material-symbols-outlined text-[18px] md:text-[20px]">quiz</span>
         FAQs
     </a>
 <div class="hidden lg:block h-6 w-[1px] bg-slate-200 shrink-0"></div>
-<a class="tab-btn flex items-center gap-2.5 px-6 md:px-8 py-4 text-[10px] md:text-xs uppercase tracking-widest transition-all shrink-0 w-full lg:w-auto border-b border-slate-200 lg:border-b-0 tab-inactive" href="javascript:void(0)" onclick="switchTab('news', this)">
+<a class="tab-btn flex items-center gap-2.5 px-6 md:px-8 py-4 text-xs md:text-xs uppercase tracking-widest transition-all shrink-0 w-full lg:w-auto border-b border-slate-200 lg:border-b-0 tab-inactive" href="javascript:void(0)" onclick="switchTab('news', this)">
 <span class="material-symbols-outlined text-[18px] md:text-[20px]">newspaper</span>
         News &amp; Notices
     </a>
@@ -417,7 +417,7 @@ function toggleMobileMenu() {
 <div class="p-6 md:p-12 md:pt-16">
 <div class="mb-8 md:mb-12">
 <h3 class="text-2xl md:text-3xl font-black text-[#00205B] font-headline mb-2">Important Dates</h3>
-<p class="text-slate-500 font-medium text-sm md:text-base">Stay informed with the electoral calendar to ensure you don't miss any critical deadlines.</p>
+<p class="text-slate-700 font-medium text-sm md:text-base">Stay informed with the electoral calendar to ensure you don't miss any critical deadlines.</p>
 </div>
 <!-- Timeline Section -->
 <div class="relative space-y-10 md:space-y-12 max-h-[500px] overflow-y-auto pr-4 custom-scrollbar">
@@ -431,9 +431,9 @@ function toggleMobileMenu() {
 <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-3 md:gap-4">
 <div class="flex-1 order-2 md:order-1">
 <h4 class="text-lg md:text-xl font-black text-[#00205B]">Nomination Day</h4>
-<p class="text-slate-500 mt-2 max-w-2xl text-xs md:text-sm leading-relaxed">Prospective candidates must submit their nomination papers and deposits at designated returning offices across the Territory.</p>
+<p class="text-slate-700 mt-2 max-w-2xl text-xs md:text-sm leading-relaxed">Prospective candidates must submit their nomination papers and deposits at designated returning offices across the Territory.</p>
 <div class="flex items-center gap-6 mt-4">
-<button class="text-[10px] md:text-[11px] font-black text-[#00205B] uppercase tracking-widest border-b-2 border-slate-200 hover:border-[#E03C31] transition-all pb-0.5">Add to Calendar</button>
+<button class="text-xs md:text-xs font-black text-[#00205B] uppercase tracking-widest border-b-2 border-slate-200 hover:border-[#E03C31] transition-all pb-0.5">Add to Calendar</button>
 </div>
 </div>
 <div class="order-1 md:order-2 shrink-0">
@@ -449,9 +449,9 @@ function toggleMobileMenu() {
 <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-3 md:gap-4">
 <div class="flex-1 order-2 md:order-1">
 <h4 class="text-lg md:text-xl font-black text-[#00205B]">Campaign Period</h4>
-<p class="text-slate-500 mt-2 max-w-2xl text-xs md:text-sm leading-relaxed">Official window for candidate promotion and public engagement following the certification of nominees.</p>
+<p class="text-slate-700 mt-2 max-w-2xl text-xs md:text-sm leading-relaxed">Official window for candidate promotion and public engagement following the certification of nominees.</p>
 <div class="mt-4">
-<button class="text-[10px] md:text-[11px] font-black text-[#00205B] uppercase tracking-widest border-b-2 border-slate-200 hover:border-[#E03C31] transition-all pb-0.5">Add to Calendar</button>
+<button class="text-xs md:text-xs font-black text-[#00205B] uppercase tracking-widest border-b-2 border-slate-200 hover:border-[#E03C31] transition-all pb-0.5">Add to Calendar</button>
 </div>
 </div>
 <div class="order-1 md:order-2 shrink-0">
@@ -482,9 +482,9 @@ function toggleMobileMenu() {
 <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-3 md:gap-4">
 <div class="flex-1 order-2 md:order-1">
 <h4 class="text-lg md:text-xl font-black text-[#00205B]">Result Certification</h4>
-<p class="text-slate-500 mt-2 max-w-2xl text-xs md:text-sm leading-relaxed">Official publication of final vote tallies and the gazetting of elected representatives by the Supervisor of Elections.</p>
+<p class="text-slate-700 mt-2 max-w-2xl text-xs md:text-sm leading-relaxed">Official publication of final vote tallies and the gazetting of elected representatives by the Supervisor of Elections.</p>
 <div class="mt-4">
-<button class="text-[10px] md:text-[11px] font-black text-[#00205B] uppercase tracking-widest border-b-2 border-slate-200 hover:border-[#E03C31] transition-all pb-0.5">Add to Calendar</button>
+<button class="text-xs md:text-xs font-black text-[#00205B] uppercase tracking-widest border-b-2 border-slate-200 hover:border-[#E03C31] transition-all pb-0.5">Add to Calendar</button>
 </div>
 </div>
 <div class="order-1 md:order-2 shrink-0">
@@ -507,7 +507,7 @@ function toggleMobileMenu() {
 <img alt="Department of Elections Crest" class="h-12 md:h-16 w-auto" src="../../assets/bvi-crest.png" width="391" height="427">
 <div class="flex flex-col">
 <span class="text-xl md:text-2xl font-black tracking-tight leading-none">elections.gov.vg</span>
-<span class="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1 leading-none">DEPARTMENT OF ELECTIONS</span>
+<span class="text-[9px] md:text-xs font-bold uppercase tracking-widest text-slate-300 mt-1 leading-none">DEPARTMENT OF ELECTIONS</span>
 </div>
 </div>
 <p class="text-slate-300 text-sm leading-relaxed mb-8 max-w-sm">
@@ -528,7 +528,7 @@ function toggleMobileMenu() {
 <!-- Link Columns (Stacked on Mobile) -->
 <div class="sm:grid sm:grid-cols-2 lg:grid-cols-4 lg:col-span-8 gap-8">
 <div class="mb-8 sm:mb-0">
-<h5 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">RESOURCES</h5>
+<h5 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-6">RESOURCES</h5>
 <ul class="space-y-4">
 <li class=""><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Voter Registration</a></li>
 <li class=""><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Find Polling Station</a></li>
@@ -538,7 +538,7 @@ function toggleMobileMenu() {
 </ul>
 </div>
 <div class="mb-8 sm:mb-0">
-<h5 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">GOVERNANCE</h5>
+<h5 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-6">GOVERNANCE</h5>
 <ul class="space-y-4">
 <li class=""><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Elections Act</a></li>
 <li class=""><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Boundary Commissions</a></li>
@@ -549,7 +549,7 @@ function toggleMobileMenu() {
 </div>
 <!-- Contact Column (Spans 2 columns on tablet, 1 on mobile) -->
 <div class="sm:col-span-2">
-<h5 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">CONTACT US</h5>
+<h5 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-6">CONTACT US</h5>
 <div class="space-y-4">
 <div class="flex items-start gap-3">
 <span class="material-symbols-outlined text-secondary text-xl">location_on</span>
@@ -568,7 +568,7 @@ function toggleMobileMenu() {
 <p class="text-sm text-slate-300">elections@gov.vg</p>
 </div>
 <div class="pt-4">
-<p class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">OPERATING HOURS</p>
+<p class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">OPERATING HOURS</p>
 <p class="text-sm text-slate-300">Mon - Fri: 8:30 AM – 4:30 PM</p>
 </div>
 </div>
@@ -577,10 +577,10 @@ function toggleMobileMenu() {
 </div>
 <!-- Bottom Copyright -->
 <div class="border-t border-white border-opacity-10 pt-10 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
-<p class="text-slate-400 text-xs font-medium">
+<p class="text-slate-300 text-xs font-medium">
                     © 2026 Department of Elections of the Virgin Islands. All rights reserved.
                 </p>
-<div class="flex gap-6 md:gap-8 text-[10px] md:text-[11px] font-black uppercase tracking-widest text-slate-500">
+<div class="flex gap-6 md:gap-8 text-xs md:text-xs font-black uppercase tracking-widest text-slate-300">
 <a class="hover:text-white transition-colors" href="#">Terms of Use</a>
 <a class="hover:text-white transition-colors" href="#">Sitemap</a>
 </div>

@@ -116,7 +116,7 @@ tailwind.config = {
 
 <!-- Top Utility Bar -->
 <div class="w-full bg-[#f8f9fa] border-b border-slate-200 py-2 px-4">
-  <div class="flex justify-between items-center text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+  <div class="flex justify-between items-center text-xs font-bold text-slate-700 uppercase tracking-wider">
     <div class="flex items-center gap-3">
       <a class="hover:text-[#00205B] transition-colors flex items-center gap-1" href="#"><span>←</span> BACK</a>
       <span class="text-slate-300">|</span>
@@ -134,7 +134,7 @@ tailwind.config = {
         <img alt="BVI crest" class="h-10 w-auto object-contain" src="../assets/bvi-crest.png" width="391" height="427"/>
         <div class="flex flex-col">
           <span class="text-lg font-black text-[#00205B] tracking-tight leading-none">elections.gov.vg</span>
-          <span class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mt-0.5 leading-none">DEPARTMENT OF ELECTIONS</span>
+          <span class="text-[9px] font-bold uppercase tracking-widest text-slate-600 mt-0.5 leading-none">DEPARTMENT OF ELECTIONS</span>
         </div>
       </div>
       <button class="text-[#00205B]" onclick="toggleMobileMenu()">
@@ -193,9 +193,9 @@ tailwind.config = {
 
 <!-- Page Hero -->
 <section class="w-full bg-white border-b border-slate-100 px-4 py-8">
-  <p class="text-[10px] font-black uppercase tracking-widest text-[#E03C31] mb-2">General Election 2024</p>
+  <p class="text-xs font-black uppercase tracking-widest text-[#E03C31] mb-2">General Election 2024</p>
   <h1 class="text-4xl font-black text-[#00205B] font-headline leading-tight">Important Dates</h1>
-  <p class="text-slate-500 text-sm mt-3 leading-relaxed">Key deadlines and milestones for the BVI General Election — Nov 25, 2024.</p>
+  <p class="text-slate-700 text-sm mt-3 leading-relaxed">Key deadlines and milestones for the BVI General Election — Nov 25, 2024.</p>
   <button class="mt-5 flex items-center gap-2 bg-[#00205B] text-white px-5 py-3 rounded-lg font-black text-xs uppercase tracking-wider w-full justify-center">
     <span class="material-symbols-outlined text-[18px]">notifications</span> Get Alerts
   </button>
@@ -213,8 +213,8 @@ tailwind.config = {
 
 <!-- Count bar -->
 <div class="px-4 py-3 flex items-center justify-between">
-  <p class="text-xs font-bold text-slate-400"><span id="event-count">13</span> dates · General Election 2024</p>
-  <div class="flex items-center gap-1 text-xs text-slate-400">
+  <p class="text-xs font-bold text-slate-600"><span id="event-count">13</span> dates · General Election 2024</p>
+  <div class="flex items-center gap-1 text-xs text-slate-600">
     <span class="material-symbols-outlined text-[14px]">sort</span> By date
   </div>
 </div>
@@ -226,22 +226,22 @@ tailwind.config = {
   <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm" data-audience="all voters candidates poll-workers">
     <div class="flex items-stretch">
       <div class="w-16 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-4">
-        <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">SEP</span>
+        <span class="text-[9px] font-black uppercase tracking-widest text-slate-600">SEP</span>
         <span class="text-2xl font-black text-[#00205B] leading-none">20</span>
-        <span class="text-[9px] font-bold text-slate-400">2024</span>
+        <span class="text-[9px] font-bold text-slate-600">2024</span>
       </div>
       <div class="flex-1 px-4 py-4">
         <div class="flex flex-wrap gap-1.5 mb-1.5">
-          <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[9px] font-black uppercase">Completed</span>
+          <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 text-[9px] font-black uppercase">Completed</span>
         </div>
         <h3 class="text-sm font-black text-[#00205B] leading-snug">Writ of Election Issued</h3>
-        <p class="text-slate-500 text-xs mt-1 leading-relaxed">Governor issues the Writ of Election, officially starting the election process.</p>
+        <p class="text-slate-700 text-xs mt-1 leading-relaxed">Governor issues the Writ of Election, officially starting the election process.</p>
         <div class="flex flex-wrap gap-1.5 mt-2.5">
           <span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[9px] font-black uppercase"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Voters</span>
           <span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-50 text-[#E03C31] text-[9px] font-black uppercase"><span class="w-1.5 h-1.5 rounded-full bg-[#E03C31]"></span>Candidates</span>
           <span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-green-50 text-[#007A33] text-[9px] font-black uppercase"><span class="w-1.5 h-1.5 rounded-full bg-[#007A33]"></span>Poll Workers</span>
         </div>
-        <span class="mt-2 inline-block text-[9px] font-bold text-slate-400 uppercase tracking-wide">General Election 2024</span>
+        <span class="mt-2 inline-block text-[9px] font-bold text-slate-600 uppercase tracking-wide">General Election 2024</span>
       </div>
     </div>
   </div>
@@ -250,20 +250,20 @@ tailwind.config = {
   <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm" data-audience="voters">
     <div class="flex items-stretch">
       <div class="w-16 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-4">
-        <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">OCT</span>
+        <span class="text-[9px] font-black uppercase tracking-widest text-slate-600">OCT</span>
         <span class="text-2xl font-black text-[#00205B] leading-none">01</span>
-        <span class="text-[9px] font-bold text-slate-400">2024</span>
+        <span class="text-[9px] font-bold text-slate-600">2024</span>
       </div>
       <div class="flex-1 px-4 py-4">
         <div class="flex flex-wrap gap-1.5 mb-1.5">
-          <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[9px] font-black uppercase">Completed</span>
+          <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 text-[9px] font-black uppercase">Completed</span>
         </div>
         <h3 class="text-sm font-black text-[#00205B] leading-snug">Voter Registration Deadline</h3>
-        <p class="text-slate-500 text-xs mt-1 leading-relaxed">Last day to register to vote. New registrations close at 4:00 PM.</p>
+        <p class="text-slate-700 text-xs mt-1 leading-relaxed">Last day to register to vote. New registrations close at 4:00 PM.</p>
         <div class="flex flex-wrap gap-1.5 mt-2.5">
           <span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[9px] font-black uppercase"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Voters</span>
         </div>
-        <span class="mt-2 inline-block text-[9px] font-bold text-slate-400 uppercase tracking-wide">General Election 2024</span>
+        <span class="mt-2 inline-block text-[9px] font-bold text-slate-600 uppercase tracking-wide">General Election 2024</span>
       </div>
     </div>
   </div>
@@ -272,20 +272,20 @@ tailwind.config = {
   <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm" data-audience="candidates">
     <div class="flex items-stretch">
       <div class="w-16 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-4">
-        <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">OCT</span>
+        <span class="text-[9px] font-black uppercase tracking-widest text-slate-600">OCT</span>
         <span class="text-2xl font-black text-[#00205B] leading-none">15</span>
-        <span class="text-[9px] font-bold text-slate-400">2024</span>
+        <span class="text-[9px] font-bold text-slate-600">2024</span>
       </div>
       <div class="flex-1 px-4 py-4">
         <div class="flex flex-wrap gap-1.5 mb-1.5">
-          <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[9px] font-black uppercase">Completed</span>
+          <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 text-[9px] font-black uppercase">Completed</span>
         </div>
         <h3 class="text-sm font-black text-[#00205B] leading-snug">Nomination Day</h3>
-        <p class="text-slate-500 text-xs mt-1 leading-relaxed">Candidates must submit nomination papers to the Supervisor of Elections by 4:00 PM.</p>
+        <p class="text-slate-700 text-xs mt-1 leading-relaxed">Candidates must submit nomination papers to the Supervisor of Elections by 4:00 PM.</p>
         <div class="flex flex-wrap gap-1.5 mt-2.5">
           <span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-50 text-[#E03C31] text-[9px] font-black uppercase"><span class="w-1.5 h-1.5 rounded-full bg-[#E03C31]"></span>Candidates</span>
         </div>
-        <span class="mt-2 inline-block text-[9px] font-bold text-slate-400 uppercase tracking-wide">General Election 2024</span>
+        <span class="mt-2 inline-block text-[9px] font-bold text-slate-600 uppercase tracking-wide">General Election 2024</span>
       </div>
     </div>
   </div>
@@ -294,20 +294,20 @@ tailwind.config = {
   <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm" data-audience="candidates">
     <div class="flex items-stretch">
       <div class="w-16 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-4">
-        <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">OCT</span>
+        <span class="text-[9px] font-black uppercase tracking-widest text-slate-600">OCT</span>
         <span class="text-2xl font-black text-[#00205B] leading-none">17</span>
-        <span class="text-[9px] font-bold text-slate-400">2024</span>
+        <span class="text-[9px] font-bold text-slate-600">2024</span>
       </div>
       <div class="flex-1 px-4 py-4">
         <div class="flex flex-wrap gap-1.5 mb-1.5">
-          <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[9px] font-black uppercase">Completed</span>
+          <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 text-[9px] font-black uppercase">Completed</span>
         </div>
         <h3 class="text-sm font-black text-[#00205B] leading-snug">Official List of Candidates Published</h3>
-        <p class="text-slate-500 text-xs mt-1 leading-relaxed">Official list of approved candidates published for each constituency.</p>
+        <p class="text-slate-700 text-xs mt-1 leading-relaxed">Official list of approved candidates published for each constituency.</p>
         <div class="flex flex-wrap gap-1.5 mt-2.5">
           <span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-50 text-[#E03C31] text-[9px] font-black uppercase"><span class="w-1.5 h-1.5 rounded-full bg-[#E03C31]"></span>Candidates</span>
         </div>
-        <span class="mt-2 inline-block text-[9px] font-bold text-slate-400 uppercase tracking-wide">General Election 2024</span>
+        <span class="mt-2 inline-block text-[9px] font-bold text-slate-600 uppercase tracking-wide">General Election 2024</span>
       </div>
     </div>
   </div>
@@ -316,20 +316,20 @@ tailwind.config = {
   <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm" data-audience="candidates">
     <div class="flex items-stretch">
       <div class="w-16 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-4">
-        <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">OCT</span>
+        <span class="text-[9px] font-black uppercase tracking-widest text-slate-600">OCT</span>
         <span class="text-2xl font-black text-[#00205B] leading-none">18</span>
-        <span class="text-[9px] font-bold text-slate-400">2024</span>
+        <span class="text-[9px] font-bold text-slate-600">2024</span>
       </div>
       <div class="flex-1 px-4 py-4">
         <div class="flex flex-wrap gap-1.5 mb-1.5">
-          <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[9px] font-black uppercase">Completed</span>
+          <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 text-[9px] font-black uppercase">Completed</span>
         </div>
         <h3 class="text-sm font-black text-[#00205B] leading-snug">Campaign Period Opens</h3>
-        <p class="text-slate-500 text-xs mt-1 leading-relaxed">Candidates may begin official campaigning. Finance reporting requirements in effect.</p>
+        <p class="text-slate-700 text-xs mt-1 leading-relaxed">Candidates may begin official campaigning. Finance reporting requirements in effect.</p>
         <div class="flex flex-wrap gap-1.5 mt-2.5">
           <span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-50 text-[#E03C31] text-[9px] font-black uppercase"><span class="w-1.5 h-1.5 rounded-full bg-[#E03C31]"></span>Candidates</span>
         </div>
-        <span class="mt-2 inline-block text-[9px] font-bold text-slate-400 uppercase tracking-wide">General Election 2024</span>
+        <span class="mt-2 inline-block text-[9px] font-bold text-slate-600 uppercase tracking-wide">General Election 2024</span>
       </div>
     </div>
   </div>
@@ -338,20 +338,20 @@ tailwind.config = {
   <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm" data-audience="poll-workers">
     <div class="flex items-stretch">
       <div class="w-16 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-4">
-        <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">OCT</span>
+        <span class="text-[9px] font-black uppercase tracking-widest text-slate-600">OCT</span>
         <span class="text-2xl font-black text-[#00205B] leading-none">25</span>
-        <span class="text-[9px] font-bold text-slate-400">2024</span>
+        <span class="text-[9px] font-bold text-slate-600">2024</span>
       </div>
       <div class="flex-1 px-4 py-4">
         <div class="flex flex-wrap gap-1.5 mb-1.5">
-          <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[9px] font-black uppercase">Completed</span>
+          <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 text-[9px] font-black uppercase">Completed</span>
         </div>
         <h3 class="text-sm font-black text-[#00205B] leading-snug">Poll Worker Applications Close</h3>
-        <p class="text-slate-500 text-xs mt-1 leading-relaxed">Deadline to apply to serve as a poll worker on Election Day.</p>
+        <p class="text-slate-700 text-xs mt-1 leading-relaxed">Deadline to apply to serve as a poll worker on Election Day.</p>
         <div class="flex flex-wrap gap-1.5 mt-2.5">
           <span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-green-50 text-[#007A33] text-[9px] font-black uppercase"><span class="w-1.5 h-1.5 rounded-full bg-[#007A33]"></span>Poll Workers</span>
         </div>
-        <span class="mt-2 inline-block text-[9px] font-bold text-slate-400 uppercase tracking-wide">General Election 2024</span>
+        <span class="mt-2 inline-block text-[9px] font-bold text-slate-600 uppercase tracking-wide">General Election 2024</span>
       </div>
     </div>
   </div>
@@ -360,20 +360,20 @@ tailwind.config = {
   <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm" data-audience="voters">
     <div class="flex items-stretch">
       <div class="w-16 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-4">
-        <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">OCT</span>
+        <span class="text-[9px] font-black uppercase tracking-widest text-slate-600">OCT</span>
         <span class="text-2xl font-black text-[#00205B] leading-none">28</span>
-        <span class="text-[9px] font-bold text-slate-400">2024</span>
+        <span class="text-[9px] font-bold text-slate-600">2024</span>
       </div>
       <div class="flex-1 px-4 py-4">
         <div class="flex flex-wrap gap-1.5 mb-1.5">
-          <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[9px] font-black uppercase">Completed</span>
+          <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 text-[9px] font-black uppercase">Completed</span>
         </div>
         <h3 class="text-sm font-black text-[#00205B] leading-snug">Voter ID Card Distribution Begins</h3>
-        <p class="text-slate-500 text-xs mt-1 leading-relaxed">Collect your Voter ID from designated centres. Runs Oct 28 – Nov 8.</p>
+        <p class="text-slate-700 text-xs mt-1 leading-relaxed">Collect your Voter ID from designated centres. Runs Oct 28 – Nov 8.</p>
         <div class="flex flex-wrap gap-1.5 mt-2.5">
           <span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[9px] font-black uppercase"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Voters</span>
         </div>
-        <span class="mt-2 inline-block text-[9px] font-bold text-slate-400 uppercase tracking-wide">General Election 2024</span>
+        <span class="mt-2 inline-block text-[9px] font-bold text-slate-600 uppercase tracking-wide">General Election 2024</span>
       </div>
     </div>
   </div>
@@ -382,20 +382,20 @@ tailwind.config = {
   <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm" data-audience="poll-workers">
     <div class="flex items-stretch">
       <div class="w-16 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-4">
-        <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">NOV</span>
+        <span class="text-[9px] font-black uppercase tracking-widest text-slate-600">NOV</span>
         <span class="text-2xl font-black text-[#00205B] leading-none">12</span>
-        <span class="text-[9px] font-bold text-slate-400">2024</span>
+        <span class="text-[9px] font-bold text-slate-600">2024</span>
       </div>
       <div class="flex-1 px-4 py-4">
         <div class="flex flex-wrap gap-1.5 mb-1.5">
           <span class="px-2 py-0.5 rounded-full bg-blue-50 text-[#00205B] text-[9px] font-black uppercase">Upcoming</span>
         </div>
         <h3 class="text-sm font-black text-[#00205B] leading-snug">Poll Worker Training Sessions</h3>
-        <p class="text-slate-500 text-xs mt-1 leading-relaxed">Mandatory training for all appointed poll workers. Sessions Nov 12–14 at Road Town.</p>
+        <p class="text-slate-700 text-xs mt-1 leading-relaxed">Mandatory training for all appointed poll workers. Sessions Nov 12–14 at Road Town.</p>
         <div class="flex flex-wrap gap-1.5 mt-2.5">
           <span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-green-50 text-[#007A33] text-[9px] font-black uppercase"><span class="w-1.5 h-1.5 rounded-full bg-[#007A33]"></span>Poll Workers</span>
         </div>
-        <span class="mt-2 inline-block text-[9px] font-bold text-slate-400 uppercase tracking-wide">General Election 2024</span>
+        <span class="mt-2 inline-block text-[9px] font-bold text-slate-600 uppercase tracking-wide">General Election 2024</span>
       </div>
     </div>
   </div>
@@ -404,21 +404,21 @@ tailwind.config = {
   <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm" data-audience="voters poll-workers">
     <div class="flex items-stretch">
       <div class="w-16 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-4">
-        <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">NOV</span>
+        <span class="text-[9px] font-black uppercase tracking-widest text-slate-600">NOV</span>
         <span class="text-2xl font-black text-[#00205B] leading-none">18</span>
-        <span class="text-[9px] font-bold text-slate-400">2024</span>
+        <span class="text-[9px] font-bold text-slate-600">2024</span>
       </div>
       <div class="flex-1 px-4 py-4">
         <div class="flex flex-wrap gap-1.5 mb-1.5">
           <span class="px-2 py-0.5 rounded-full bg-blue-50 text-[#00205B] text-[9px] font-black uppercase">Upcoming</span>
         </div>
         <h3 class="text-sm font-black text-[#00205B] leading-snug">Voter Education Week Begins</h3>
-        <p class="text-slate-500 text-xs mt-1 leading-relaxed">Community outreach covering voting procedures and polling locations. Nov 18–22.</p>
+        <p class="text-slate-700 text-xs mt-1 leading-relaxed">Community outreach covering voting procedures and polling locations. Nov 18–22.</p>
         <div class="flex flex-wrap gap-1.5 mt-2.5">
           <span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[9px] font-black uppercase"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Voters</span>
           <span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-green-50 text-[#007A33] text-[9px] font-black uppercase"><span class="w-1.5 h-1.5 rounded-full bg-[#007A33]"></span>Poll Workers</span>
         </div>
-        <span class="mt-2 inline-block text-[9px] font-bold text-slate-400 uppercase tracking-wide">General Election 2024</span>
+        <span class="mt-2 inline-block text-[9px] font-bold text-slate-600 uppercase tracking-wide">General Election 2024</span>
       </div>
     </div>
   </div>
@@ -427,20 +427,20 @@ tailwind.config = {
   <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm" data-audience="voters">
     <div class="flex items-stretch">
       <div class="w-16 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-4">
-        <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">NOV</span>
+        <span class="text-[9px] font-black uppercase tracking-widest text-slate-600">NOV</span>
         <span class="text-2xl font-black text-[#00205B] leading-none">21</span>
-        <span class="text-[9px] font-bold text-slate-400">2024</span>
+        <span class="text-[9px] font-bold text-slate-600">2024</span>
       </div>
       <div class="flex-1 px-4 py-4">
         <div class="flex flex-wrap gap-1.5 mb-1.5">
           <span class="px-2 py-0.5 rounded-full bg-blue-50 text-[#00205B] text-[9px] font-black uppercase">Upcoming</span>
         </div>
         <h3 class="text-sm font-black text-[#00205B] leading-snug">Advance Poll Opens</h3>
-        <p class="text-slate-500 text-xs mt-1 leading-relaxed">Vote early if you can't make Election Day. Available Nov 21–22, 8 AM – 6 PM.</p>
+        <p class="text-slate-700 text-xs mt-1 leading-relaxed">Vote early if you can't make Election Day. Available Nov 21–22, 8 AM – 6 PM.</p>
         <div class="flex flex-wrap gap-1.5 mt-2.5">
           <span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[9px] font-black uppercase"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Voters</span>
         </div>
-        <span class="mt-2 inline-block text-[9px] font-bold text-slate-400 uppercase tracking-wide">General Election 2024</span>
+        <span class="mt-2 inline-block text-[9px] font-bold text-slate-600 uppercase tracking-wide">General Election 2024</span>
       </div>
     </div>
   </div>
@@ -449,20 +449,20 @@ tailwind.config = {
   <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm" data-audience="candidates">
     <div class="flex items-stretch">
       <div class="w-16 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-4">
-        <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">NOV</span>
+        <span class="text-[9px] font-black uppercase tracking-widest text-slate-600">NOV</span>
         <span class="text-2xl font-black text-[#00205B] leading-none">23</span>
-        <span class="text-[9px] font-bold text-slate-400">2024</span>
+        <span class="text-[9px] font-bold text-slate-600">2024</span>
       </div>
       <div class="flex-1 px-4 py-4">
         <div class="flex flex-wrap gap-1.5 mb-1.5">
           <span class="px-2 py-0.5 rounded-full bg-blue-50 text-[#00205B] text-[9px] font-black uppercase">Upcoming</span>
         </div>
         <h3 class="text-sm font-black text-[#00205B] leading-snug">Campaigning Ends (Blackout)</h3>
-        <p class="text-slate-500 text-xs mt-1 leading-relaxed">All campaigning must cease at midnight. Remove all campaign materials from public spaces.</p>
+        <p class="text-slate-700 text-xs mt-1 leading-relaxed">All campaigning must cease at midnight. Remove all campaign materials from public spaces.</p>
         <div class="flex flex-wrap gap-1.5 mt-2.5">
           <span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-50 text-[#E03C31] text-[9px] font-black uppercase"><span class="w-1.5 h-1.5 rounded-full bg-[#E03C31]"></span>Candidates</span>
         </div>
-        <span class="mt-2 inline-block text-[9px] font-bold text-slate-400 uppercase tracking-wide">General Election 2024</span>
+        <span class="mt-2 inline-block text-[9px] font-bold text-slate-600 uppercase tracking-wide">General Election 2024</span>
       </div>
     </div>
   </div>
@@ -480,13 +480,13 @@ tailwind.config = {
           <span class="px-2 py-0.5 rounded-full bg-[#E03C31] text-white text-[9px] font-black uppercase">Election Day</span>
         </div>
         <h3 class="text-sm font-black text-[#00205B] leading-snug">General Election Day — Monday, Nov 25</h3>
-        <p class="text-slate-500 text-xs mt-1 leading-relaxed">Polls open 7:00 AM – 6:00 PM. Bring your Voter ID card.</p>
+        <p class="text-slate-700 text-xs mt-1 leading-relaxed">Polls open 7:00 AM – 6:00 PM. Bring your Voter ID card.</p>
         <div class="flex flex-wrap gap-1.5 mt-2.5">
           <span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[9px] font-black uppercase"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Voters</span>
           <span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-50 text-[#E03C31] text-[9px] font-black uppercase"><span class="w-1.5 h-1.5 rounded-full bg-[#E03C31]"></span>Candidates</span>
           <span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-green-50 text-[#007A33] text-[9px] font-black uppercase"><span class="w-1.5 h-1.5 rounded-full bg-[#007A33]"></span>Poll Workers</span>
         </div>
-        <span class="mt-2 inline-block text-[9px] font-bold text-slate-400 uppercase tracking-wide">General Election 2024</span>
+        <span class="mt-2 inline-block text-[9px] font-bold text-slate-600 uppercase tracking-wide">General Election 2024</span>
       </div>
     </div>
   </div>
@@ -495,22 +495,22 @@ tailwind.config = {
   <div class="event-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm" data-audience="all voters candidates poll-workers">
     <div class="flex items-stretch">
       <div class="w-16 shrink-0 bg-slate-50 border-r border-slate-200 flex flex-col items-center justify-center py-4">
-        <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">DEC</span>
+        <span class="text-[9px] font-black uppercase tracking-widest text-slate-600">DEC</span>
         <span class="text-2xl font-black text-[#00205B] leading-none">05</span>
-        <span class="text-[9px] font-bold text-slate-400">2024</span>
+        <span class="text-[9px] font-bold text-slate-600">2024</span>
       </div>
       <div class="flex-1 px-4 py-4">
         <div class="flex flex-wrap gap-1.5 mb-1.5">
           <span class="px-2 py-0.5 rounded-full bg-blue-50 text-[#00205B] text-[9px] font-black uppercase">Upcoming</span>
         </div>
         <h3 class="text-sm font-black text-[#00205B] leading-snug">Official Results Certification</h3>
-        <p class="text-slate-500 text-xs mt-1 leading-relaxed">Supervisor of Elections formally certifies results for all constituencies.</p>
+        <p class="text-slate-700 text-xs mt-1 leading-relaxed">Supervisor of Elections formally certifies results for all constituencies.</p>
         <div class="flex flex-wrap gap-1.5 mt-2.5">
           <span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[9px] font-black uppercase"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>Voters</span>
           <span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-50 text-[#E03C31] text-[9px] font-black uppercase"><span class="w-1.5 h-1.5 rounded-full bg-[#E03C31]"></span>Candidates</span>
           <span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-green-50 text-[#007A33] text-[9px] font-black uppercase"><span class="w-1.5 h-1.5 rounded-full bg-[#007A33]"></span>Poll Workers</span>
         </div>
-        <span class="mt-2 inline-block text-[9px] font-bold text-slate-400 uppercase tracking-wide">General Election 2024</span>
+        <span class="mt-2 inline-block text-[9px] font-bold text-slate-600 uppercase tracking-wide">General Election 2024</span>
       </div>
     </div>
   </div>
@@ -518,7 +518,7 @@ tailwind.config = {
   <!-- Empty state -->
   <div id="empty-state" class="hidden text-center py-8 md:py-12">
     <span class="material-symbols-outlined text-4xl text-slate-300">event_busy</span>
-    <p class="text-slate-400 font-bold mt-2 text-sm">No dates match this filter.</p>
+    <p class="text-slate-600 font-bold mt-2 text-sm">No dates match this filter.</p>
   </div>
 
 </div><!-- /events-list -->
@@ -529,13 +529,13 @@ tailwind.config = {
     <img alt="BVI crest" class="h-10 w-auto" src="../assets/bvi-crest.png" width="391" height="427"/>
     <div>
       <span class="text-base font-black leading-none block">elections.gov.vg</span>
-      <span class="text-[9px] font-bold uppercase tracking-widest text-slate-400">DEPARTMENT OF ELECTIONS</span>
+      <span class="text-[9px] font-bold uppercase tracking-widest text-slate-300">DEPARTMENT OF ELECTIONS</span>
     </div>
   </div>
   <p class="text-slate-300 text-xs leading-relaxed mb-6">Committed to free, fair, and transparent democratic processes.</p>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
     <div>
-      <h5 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Resources</h5>
+      <h5 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-3">Resources</h5>
       <ul class="space-y-2">
         <li><a class="text-xs text-slate-300 hover:text-white" href="#">Voter Registration</a></li>
         <li><a class="text-xs text-slate-300 hover:text-white" href="#">Election Results</a></li>
@@ -543,7 +543,7 @@ tailwind.config = {
       </ul>
     </div>
     <div>
-      <h5 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Information</h5>
+      <h5 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-3">Information</h5>
       <ul class="space-y-2">
         <li><a class="text-xs text-slate-300 hover:text-white" href="#">News &amp; Policies</a></li>
         <li><a class="text-xs text-slate-300 hover:text-white" href="#">Important Dates</a></li>
@@ -551,7 +551,7 @@ tailwind.config = {
       </ul>
     </div>
   </div>
-  <p class="text-slate-400 text-[10px] border-t border-white/10 pt-5">© 2026 Department of Elections, British Virgin Islands.</p>
+  <p class="text-slate-300 text-xs border-t border-white/10 pt-5">© 2026 Department of Elections, British Virgin Islands.</p>
 </footer>
 
 <script>
