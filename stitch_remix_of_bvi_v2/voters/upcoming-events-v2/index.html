@@ -391,7 +391,7 @@
 </div>
 <!-- Floating Prototype State Switcher -->
 <div class="state-dropdown" id="stateDropdown">
-  <button onclick="toggleStateDropdown()" class="flex items-center gap-2 px-5 py-3 bg-[#E03C31] hover:bg-[#b91c1c] text-white rounded-full text-xs font-black uppercase tracking-wider transition-all shadow-lg">
+  <button onclick="toggleStateDropdown()" onkeydown="if(event.key==='Enter'||event.key===' ')toggleStateDropdown()" class="flex items-center gap-2 px-5 py-3 bg-[#E03C31] hover:bg-[#b91c1c] text-white rounded-full text-xs font-black uppercase tracking-wider transition-all shadow-lg">
     <span class="material-symbols-outlined text-[16px]">tune</span>
     <span>Upcoming Election</span>
     <span class="material-symbols-outlined text-[16px]" id="dropdownChevron">expand_more</span>
@@ -556,7 +556,7 @@
 </div>
 <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
 <div class="flex-1">
-<span class="text-xs font-black text-[#E03C31] uppercase tracking-wider">Crucial Deadline</span>
+<span class="text-xs font-black text-[#9B1C1C] uppercase tracking-wider">Crucial Deadline</span>
 <h4 class="text-lg font-black text-[#00205B] mt-0.5">Voter Registration Deadline</h4>
 <p class="text-sm text-slate-700 mt-2 max-w-2xl leading-relaxed">The final day for citizens to register or update their residential details on the Sovereign Ledger to be eligible for the upcoming General Election.</p>
 <div class="flex flex-wrap items-center gap-x-6 gap-y-3 mt-4">
@@ -613,7 +613,7 @@
 <div class="max-w-7xl mx-auto">
 <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-12 gap-6">
 <div>
-<span class="text-secondary font-bold text-xs tracking-[0.2em] uppercase mb-2 block">LATEST UPDATES</span>
+<span class="text-[#9B1C1C] font-bold text-xs tracking-[0.2em] uppercase mb-2 block">LATEST UPDATES</span>
 <h2 class="text-3xl md:text-5xl font-black text-[#00205B] font-headline">News &amp; Notices</h2>
 </div>
 <button class="hidden md:flex items-center gap-2 text-[#00205B] font-black text-xs uppercase tracking-wider hover:text-secondary transition-colors group">
@@ -640,7 +640,7 @@
 <a class="group flex flex-col bg-white border border-slate-200 rounded-2xl overflow-hidden active:shadow-md transition-all duration-300 min-w-[300px] md:min-w-[400px]" href="../../poll-workers/news-candidates/index.html">
 <div class="p-6 md:p-8 flex-1">
 <div class="mb-4 flex items-center justify-between">
-<span class="bg-red-50 text-secondary text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">Candidates</span>
+<span class="bg-red-50 text-red-800 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">Candidates</span>
 <span class="text-slate-600 text-xs font-bold">OCT 10, 2024</span>
 </div>
 <h4 class="text-lg md:text-xl font-black text-[#00205B] mb-3 leading-tight group-hover:text-secondary transition-colors">Important update for candidates</h4>
@@ -654,7 +654,7 @@
 <a class="group flex flex-col bg-white border border-slate-200 rounded-2xl overflow-hidden active:shadow-md transition-all duration-300 min-w-[300px] md:min-w-[400px]" href="../../poll-workers/news-schedule/index.html">
 <div class="p-6 md:p-8 flex-1">
 <div class="mb-4 flex items-center justify-between">
-<span class="bg-slate-100 text-slate-600 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">Alert</span>
+<span class="bg-slate-100 text-slate-700 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">Alert</span>
 <span class="text-slate-600 text-xs font-bold">OCT 08, 2024</span>
 </div>
 <h4 class="text-lg md:text-xl font-black text-[#00205B] mb-3 leading-tight group-hover:text-secondary transition-colors">Changes in election schedule</h4>
@@ -705,7 +705,7 @@
 <!-- Link Columns (Stacked) -->
 <div class="lg:col-span-4 flex flex-col items-start text-left">
 <div class="flex-1 w-full">
-<h5 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-6 border-b border-white/10 pb-2 lg:border-none lg:pb-0 text-left">RESOURCES</h5>
+<h4 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-6 border-b border-white/10 pb-2 lg:border-none lg:pb-0 text-left">RESOURCES</h4>
 <ul class="grid grid-cols-1 gap-4 mb-10">
 <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Voter Registration</a></li>
 <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Find Polling Station</a></li>
@@ -714,7 +714,7 @@
 </ul>
 </div>
 <div class="flex-1 w-full">
-<h5 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-6 border-b border-white/10 pb-2 lg:border-none lg:pb-0 text-left">GOVERNANCE</h5>
+<h4 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-6 border-b border-white/10 pb-2 lg:border-none lg:pb-0 text-left">GOVERNANCE</h4>
 <ul class="grid grid-cols-1 gap-4">
 <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Elections Act</a></li>
 <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Code of Conduct</a></li>
@@ -725,7 +725,7 @@
 </div>
 <!-- Contact Column -->
 <div class="lg:col-span-4">
-<h5 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-6 border-b border-white/10 pb-2 lg:border-none lg:pb-0 text-left">CONTACT US</h5>
+<h4 class="text-xs font-black uppercase tracking-widest text-slate-300 mb-6 border-b border-white/10 pb-2 lg:border-none lg:pb-0 text-left">CONTACT US</h4>
 <div class="space-y-5 text-left">
 <div class="flex items-start gap-4">
 <span class="material-symbols-outlined text-secondary text-2xl">location_on</span>
