@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<title>What to Bring – Voting Day | BVI Department of Elections</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "secondary": "#E03C31",
+        "primary": "#00205B",
+        "surface": "#f8f9fa",
+        "on-surface": "#191c1d",
+        "surface-container-low": "#f3f4f5",
+        "surface-container-lowest": "#ffffff",
+        "outline-variant": "#c5c6d1",
+      },
+      fontFamily: { "headline": ["Public Sans"], "body": ["Inter"], "label": ["Inter"] }
+    }
+  }
+}
+</script>
+<style>
+  html { overflow-y: scroll; background: #f8f9fa; }
+  body { font-family: 'Inter', system-ui, -apple-system, sans-serif; color: #191c1d; background: #ffffff; }
+
+  /* Utility bar */
+  #site-util-bar { width: 100%; background: #f8f9fa; border-bottom: 1px solid #e2e8f0; padding: 0.5rem 2rem; box-sizing: border-box; }
+  .su-inner { max-width: 80rem; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-family: 'Inter', system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .su-left { display: flex; align-items: center; gap: 1rem; }
+  .su-back, .su-contact { color: inherit; text-decoration: none; display: flex; align-items: center; gap: 0.25rem; transition: color 0.15s ease; }
+  .su-back:hover, .su-contact:hover { color: #00205B; }
+  .su-divider { color: #cbd5e1; font-weight: 400; }
+  .su-portal-name { display: none; }
+  @media (min-width: 768px) { .su-portal-name { display: block; } }
+
+  /* Header */
+  #site-header { width: 100%; background: #fff; border-bottom: 1px solid #f1f5f9; box-sizing: border-box; }
+  .sh-inner { max-width: 80rem; margin: 0 auto; padding: 1.25rem 2rem; box-sizing: border-box; }
+  .sh-row { display: flex; align-items: center; }
+  .sh-logo { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; margin-right: auto; text-decoration: none; transition: opacity 0.15s ease; }
+  .sh-logo:hover { opacity: 0.9; }
+  .sh-logo-img { height: 3.5rem; width: auto; object-fit: contain; display: block; }
+  .sh-logo-text { display: flex; flex-direction: column; }
+  .sh-logo-title { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-size: 1.875rem; font-weight: 900; color: #00205B; letter-spacing: -0.025em; line-height: 1; }
+  .sh-logo-sub { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #94a3b8; margin-top: 0.25rem; line-height: 1; }
+  .sh-nav { display: none; align-items: center; height: 100%; margin-left: 2rem; }
+  @media (min-width: 1024px) { .sh-nav { display: flex; } }
+  .sh-nav-links { display: flex; align-items: center; height: 100%; }
+  .sh-nav-link { display: flex; flex-direction: column; align-self: stretch; justify-content: center; padding: 0 1.25rem; box-sizing: border-box; font-family: 'Inter', system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; line-height: 1.25; color: #00205B; text-decoration: none; border-bottom: 3px solid transparent; transition: color 0.15s ease, border-bottom-color 0.15s ease; }
+  .sh-nav-link:hover { color: #E03C31; }
+  .sh-nav-link--active { color: #E03C31; border-bottom-color: #E03C31; }
+  .sh-nav-sep { height: 2.5rem; width: 1px; background: #e2e8f0; flex-shrink: 0; }
+  .sh-search { margin-left: auto; margin-right: 0.5rem; color: #00205B; background: none; border: none; cursor: pointer; padding: 0; line-height: 1; transition: color 0.15s ease; }
+  .sh-search:hover { color: #E03C31; }
+  .sh-register { margin-left: 1rem; display: flex; align-items: center; gap: 0.375rem; padding: 0.5rem 1.25rem; background: #E03C31; color: #fff; border-radius: 9999px; font-family: 'Inter', system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: background-color 0.15s ease; }
+  .sh-register:hover { background: #b91c1c; }
+  .sh-register-icon { font-size: 15px; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+  /* Mobile */
+  .mob-menu-btn { display: none; background: none; border: none; cursor: pointer; color: #00205B; padding: 0.25rem; margin-left: 0.75rem; transition: color 0.15s; }
+  .mob-menu-btn:hover { color: #E03C31; }
+  @media (max-width: 1023px) { .mob-menu-btn { display: flex; align-items: center; } }
+  #mob-nav { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.4); backdrop-filter: blur(2px); }
+  #mob-nav.open { display: block; }
+  #mob-nav-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(320px,85vw); background: #fff; box-shadow: -8px 0 32px rgba(0,0,0,0.15); display: flex; flex-direction: column; overflow-y: auto; }
+  .mob-nav-header { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; border-bottom: 1px solid #f1f5f9; }
+  .mob-nav-title { font-size: 12px; font-weight: 900; color: #00205B; text-transform: uppercase; letter-spacing: 0.08em; }
+  .mob-nav-close { background: none; border: none; cursor: pointer; color: #94a3b8; padding: 0.25rem; transition: color 0.15s; }
+  .mob-nav-close:hover { color: #E03C31; }
+  .mob-nav-links { flex: 1; padding: 1rem 0; }
+  .mob-nav-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1.5rem; font-size: 13px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; color: #00205B; text-decoration: none; border-left: 3px solid transparent; transition: all 0.15s; }
+  .mob-nav-link:hover { background: #f8fafc; border-left-color: #E03C31; color: #E03C31; }
+  .mob-nav-footer { padding: 1.25rem 1.5rem; border-top: 1px solid #f1f5f9; }
+  @media (max-width: 640px) { .sh-inner { padding: 0.75rem 1.25rem !important; } #site-util-bar { padding: 0.4rem 1.25rem !important; } .sh-register { display: none !important; } .sh-logo-title { font-size: 1.35rem; } .sh-logo-img { height: 2.5rem; } }
+  .mob-register-strip { display: none; width: 100%; background: #fff; border-top: 1px solid #f1f5f9; padding: 0.625rem 1.25rem; }
+  @media (max-width: 640px) { .mob-register-strip { display: block !important; } }
+
+  /* Checklist item hover */
+  .checklist-item { transition: all 0.2s ease; }
+  .checklist-item:hover { transform: translateX(4px); }
+</style>
+</head>
+<body class="font-body text-on-surface bg-white">
+
+<!-- Skip Link -->
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-primary text-white px-4 py-2 rounded z-50 font-bold text-sm">Skip to main content</a>
+
+<!-- Top Utility Bar -->
+<div id="site-util-bar">
+  <div class="su-inner">
+    <div class="su-left">
+      <a class="su-back" href="#">
+        <span class="su-back-arrow">←</span> BACK TO GOV.VG
+      </a>
+      <span class="su-divider">|</span>
+      <a class="su-contact" href="#">CONTACT US</a>
+    </div>
+    <div class="su-portal-name">OFFICIAL PORTAL OF THE BRITISH VIRGIN ISLANDS ELECTIONS</div>
+  </div>
+</div>
+
+<!-- Main Navigation Header -->
+<header id="site-header">
+  <div class="sh-inner">
+    <div class="sh-row">
+      <a href="../../index.html" class="sh-logo">
+        <img alt="British Virgin Islands Coat of Arms" class="sh-logo-img" width="391" height="427" src="../../assets/bvi-crest.png"/>
+        <div class="sh-logo-text">
+          <span class="sh-logo-title">elections.gov.vg</span>
+          <span class="sh-logo-sub">DEPARTMENT OF ELECTIONS</span>
+        </div>
+      </a>
+      <nav class="sh-nav" aria-label="Main navigation">
+        <div class="sh-nav-links">
+          <a class="sh-nav-link sh-nav-link--active" href="../voting-day/index.html"><span>FOR</span><span>VOTERS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="../../candidates/voting-day/index.html"><span>FOR</span><span>CANDIDATES</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="../../poll-workers/layout-1/index.html"><span>FOR</span><span>POLL WORKERS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="../../important-dates/index.html"><span>IMPORTANT</span><span>DATES</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="../../election-results/index.html"><span>ELECTION</span><span>RESULTS</span></a>
+          <div class="sh-nav-sep"></div>
+          <a class="sh-nav-link" href="../../news-policies/index.html"><span>NEWS &amp;</span><span>POLICIES</span></a>
+        </div>
+        <button class="sh-search" aria-label="Search website">
+          <span class="material-symbols-outlined" style="font-size:24px;line-height:1;display:block">search</span>
+        </button>
+      </nav>
+      <a href="../register/index.html" class="sh-register">
+        <span class="material-symbols-outlined sh-register-icon">how_to_reg</span>
+        Register
+      </a>
+      <button class="mob-menu-btn" onclick="openMobNav()" aria-label="Open menu">
+        <span class="material-symbols-outlined" style="font-size:28px">menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Register Strip -->
+<div class="mob-register-strip">
+  <a href="../register/index.html" class="flex items-center justify-center gap-2 w-full bg-[#E03C31] hover:bg-[#b91c1c] text-white py-2.5 rounded-full font-black text-xs uppercase tracking-wider transition-all">
+    <span class="material-symbols-outlined" style="font-size:16px">how_to_reg</span>
+    Register to Vote
+  </a>
+</div>
+
+<!-- Mobile Nav Overlay -->
+<div id="mob-nav" onclick="closeMobNavOutside(event)">
+  <div id="mob-nav-panel">
+    <div class="mob-nav-header">
+      <span class="mob-nav-title">Menu</span>
+      <button class="mob-nav-close" onclick="closeMobNav()">
+        <span class="material-symbols-outlined" style="font-size:24px">close</span>
+      </button>
+    </div>
+    <div class="mob-nav-links">
+      <a class="mob-nav-link" href="../voting-day/index.html"><span class="material-symbols-outlined text-[20px]">how_to_vote</span>For Voters</a>
+      <a class="mob-nav-link" href="../../candidates/upcoming-elections/index.html"><span class="material-symbols-outlined text-[20px]">person_raised_hand</span>For Candidates</a>
+      <a class="mob-nav-link" href="../../poll-workers/layout-1/index.html"><span class="material-symbols-outlined text-[20px]">badge</span>For Poll Workers</a>
+      <a class="mob-nav-link" href="../../important-dates/index.html"><span class="material-symbols-outlined text-[20px]">event</span>Important Dates</a>
+      <a class="mob-nav-link" href="../../election-results/index.html"><span class="material-symbols-outlined text-[20px]">bar_chart</span>Election Results</a>
+      <a class="mob-nav-link" href="../../news-policies/index.html"><span class="material-symbols-outlined text-[20px]">newspaper</span>News & Policies</a>
+    </div>
+    <div class="mob-nav-footer">
+      <a href="../register/index.html" class="flex items-center justify-center gap-2 w-full bg-[#E03C31] hover:bg-[#b91c1c] text-white py-3 rounded-xl font-black text-xs uppercase tracking-wider transition-all">
+        <span class="material-symbols-outlined text-[18px]">how_to_reg</span>Register to Vote
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Page Header -->
+<section class="w-full bg-white" id="main-content">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 py-8 md:py-12">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="flex items-center gap-2 mb-6">
+      <a href="../voting-day/index.html" class="text-xs font-bold text-slate-500 uppercase tracking-wider hover:text-[#00205B] transition-colors flex items-center gap-1">
+        <span class="material-symbols-outlined text-[14px]">arrow_back</span>
+        Voting Day
+      </a>
+      <span class="text-slate-300 text-xs">/</span>
+      <span class="text-xs font-bold text-[#00205B] uppercase tracking-wider">What to Bring</span>
+    </nav>
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+      <div>
+        <span class="text-[#E03C31] font-bold text-xs tracking-[0.2em] uppercase mb-2 block">Election Day — November 25, 2024</span>
+        <h1 class="text-4xl sm:text-5xl md:text-7xl font-black text-[#00205B] font-headline leading-[1.1]">What to Bring</h1>
+        <p class="text-slate-600 text-base md:text-lg mt-4 max-w-xl leading-relaxed">Everything you need to bring to your polling station on Election Day to cast your vote successfully.</p>
+      </div>
+      <a href="../polling-place/index.html" class="flex-shrink-0 flex items-center gap-2 bg-[#E03C31] hover:bg-[#b91c1c] text-white px-6 py-3 rounded-xl font-black text-xs uppercase tracking-wider transition-all shadow-sm self-start md:self-auto">
+        <span class="material-symbols-outlined text-[18px]">location_on</span>
+        Find My Polling Station
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Election Day Status Banner -->
+<section class="w-full bg-[#00205B] py-4">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+    <div class="flex items-center gap-3">
+      <span class="material-symbols-outlined text-white text-xl">how_to_vote</span>
+      <span class="text-white font-bold text-sm">Polls are open today — 6:00 AM to 6:00 PM</span>
+    </div>
+    <span class="text-white/60 text-xs font-bold uppercase tracking-wider">Monday, November 25, 2024</span>
+  </div>
+</section>
+
+<!-- Main Content -->
+<section class="w-full bg-white py-12 md:py-16">
+  <div class="max-w-7xl mx-auto px-4 md:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+      <!-- Left Column: Required Items -->
+      <div class="lg:col-span-7">
+
+        <!-- Required Section -->
+        <div class="mb-12">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-8 h-8 bg-[#E03C31] rounded-full flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-white text-[18px]" style="font-variation-settings:'FILL' 1">priority_high</span>
+            </div>
+            <h2 class="text-2xl font-black text-[#00205B] font-headline">Required — You Must Bring</h2>
+          </div>
+          <p class="text-slate-600 text-sm mb-6 leading-relaxed">You will not be permitted to vote without one of the following valid photo identification documents.</p>
+
+          <div class="space-y-4">
+            <!-- ID Item 1 -->
+            <div class="checklist-item flex items-start gap-5 bg-[#f3f4f5] rounded-2xl p-6 border border-slate-100">
+              <div class="w-12 h-12 bg-[#00205B] rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-white text-2xl" style="font-variation-settings:'FILL' 1">badge</span>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-1">
+                  <h3 class="text-lg font-black text-[#00205B]">Virgin Islands Belonger's Card</h3>
+                  <span class="bg-[#00205B] text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Primary ID</span>
+                </div>
+                <p class="text-slate-600 text-sm leading-relaxed">Your original Virgin Islands Belonger's Card is the primary accepted form of identification at the polling station. Must be valid and not expired.</p>
+              </div>
+            </div>
+
+            <!-- ID Item 2 -->
+            <div class="checklist-item flex items-start gap-5 bg-[#f3f4f5] rounded-2xl p-6 border border-slate-100">
+              <div class="w-12 h-12 bg-[#00205B] rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-white text-2xl" style="font-variation-settings:'FILL' 1">travel_explore</span>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-1">
+                  <h3 class="text-lg font-black text-[#00205B]">Virgin Islands Passport</h3>
+                  <span class="bg-[#00205B] text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Primary ID</span>
+                </div>
+                <p class="text-slate-600 text-sm leading-relaxed">A valid Virgin Islands Passport is accepted as proof of identity. Your passport must be valid — expired passports will not be accepted.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recommended Section -->
+        <div class="mb-12">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-8 h-8 bg-[#007A33] rounded-full flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-white text-[18px]" style="font-variation-settings:'FILL' 1">check</span>
+            </div>
+            <h2 class="text-2xl font-black text-[#00205B] font-headline">Recommended to Bring</h2>
+          </div>
+          <p class="text-slate-600 text-sm mb-6 leading-relaxed">These items are not mandatory but will help the process go smoothly and quickly.</p>
+
+          <div class="space-y-4">
+            <!-- Rec Item 1 -->
+            <div class="checklist-item flex items-start gap-5 bg-white rounded-2xl p-6 border border-slate-200">
+              <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-[#00205B] text-2xl" style="font-variation-settings:'FILL' 1">how_to_reg</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-lg font-black text-[#00205B] mb-1">Voter Registration Card</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">If you received a voter registration card, bring it along. It confirms your polling station assignment and speeds up the verification process.</p>
+              </div>
+            </div>
+
+            <!-- Rec Item 2 -->
+            <div class="checklist-item flex items-start gap-5 bg-white rounded-2xl p-6 border border-slate-200">
+              <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-[#00205B] text-2xl" style="font-variation-settings:'FILL' 1">location_on</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-lg font-black text-[#00205B] mb-1">Your Polling Station Address</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">Know your assigned polling station before you leave home. Use the "Find My Polling Place" tool to confirm your location in advance.</p>
+                <a href="../polling-place/index.html" class="inline-flex items-center gap-1.5 mt-3 text-[#E03C31] font-black text-xs uppercase tracking-wider hover:underline">
+                  Find My Polling Place <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Rec Item 3 -->
+            <div class="checklist-item flex items-start gap-5 bg-white rounded-2xl p-6 border border-slate-200">
+              <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-[#00205B] text-2xl" style="font-variation-settings:'FILL' 1">wb_sunny</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-lg font-black text-[#00205B] mb-1">Water & Sun Protection</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">Polling stations may have queues, especially in the early morning and late afternoon. Bring water and wear sunscreen if you expect to wait outdoors.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- What NOT to Bring -->
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-slate-600 text-[18px]" style="font-variation-settings:'FILL' 1">block</span>
+            </div>
+            <h2 class="text-2xl font-black text-[#00205B] font-headline">Do Not Bring</h2>
+          </div>
+          <div class="bg-[#fff8f8] border border-red-100 rounded-2xl p-6 space-y-4">
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-[#E03C31] text-xl flex-shrink-0 mt-0.5">cancel</span>
+              <div>
+                <h4 class="font-black text-[#00205B] text-sm mb-1">Campaign Materials</h4>
+                <p class="text-slate-600 text-sm leading-relaxed">Do not wear or carry any campaign materials, party paraphernalia, or candidate insignia inside the polling station.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-[#E03C31] text-xl flex-shrink-0 mt-0.5">cancel</span>
+              <div>
+                <h4 class="font-black text-[#00205B] text-sm mb-1">Recording Devices in the Booth</h4>
+                <p class="text-slate-600 text-sm leading-relaxed">Photography or video recording inside the polling booth is strictly prohibited. Ballots must remain private.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-[#E03C31] text-xl flex-shrink-0 mt-0.5">cancel</span>
+              <div>
+                <h4 class="font-black text-[#00205B] text-sm mb-1">Additional Persons in the Booth</h4>
+                <p class="text-slate-600 text-sm leading-relaxed">Only the voter is allowed in the booth at one time. Exceptions apply for voters who require assistance — speak to the Presiding Officer.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Sidebar -->
+      <div class="lg:col-span-5 space-y-6">
+
+        <!-- Quick Checklist Card -->
+        <div class="bg-[#00205B] rounded-2xl p-8 text-white">
+          <h2 class="text-xl font-black mb-6 font-headline">Quick Checklist</h2>
+          <ul class="space-y-4" role="list">
+            <li class="flex items-center gap-3">
+              <div class="w-6 h-6 rounded-full border-2 border-white/30 flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-white text-[14px]" style="font-variation-settings:'FILL' 1">check</span>
+              </div>
+              <span class="text-sm font-bold text-white">Belonger's Card <span class="font-normal text-white/70">or</span> Passport</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <div class="w-6 h-6 rounded-full border-2 border-white/30 flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-white text-[14px]" style="font-variation-settings:'FILL' 1">check</span>
+              </div>
+              <span class="text-sm font-bold text-white">Know your polling station</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <div class="w-6 h-6 rounded-full border-2 border-white/30 flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-white text-[14px]" style="font-variation-settings:'FILL' 1">check</span>
+              </div>
+              <span class="text-sm font-bold text-white">Voter registration card <span class="font-normal text-white/70">(if available)</span></span>
+            </li>
+            <li class="flex items-center gap-3">
+              <div class="w-6 h-6 rounded-full border-2 border-white/30 flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-white text-[14px]" style="font-variation-settings:'FILL' 1">check</span>
+              </div>
+              <span class="text-sm font-bold text-white">Arrive before 6:00 PM</span>
+            </li>
+          </ul>
+          <div class="mt-8 pt-6 border-t border-white/10">
+            <a href="../polling-place/index.html" class="flex items-center justify-center gap-2 w-full bg-[#E03C31] hover:bg-[#b91c1c] text-white py-3.5 rounded-xl font-black text-xs uppercase tracking-wider transition-all">
+              <span class="material-symbols-outlined text-[18px]">location_on</span>
+              Find My Polling Station
+            </a>
+          </div>
+        </div>
+
+        <!-- Polling Hours Card -->
+        <div class="bg-[#f3f4f5] rounded-2xl p-6 border border-slate-100">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="material-symbols-outlined text-[#00205B] text-2xl" style="font-variation-settings:'FILL' 1">schedule</span>
+            <h2 class="text-lg font-black text-[#00205B]">Polling Hours Today</h2>
+          </div>
+          <div class="flex items-center justify-between py-3 border-b border-slate-200">
+            <span class="text-sm font-bold text-slate-600">Opens</span>
+            <span class="text-lg font-black text-[#00205B]">6:00 AM</span>
+          </div>
+          <div class="flex items-center justify-between py-3">
+            <span class="text-sm font-bold text-slate-600">Closes</span>
+            <span class="text-lg font-black text-[#E03C31]">6:00 PM</span>
+          </div>
+          <p class="text-xs text-slate-500 mt-3 leading-relaxed">If you are in the queue before 6:00 PM you are entitled to vote, even if the process runs past closing time.</p>
+        </div>
+
+        <!-- Need Help Card -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="material-symbols-outlined text-[#00205B] text-2xl" style="font-variation-settings:'FILL' 1">support_agent</span>
+            <h2 class="text-lg font-black text-[#00205B]">Need Help?</h2>
+          </div>
+          <p class="text-sm text-slate-600 leading-relaxed mb-4">If you have questions on Election Day, contact the Office of the Supervisor of Elections directly.</p>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-[#E03C31] text-lg">call</span>
+              <span class="text-sm font-bold text-[#00205B]">+1 (284) 468-4380</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-[#E03C31] text-lg">mail</span>
+              <span class="text-sm font-bold text-[#00205B]">elections@gov.vg</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Check My Status -->
+        <a href="../check-status/index.html" class="flex items-center gap-4 bg-white border border-slate-200 text-[#00205B] p-5 rounded-xl hover:bg-slate-50 transition-all shadow-sm group">
+          <span class="material-symbols-outlined text-2xl font-bold text-[#E03C31]">person_search</span>
+          <div>
+            <span class="font-black text-sm uppercase tracking-wider block">Check My Voter Status</span>
+            <span class="text-xs text-slate-500 mt-0.5 block">Confirm you are registered to vote</span>
+          </div>
+          <span class="material-symbols-outlined text-slate-300 ml-auto group-hover:text-[#E03C31] transition-colors">chevron_right</span>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="w-full bg-[#00205B] text-white pt-20 pb-10">
+  <div class="max-w-7xl mx-auto px-4 md:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+      <div class="lg:col-span-4">
+        <div class="flex items-center gap-4 mb-6">
+          <img alt="Department of Elections Crest" class="h-16 w-auto" src="../../assets/bvi-crest.png" width="391" height="427"/>
+          <div class="flex flex-col">
+            <span class="text-2xl font-black tracking-tight leading-none">elections.gov.vg</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-slate-400 mt-1 leading-none">DEPARTMENT OF ELECTIONS</span>
+          </div>
+        </div>
+        <p class="text-slate-300 text-sm leading-relaxed mb-8 max-w-sm">Committed to ensuring free, fair, and transparent democratic processes for all citizens of the Virgin Islands.</p>
+        <div class="flex gap-4">
+          <a class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-secondary transition-colors" href="#" aria-label="Facebook">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-secondary transition-colors" href="#" aria-label="Twitter">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+          </a>
+          <a class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-secondary transition-colors" href="#" aria-label="Instagram">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="lg:col-span-2">
+        <h3 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">RESOURCES</h3>
+        <ul class="space-y-4">
+          <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="../register/index.html">Voter Registration</a></li>
+          <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="../polling-place/index.html">Find Polling Station</a></li>
+          <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="../advance-poll/index.html">Advance Polling</a></li>
+          <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="../../election-results/index.html">Election Results</a></li>
+          <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Forms &amp; Guides</a></li>
+        </ul>
+      </div>
+      <div class="lg:col-span-2">
+        <h3 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">GOVERNANCE</h3>
+        <ul class="space-y-4">
+          <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Elections Act</a></li>
+          <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Boundary Commissions</a></li>
+          <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Code of Conduct</a></li>
+          <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+          <li><a class="text-sm text-slate-300 hover:text-white transition-colors" href="#">Accessibility</a></li>
+        </ul>
+      </div>
+      <div class="lg:col-span-4">
+        <h3 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">CONTACT US</h3>
+        <div class="space-y-4">
+          <div class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-[#E03C31] text-xl">location_on</span>
+            <p class="text-sm text-slate-300">Office of the Supervisor of Elections<br/>Road Town, Tortola<br/>British Virgin Islands</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-[#E03C31] text-xl">call</span>
+            <p class="text-sm text-slate-300">+1 (284) 468-4380</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-[#E03C31] text-xl">mail</span>
+            <p class="text-sm text-slate-300">elections@gov.vg</p>
+          </div>
+          <div class="pt-4">
+            <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">OPERATING HOURS</p>
+            <p class="text-sm text-slate-300">Mon - Fri: 8:30 AM – 4:30 PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white border-opacity-10 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+      <p class="text-slate-400 text-xs font-medium">© 2026 Department of Elections of the Virgin Islands. All rights reserved.</p>
+      <div class="flex gap-8 text-xs font-black uppercase tracking-widest text-slate-500">
+        <a class="hover:text-white transition-colors" href="#">Terms of Use</a>
+        <a class="hover:text-white transition-colors" href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function openMobNav(){document.getElementById('mob-nav').classList.add('open');document.body.style.overflow='hidden';}
+function closeMobNav(){document.getElementById('mob-nav').classList.remove('open');document.body.style.overflow='';}
+function closeMobNavOutside(e){if(e.target===document.getElementById('mob-nav'))closeMobNav();}
+</script>
+</body></html>
