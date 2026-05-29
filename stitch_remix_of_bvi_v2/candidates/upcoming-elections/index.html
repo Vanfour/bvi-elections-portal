@@ -225,7 +225,7 @@
   .state-dropdown.open .state-dropdown-menu{display:block;}
   .state-dropdown-item{display:flex;align-items:center;gap:8px;padding:10px 16px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;border-left:3px solid transparent;transition:all .15s;color:#475569;width:100%;text-align:left;background:none;border-top:none;border-right:none;border-bottom:none;}
   .state-dropdown-item:hover{background:#f8fafc;color:#00205B;}
-  .state-dropdown-item.active{border-left-color:#E03C31;color:#00205B;background:#f8fafc;}
+  .state-dropdown-item.active{border-left-color:#C0392B;color:#00205B;background:#f8fafc;}
 
   /* ── Mobile register strip ──────────────────────────────────────────────── */
   @media (max-width: 640px) {
@@ -404,8 +404,8 @@
 </div>
 </section>
 <!-- Preview State floating widget (bottom-right) -->
-<div class="state-dropdown" id="stateDropdown">
-  <button onclick="toggleStateDropdown()" onkeydown="if(event.key==='Enter'||event.key===' ')toggleStateDropdown()" class="flex items-center gap-2 px-5 py-3 bg-[#C0392B] hover:bg-[#922B21] text-white rounded-full text-xs font-black uppercase tracking-wider transition-all shadow-lg">
+<div class="state-dropdown" id="stateDropdown" aria-hidden="true" role="presentation">
+  <button onclick="toggleStateDropdown()" onkeydown="if(event.key==='Enter'||event.key===' ')toggleStateDropdown()" class="flex items-center gap-2 px-5 py-3 bg-[#922B21] hover:bg-[#7B241C] text-white rounded-full text-xs font-black uppercase tracking-wider transition-all shadow-lg">
         <span class="material-symbols-outlined text-[16px]">tune</span>
         <span>Upcoming Election</span>
         <span class="material-symbols-outlined text-[16px]" id="dropdownChevron">expand_more</span>
@@ -606,7 +606,7 @@
 <span class="text-xs font-bold uppercase tracking-widest text-slate-100 mt-1 leading-none">DEPARTMENT OF ELECTIONS</span>
 </div>
 </div>
-<p class="text-slate-100 text-sm leading-relaxed mb-8 max-w-sm">
+<p class="text-white text-sm leading-relaxed mb-8 max-w-sm">
                     Committed to ensuring free, fair, and transparent democratic processes for all citizens of the Virgin Islands.
                 </p>
 <div class="flex gap-4">
@@ -623,32 +623,32 @@
 </div>
 <!-- Link Columns -->
 <div class="lg:col-span-2">
-<h4 class="text-xs font-black uppercase tracking-widest text-slate-100 mb-6">RESOURCES</h4>
+<h4 class="text-xs font-black uppercase tracking-widest text-white mb-6">RESOURCES</h4>
 <ul class="space-y-4">
-<li class=""><a class="text-sm text-slate-100 hover:text-white transition-colors" href="#">Voter Registration</a></li>
-<li class=""><a class="text-sm text-slate-100 hover:text-white transition-colors" href="#">Find Polling Station</a></li>
-<li class=""><a class="text-sm text-slate-100 hover:text-white transition-colors" href="#">Advance Polling</a></li>
-<li class=""><a class="text-sm text-slate-100 hover:text-white transition-colors" href="#">Election Results</a></li>
-<li class=""><a class="text-sm text-slate-100 hover:text-white transition-colors" href="#">Forms &amp; Guides</a></li>
+<li class=""><a class="text-sm text-white hover:text-slate-200 transition-colors" href="#">Voter Registration</a></li>
+<li class=""><a class="text-sm text-white hover:text-slate-200 transition-colors" href="#">Find Polling Station</a></li>
+<li class=""><a class="text-sm text-white hover:text-slate-200 transition-colors" href="#">Advance Polling</a></li>
+<li class=""><a class="text-sm text-white hover:text-slate-200 transition-colors" href="#">Election Results</a></li>
+<li class=""><a class="text-sm text-white hover:text-slate-200 transition-colors" href="#">Forms &amp; Guides</a></li>
 </ul>
 </div>
 <div class="lg:col-span-2">
-<h4 class="text-xs font-black uppercase tracking-widest text-slate-100 mb-6">GOVERNANCE</h4>
+<h4 class="text-xs font-black uppercase tracking-widest text-white mb-6">GOVERNANCE</h4>
 <ul class="space-y-4">
-<li class=""><a class="text-sm text-slate-100 hover:text-white transition-colors" href="#">Elections Act</a></li>
-<li class=""><a class="text-sm text-slate-100 hover:text-white transition-colors" href="#">Boundary Commissions</a></li>
-<li class=""><a class="text-sm text-slate-100 hover:text-white transition-colors" href="#">Code of Conduct</a></li>
-<li class=""><a class="text-sm text-slate-100 hover:text-white transition-colors" href="#">Privacy Policy</a></li>
-<li class=""><a class="text-sm text-slate-100 hover:text-white transition-colors" href="#">Accessibility</a></li>
+<li class=""><a class="text-sm text-white hover:text-slate-200 transition-colors" href="#">Elections Act</a></li>
+<li class=""><a class="text-sm text-white hover:text-slate-200 transition-colors" href="#">Boundary Commissions</a></li>
+<li class=""><a class="text-sm text-white hover:text-slate-200 transition-colors" href="#">Code of Conduct</a></li>
+<li class=""><a class="text-sm text-white hover:text-slate-200 transition-colors" href="#">Privacy Policy</a></li>
+<li class=""><a class="text-sm text-white hover:text-slate-200 transition-colors" href="#">Accessibility</a></li>
 </ul>
 </div>
 <!-- Contact Column -->
 <div class="lg:col-span-4">
-<h4 class="text-xs font-black uppercase tracking-widest text-slate-100 mb-6">CONTACT US</h4>
+<h4 class="text-xs font-black uppercase tracking-widest text-white mb-6">CONTACT US</h4>
 <div class="space-y-4">
 <div class="flex items-start gap-3">
 <span class="material-symbols-outlined text-secondary text-xl">location_on</span>
-<p class="text-sm text-slate-100">
+<p class="text-sm text-white">
                             Office of the Supervisor of Elections<br>
                             Road Town, Tortola<br>
                             British Virgin Islands
@@ -656,25 +656,25 @@
 </div>
 <div class="flex items-center gap-3">
 <span class="material-symbols-outlined text-secondary text-xl">call</span>
-<p class="text-sm text-slate-100">+1 (284) 468-4380</p>
+<p class="text-sm text-white">+1 (284) 468-4380</p>
 </div>
 <div class="flex items-center gap-3">
 <span class="material-symbols-outlined text-secondary text-xl">mail</span>
-<p class="text-sm text-slate-100">elections@gov.vg</p>
+<p class="text-sm text-white">elections@gov.vg</p>
 </div>
 <div class="pt-4">
-<p class="text-xs font-bold text-slate-100 uppercase tracking-wider mb-2">OPERATING HOURS</p>
-<p class="text-sm text-slate-100">Mon - Fri: 8:30 AM – 4:30 PM</p>
+<p class="text-xs font-bold text-white uppercase tracking-wider mb-2">OPERATING HOURS</p>
+<p class="text-sm text-white">Mon - Fri: 8:30 AM – 4:30 PM</p>
 </div>
 </div>
 </div>
 </div>
 <!-- Bottom Copyright -->
 <div class="border-t border-white border-opacity-10 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
-<p class="text-slate-100 text-xs font-medium">
+<p class="text-white text-xs font-medium">
                 © 2026 Department of Elections of the Virgin Islands. All rights reserved.
             </p>
-<div class="flex gap-8 text-xs font-black uppercase tracking-widest text-slate-100">
+<div class="flex gap-8 text-xs font-black uppercase tracking-widest text-white">
 <a class="hover:text-white transition-colors" href="#">Terms of Use</a>
 <a class="hover:text-white transition-colors" href="#">Sitemap</a>
 </div>

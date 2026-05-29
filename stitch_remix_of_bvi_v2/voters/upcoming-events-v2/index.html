@@ -246,7 +246,7 @@
   .state-dropdown.open .state-dropdown-menu{display:block;}
   .state-dropdown-item{display:flex;align-items:center;gap:8px;padding:10px 16px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;border-left:3px solid transparent;transition:all .15s;color:#475569;width:100%;text-align:left;background:none;border:none;}
   .state-dropdown-item:hover{background:#f8fafc;color:#00205B;}
-  .state-dropdown-item.active{border-left-color:#E03C31;color:#00205B;background:#f8fafc;}
+  .state-dropdown-item.active{border-left-color:#C0392B;color:#00205B;background:#f8fafc;}
 
 </style>
 <script id="bvi-nav-wiring">
@@ -390,8 +390,8 @@
   </div>
 </div>
 <!-- Floating Prototype State Switcher -->
-<div class="state-dropdown" id="stateDropdown">
-  <button onclick="toggleStateDropdown()" onkeydown="if(event.key==='Enter'||event.key===' ')toggleStateDropdown()" class="flex items-center gap-2 px-5 py-3 bg-[#C0392B] hover:bg-[#922B21] text-white rounded-full text-xs font-black uppercase tracking-wider transition-all shadow-lg">
+<div class="state-dropdown" id="stateDropdown" aria-hidden="true" role="presentation">
+  <button onclick="toggleStateDropdown()" onkeydown="if(event.key==='Enter'||event.key===' ')toggleStateDropdown()" class="flex items-center gap-2 px-5 py-3 bg-[#922B21] hover:bg-[#7B241C] text-white rounded-full text-xs font-black uppercase tracking-wider transition-all shadow-lg">
     <span class="material-symbols-outlined text-[16px]">tune</span>
     <span>Upcoming Election</span>
     <span class="material-symbols-outlined text-[16px]" id="dropdownChevron">expand_more</span>
@@ -707,19 +707,19 @@
 <div class="flex-1 w-full">
 <h4 class="text-xs font-black uppercase tracking-widest text-slate-100 mb-6 border-b border-white/10 pb-2 lg:border-none lg:pb-0 text-left">RESOURCES</h4>
 <ul class="grid grid-cols-1 gap-4 mb-10">
-<li><a class="text-sm text-slate-100 hover:text-white transition-colors" href="#">Voter Registration</a></li>
-<li><a class="text-sm text-slate-100 hover:text-white transition-colors" href="#">Find Polling Station</a></li>
-<li><a class="text-sm text-slate-100 hover:text-white transition-colors" href="#">Advance Polling</a></li>
-<li><a class="text-sm text-slate-100 hover:text-white transition-colors" href="#">Election Results</a></li>
+<li><a class="text-sm text-white hover:text-slate-200 transition-colors" href="#">Voter Registration</a></li>
+<li><a class="text-sm text-white hover:text-slate-200 transition-colors" href="#">Find Polling Station</a></li>
+<li><a class="text-sm text-white hover:text-slate-200 transition-colors" href="#">Advance Polling</a></li>
+<li><a class="text-sm text-white hover:text-slate-200 transition-colors" href="#">Election Results</a></li>
 </ul>
 </div>
 <div class="flex-1 w-full">
 <h4 class="text-xs font-black uppercase tracking-widest text-slate-100 mb-6 border-b border-white/10 pb-2 lg:border-none lg:pb-0 text-left">GOVERNANCE</h4>
 <ul class="grid grid-cols-1 gap-4">
-<li><a class="text-sm text-slate-100 hover:text-white transition-colors" href="#">Elections Act</a></li>
-<li><a class="text-sm text-slate-100 hover:text-white transition-colors" href="#">Code of Conduct</a></li>
-<li><a class="text-sm text-slate-100 hover:text-white transition-colors" href="#">Privacy Policy</a></li>
-<li><a class="text-sm text-slate-100 hover:text-white transition-colors" href="#">Accessibility</a></li>
+<li><a class="text-sm text-white hover:text-slate-200 transition-colors" href="#">Elections Act</a></li>
+<li><a class="text-sm text-white hover:text-slate-200 transition-colors" href="#">Code of Conduct</a></li>
+<li><a class="text-sm text-white hover:text-slate-200 transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-sm text-white hover:text-slate-200 transition-colors" href="#">Accessibility</a></li>
 </ul>
 </div>
 </div>
